@@ -1,0 +1,12 @@
+Encode.pm
+Makefile.PL
+README
+Changes
+MANIFEST
+t/00_use.t
+t/12_domain_to_unicode.t
+t/11_domain_to_ascii.t
+t/21_email_to_ascii.t
+t/22_email_to_unicode.t
+t/01_to_ascii.t
+t/02_to_unicode.t

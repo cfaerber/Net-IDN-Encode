@@ -1,3 +1,5 @@
+# $Id$ #
+
 package Net::IDN::Encode;
 
 use strict;

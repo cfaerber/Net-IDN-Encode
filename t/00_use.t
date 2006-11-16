@@ -1,3 +1,5 @@
+# $Id$
+
 use utf8;
 use strict;
 use Test::More tests => 1;

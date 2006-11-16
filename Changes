@@ -1,4 +1,7 @@
 Revision history for Perl extension IDNA::Punycode
 
+0.02  Mon May 20 12:17:26 JST 2002
+	* [API change] now exception is thrown in conversion failure
+
 0.01  Tue May  7 11:47:28 2002
 	- original version

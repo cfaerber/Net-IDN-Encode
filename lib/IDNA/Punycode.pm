@@ -1,16 +1,13 @@
 package IDNA::Punycode;
 
 use strict;
-our $VERSION = 0.01;
+our $VERSION = 0.02;
 
 require Exporter;
 our @ISA    = qw(Exporter);
 our @EXPORT = qw(encode_punycode decode_punycode);
 
 use integer;
-
-our $ERROR = '';
-sub _err { $ERROR = shift; return }
 
 our $DEBUG = 0;
 
@@ -24,6 +21,8 @@ use constant INITIAL_N => 128;
 
 my $Delimiter = chr 0x2D;
 my $BasicRE   = qr/[\x00-\x7f]/;
+
+sub _croak { require Carp; Carp::croak(@_); }
 
 sub digit_value {
     my $code = shift;
@@ -62,7 +61,7 @@ sub decode_punycode {
 
     if ($code =~ s/(.*)$Delimiter//o) {
 	push @output, map ord, split //, $1;
-	return _err('non-basic code point') unless $1 =~ /^$BasicRE*$/o;
+	return _croak('non-basic code point') unless $1 =~ /^$BasicRE*$/o;
     }
 
     while ($code) {
@@ -72,7 +71,7 @@ sub decode_punycode {
 	for (my $k = BASE; 1; $k += BASE) {
 	    my $cp = substr($code, 0, 1, '');
 	    my $digit = digit_value($cp);
-	    defined $digit or return _err("invalid punycode input");
+	    defined $digit or return _croak("invalid punycode input");
 	    $i += $digit * $w;
 	    my $t = ($k <= $bias) ? TMIN
 		: ($k >= $bias + TMAX) ? TMAX : $k - $bias;
@@ -185,8 +184,8 @@ takes Punycode encoding and returns original Unicode string.
 
 =back
 
-These functions return undef on failure. You can get error reason via
-variable C<$IDNA::Punycode::ERROR>.
+These functions throws exceptionsn on failure. You can catch 'em via
+C<eval>.
 
 =head1 AUTHOR
 

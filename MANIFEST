@@ -1,0 +1,10 @@
+Changes
+MANIFEST
+Makefile.PL
+lib/Net/IDN/Nameprep.pm
+lib/Net/IDN/Nameprep/Mapping.pm
+lib/Net/IDN/Nameprep/Prohibited.pm
+t/00_compile.t
+t/01_mapping.t
+t/02_prohibit.t
+t/03_nameprep.t

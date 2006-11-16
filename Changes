@@ -1,0 +1,5 @@
+Revision history for Perl extension Net::IDN::Nameprep.
+
+0.01  Wed Oct 31 04:43:12 2001
+	- original version; created by h2xs 1.19
+

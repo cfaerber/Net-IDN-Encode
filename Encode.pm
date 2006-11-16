@@ -3,7 +3,7 @@ package Net::IDN::Encode;
 use strict;
 require v5.6.0;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 $VERSION = eval $VERSION;
 
 use Carp;
@@ -84,6 +84,7 @@ sub _to_unicode {
 sub _domain {
   use utf8;
   my ($domain,$_to_function,@param) = @_;
+  return undef unless $domain;
   return join '.',
     grep { croak 'Invalid domain name' if length($_) > 63 && !m/[^\x00-\x7F]/; 1 }
       map { $_to_function->($_, @param, 'UseSTD3ASCIIRules' => 1) }
@@ -93,8 +94,9 @@ sub _domain {
 sub _email {
   use utf8;
   my ($email,$_to_function,@param) = @_;
+  return undef unless $email;
 
-  $email =~ m/^([^"\@＠]*|"(?:(?:[^"]|\\.)*[^\\])?")(?:[\@＠]
+  $email =~ m/^([^"\@＠]+|"(?:(?:[^"]|\\.)*[^\\])?")(?:[\@＠]
     (?:([^\[\]]*)|(\[.*\]))?)?$/x || die "Invalid email address";
   my($local_part,$domain,$domain_literal) = ($1,$2,$3);
 
@@ -103,7 +105,9 @@ sub _email {
 
   $domain = _domain($domain,$_to_function,@param) if $domain;
 
-  return $local_part . '@'. ($domain || $domain_literal);
+  return ($domain || $domain_literal)
+    ? ($local_part.'@'.($domain || $domain_literal))
+    : ($local_part);
 }
 
 =head1 FUNCTIONS

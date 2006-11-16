@@ -1,5 +1,9 @@
 Revision history for Perl extension IDNA::Punycode
 
+0.03  Thu Sep  1 14:49:17 MEST 2005
+	* added idn_prefix() function
+	* made "xn--" default prefix for punycode format
+
 0.02  Mon May 20 12:17:26 JST 2002
 	* [API change] now exception is thrown in conversion failure
 

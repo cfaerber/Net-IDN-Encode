@@ -6,5 +6,6 @@ WriteMakefile(
     'VERSION_FROM' => 'lib/Net/IDN/Nameprep.pm', # finds $VERSION
     'PREREQ_PM' => {
 	Unicode::Normalize => 0,
+	Test::More => 0.18,
     },
 );

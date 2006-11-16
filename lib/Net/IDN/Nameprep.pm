@@ -2,7 +2,7 @@ package Net::IDN::Nameprep;
 
 use strict;
 require v5.6.0;
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 our @ISA    = qw(Exporter);
 our @EXPORT = qw(nameprep);
 
@@ -16,7 +16,7 @@ sub mapping {
     my $mapped;
     for my $i (0..length($input)-1) {
 	my $char = substr($input, $i, 1);
-	$mapped .= chr(Net::IDN::Nameprep::Mapping->mapping(ord($char)));
+	$mapped .= join '', map chr, Net::IDN::Nameprep::Mapping->mapping(ord($char));
     }
     return $mapped;
 }
@@ -27,7 +27,7 @@ sub check_prohibited {
 	my $char = substr($input, $i, 1);
 	if (Net::IDN::Nameprep::Prohibited->prohibited(ord($char))) {
 	    require Carp;
-	    Carp::croak("String $input contains prohibited character: $char");
+	    Carp::croak("String contains prohibited character: U+". sprintf '%04x', ord $char);
 	}
     }
 }

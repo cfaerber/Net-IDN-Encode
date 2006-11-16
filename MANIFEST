@@ -1,0 +1,8 @@
+Changes
+MANIFEST			This list of files
+Makefile.PL
+README
+lib/Encode/Punycode.pm
+t/00_compile.t
+t/01_punycode.t
+t/sample.txt

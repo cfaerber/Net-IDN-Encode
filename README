@@ -1,0 +1,26 @@
+NAME
+    Encode::Punycode - Encode plugin for Punycode encodings
+
+SYNOPSIS
+      use Encode::Punycode;
+      use Encode;
+
+      $utf8     = decode('Punycode', $punycode);
+      $punycode = encode('Punycode', $utf8);
+
+DESCRIPTION
+    Encode::Punycode is an Encode plugin, which allows you to encode Unicode
+    strings into Punycode. Punycode is an efficient encoding (ACE) of
+    Unicode for use with IDNA.
+
+AUTHOR
+    Tatsuhiko Miyagawa <miyagawa@bulknews.net>
+
+    This library is free software; you can redistribute it and/or modify it
+    under the same terms as Perl itself.
+
+SEE ALSO
+    http://www.ietf.org/internet-drafts/draft-ietf-idn-punycode-01.txt
+
+    the IDNA::Punycode manpage
+

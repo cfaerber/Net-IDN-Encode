@@ -1,7 +1,6 @@
 use strict;
 use Test::More tests => 3;
 
-use Unicode::String;
 use Net::IDN::Nameprep::Mapping;
 
 my(@from, @to);

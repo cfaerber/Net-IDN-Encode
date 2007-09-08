@@ -1,9 +1,16 @@
+# $Id$
+
 use ExtUtils::MakeMaker;
-require 5.6.0;
+# See lib/ExtUtils/MakeMaker.pm for details of how to influence
+# the contents of the Makefile that is written.
 WriteMakefile(
-    'NAME'      => 'IDNA::Punycode',
-    'VERSION_FROM' => 'lib/IDNA/Punycode.pm', # finds $VERSION
-    'PREREQ_PM' => {
-	'Test::More' => 0.32,
-    },
+    'NAME'		=> 'Net::IDN::Encode',
+    'DISTNAME'		=> 'Net-IDN-tools',
+    'VERSION_FROM'	=> 'lib/Net/IDN/Encode.pm', # finds $VERSION
+    'PREREQ_PM'		=> {
+		'Unicode::Normalize' => 0.01,
+	},
+    ($] >= 5.005 ?    ## Add these new keywords supported since 5.005
+      (ABSTRACT => 'modules for handling of Internationalised Domain Names in Applications (IDNA)',
+       AUTHOR   => 'Claus Färber <perl@cfaerber.name>') : ()),
 );

@@ -1,4 +1,4 @@
-package IDNA::Punycode;
+package Net::IDN::Punycode;
 
 use strict;
 our $VERSION = 0.02;
@@ -147,17 +147,17 @@ __END__
 
 =head1 NAME
 
-IDNA::Punycode - encodes Unicode string in Punycode
+Net::IDN::Punycode - encodes Unicode string in Punycode
 
 =head1 SYNOPSIS
 
-  use IDNA::Punycode;
+  use Net::IDN::Punycode;
   $punycode = encode_punycode($unicode);
   $unicode  = decode_punycode($punycode);
 
 =head1 DESCRIPTION
 
-IDNA::Punycode is a module to encode / decode Unicode strings into
+Net::IDN::Punycode is a module to encode/decode Unicode strings into
 Punycode, an efficient encoding of Unicode for use with IDNA.
 
 This module requires Perl 5.6.0 or over to handle UTF8 flagged Unicode
@@ -189,15 +189,13 @@ C<eval>.
 
 =head1 AUTHOR
 
-Tatsuhiko Miyagawa E<lt>miyagawa@bulknews.netE<gt>
+Tatsuhiko Miyagawa E<lt>miyagawa@bulknews.netE<gt>, Claus Färber E<lt>perl@cfaerber.nameE<gt>
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
 
 =head1 SEE ALSO
 
-http://www.ietf.org/internet-drafts/draft-ietf-idn-punycode-01.txt
-
-L<Encode::Punycode>
+L<Encode::Punycode>, http://www.ietf.org/rfc/rfc3492.txt
 
 =cut

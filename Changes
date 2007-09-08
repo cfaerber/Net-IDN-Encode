@@ -1,7 +1,18 @@
-Revision history for Perl extension IDNA::Punycode
+Revision history for Perl extension Net::IDN::Encode
 
-0.02  Mon May 20 12:17:26 JST 2002
-	* [API change] now exception is thrown in conversion failure
+0.99_20070909 Sun Sep  9 00:00:00 2007
+	- renamed Net-IDN-Encode distribution to Net-IDN-tools
+	- includes Net::IDN::Punycode (from IDNA::Punycode v0.02)
+	- includes Net::IDN::Nameprep (v0.02)
 
-0.01  Tue May  7 11:47:28 2002
-	- original version
+	- FIXES: #16150: Net::IDN::Encode depends on non-modulelist module IDNA::Punycode
+	- FIXES: #16145: IDNA::Punycode 0.03
+	- FIXES: #28123: Undeclared dependency on Unicode::String (reported by ANDK)
+
+0.02  Sun Jun 20 00:00:00 2004
+	- fixed handling of incomplete/empty email addresses
+
+0.01  Sun May 30 00:00:00 2004
+	- first release
+
+$Id$

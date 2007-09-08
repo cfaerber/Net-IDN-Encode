@@ -5,13 +5,13 @@ package Net::IDN::Encode;
 use strict;
 require v5.6.0;
 
-our $VERSION = '0.02';
+our $VERSION = '0.99_20070909';
 $VERSION = eval $VERSION;
 
 use Carp;
 use Exporter;
 use Net::IDN::Nameprep;
-use IDNA::Punycode;
+use Net::IDN::Punycode;
 
 our @ISA = ('Exporter');
 our @EXPORT = (
@@ -156,13 +156,11 @@ This module relies on modules that should be considered ALPHA.
 
 =head1 AUTHOR
 
-Claus A. Färber <perl@faerber.muc.de>
+Claus A. Färber <perl@cfaerber.name>
 
-=head1 COPYRIGHT
+=head1 SEE ALSO
 
-Copyright © 2004 Claus A. Färber All rights reserved. This program
-is free software; you can redistribute it and/or modify it under
-the same terms as Perl itself.
+L<Net::IDN::Nameprep>, L<Net::IDN::Punycode>, http://www.ietf.org/rfc/rfc3490.txt
 
 =cut
 

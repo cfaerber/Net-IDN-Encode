@@ -1,7 +1,7 @@
 package Net::IDN::Nameprep::Mapping;
 
 use strict;
-require v5.6.0;
+require 5.006_000;
 our $VERSION = '0.01';
 
 my $table = <<'EOF';

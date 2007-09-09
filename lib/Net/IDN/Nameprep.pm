@@ -1,8 +1,8 @@
 package Net::IDN::Nameprep;
 
 use strict;
-require v5.6.0;
-our $VERSION = '0.021';
+require 5.006_000;
+our $VERSION = '0.022';
 our @ISA    = qw(Exporter);
 our @EXPORT = qw(nameprep);
 

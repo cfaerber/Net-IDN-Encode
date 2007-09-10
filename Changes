@@ -8,6 +8,7 @@ Revision history for Perl extension Net::IDN::Encode
 	- FIXES: #16150: Net::IDN::Encode depends on non-modulelist module IDNA::Punycode
 	- FIXES: #16145: IDNA::Punycode 0.03
 	- FIXES: #28123: Undeclared dependency on Unicode::String (reported by ANDK)
+	- WARNING: v-string in use/require non-portable (Net::IDN::Nameprep[::*])
 
 0.02  Sun Jun 20 00:00:00 2004
 	- fixed handling of incomplete/empty email addresses

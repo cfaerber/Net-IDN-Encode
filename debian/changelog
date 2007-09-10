@@ -1,0 +1,6 @@
+libnet-idn-encode-perl (0.99-20070909) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Claus Färber <perl@cfaerber.name>  Sun,  9 Sep 2007 21:00:41 +0200
+

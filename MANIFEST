@@ -12,12 +12,10 @@ lib/IDNA/Punycode.pm
 t/01_use_nameprep.t
 t/02_use_punycode.t
 t/03_use_encode.t
+t/09_use_idna_punycode.t
 t/10_nameprep_mapping.t
 t/10_nameprep_prohibit.t
 t/11_nameprep_nameprep.t
-t/31_encode_to_ascii.t
-t/31_encode_to_unicode.t
-t/32_encode_domain_to_ascii.t
-t/32_encode_domain_to_unicode.t
-t/35_encode_email_to_ascii.t
-t/35_encode_email_to_unicode.t
+t/30_encode_all_utf8.t
+t/31_encode_all_bytes.t
+META.yml                                 Module meta-data (added by MakeMaker)

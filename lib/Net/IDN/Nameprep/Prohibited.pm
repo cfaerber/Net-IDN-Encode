@@ -1,7 +1,10 @@
+# $Id$
+
 package Net::IDN::Nameprep::Prohibited;
 
 use strict;
 require 5.006_000;
+
 our $VERSION = '0.01';
 
 my $table = <<'EOF';

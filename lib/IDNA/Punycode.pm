@@ -5,7 +5,7 @@ package IDNA::Punycode;
 use strict;
 require 5.006_006;
 
-our $VERSION = 0.99_20070912;
+our $VERSION = '0.99_20070912';
 $VERSION = eval $VERSION;
 
 require Exporter;

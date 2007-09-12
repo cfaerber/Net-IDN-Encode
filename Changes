@@ -1,9 +1,12 @@
 Revision history for Perl extension Net::IDN::Encode
 
-0.99_20070909 Sun Sep  9 00:00:00 2007
+0.99_20070912 Wed Sep 12 00:00:00 2007
 	- renamed Net-IDN-Encode distribution to Net-IDN-tools
 	- includes Net::IDN::Punycode (from IDNA::Punycode v0.02)
 	- includes Net::IDN::Nameprep (v0.02)
+	- includes IDNA::Punycode (deprecated, new version based on Net::IDN::Punycode/::Encode)
+	PLANNED: - includes Encode::Punycode (new version based on Net::IDN::Punycode)
+	- more tests
 
 	- FIXES: #16150: Net::IDN::Encode depends on non-modulelist module IDNA::Punycode
 	- FIXES: #16145: IDNA::Punycode 0.03

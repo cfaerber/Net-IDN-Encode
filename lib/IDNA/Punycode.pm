@@ -1,7 +1,12 @@
+# $Id$
+
 package IDNA::Punycode;
 
 use strict;
-our $VERSION = 0.99_20070910;
+require 5.006_006;
+
+our $VERSION = 0.99_20070912;
+$VERSION = eval $VERSION;
 
 require Exporter;
 our @ISA	= qw(Exporter);
@@ -21,7 +26,7 @@ sub decode_punycode {
 		local $Net::IDN::Encode::IDNA_Prefix = $PREFIX;
 		return Net::IDN::Encode::_to_ascii(shift);
 	} else {
-		return Net::IDN::Punycode::decode_punycode($code);
+		return Net::IDN::Punycode::decode_punycode(shift);
 	}
 }
 
@@ -30,7 +35,7 @@ sub encode_punycode {
 		local $Net::IDN::Encode::IDNA_Prefix = $PREFIX;
 		return Net::IDN::Encode::_to_unicode(shift);
 	} else {
-		return Net::IDN::Punycode::encode_punycode($code);
+		return Net::IDN::Punycode::encode_punycode(shift);
 	}
 }
 

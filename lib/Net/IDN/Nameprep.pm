@@ -1,8 +1,14 @@
+# $Id$
+
 package Net::IDN::Nameprep;
 
 use strict;
 require 5.006_000;
-our $VERSION = '0.022';
+
+our $VERSION = 0.99_20070912;
+$VERSION = eval $VERSION;
+
+require Exporter;
 our @ISA    = qw(Exporter);
 our @EXPORT = qw(nameprep);
 

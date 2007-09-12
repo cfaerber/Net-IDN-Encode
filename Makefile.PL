@@ -5,12 +5,12 @@ use ExtUtils::MakeMaker;
 # the contents of the Makefile that is written.
 WriteMakefile(
     'NAME'		=> 'Net::IDN::Encode',
-    'VERSION_FROM'	=> 'Encode.pm', # finds $VERSION
+    'DISTNAME'		=> 'Net-IDN-tools',
+    'VERSION_FROM'	=> 'lib/Net/IDN/Encode.pm', # finds $VERSION
     'PREREQ_PM'		=> {
-		'Net::IDN::Nameprep' => 0.02,
-		'IDNA::Punycode' => 0.02,
+		'Unicode::Normalize' => 0.01,
 	},
     ($] >= 5.005 ?    ## Add these new keywords supported since 5.005
-      (ABSTRACT_FROM => 'Encode.pm', # retrieve abstract from module
-       AUTHOR     => 'Claus Färber <perl@faerber.muc.de>') : ()),
+      (ABSTRACT => 'modules for handling of Internationalised Domain Names in Applications (IDNA)',
+       AUTHOR   => 'Claus Färber <perl@cfaerber.name>') : ()),
 );

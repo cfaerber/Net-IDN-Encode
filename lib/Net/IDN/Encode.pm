@@ -150,10 +150,6 @@ sub domain_to_unicode { _domain(shift,\&_to_unicode) }
 sub email_to_ascii { _email(shift,\&_to_ascii) }
 sub email_to_unicode { _email(shift,\&_to_unicode) }
 
-=head1 BUGS
-
-This module relies on modules that should be considered ALPHA.
-
 =head1 AUTHOR
 
 Claus A. Färber <perl@cfaerber.name>

@@ -8,6 +8,7 @@ lib/Net/IDN/Nameprep.pm
 lib/Net/IDN/Nameprep/Prohibited.pm
 lib/Net/IDN/Nameprep/Mapping.pm
 lib/Net/IDN/Punycode.pm
+lib/IDNA/Punycode.pm
 t/01_use_nameprep.t
 t/02_use_punycode.t
 t/03_use_encode.t

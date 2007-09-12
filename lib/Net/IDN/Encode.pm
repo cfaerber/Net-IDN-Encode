@@ -152,7 +152,7 @@ sub email_to_unicode { _email(shift,\&_to_unicode) }
 
 =head1 AUTHOR
 
-Claus A. Färber <perl@cfaerber.name>
+Claus A. Färber <CFAERBER@cpan.org>
 
 =head1 SEE ALSO
 

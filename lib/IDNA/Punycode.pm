@@ -54,7 +54,7 @@ IDNA::Punycode.
 
 =head1 AUTHORS
 
-Claus FÃ¤rber E<lt>perl@cfaerber.nameE<gt>
+Claus FÃ¤rber E<lt>CFAERBER@cpan.orgE<gt>
 
 The original IDNA::Punycode module was written by
 Tatsuhiko Miyagawa E<lt>miyagawa@bulknews.netE<gt> and extended by 

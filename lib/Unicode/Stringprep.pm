@@ -1,6 +1,6 @@
 # $Id$
 
-package Net::IDN::Stringprep;
+package Unicode::Stringprep;
 
 use strict;
 use utf8;
@@ -16,7 +16,7 @@ our @EXPORT = qw(stringprep);
 use Carp;
 
 use Unicode::Normalize;
-use Net::IDN::Stringprep::BiDi;
+use Unicode::Stringprep::BiDi;
 
 sub _compile {
   my $unicode_version = shift;
@@ -102,35 +102,24 @@ __END__
 
 =head1 NAME
 
-Net::IDN::Stringprep - IDN nameprep tools
+Unicode::Stringprep - IDN nameprep tools
 
 =head1 SYNOPSIS
 
-  use Net::IDN::Stringprep;
+  use Unicode::Stringprep;
 
-  my $prepper = Net::IDN::Stringprep->new();
+  my $prepper = Unicode::Stringprep->new();
   $output =  $prepper->($input)
 
 =head1 DESCRIPTION
 
-B<THIS IS ALPHA SOFTWARE. NEEDS MORE TESTING!>
-
-Net::IDN::Stringprep implements IDN nameprep specification. This module
-exports only one function called C<nameprep>.
-
-There comes C<NO WARRANTY> with this module.
+Blah blah.
 
 =head1 FUNCTIONS
 
 =over 4
 
-=item nameprep
-
-  $prepared = nameprep $utf8;
-
-accepts UTF8 encoded string, and returns nameprep-ed UTF8 encoded
-string. It might throw an exception in case of error ("String %s
-contains prohibited character: %s").
+=item new
 
 =back
 
@@ -140,7 +129,7 @@ There may be plenty of Bugs. Please lemme know if you find any.
 
 =head1 AUTHOR
 
-Tatsuhiko Miyagawa E<lt>miyagawa@bulknews.netE<gt>
+Claus Färber <CFAERBER@cpan.org>
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

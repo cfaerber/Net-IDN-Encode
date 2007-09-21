@@ -3,8 +3,16 @@
 use bytes;
 use strict;
 
-use Test::More tests => 21;
+use Test::More;
 use Net::IDN::Encode;
+
+use Test::More;
+
+if($] < 5.007) {
+  plan skip_all => 'perl 5.6.x does not support utf8 flag';
+} else {
+  plan tests => 21;
+}
 
 is(Net::IDN::Encode::_to_ascii('faerber'),'faerber');
 is(Net::IDN::Encode::_to_ascii('xn--frber-gra'),'xn--frber-gra');

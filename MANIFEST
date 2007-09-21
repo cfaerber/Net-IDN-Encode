@@ -5,8 +5,11 @@ Makefile.PL
 MANIFEST
 lib/Net/IDN/Encode.pm
 lib/Net/IDN/Nameprep.pm
-lib/Net/IDN/Nameprep/Prohibited.pm
-lib/Net/IDN/Nameprep/Mapping.pm
+lib/Unicode/Stringprep.pm
+lib/Unicode/Stringprep/Unassigned.pm
+lib/Unicode/Stringprep/Mapping.pm
+lib/Unicode/Stringprep/Prohibited.pm
+lib/Unicode/Stringprep/BiDi.pm
 lib/Net/IDN/Punycode.pm
 lib/IDNA/Punycode.pm
 t/01_use_nameprep.t

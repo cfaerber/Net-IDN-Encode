@@ -13,28 +13,28 @@ require Exporter;
 our @ISA    = qw(Exporter);
 our @EXPORT = qw(nameprep);
 
-use Net::IDN::Stringprep;
+use Unicode::Stringprep;
 
-use Net::IDN::Stringprep::Prohibited;
-use Net::IDN::Stringprep::Mapping;
+use Unicode::Stringprep::Prohibited;
+use Unicode::Stringprep::Mapping;
 
-*nameprep = Net::IDN::Stringprep->new(
+*nameprep = Unicode::Stringprep->new(
   3.2,
   [ 
-    @Net::IDN::Stringprep::Mapping::B1, 
-    @Net::IDN::Stringprep::Mapping::B2 
+    @Unicode::Stringprep::Mapping::B1, 
+    @Unicode::Stringprep::Mapping::B2 
   ],
   'KC',
   [
-    @Net::IDN::Stringprep::Prohibited::C12,
-    @Net::IDN::Stringprep::Prohibited::C22,
-    @Net::IDN::Stringprep::Prohibited::C3,
-    @Net::IDN::Stringprep::Prohibited::C4,
-    @Net::IDN::Stringprep::Prohibited::C5,
-    @Net::IDN::Stringprep::Prohibited::C6,
-    @Net::IDN::Stringprep::Prohibited::C7,
-    @Net::IDN::Stringprep::Prohibited::C8,
-    @Net::IDN::Stringprep::Prohibited::C9
+    @Unicode::Stringprep::Prohibited::C12,
+    @Unicode::Stringprep::Prohibited::C22,
+    @Unicode::Stringprep::Prohibited::C3,
+    @Unicode::Stringprep::Prohibited::C4,
+    @Unicode::Stringprep::Prohibited::C5,
+    @Unicode::Stringprep::Prohibited::C6,
+    @Unicode::Stringprep::Prohibited::C7,
+    @Unicode::Stringprep::Prohibited::C8,
+    @Unicode::Stringprep::Prohibited::C9
   ],
   1,
 );

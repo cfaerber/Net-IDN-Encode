@@ -3,6 +3,7 @@
 package Net::IDN::Nameprep;
 
 use strict;
+use utf8;
 require 5.006_000;
 
 our $VERSION = '0.99_20070912';
@@ -12,38 +13,31 @@ require Exporter;
 our @ISA    = qw(Exporter);
 our @EXPORT = qw(nameprep);
 
-use Net::IDN::Nameprep::Mapping;
-use Net::IDN::Nameprep::Prohibited;
+use Net::IDN::Stringprep;
 
-use Unicode::Normalize;
+use Net::IDN::Stringprep::Prohibited;
+use Net::IDN::Stringprep::Mapping;
 
-sub mapping {
-    my $input = shift;
-    my $mapped;
-    for my $i (0..length($input)-1) {
-	my $char = substr($input, $i, 1);
-	$mapped .= join '', map chr, Net::IDN::Nameprep::Mapping->mapping(ord($char));
-    }
-    return $mapped;
-}
-
-sub check_prohibited {
-    my $input = shift;
-    for my $i (0..length($input)-1) {
-	my $char = substr($input, $i, 1);
-	if (Net::IDN::Nameprep::Prohibited->prohibited(ord($char))) {
-	    require Carp;
-	    Carp::croak("String contains prohibited character: U+". sprintf '%04x', ord $char);
-	}
-    }
-}
-
-sub nameprep {
-    my $input = shift;
-    my $output = NFKC mapping $input;
-    check_prohibited $output;
-    return $output;
-}
+*nameprep = Net::IDN::Stringprep->new(
+  3.2,
+  [ 
+    @Net::IDN::Stringprep::Mapping::B1, 
+    @Net::IDN::Stringprep::Mapping::B2 
+  ],
+  'KC',
+  [
+    @Net::IDN::Stringprep::Prohibited::C12,
+    @Net::IDN::Stringprep::Prohibited::C22,
+    @Net::IDN::Stringprep::Prohibited::C3,
+    @Net::IDN::Stringprep::Prohibited::C4,
+    @Net::IDN::Stringprep::Prohibited::C5,
+    @Net::IDN::Stringprep::Prohibited::C6,
+    @Net::IDN::Stringprep::Prohibited::C7,
+    @Net::IDN::Stringprep::Prohibited::C8,
+    @Net::IDN::Stringprep::Prohibited::C9
+  ],
+  1,
+);
 
 1;
 __END__
@@ -58,8 +52,6 @@ Net::IDN::Nameprep - IDN nameprep tools
   $output = nameprep $input;
 
 =head1 DESCRIPTION
-
-B<THIS IS ALPHA SOFTWARE. NEEDS MORE TESTING!>
 
 Net::IDN::Nameprep implements IDN nameprep specification. This module
 exports only one function called C<nameprep>.
@@ -86,7 +78,7 @@ There may be plenty of Bugs. Please lemme know if you find any.
 
 =head1 AUTHOR
 
-Tatsuhiko Miyagawa E<lt>miyagawa@bulknews.netE<gt>
+Claus Färber <perl@cfaerber.name>
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

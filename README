@@ -34,7 +34,6 @@ DEPENDENCIES
 
   This module requires these other modules and libraries:
 
-    Unicode::Normalize (core module as of perl 5.8.x)
     Unicode::Stringprep
 
 PERL VERSION

@@ -6,7 +6,7 @@ use strict;
 use utf8;
 require 5.006_000;
 
-our $VERSION = '0.99_20070912';
+our $VERSION = '0.99_20070921';
 $VERSION = eval $VERSION;
 
 require Exporter;
@@ -15,8 +15,8 @@ our @EXPORT = qw(nameprep);
 
 use Unicode::Stringprep;
 
-use Unicode::Stringprep::Prohibited;
 use Unicode::Stringprep::Mapping;
+use Unicode::Stringprep::Prohibited;
 
 *nameprep = Unicode::Stringprep->new(
   3.2,
@@ -42,9 +42,11 @@ use Unicode::Stringprep::Mapping;
 1;
 __END__
 
+=encoding utf8
+
 =head1 NAME
 
-Net::IDN::Nameprep - IDN nameprep tools
+Net::IDN::Nameprep - A Stringprep Profile for Internationalized Domain Names (S<RFC 3491>)
 
 =head1 SYNOPSIS
 
@@ -53,38 +55,42 @@ Net::IDN::Nameprep - IDN nameprep tools
 
 =head1 DESCRIPTION
 
-Net::IDN::Nameprep implements IDN nameprep specification. This module
-exports only one function called C<nameprep>.
-
-There comes C<NO WARRANTY> with this module.
+This module implements the I<nameprep> specification, which describes how to
+prepare internationalized domain name (IDN) labels in order to increase the
+likelihood that name input and name comparison work in ways that make sense for
+typical users throughout the world.  Nameprep is a profile of the stringprep
+protocol and is used as part of a suite of on-the-wire protocols for
+internationalizing the Domain Name System (DNS).
 
 =head1 FUNCTIONS
 
+This module implements a single function, C<nameprep>, which is exported by default.
+
 =over 4
 
-=item nameprep
+=item B<nameprep($input)>
 
-  $prepared = nameprep $utf8;
+Processes C<$input> according to the I<nameprep> specification and
+returns the result.
 
-accepts UTF8 encoded string, and returns nameprep-ed UTF8 encoded
-string. It might throw an exception in case of error ("String %s
-contains prohibited character: %s").
+If C<$input> contains characters not allowed for I<nameprep>, it
+throws an exception (so use C<eval> if necessary).
+
+This function currently supports preparation for I<query> strings only.
 
 =back
 
-=head1 BUGS
-
-There may be plenty of Bugs. Please lemme know if you find any.
-
 =head1 AUTHOR
 
-Claus Färber <perl@cfaerber.name>
+Claus Färber E<lt>CFAERBER@cpan.orgE<gt>
+
+Previous versions written by Tatsuhiko Miyagawa E<lt>miyagawa@bulknews.netE<gt>
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
 
 =head1 SEE ALSO
 
-L<Unicode::Normalize>, http://www.ietf.org/rfc/rfc3492.txt
+L<Unicode::Stringprep>, S<RFC 3491> L<http://www.ietf.org/rfc/rfc3491.txt>
 
 =cut

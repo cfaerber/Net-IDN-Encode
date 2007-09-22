@@ -1,10 +1,9 @@
 # $Id: BiDi.pm 35 2007-09-12 20:39:14Z cfaerber $
 
-package Net::IDN::Stringprep::BiDi;
+package Unicode::Stringprep::BiDi;
 
 use strict;
 use utf8;
-
 require 5.006_000;
 
 our $VERSION = '0.99_20070921';
@@ -12,10 +11,10 @@ our $VERSION = '0.99_20070921';
 my $_mk_table = sub {
   my @data = ();
   foreach my $line (split /\n/, shift) {
-    $line =~ s/[^0-9A-F-]//gi;
-    push @data, [ 
-        map { hex($_) } split(/-/, $line)
-      ];
+    my($from,$comment) = split /;/, $line; 
+    $from =~ s/[^0-9A-Z-]//gi;
+    ($from,my $to) = split(/-/, $from, 2);
+    push @data, (hex($from), ($to ? hex($to) : undef));
   }
   return @data;
 };
@@ -424,19 +423,34 @@ END
 
 __END__
 
+=encoding utf8
+
 =head1 NAME
 
-Net::IDN::Stringprep::BiDi - Tables from RFC 3454, Appendix D
+Unicode::Stringprep::BiDi - Tables from S<RFC 3454>, S<Appendix D>
+
+=head1 SYNOPSIS
+
+  @Unicode::Stringprep::Bidi::D1	# Appendix D.1
+  @Unicode::Stringprep::Bidi::D2	# Appendix D.2
+
+=head1 DESCRIPTION
+
+The tables are provided as arrays, which contain pairs of Unicode
+codepoints (as integers) defining the start and end of a Unicode
+range.
+
+The module exports nothing.
 
 =head1 AUTHOR
 
-Claus Färber
+Claus Färber E<lt>CFAERBER@cpan.orgE<gt>
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
 
 =head1 SEE ALSO
 
-L<Net::IDN::Stringprep>
+L<Unicode::Stringprep>, S<RFC 3454> L<http://www.ietf.org/rfc/rfc3454.txt>
 
 =cut

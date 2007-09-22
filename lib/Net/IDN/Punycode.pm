@@ -3,9 +3,10 @@
 package Net::IDN::Punycode;
 
 use strict;
+use utf8;
 require 5.006_000;
 
-our $VERSION = '0.99_20070912';
+our $VERSION = '0.99_20070922';
 $VERSION = eval $VERSION;
 
 require Exporter;
@@ -150,9 +151,11 @@ sub min {
 1;
 __END__
 
+=encoding utf8
+
 =head1 NAME
 
-Net::IDN::Punycode - encodes Unicode string in Punycode
+Net::IDN::Punycode - A Bootstring encoding of Unicode for IDNA (S<RFC 3492>)
 
 =head1 SYNOPSIS
 
@@ -162,35 +165,36 @@ Net::IDN::Punycode - encodes Unicode string in Punycode
 
 =head1 DESCRIPTION
 
-Net::IDN::Punycode is a module to encode/decode Unicode strings into
-Punycode, an efficient encoding of Unicode for use with IDNA.
+This module implements the Punycode encoding. Punycode is an
+instance of a more general algorithm called Bootstring, which
+allows strings composed from a small set of "basic" code points to
+uniquely represent any string of code points drawn from a larger
+set.  Punycode is Bootstring with particular parameter values
+appropriate for IDNA.
 
-This module requires Perl 5.6.0 or over to handle UTF8 flagged Unicode
-strings.
+Note that this module does not do any string preparation as
+specified by I<nameprep>/I<stringprep>. It does not do add any
+prefix or suffix, either.
 
 =head1 FUNCTIONS
 
-This module exports following functions by default.
+The following functions are exported by default.
 
 =over 4
 
-=item encode_punycode
+=item encode_punycode($input)
 
-  $punycode = encode_punycode($unicode);
+Decodes C<$input> with Punycode and returns the result.
 
-takes Unicode string (UTF8-flagged variable) and returns Punycode
-encoding for it.
+This function will throw an exception on invalid input.
 
-=item decode_punycode
+=item decode_punycode($input)
 
-  $unicode = decode_punycode($punycode)
+Decodes C<$input> with Punycode and returns the result.
 
-takes Punycode encoding and returns original Unicode string.
+This function will throw an exception on invalid input.
 
 =back
-
-These functions throws exceptionsn on failure. You can catch 'em via
-C<eval>.
 
 =head1 AUTHOR
 
@@ -201,6 +205,7 @@ it under the same terms as Perl itself.
 
 =head1 SEE ALSO
 
-L<Encode::Punycode>, http://www.ietf.org/rfc/rfc3492.txt
+S<RFC 3492> L<http://www.ietf.org/rfc/rfc3492.txt>,
+L<IETF::ACE>, L<Convert::RACE>
 
 =cut

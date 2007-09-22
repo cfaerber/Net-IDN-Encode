@@ -1,10 +1,9 @@
 # $Id$
 
-package Net::IDN::Stringprep::Mapping;
+package Unicode::Stringprep::Mapping;
 
 use strict;
 use utf8;
-
 require 5.006_000;
 
 our $VERSION = '0.99_20070921';
@@ -15,15 +14,14 @@ my $_mk_table = sub {
     my($from,$to,$comment) = split /;/, $line; 
     $from =~ s/[^0-9A-F]//gi;
     $to =~ s/[^0-9A-F ]//gi;
-    push @data, [ 
+    push @data, 
         hex($from), 
         join('',map { 
 	  $_ eq '' 
 	    ? '' 
 	    : chr(hex($_)) 
 	}
-	split(/ +/, $to))
-      ];
+	split(/ +/, $to));
   }
   return @data;
 };
@@ -2277,9 +2275,25 @@ END
 
 __END__
 
+=encoding utf8
+
 =head1 NAME
 
-Net::IDN::Stringprep::Mapping - Tables from RFC 3454, Appendix B
+Unicode::Stringprep::Mapping - Tables from S<RFC 3454>, S<Appendix B>
+
+=head1 SYNOPSIS
+
+  @Unicode::Stringprep::Mapping::B1	# Appendix B.1
+  @Unicode::Stringprep::Mapping::B2	# Appendix B.2
+  @Unicode::Stringprep::Mapping::B2	# Appendix B.3
+
+=head1 DESCRIPTION
+
+The tables are provided as arrays, which contain pairs of a
+Unicode codepoint (as an integer) and replacements string (as a
+UTF8 perl string).
+
+This module exports nothing.
 
 =head1 AUTHOR
 
@@ -2290,6 +2304,6 @@ it under the same terms as Perl itself.
 
 =head1 SEE ALSO
 
-L<Net::IDN::Stringprep>
+L<Unicode::Stringprep>, S<RFC 3454> L<http://www.ietf.org/rfc/rfc3454.txt>
 
 =cut

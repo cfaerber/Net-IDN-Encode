@@ -1,6 +1,8 @@
 # $Id$
 
+use utf8;
 use ExtUtils::MakeMaker;
+
 # See lib/ExtUtils/MakeMaker.pm for details of how to influence
 # the contents of the Makefile that is written.
 WriteMakefile(
@@ -12,5 +14,17 @@ WriteMakefile(
 	},
     ($] >= 5.005 ?    ## Add these new keywords supported since 5.005
       (ABSTRACT => 'modules for handling of Internationalised Domain Names in Applications (IDNA)',
-       AUTHOR   => 'Claus Färber <perl@cfaerber.name>') : ()),
+       AUTHOR   => 'Claus FÃ¤rber <CFAERBER@cpan.org>') : ()),
 );
+
+sub MY::postamble {
+return <<EOF
+release: release-sf release-cpan
+
+release-cpan:
+	cpan-upload \$(DISTVNAME).tar\$(SUFFIX)
+
+release-sf:
+	sf-upload -groupid 112466 -packageid 245143 -r \$(VERSION) -cf Changes -nf README -f \$(DISTVNAME).tar\$(SUFFIX)
+EOF
+}

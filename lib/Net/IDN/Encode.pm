@@ -3,9 +3,9 @@
 package Net::IDN::Encode;
 
 use strict;
-require v5.6.0;
+require 5.006_000;
 
-our $VERSION = '0.99_20070909';
+our $VERSION = '0.99_20070922';
 $VERSION = eval $VERSION;
 
 use Carp;
@@ -20,22 +20,6 @@ our @EXPORT = (
   'email_to_ascii',
   'email_to_unicode',
 );
-
-=head1 NAME
-
-Net::IDN::Encode - Encoding/Decoding of Internationalized Domain Names (IDNs).
-
-=head1 SYNOPSIS
-
-  use Net::IDN::Encode;
-  $ascii = domain_to_ascii('müller.example.org');
-
-=head1 DESCRIPTION
-
-The "Net::IDN::Encode" module provides an easy-to-use interface
-for Internationalized Domain Names (IDNs).
-
-=cut
 
 our $IDNA_prefix = 'xn--';
 
@@ -112,56 +96,100 @@ sub _email {
     : ($local_part);
 }
 
-=head1 FUNCTIONS
-
-=head2 domain_to_ascii( $domain )
-
-Converts all labels of the hostname C<$domain> (with labels
-seperated by full stops) to ASCII. May throw an exception on
-invalid input.
-
-=head2 domain_to_unicode( $domain )
-
-Converts all labels of the hostname C<$domain> (with labels
-seperated by full stops) to Unicode. May throw an exception on
-invalid input.
-
-=head2 email_to_ascii( $email )
-
-Converts the domain part (right hand side) of the RFC 2821/2822
-email address to ASCII. May throw an exception on invalid input.
-
-This function currently does not handle internationalization of
-the local-part (left hand side).
-
-=head2 email_to_unicode( $email )
-
-Converts the domain part (right hand side) of the RFC 2821/2822
-email address to Unicode. May throw an exception on invalid input.
-
-This function currently does not handle internationalization of
-the local-part (left hand side).
-
-=cut
-
 sub domain_to_ascii { _domain(shift,\&_to_ascii) }
 sub domain_to_unicode { _domain(shift,\&_to_unicode) }
 
 sub email_to_ascii { _email(shift,\&_to_ascii) }
 sub email_to_unicode { _email(shift,\&_to_unicode) }
 
-=head1 BUGS
+1;
 
-This module relies on modules that should be considered ALPHA.
+__END__
+
+=encoding utf8
+
+=head1 NAME
+
+Net::IDN::Encode - Internationalizing Domain Names in Applications (S<RFC 3490>)
+
+=head1 SYNOPSIS
+
+  use Net::IDN::Encode;
+  $ascii = domain_to_ascii('müller.example.org');
+  $ascii = domain_to_ascii('例.example.net');
+
+=head1 DESCRIPTION
+
+This module provides an easy-to-use interface for encoding and
+decoding Internationalized Domain Names (IDNs).
+
+IDNs use characters drawn from a large repertoire (Unicode), but
+IDNA allows the non-ASCII characters to be represented using only
+the ASCII characters already allowed in so-called host names today
+(letter-digit-hypen, C</[A-Z0-9-]/i>).
+
+=head1 FUNCTIONS
+
+The following functions are exported by default.
+
+=over
+
+=item domain_to_ascii( $domain )
+
+Converts all labels of the hostname C<$domain> (with labels
+seperated by dots) to ASCII. Will throw an exception on invalid
+input.
+
+The following characters are recognized as dots: U+002E (full
+stop), U+3002 (ideographic full stop), U+FF0E (fullwidth full
+stop), U+FF61 (halfwidth ideographic full stop).
+
+=item domain_to_unicode( $domain )
+
+Converts all labels of the hostname C<$domain> (with labels
+seperated by dots) to Unicode. Will throw an exception on invalid
+input.
+
+The following characters are recognized as dots: U+002E (full
+stop), U+3002 (ideographic full stop), U+FF0E (fullwidth full
+stop), U+FF61 (halfwidth ideographic full stop).
+
+=item email_to_ascii( $email )
+
+Converts the domain part (right hand side, separated by an
+at sign) of the S<RFC 2821>/2822 email address to ASCII. May throw an
+exception on invalid input.
+
+This function currently does not handle internationalization of
+the local-part (left hand side).
+
+The follwing characters are recognized as at signs: U+0040
+(commercial at), U+FF20 (fullwidth commercial at).
+
+=item email_to_unicode( $email )
+
+Converts the domain part (right hand side, separated by an
+at sign) of the S<RFC 2821>/2822 email address to Unicode. May throw
+an exception on invalid input.
+
+This function currently does not handle internationalization of
+the local-part (left hand side).
+
+The follwing characters are recognized as at signs: U+0040
+(commercial at), U+FF20 (fullwidth commercial at).
+
+=back
 
 =head1 AUTHOR
 
-Claus A. Färber <perl@cfaerber.name>
+Claus A. Färber <CFAERBER@cpan.org>
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
 
 =head1 SEE ALSO
 
-L<Net::IDN::Nameprep>, L<Net::IDN::Punycode>, http://www.ietf.org/rfc/rfc3490.txt
+L<Net::IDN::Nameprep>, L<Net::IDN::Punycode>, S<RFC 3490>
+L<http://www.ietf.org/rfc/rfc3490.txt>
 
 =cut
-
-1;

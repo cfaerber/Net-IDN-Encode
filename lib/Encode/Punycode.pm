@@ -30,7 +30,7 @@ sub decode {
 }
 
 sub mime_name {
-  return 'x-ace-punycode'
+  return undef;
 };
 
 sub perlio_ok { 

@@ -38,7 +38,7 @@ DEPENDENCIES
 
 PERL VERSION
 
-  You should use perl 5.8.x or higher.
+  You should use perl 5.8.3 or higher.
 
   Well, these modules DO work with perl 5.6.x. However, YOU have
   to make sure that you only pass valid UTF-8 strings to this

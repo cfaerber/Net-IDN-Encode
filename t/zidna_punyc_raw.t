@@ -4,7 +4,9 @@ use strict;
 use utf8;
 
 use Test::More;
-use Net::IDN::Punycode;
+use IDNA::Punycode;
+
+idn_prefix('');
 
 our @idna = (
   ["Arabic (Egyptian)",

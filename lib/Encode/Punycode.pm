@@ -6,7 +6,7 @@ use strict;
 use utf8;
 require 5.006_000;
 
-our $VERSION = '0.99_20070922';
+our $VERSION = '0.99_20070929';
 $VERSION = eval $VERSION;
 
 require Encode;

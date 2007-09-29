@@ -1,4 +1,6 @@
+# $Id$
+
 use strict;
 use Test::More tests => 1;
 
-BEGIN { use_ok 'Net::IDN::Punycode' }
+use_ok 'IDNA::Punycode';

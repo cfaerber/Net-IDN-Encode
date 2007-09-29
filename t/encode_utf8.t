@@ -1,4 +1,4 @@
-# $Id: 31_encode_to_ascii.t 25 2007-09-08 23:30:47Z cfaerber $
+# $Id$
 
 use utf8;
 use strict;

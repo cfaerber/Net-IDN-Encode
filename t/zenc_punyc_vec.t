@@ -4,7 +4,9 @@ use strict;
 use utf8;
 
 use Test::More;
-use Net::IDN::Punycode;
+
+use Encode;
+use Encode::Punycode;
 
 our @idna = (
   ["Arabic (Egyptian)",
@@ -108,8 +110,8 @@ foreach my $test (@idna)
 {
   my ($comment,$in,$out,$allowunassigned,$usestd3asciirules,$toascii,$tounicode) = @{$test};
 
-  is(encode_punycode($in), $out, $comment.' (encode_punycode)');
-  is(decode_punycode($out), $in, $comment.' (decode_punycode)');
+  is(encode("Punycode", $in), $out, $comment.' (encode)');
+  is(decode("Punycode", $out), $in, $comment.' (decode)');
 }
 
 # Test vectors extracted from:

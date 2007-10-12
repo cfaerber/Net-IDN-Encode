@@ -10,7 +10,7 @@ WriteMakefile(
     'DISTNAME'		=> 'Net-IDN-tools',
     'VERSION_FROM'	=> 'lib/Net/IDN/Encode.pm', # finds $VERSION
     'PREREQ_PM'		=> {
-		'Unicode::Stringprep' => 0.99,
+		'Unicode::Stringprep' => 1.00,
 	},
     ($] >= 5.005 ?    ## Add these new keywords supported since 5.005
       (ABSTRACT => 'modules for handling of Internationalised Domain Names in Applications (IDNA)',

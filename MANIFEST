@@ -7,7 +7,6 @@ lib/Net/IDN/Encode.pm
 lib/Net/IDN/Nameprep.pm
 lib/Net/IDN/Punycode.pm
 lib/IDNA/Punycode.pm
-lib/Encode/Punycode.pm
 t/00use.t
 t/01use_extra.t
 t/encode_bytes.t

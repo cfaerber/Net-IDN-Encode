@@ -13,6 +13,5 @@ t/encode_bytes.t
 t/encode_utf8.t
 t/nameprep_vec.t
 t/punycode_vec.t
-t/zenc_punyc_vec.t
 t/zidna_punyc_prefix.t
 t/zidna_punyc_raw.t

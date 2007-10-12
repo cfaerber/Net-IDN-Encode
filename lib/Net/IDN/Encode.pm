@@ -5,7 +5,7 @@ package Net::IDN::Encode;
 use strict;
 require 5.006_000;
 
-our $VERSION = '0.99_20071012';
+our $VERSION = '0.99_20071012.1';
 $VERSION = eval $VERSION;
 
 use Carp;

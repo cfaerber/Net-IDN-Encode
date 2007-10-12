@@ -1,10 +1,5 @@
 # $Id$
 
-# Test vectors extracted from:
-#
-#                    Nameprep and IDNA Test Vectors
-#                   draft-josefsson-idn-test-vectors
-
 use strict;
 use utf8;
 
@@ -236,6 +231,11 @@ foreach my $test (@strprep)
   is(eval{nameprep($in)}, $rc ? undef : $out, $comment);
 }
 
+# Test vectors extracted from:
+#
+#                    Nameprep and IDNA Test Vectors
+#                   draft-josefsson-idn-test-vectors
+#
 # Copyright (C) The Internet Society (2003). All Rights Reserved.
 #
 # This document and translations of it may be copied and furnished

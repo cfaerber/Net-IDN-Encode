@@ -1,7 +1,6 @@
 # $Id$
 
 use strict;
-use Test::More tests => 2;
+use Test::More tests => 1;
 
-use_ok 'IDNA::Punycode';
 use_ok 'Encode::Punycode';

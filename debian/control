@@ -15,5 +15,5 @@ Description: for Internationalized Domain Names (IDNs).
   for encoding and decoding of domain names (implements toASCII
   and toUNICODE).
   .
-  This distribution also includes the Encode::Punycode,
+  This distribution also includes the IDNA::Punycode,
   Net::IDN::Nameprep and Net::IDN::Punycode modules.

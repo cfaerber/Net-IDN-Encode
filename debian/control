@@ -1,0 +1,19 @@
+Source: libencode-punycode-perl
+Section: perl
+Priority: optional
+Build-Depends: debhelper (>= 5.0.0)
+Build-Depends-Indep: perl (>= 5.8.8-7)
+Maintainer: Claus Färber <CFAERBER@cpan.org>
+Standards-Version: 3.7.2
+
+Package: libencode-punycode-perl
+Architecture: all
+Depends: perl (>=5.8.1), libnet-idn-encode-perl (>=0.99)
+Description: Encode plugin for Punycode (RFC 3492)
+  Encode::Punycode is an Encode plugin, which implements the
+  Punycode encoding.  Punycode is an instance of a more general
+  algorithm called Bootstring, which allows strings composed from
+  a small set of "basic" code points to uniquely represent any
+  string of code points drawn from a larger set. Punycode is
+  Bootstring with particular parameter values appropriate for
+  IDNA.

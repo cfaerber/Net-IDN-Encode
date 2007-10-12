@@ -1,8 +1,6 @@
-Changes
-MANIFEST			This list of files
-Makefile.PL
 README
+Changes
+COPYING
+Makefile.PL
+MANIFEST
 lib/Encode/Punycode.pm
-t/00_compile.t
-t/01_punycode.t
-t/sample.txt

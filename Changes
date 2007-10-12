@@ -1,5 +1,9 @@
 Revision history for Perl extension Encode::Punycode
 
+0.99_20071013 Sat Oct 13 12:00:00 CEST 2007
+	- now based on Net::IDN::Punycode
+	- FIXES: #14883: make test failure
+
 0.02  Tue May  7 11:52:30 JST 2002
 	- separated Punycode logic out to IDNA::Punycode
 	- CPAN release

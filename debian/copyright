@@ -1,15 +1,3 @@
-This is the debian package for the Net-IDN-tools module.
-It was created by Claus Färber <claus@faerber.muc.de> using dh-make-perl.
-
-This copyright info was automatically extracted from the perl module.
-It may not be accurate, so you better check the module sources
-if don't want to get into legal troubles.
-
-The upstream author is: 
-
-Claus A. Färber <perl@cfaerber.name>.
-The "Net-IDN-tools" Perl5 kit.
-
 Copyright © 2007 by Claus Färber.  All rights reserved.
 Copyright © 2002 Tatsuhiko Miyagawa.  All rights reserved.
 

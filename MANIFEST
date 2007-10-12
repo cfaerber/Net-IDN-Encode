@@ -4,3 +4,5 @@ COPYING
 Makefile.PL
 MANIFEST
 lib/Encode/Punycode.pm
+t/00use.t
+t/vectors.t

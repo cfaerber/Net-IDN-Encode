@@ -17,9 +17,6 @@ OVERVIEW
   			(Punycode, RFC 3492)
 
   IDNA::Punycode     -- Compatibility with earlier versions
-  
-  Encode::Punycode   -- Encode plugin for Punycode
-
 
 INSTALLATION
 

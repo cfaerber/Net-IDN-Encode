@@ -4,6 +4,7 @@ package Net::IDN::Nameprep;
 
 use strict;
 use utf8;
+use warnings;
 require 5.006_000;
 
 our $VERSION = '0.99_20071012';

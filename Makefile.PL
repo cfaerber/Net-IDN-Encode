@@ -1,5 +1,7 @@
 # $Id$
 
+use 5.006;
+
 use utf8;
 use ExtUtils::MakeMaker;
 
@@ -11,9 +13,11 @@ WriteMakefile(
     'PREREQ_PM'		=> {
 		'Unicode::Stringprep' => 1.00,
 	},
-    ($] >= 5.005 ?    ## Add these new keywords supported since 5.005
-      (ABSTRACT => 'modules for handling of Internationalised Domain Names in Applications (IDNA)',
-       AUTHOR   => 'Claus Färber <CFAERBER@cpan.org>') : ()),
+    ($] >= 5.005 ? (	## Add these new keywords supported since 5.005
+       ABSTRACT => 'modules for handling of Internationalised Domain Names in Applications (IDNA)',
+       AUTHOR   => 'Claus Faerber <CFAERBER@cpan.org>',
+       LICENSE  => 'perl',
+      ) : ()),
 );
 
 sub MY::postamble {

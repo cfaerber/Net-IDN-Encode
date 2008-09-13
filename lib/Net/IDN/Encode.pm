@@ -3,6 +3,8 @@
 package Net::IDN::Encode;
 
 use strict;
+use utf8;
+use warnings;
 require 5.006_000;
 
 our $VERSION = '0.99_20080913';
@@ -180,9 +182,9 @@ The follwing characters are recognized as at signs: U+0040
 
 =back
 
-=head1 AUTHOR
+=head1 AUTHOR/LICENSE
 
-Claus A. Färber <CFAERBER@cpan.org>
+Claus Färber <CFAERBER@cpan.org>
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

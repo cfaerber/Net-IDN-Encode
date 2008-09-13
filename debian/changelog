@@ -1,3 +1,9 @@
+libnet-idn-encode-perl (0.99-20080913) unstable; urgency=low
+
+  * New upstream version.
+
+ -- Claus Färber <CFAERBER@cpan.org>  Sat, 13 Sep 2008 12:00:00 +0200
+
 libnet-idn-encode-perl (0.99-20070909) unstable; urgency=low
 
   * Initial Release.

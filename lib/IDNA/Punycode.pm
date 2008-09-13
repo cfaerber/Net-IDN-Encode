@@ -4,6 +4,7 @@ package IDNA::Punycode;
 
 use strict;
 use utf8;
+use warnings;
 require 5.006_000;
 
 our $VERSION = '0.99_20080913';
@@ -111,9 +112,11 @@ sort of de-preparation).
 
 This function will croak on invalid input.
 
+=back
+
 =head1 AUTHORS
 
-Claus FÃ¤rber E<lt>CFAERBER@cpan.orgE<gt>
+Claus Färber E<lt>CFAERBER@cpan.orgE<gt>
 
 Previous version written by Tatsuhiko Miyagawa
 E<lt>miyagawa@bulknews.netE<gt> and extended by Robert Urban

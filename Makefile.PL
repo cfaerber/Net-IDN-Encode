@@ -7,10 +7,9 @@ use ExtUtils::MakeMaker;
 # the contents of the Makefile that is written.
 WriteMakefile(
     'NAME'		=> 'Net::IDN::Encode',
-    'DISTNAME'		=> 'Net-IDN-tools',
     'VERSION_FROM'	=> 'lib/Net/IDN/Encode.pm', # finds $VERSION
     'PREREQ_PM'		=> {
-		'Unicode::Normalize' => 0.01,
+		'Unicode::Stringprep' => 1.00,
 	},
     ($] >= 5.005 ?    ## Add these new keywords supported since 5.005
       (ABSTRACT => 'modules for handling of Internationalised Domain Names in Applications (IDNA)',

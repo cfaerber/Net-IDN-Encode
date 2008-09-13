@@ -4,9 +4,9 @@ package IDNA::Punycode;
 
 use strict;
 use utf8;
-require 5.006_006;
+require 5.006_000;
 
-our $VERSION = '0.99_20070921';
+our $VERSION = '0.99_20080913';
 $VERSION = eval $VERSION;
 
 require Exporter;
@@ -24,8 +24,8 @@ sub idn_prefix {
 
 sub decode_punycode {
 	if ($PREFIX) {
-		local $Net::IDN::Encode::IDNA_Prefix = $PREFIX;
-		return Net::IDN::Encode::_to_ascii(shift);
+		local $Net::IDN::Encode::IDNA_prefix = $PREFIX;
+		return Net::IDN::Encode::_to_unicode(shift);
 	} else {
 		return Net::IDN::Punycode::decode_punycode(shift);
 	}
@@ -33,8 +33,8 @@ sub decode_punycode {
 
 sub encode_punycode {
 	if ($PREFIX) {
-		local $Net::IDN::Encode::IDNA_Prefix = $PREFIX;
-		return Net::IDN::Encode::_to_unicode(shift);
+		local $Net::IDN::Encode::IDNA_prefix = $PREFIX;
+		return Net::IDN::Encode::_to_ascii(shift);
 	} else {
 		return Net::IDN::Punycode::encode_punycode(shift);
 	}

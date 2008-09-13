@@ -3,16 +3,17 @@ Section: perl
 Priority: optional
 Build-Depends: debhelper (>= 5.0.0)
 Build-Depends-Indep: perl (>= 5.8.8-7)
-Maintainer: Claus Färber <claus@faerber.muc.de>
+Maintainer: Claus Färber <CFAERBER@cpan.org>
 Standards-Version: 3.7.2
 
 Package: libnet-idn-encode-perl
 Architecture: all
-Depends: perl >=5.8.1
-Provides: libnet-idn-punycode-perl, libnet-idn-normalize-perl
-Description: Perl Modules for Internationalized Domain Names (IDNs).
-  Net::IDN::Encode provides a high-level interface for encoding
-  and decoding of domain names (implements toASCII and toUNICODE).
+Depends: perl (>=5.8.1), libunicode-stringprep-perl (>=0.99)
+Provides: libnet-idn-punycode-perl, libnet-idn-normalize-perl, libencode-punycode-perl
+Description: for Internationalized Domain Names (IDNs).
+  The perl module Net::IDN::Encode provides a high-level interface
+  for encoding and decoding of domain names (implements toASCII
+  and toUNICODE).
   .
-  This distribution also includes the Net::IDN::Nameprep and
-  Net::IDN::Punycode modules.
+  This distribution also includes the IDNA::Punycode,
+  Net::IDN::Nameprep and Net::IDN::Punycode modules.

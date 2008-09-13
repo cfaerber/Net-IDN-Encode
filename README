@@ -1,7 +1,7 @@
 NAME
 
-  Net::IDN::Tools -- modules for handling of Internationalised
-		     Domain Names in Applications (IDNA)
+  Net-IDN-tools -- modules for handling of Internationalised
+	           Domain Names in Applications (IDNA)
 
 OVERVIEW
 
@@ -10,11 +10,13 @@ OVERVIEW
 			toASCII and toUNICODE as defined in
 			RFC 3490)
 
-  Net::IDN::Nameprep -- normalization of domain names (NAMEPREP,
+  Net::IDN::Nameprep -- normalization of domain names (Nameprep,
 			RFC 3491)
 
   Net::IDN::Punycode -- ASCII-compatible encoding of Unicode 
-  			(PUNYCODE, RFC 3492)
+  			(Punycode, RFC 3492)
+
+  IDNA::Punycode     -- Compatibility with earlier versions
 
 INSTALLATION
 
@@ -29,14 +31,25 @@ DEPENDENCIES
 
   This module requires these other modules and libraries:
 
-    Unicode::Normalize
+    Unicode::Stringprep
+
+PERL VERSION
+
+  You should use perl 5.8.3 or higher.
+
+  Well, these modules DO work with perl 5.6.x. However, YOU have
+  to make sure that you only pass valid UTF-8 strings to this
+  module or you will get unintended results. perl 5.8.x (or
+  higher) takes care of this by maintaining a UTF-8 flag for
+  strings.
 
 AUTHOR
 
-  Claus A. Färber
+  Claus Färber <CFAERBER@cpan.org>
 
 ACKNOWLEDGMENTS
 
-  Tatsuhiko Miyagawa -- Net::IDN::Nameprep and IDNA::Punycode
+  Tatsuhiko Miyagawa <miyagawa@bulknews.net>
+  Robert Urban <urban@UNIX-Beratung.de>
 
 $Id$

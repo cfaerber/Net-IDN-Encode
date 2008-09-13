@@ -1,6 +1,15 @@
 Revision history for Perl extension Net::IDN::Encode
 
-0.99_20070922 Wed Sat 22 00:00:00 2007
+0.99_20080913 Sat Sep 13 12:00:00 2008
+	- require perl version 5.6.0 instead of 5.6.6
+	- skip more tests in lower perl versions
+
+	- removed Encode::Punycode; Encode is only available from
+	  perl 5.7.3
+	- renamed back to Net::IDN::Encode; without
+	  Encode::Punycode, the new name does not make sense.
+
+0.99_20071012 Fri Oct 12 12:00:00 2007
 	- renamed Net-IDN-Encode distribution to Net-IDN-tools
 
 	- includes Net::IDN::Punycode (from IDNA::Punycode v0.02)
@@ -10,7 +19,7 @@ Revision history for Perl extension Net::IDN::Encode
 	  on Net::IDN::Punycode/::Encode)
 	- includes Encode::Punycode (new version based on
 	  Net::IDN::Punycode)
-	- includes Unicode::Stringprep (new module)
+	- uses Unicode::Stringprep
 
 	- more tests, including test vectors from Internet Draft
 	  draft-josefsson-idn-test-vectors-00.
@@ -18,7 +27,7 @@ Revision history for Perl extension Net::IDN::Encode
 	- FIXES: #16150: Net::IDN::Encode depends on non-modulelist module IDNA::Punycode
 	- FIXES: #16145: IDNA::Punycode 0.03
 	- FIXES: #28123: Undeclared dependency on Unicode::String (reported by ANDK)
-	- WARNING: v-string in use/require non-portable (Net::IDN::Nameprep[::*])
+	- FIXES WARNING: v-string in use/require non-portable (Net::IDN::Nameprep[::*])
 
 0.02  Sun Jun 20 00:00:00 2004
 	- fixed handling of incomplete/empty email addresses

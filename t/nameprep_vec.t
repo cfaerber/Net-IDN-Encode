@@ -139,8 +139,9 @@ our @strprep = (
      ],
      [
        "Surrogate code U+DF42",
-       "\x{DF42}", undef, "Nameprep", 0,
-       'STRINGPREP_CONTAINS_PROHIBITED'
+      "\x{DF42}", undef, "Nameprep", 0,
+       'STRINGPREP_CONTAINS_PROHIBITED',
+       5.008003, "matching surrogate pairs U+D800..DFFF"
      ],
      [
        "Non-plain text character U+FFFD",
@@ -223,12 +224,17 @@ our @strprep = (
 
 plan tests => ($#strprep+1);
 
-
 foreach my $test (@strprep) 
 {
-  my ($comment,$in,$out,$profile,$flags,$rc) = @{$test};
+  my ($comment,$in,$out,$profile,$flags,$rc, $min_perl, $min_perl_reason) = @{$test};
 
-  is(eval{nameprep($in)}, $rc ? undef : $out, $comment);
+  SKIP: { 
+    skip sprintf('%s only works from perl v%d.%d.%d', 
+        $min_perl_reason || "test", 
+        int($min_perl), int($min_perl*1000)%1000, int($min_perl*1000*1000)%1000,), 1 
+      if(($min_perl || 0) > $^V);
+    is(eval{nameprep($in)}, $rc ? undef : $out, $comment);
+  }
 }
 
 # Test vectors extracted from:

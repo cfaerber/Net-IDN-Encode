@@ -7,7 +7,6 @@ use ExtUtils::MakeMaker;
 # the contents of the Makefile that is written.
 WriteMakefile(
     'NAME'		=> 'Net::IDN::Encode',
-    'DISTNAME'		=> 'Net-IDN-tools',
     'VERSION_FROM'	=> 'lib/Net/IDN/Encode.pm', # finds $VERSION
     'PREREQ_PM'		=> {
 		'Unicode::Stringprep' => 1.00,

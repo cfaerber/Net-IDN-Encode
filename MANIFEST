@@ -1,6 +1,5 @@
 README
 Changes
-COPYING
 Makefile.PL
 MANIFEST
 lib/Net/IDN/Encode.pm

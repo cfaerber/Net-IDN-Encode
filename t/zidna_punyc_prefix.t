@@ -13,7 +13,7 @@ is(encode_punycode('中央大学'),'xn--fiq80yua78t');
 
 is(decode_punycode('faerber'),'faerber');
 is(decode_punycode('xn--frber-gra'),'färber');
-is(decode_punycode('xn--frber-gra'),'färber');
+is(decode_punycode('färber'),'färber');
 is(decode_punycode('xn--fiq80yua78t'),'中央大学');
 
 idn_prefix('yo--'); # yo, man
@@ -25,5 +25,5 @@ is(encode_punycode('中央大学'),'yo--fiq80yua78t');
 
 is(decode_punycode('faerber'),'faerber');
 is(decode_punycode('yo--frber-gra'),'färber');
-is(decode_punycode('yo--frber-gra'),'färber');
+is(decode_punycode('färber'),'färber');
 is(decode_punycode('yo--fiq80yua78t'),'中央大学');

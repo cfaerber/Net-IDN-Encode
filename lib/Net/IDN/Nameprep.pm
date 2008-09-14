@@ -81,11 +81,11 @@ This function currently supports preparation for I<query> strings only.
 
 =back
 
-=head1 AUTHOR
+=head1 AUTHOR/LICENSE
 
-Claus Färber E<lt>CFAERBER@cpan.orgE<gt>
+Copyright © 2007-2008 Claus Färber E<lt>CFAERBER@cpan.orgE<gt>
 
-Previous versions written by Tatsuhiko Miyagawa E<lt>miyagawa@bulknews.netE<gt>
+Previous versions Copyright © Tatsuhiko Miyagawa E<lt>miyagawa@bulknews.netE<gt>
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

@@ -114,9 +114,9 @@ This function will croak on invalid input.
 
 =back
 
-=head1 AUTHORS
+=head1 AUTHORS/LICENSE
 
-Claus Färber E<lt>CFAERBER@cpan.orgE<gt>
+Copyright © 2007-2008 Claus Färber E<lt>CFAERBER@cpan.orgE<gt>
 
 Previous version written by Tatsuhiko Miyagawa
 E<lt>miyagawa@bulknews.netE<gt> and extended by Robert Urban

@@ -7,7 +7,7 @@ use utf8;
 use warnings;
 require 5.006_000;
 
-our $VERSION = '0.99_20080913';
+our $VERSION = '0.99_20080914';
 $VERSION = eval $VERSION;
 
 use Carp;
@@ -26,6 +26,8 @@ our @EXPORT = (
 our $IDNA_prefix = 'xn--';
 
 sub _to_ascii {
+  no warnings qw(utf8); # needed for perl v5.6.x
+
   my ($label,%param) = @_;
 
   if($label =~ m/[^\x00-\x7F]/) {
@@ -184,7 +186,7 @@ The follwing characters are recognized as at signs: U+0040
 
 =head1 AUTHOR/LICENSE
 
-Claus Färber <CFAERBER@cpan.org>
+Copyright © 2007-2008 Claus Färber <CFAERBER@cpan.org>
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

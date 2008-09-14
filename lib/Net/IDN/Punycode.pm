@@ -197,9 +197,10 @@ This function will throw an exception on invalid input.
 
 =back
 
-=head1 AUTHOR
+=head1 AUTHORS/LICENSE
 
-Tatsuhiko Miyagawa E<lt>miyagawa@bulknews.netE<gt>, Claus Färber E<lt>CFAERBER@cpan.orgE<gt>
+Copyright © 2002-2004 Tatsuhiko Miyagawa E<lt>miyagawa@bulknews.netE<gt>
+Copyright © 2007-2008 Claus Färber E<lt>CFAERBER@cpan.orgE<gt>
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

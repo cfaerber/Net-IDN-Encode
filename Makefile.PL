@@ -11,13 +11,13 @@ WriteMakefile(
     'NAME'		=> 'Net::IDN::Encode',
     'VERSION_FROM'	=> 'lib/Net/IDN/Encode.pm', # finds $VERSION
     'PREREQ_PM'		=> {
-		'Unicode::Stringprep' => 1.00,
+		'Unicode::Stringprep'	=> 1.00,
+		'perl'			=> 5.006,
 	},
-    ($] >= 5.005 ? (	## Add these new keywords supported since 5.005
-       ABSTRACT => 'modules for handling of Internationalised Domain Names in Applications (IDNA)',
-       AUTHOR   => 'Claus Faerber <CFAERBER@cpan.org>',
-       LICENSE  => 'perl',
-      ) : ()),
+    'ABSTRACT'		=> 'handle Internationalised Domain Names in Applications (IDNA)',
+    'AUTHOR'		=> 'Claus Faerber <CFAERBER@cpan.org>',
+    'LICENSE'		=> 'perl',
+    'SIGN'		=> 1,
 );
 
 sub MY::postamble {
@@ -29,5 +29,8 @@ release-cpan:
 
 release-sf:
 	sf-upload -groupid 112466 -packageid 121685 -r \$(VERSION) -cf Changes -nf README -f \$(DISTVNAME).tar\$(SUFFIX)
+
+.PRECIOUS: META.yml
+
 EOF
 }

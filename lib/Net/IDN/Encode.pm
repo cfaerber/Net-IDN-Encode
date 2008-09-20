@@ -7,7 +7,7 @@ use utf8;
 use warnings;
 require 5.006_000;
 
-our $VERSION = '0.99_20080914';
+our $VERSION = '0.99_20080919';
 $VERSION = eval $VERSION;
 
 use Carp;
@@ -26,6 +26,7 @@ our @EXPORT = (
 our $IDNA_prefix = 'xn--';
 
 sub _to_ascii {
+  use bytes;
   no warnings qw(utf8); # needed for perl v5.6.x
 
   my ($label,%param) = @_;
@@ -50,6 +51,8 @@ sub _to_ascii {
 }
 
 sub _to_unicode {
+  use bytes;
+
   my ($label,%param) = @_;
   my $orig = $label;
 

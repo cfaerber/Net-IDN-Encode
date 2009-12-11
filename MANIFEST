@@ -1,8 +1,8 @@
 README
 Changes
-COPYING
 Makefile.PL
 MANIFEST
 lib/Encode/Punycode.pm
 t/00use.t
+t/10pod.t
 t/vectors.t

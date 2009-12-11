@@ -1,12 +1,14 @@
 # $Id : $
-
+#
 package Encode::Punycode;
 
 use strict;
 use utf8;
+use warnings;
+
 require 5.006_000;
 
-our $VERSION = '0.99_20071012';
+our $VERSION = '0.99_20080913';
 $VERSION = eval $VERSION;
 
 require Encode;
@@ -66,7 +68,7 @@ Note that this module does not do any string preparation as
 specified by I<nameprep>/I<stringprep>. It does not do add any
 prefix or suffix, either.
 
-=head1 AUTHOR
+=head1 AUTHOR / LICENSE
 
 Claus Färber E<lt>CFAERBER@cpan.orgE<gt>
 

@@ -1,5 +1,7 @@
 # $Id$
 
+use 5.006;
+
 use utf8;
 use ExtUtils::MakeMaker;
 
@@ -10,11 +12,13 @@ WriteMakefile(
     'VERSION_FROM'	=> 'lib/Encode/Punycode.pm', # finds $VERSION
     'PREREQ_PM'		=> {
     		'Encode' => 1,
-		'Net::IDN::Punycode' => 0.01,
+		'Net::IDN::Punycode' => 0.99,
 	},
     ($] >= 5.005 ?    ## Add these new keywords supported since 5.005
       (ABSTRACT => 'Encode plugin for Punycode (RFC 3492)',
-       AUTHOR   => 'Claus Färber <CFAERBER@cpan.org>') : ()),
+       AUTHOR   => 'Claus Färber <CFAERBER@cpan.org>',
+       LICENSE  => 'perl',
+      ) : ()),
 );
 
 sub MY::postamble {

@@ -1,7 +1,6 @@
-# $Id$
-
 use strict;
 use Test::More;
+#use Test::NoWarnings;
 
 eval "use Test::Pod 1.00";
 plan skip_all => "Test::Pod 1.00 required for testing POD" if $@;

@@ -1,8 +1,12 @@
-README
+Build.PL
 Changes
-Makefile.PL
 MANIFEST
+README
 lib/Encode/Punycode.pm
 t/00use.t
 t/10pod.t
 t/vectors.t
+Makefile.PL
+LICENSE
+META.yml
+SIGNATURE    Added here by Module::Build

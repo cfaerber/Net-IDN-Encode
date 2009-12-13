@@ -1,5 +1,9 @@
 Revision history for Perl extension Encode::Punycode
 
+0.99_20091223 Wed Dec 23 00:00:00 2009
+	- switch to Module::Build
+	- cleanup after switch to Github
+
 0.99_20071013 Sat Oct 13 12:00:00 CEST 2007
 	- now based on Net::IDN::Punycode
 	- FIXES: #14883: make test failure

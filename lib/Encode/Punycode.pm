@@ -1,14 +1,10 @@
-# $Id : $
-#
 package Encode::Punycode;
 
 use strict;
 use utf8;
 use warnings;
 
-require 5.006_000;
-
-our $VERSION = '0.99_20080913';
+our $VERSION = '0.99_20091223';
 $VERSION = eval $VERSION;
 
 require Encode;
@@ -42,8 +38,6 @@ sub perlio_ok {
 1;
 __END__
 
-=encoding utf8
-
 =head1 NAME
 
 Encode::Punycode - Encode plugin for Punycode (S<RFC 3492>)
@@ -68,11 +62,15 @@ Note that this module does not do any string preparation as
 specified by I<nameprep>/I<stringprep>. It does not do add any
 prefix or suffix, either.
 
-=head1 AUTHOR / LICENSE
+=head1 AUTHOR
 
-Claus Färber E<lt>CFAERBER@cpan.orgE<gt>
+Claus FE<auml>rber E<lt>CFAERBER@cpan.orgE<gt>
 
 Previous versions written by Tatsuhiko Miyagawa E<lt>miyagawa@bulknews.netE<gt>
+
+=head1 COPYRIGHT
+
+Copyright 2007-2009 Claus FE<auml>rber
 
 This library is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself.
@@ -80,6 +78,6 @@ modify it under the same terms as Perl itself.
 =head1 SEE ALSO
 
 L<Encode>, L<Net::IDN::Punycode>, 
-S<RFC 3492> L<http://www.ietf.org/rfc/rfc3492.txt>
+S<RFC 3492> (L<http://www.ietf.org/rfc/rfc3492.txt>)
 
 =cut

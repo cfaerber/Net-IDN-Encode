@@ -1,5 +1,6 @@
 README
 Changes
+Build.PL
 Makefile.PL
 MANIFEST
 lib/Net/IDN/Encode.pm
@@ -14,6 +15,3 @@ t/nameprep_vec.t
 t/punycode_vec.t
 t/zidna_punyc_prefix.t
 t/zidna_punyc_raw.t
-LICENSE
-META.yml
-SIGNATURE

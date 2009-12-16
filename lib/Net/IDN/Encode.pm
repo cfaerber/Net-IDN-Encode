@@ -1,5 +1,3 @@
-# $Id$ #
-
 package Net::IDN::Encode;
 
 use strict;
@@ -7,7 +5,7 @@ use utf8;
 use warnings;
 require 5.006_000;
 
-our $VERSION = '0.99_20080919';
+our $VERSION = '0.99_20091216';
 $VERSION = eval $VERSION;
 
 use Carp;
@@ -113,8 +111,6 @@ sub email_to_unicode { _email(shift,\&_to_unicode) }
 
 __END__
 
-=encoding utf8
-
 =head1 NAME
 
 Net::IDN::Encode - Internationalizing Domain Names in Applications (S<RFC 3490>)
@@ -122,8 +118,8 @@ Net::IDN::Encode - Internationalizing Domain Names in Applications (S<RFC 3490>)
 =head1 SYNOPSIS
 
   use Net::IDN::Encode;
-  $ascii = domain_to_ascii('müller.example.org');
-  $ascii = domain_to_ascii('例.example.net');
+  $ascii = domain_to_ascii("m\xFCller.example.org");
+  $ascii = domain_to_ascii("\x{4f8b}.\x{30c6}\x{30b9}\x{30c8}");
 
 =head1 DESCRIPTION
 
@@ -168,7 +164,7 @@ at sign) of the S<RFC 2821>/2822 email address to ASCII. May throw an
 exception on invalid input.
 
 This function currently does not handle internationalization of
-the local-part (left hand side).
+the local-part (left hand side). This may change in future versions.
 
 The follwing characters are recognized as at signs: U+0040
 (commercial at), U+FF20 (fullwidth commercial at).
@@ -180,16 +176,20 @@ at sign) of the S<RFC 2821>/2822 email address to Unicode. May throw
 an exception on invalid input.
 
 This function currently does not handle internationalization of
-the local-part (left hand side).
+the local-part (left hand side). This may change in future versions.
 
 The follwing characters are recognized as at signs: U+0040
 (commercial at), U+FF20 (fullwidth commercial at).
 
 =back
 
-=head1 AUTHOR/LICENSE
+=head1 AUTHOR
 
-Copyright © 2007-2008 Claus Färber <CFAERBER@cpan.org>
+Claus FE<auml>rber <CFAERBER@cpan.org>
+
+=head1 LICENSE
+
+Copyright 2007-2009 Claus FE<auml>rber.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
@@ -197,6 +197,6 @@ it under the same terms as Perl itself.
 =head1 SEE ALSO
 
 L<Net::IDN::Nameprep>, L<Net::IDN::Punycode>, S<RFC 3490>
-L<http://www.ietf.org/rfc/rfc3490.txt>
+(L<http://www.ietf.org/rfc/rfc3490.txt>)
 
 =cut

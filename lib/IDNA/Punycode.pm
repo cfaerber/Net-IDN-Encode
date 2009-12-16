@@ -1,5 +1,3 @@
-# $Id$
-
 package IDNA::Punycode;
 
 use strict;
@@ -7,7 +5,7 @@ use utf8;
 use warnings;
 require 5.006_000;
 
-our $VERSION = '0.99_20080913';
+our $VERSION = '0.99_20091216';
 $VERSION = eval $VERSION;
 
 require Exporter;
@@ -44,8 +42,6 @@ sub encode_punycode {
 1;
 __END__
 
-=encoding utf8
-
 =head1 NAME
 
 IDNA::Punycode - DEPRECATED module for IDNA and Punyode
@@ -62,8 +58,8 @@ C<IDNA::Punycode>.
 
 =head1 FUNCTIONS
 
-The following functions are imported by default. If you also C<use
-Net::IDN::Punycode>, be sure to disable import from this module:
+The following functions are imported by default. If you also C<use Net::IDN::Punycode>,
+be sure to disable import from this module:
 
   use IDNA::Punycode();
 
@@ -81,7 +77,7 @@ L<mod_perl>). Instead, set the variable locally:
 
 =item encode_punycode($input)
 
-If C<$IDNA::Punycode::PRFIX> is C<''>, encodes C<$input> with
+If C<$IDNA::Punycode::PREFIX> is C<''>, encodes C<$input> with
 Punycode.
 
 If C<$IDNA::Punycode::PREFIX> is not C<''>, encodes C<$input> with
@@ -97,7 +93,7 @@ This function will croak on invalid input.
 
 =item decode_punycode($input)
 
-If C<$IDNA::Punycode::PRFIX> is C<''>, decodes C<$input> with
+If C<$IDNA::Punycode::PREFIX> is C<''>, decodes C<$input> with
 Punycode.
 
 If C<$IDNA::Punycode::PREFIX> is not C<''>, checks whether
@@ -114,13 +110,16 @@ This function will croak on invalid input.
 
 =back
 
-=head1 AUTHORS/LICENSE
+=head1 AUTHORS
 
-Copyright © 2007-2008 Claus Färber E<lt>CFAERBER@cpan.orgE<gt>
+Claus FE<auml>rber <CFAERBER@cpan.org>
 
-Previous version written by Tatsuhiko Miyagawa
-E<lt>miyagawa@bulknews.netE<gt> and extended by Robert Urban
-E<lt>urban@UNIX-Beratung.deE<gt>.
+Previous version written by Tatsuhiko Miyagawa E<lt>miyagawa@bulknews.netE<gt>
+and extended by Robert Urban E<lt>urban@UNIX-Beratung.deE<gt>.
+
+=head1 LICENSE
+
+Copyright 2007-2009 Claus FE<auml>rber.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
@@ -128,6 +127,6 @@ it under the same terms as Perl itself.
 =head1 SEE ALSO
 
 L<Encode>, L<Net::IDN::Encode>, L<Net::IDN::Punycode>,
-S<RFC 3492> L<http://www.ietf.org/rfc/rfc3492.txt>
+S<RFC 3492> (L<http://www.ietf.org/rfc/rfc3492.txt>)
 
 =cut

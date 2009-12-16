@@ -1,5 +1,3 @@
-# $Id$
-
 package Net::IDN::Nameprep;
 
 use strict;
@@ -7,7 +5,7 @@ use utf8;
 use warnings;
 require 5.006_000;
 
-our $VERSION = '0.99_20071012';
+our $VERSION = '0.99_20091216';
 $VERSION = eval $VERSION;
 
 require Exporter;
@@ -43,8 +41,6 @@ use Unicode::Stringprep::Prohibited;
 1;
 __END__
 
-=encoding utf8
-
 =head1 NAME
 
 Net::IDN::Nameprep - A Stringprep Profile for Internationalized Domain Names (S<RFC 3491>)
@@ -67,7 +63,7 @@ internationalizing the Domain Name System (DNS).
 
 This module implements a single function, C<nameprep>, which is exported by default.
 
-=over 4
+=over
 
 =item B<nameprep($input)>
 
@@ -81,17 +77,21 @@ This function currently supports preparation for I<query> strings only.
 
 =back
 
-=head1 AUTHOR/LICENSE
+=head1 AUTHOR
 
-Copyright © 2007-2008 Claus Färber E<lt>CFAERBER@cpan.orgE<gt>
+Claus FE<auml>rber <CFAERBER@cpan.org>
 
-Previous versions Copyright © Tatsuhiko Miyagawa E<lt>miyagawa@bulknews.netE<gt>
+Previous versions written by Tatsuhiko Miyagawa E<lt>miyagawa@bulknews.netE<gt>
+
+=head1 LICENSE
+
+Copyright 2007-2009 Claus FE<auml>rber.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
 
 =head1 SEE ALSO
 
-L<Unicode::Stringprep>, S<RFC 3491> L<http://www.ietf.org/rfc/rfc3491.txt>
+L<Unicode::Stringprep>, S<RFC 3491> (L<http://www.ietf.org/rfc/rfc3491.txt>)
 
 =cut

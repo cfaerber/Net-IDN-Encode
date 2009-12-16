@@ -196,12 +196,14 @@ This function will throw an exception on invalid input.
 =head1 AUTHORS
 
 Tatsuhiko Miyagawa E<lt>miyagawa@bulknews.netE<gt> (versions 0.01 to 0.02)
-Claus Färber E<lt>CFAERBER@cpan.orgE<gt> (from version 1.00)
+
+Claus FE<auml>rber E<lt>CFAERBER@cpan.orgE<gt> (from version 1.00)
 
 =head1 LICENSE
 
 Copyright 2002-2004 Tatsuhiko Miyagawa E<lt>miyagawa@bulknews.netE<gt>
-Copyright 2007-2009 Claus Färber E<lt>CFAERBER@cpan.orgE<gt>
+
+Copyright 2007-2009 Claus FE<auml>rber E<lt>CFAERBER@cpan.orgE<gt>
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

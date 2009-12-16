@@ -1,13 +1,35 @@
 Revision history for Perl extension Net::IDN::Encode
 
-1.00 Sun Dec 13 00:00:00 2009
+0.99_20091216 Wed Dec 16 00:00:00 2009
+	- switch to Module::Build
+	- switch to Github, remove svn:keywords, add .gitignore
+
+	- use ASCII in POD, fixes FAILs with perl 5.6.x
+	- add examples in eg/
+
+0.99_20080913 Sun Sep 13 12:00:00 2008
 	- fixed perl 5.6.x (no warnings 'utf8')
+
+0.99_20080913 Sat Sep 13 12:00:00 2008
 	- require perl version 5.6.0 instead of 5.6.6
 	- skip more tests in lower perl versions
 
+	- removed Encode::Punycode; Encode is only available from
+	  perl 5.7.3
+	- renamed back to Net::IDN::Encode; without
+	  Encode::Punycode, the new name does not make sense.
+
+0.99_20071012 Fri Oct 12 12:00:00 2007
+	- renamed Net-IDN-Encode distribution to Net-IDN-tools
+
 	- includes Net::IDN::Punycode (from IDNA::Punycode v0.02)
-	- includes Net::IDN::Nameprep (complete rewrite based on Unicode::Stringprep)
-	- includes IDNA::Punycode (deprecated, complete rewrite based on Net::IDN::Punycode/::Encode)
+	- includes Net::IDN::Nameprep (complete rewrite, uses
+	  Unicode::Stringprep)
+	- includes IDNA::Punycode (deprecated, new version based
+	  on Net::IDN::Punycode/::Encode)
+	- includes Encode::Punycode (new version based on
+	  Net::IDN::Punycode)
+	- uses Unicode::Stringprep
 
 	- more tests, including test vectors from Internet Draft
 	  draft-josefsson-idn-test-vectors-00.
@@ -22,5 +44,3 @@ Revision history for Perl extension Net::IDN::Encode
 
 0.01  Sun May 30 00:00:00 2004
 	- first release
-
-$Id$

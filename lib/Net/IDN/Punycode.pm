@@ -1,5 +1,3 @@
-# $Id$
-
 package Net::IDN::Punycode;
 
 use strict;
@@ -7,7 +5,7 @@ use utf8;
 use warnings;
 require 5.006_000;
 
-our $VERSION = '0.99_20071012';
+our $VERSION = '0.99_20091216';
 $VERSION = eval $VERSION;
 
 require Exporter;
@@ -152,8 +150,6 @@ sub _min {
 1;
 __END__
 
-=encoding utf8
-
 =head1 NAME
 
 Net::IDN::Punycode - A Bootstring encoding of Unicode for IDNA (S<RFC 3492>)
@@ -197,17 +193,22 @@ This function will throw an exception on invalid input.
 
 =back
 
-=head1 AUTHORS/LICENSE
+=head1 AUTHORS
 
-Copyright © 2002-2004 Tatsuhiko Miyagawa E<lt>miyagawa@bulknews.netE<gt>
-Copyright © 2007-2008 Claus Färber E<lt>CFAERBER@cpan.orgE<gt>
+Tatsuhiko Miyagawa E<lt>miyagawa@bulknews.netE<gt> (versions 0.01 to 0.02)
+Claus Färber E<lt>CFAERBER@cpan.orgE<gt> (from version 1.00)
+
+=head1 LICENSE
+
+Copyright 2002-2004 Tatsuhiko Miyagawa E<lt>miyagawa@bulknews.netE<gt>
+Copyright 2007-2009 Claus Färber E<lt>CFAERBER@cpan.orgE<gt>
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
 
 =head1 SEE ALSO
 
-S<RFC 3492> L<http://www.ietf.org/rfc/rfc3492.txt>,
+S<RFC 3492> (L<http://www.ietf.org/rfc/rfc3492.txt>),
 L<IETF::ACE>, L<Convert::RACE>
 
 =cut

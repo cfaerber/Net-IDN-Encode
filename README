@@ -1,8 +1,3 @@
-NAME
-
-  Net-IDN-tools -- modules for handling of Internationalised
-	           Domain Names in Applications (IDNA)
-
 OVERVIEW
 
   Net::IDN::Encode   -- high-level interface for encoding and 
@@ -22,10 +17,10 @@ INSTALLATION
 
   To install this module type the following:
 
-    perl Makefile.PL
-    make
-    make test
-    make install
+    perl Build.PL
+    ./Build
+    ./Build test
+    ./Build install
 
 DEPENDENCIES
 
@@ -37,11 +32,8 @@ PERL VERSION
 
   You should use perl 5.8.3 or higher.
 
-  Well, these modules DO work with perl 5.6.x. However, YOU have
-  to make sure that you only pass valid UTF-8 strings to this
-  module or you will get unintended results. perl 5.8.x (or
-  higher) takes care of this by maintaining a UTF-8 flag for
-  strings.
+  See the documentation of Unicode::Stringprep for limitations
+  with perl 5.6.x.
 
 AUTHOR
 
@@ -51,5 +43,3 @@ ACKNOWLEDGMENTS
 
   Tatsuhiko Miyagawa <miyagawa@bulknews.net>
   Robert Urban <urban@UNIX-Beratung.de>
-
-$Id$

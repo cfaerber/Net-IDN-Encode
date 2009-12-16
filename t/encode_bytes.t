@@ -1,9 +1,9 @@
-# $Id$
-
 use bytes;
 use strict;
 
 use Test::More;
+use Test::NoWarnings;
+
 use Net::IDN::Encode;
 
 use Test::More;
@@ -11,7 +11,7 @@ use Test::More;
 if($] < 5.007) {
   plan skip_all => 'perl 5.6.x does not support automatic promotion to utf8';
 } else {
-  plan tests => 21;
+  plan tests => 22;
 }
 
 is(Net::IDN::Encode::_to_ascii('faerber'),'faerber');

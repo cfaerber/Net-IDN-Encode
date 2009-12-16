@@ -1,9 +1,9 @@
-# $Id$
-
 use utf8;
 use strict;
 
-use Test::More tests => 16;
+use Test::More tests => 17;
+use Test::NoWarnings;
+
 use IDNA::Punycode;
 
 is(encode_punycode('faerber'),'faerber');

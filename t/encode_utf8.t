@@ -1,9 +1,9 @@
-# $Id$
-
 use utf8;
 use strict;
 
-use Test::More tests => 29;
+use Test::More tests => 30;
+use Test::NoWarnings;
+
 use Net::IDN::Encode;
 
 is(Net::IDN::Encode::_to_ascii('faerber'),'faerber');

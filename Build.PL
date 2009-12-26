@@ -15,7 +15,8 @@ my $b = Module::Build->new(
 
 	'requires'	=> {
 		'perl' => 5.006,
-		'Unicode::Stringprep' => 0.30,
+		'List::Util' => 1,
+		'Unicode::Stringprep' => 1,
 	},
 	'recommends'	=> {
 		'perl' => 5.008003,

@@ -14,17 +14,12 @@ my $b = Module::Build->new(
 	'create_makefile_pl' => 'traditional',
 
 	'requires'	=> {
-		'perl' => 5.006,
-		'List::Util' => 1,
-		'Unicode::Stringprep' => 1,
+		'perl' 	=> 5.006,
+		'List::Util' => 1.09,
+		'Unicode::Stringprep' => 1.10,
 	},
 	'recommends'	=> {
 		'perl' => 5.008003,
-	},
-	'conflicts'	=> {
-#		'Encode::Punycode' => '< 0.99',
-#		'IDNA::Punycode' => '< 0.99',
-#		'Net::IDN::Nameprep' => '< 0.99',
 	},
 	'build_requires' => {
 		'Test::More' => 0, 

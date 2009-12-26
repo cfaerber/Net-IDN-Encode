@@ -5,7 +5,7 @@ use utf8;
 use warnings;
 require 5.006_000;
 
-our $VERSION = '0.99_20091216';
+our $VERSION = '0.99_20091226';
 $VERSION = eval $VERSION;
 
 use Carp;
@@ -88,11 +88,11 @@ sub _email {
   return undef unless $email;
 
   $email =~ m/^([^"\@＠]+|"(?:(?:[^"]|\\.)*[^\\])?")(?:[\@＠]
-    (?:([^\[\]]*)|(\[.*\]))?)?$/x || die "Invalid email address";
+    (?:([^\[\]]*)|(\[.*\]))?)?$/x || croak "Invalid email address";
   my($local_part,$domain,$domain_literal) = ($1,$2,$3);
 
-  $local_part =~ m/[^\x00-\x7F]/ && die "Invalid email address";
-  $domain_literal =~ m/[^\x00-\x7F]/ && die "Invalid email address" if $domain_literal;
+  $local_part =~ m/[^\x00-\x7F]/ && croak "Invalid email address";
+  $domain_literal =~ m/[^\x00-\x7F]/ && croak "Invalid email address" if $domain_literal;
 
   $domain = _domain($domain,$_to_function,@param) if $domain;
 

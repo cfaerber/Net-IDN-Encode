@@ -1,14 +1,19 @@
 package Net::IDN::Punycode;
 
+use 5.006_000;
+
 use strict;
 use utf8;
 use warnings;
-require 5.006_000;
+
+use Carp;
+use Exporter;
+
+use List::Util qw(min);
 
 our $VERSION = '0.99_20091216';
 $VERSION = eval $VERSION;
 
-require Exporter;
 our @ISA    = qw(Exporter);
 our @EXPORT = qw(encode_punycode decode_punycode);
 
@@ -26,8 +31,6 @@ use constant INITIAL_N => 128;
 
 my $Delimiter = chr 0x2D;
 my $BasicRE   = qr/[\x00-\x7f]/;
-
-sub _croak { require Carp; Carp::croak(@_); }
 
 sub _digit_value {
     my $code = shift;
@@ -66,7 +69,7 @@ sub decode_punycode {
 
     if ($code =~ s/(.*)$Delimiter//o) {
 	push @output, map ord, split //, $1;
-	return _croak('non-basic code point') unless $1 =~ /^$BasicRE*$/o;
+	return croak('non-basic code point') unless $1 =~ /^$BasicRE*$/o;
     }
 
     while ($code) {
@@ -76,7 +79,7 @@ sub decode_punycode {
 	for (my $k = BASE; 1; $k += BASE) {
 	    my $cp = substr($code, 0, 1, '');
 	    my $digit = _digit_value($cp);
-	    defined $digit or return _croak("invalid punycode input");
+	    defined $digit or return croak("invalid punycode input");
 	    $i += $digit * $w;
 	    my $t = ($k <= $bias) ? TMIN
 		: ($k >= $bias + TMAX) ? TMAX : $k - $bias;
@@ -110,7 +113,7 @@ sub encode_punycode {
     warn "basic codepoints: (@output)" if $DEBUG;
 
     while ($h < @input) {
-	my $m = _min(grep { $_ >= $n } map ord, @input);
+	my $m = min(grep { $_ >= $n } map ord, @input);
 	warn sprintf "next code point to insert is %04x", $m if $DEBUG;
 	$delta += ($m - $n) * ($h + 1);
 	$n = $m;
@@ -139,12 +142,6 @@ sub encode_punycode {
 	$n++;
     }
     return join '', @output;
-}
-
-sub _min {
-    my $min = shift;
-    for (@_) { $min = $_ if $_ <= $min }
-    return $min;
 }
 
 1;

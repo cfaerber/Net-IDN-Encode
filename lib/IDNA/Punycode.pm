@@ -3,9 +3,8 @@ package IDNA::Punycode;
 use strict;
 use utf8;
 use warnings;
-require 5.006_000;
 
-our $VERSION = '0.99_20091216';
+our $VERSION = '0.99_20091231';
 $VERSION = eval $VERSION;
 
 require Exporter;

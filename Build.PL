@@ -8,14 +8,15 @@ use Module::Build;
 my $b = Module::Build->new(
 	'module_name'	=> 'Net::IDN::Encode',
 	'license'	=> 'perl',
+	'dist_author'	=> 'Claus Färber <CFAERBER@cpan.org>',
 
 	'sign'		=> 1,
 	'create_license' => 1,
 	'create_makefile_pl' => 'traditional',
 
 	'requires'	=> {
-		'List::Util' => 1.09,
-		'Unicode::Stringprep' => 1.10,
+#		'Unicode::Stringprep' => 1.10,
+		'Unicode::Stringprep' => 1,
 		'perl' => 5.008003,
 	},
 	'build_requires' => {

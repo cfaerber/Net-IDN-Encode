@@ -1,6 +1,6 @@
 package Net::IDN::Punycode;
 
-use 5.006_000;
+use 5.8.3;
 
 use strict;
 use utf8;
@@ -9,9 +9,7 @@ use warnings;
 use Carp;
 use Exporter;
 
-use List::Util qw(min);
-
-our $VERSION = '0.99_20091216';
+our $VERSION = "0.99_20091231";
 $VERSION = eval $VERSION;
 
 our @ISA    = qw(Exporter);
@@ -30,22 +28,8 @@ use constant INITIAL_BIAS => 72;
 use constant INITIAL_N => 128;
 
 my $Delimiter = chr 0x2D;
-my $BasicRE   = qr/[\x00-\x7f]/;
-
-sub _digit_value {
-    my $code = shift;
-    return ord($code) - ord("A") if $code =~ /[A-Z]/;
-    return ord($code) - ord("a") if $code =~ /[a-z]/;
-    return ord($code) - ord("0") + 26 if $code =~ /[0-9]/;
-    return;
-}
-
-sub _code_point {
-    my $digit = shift;
-    return $digit + ord('a') if 0 <= $digit && $digit <= 25;
-    return $digit + ord('0') - 26 if 26 <= $digit && $digit <= 36;
-    die 'NOT COME HERE';
-}
+my $BasicRE   = "\x00-\x7f";
+my $PunyRE    = "A-Za-z0-9";
 
 sub _adapt {
     my($delta, $numpoints, $firsttime) = @_;
@@ -60,29 +44,46 @@ sub _adapt {
 }
 
 sub decode_punycode {
-    my $code = shift;
+    my $input = shift;
 
     my $n      = INITIAL_N;
     my $i      = 0;
     my $bias   = INITIAL_BIAS;
     my @output;
 
-    if ($code =~ s/(.*)$Delimiter//o) {
-	push @output, map ord, split //, $1;
-	return croak('non-basic code point') unless $1 =~ /^$BasicRE*$/o;
-    }
+    return '' unless length $input;
 
-    while ($code) {
+    if($input =~ s/(.*)$Delimiter//os) {
+      my $base_chars = $1;
+      die 'non-basic characters in input' 
+        if $base_chars =~ m/[^$BasicRE]/os;
+      push @output, split //, $base_chars;
+    }
+    my $code = $input;
+
+    croak('invalid punycode code point') if $code =~ m/[^$PunyRE]/os;
+
+    utf8::downgrade($input);	## handling failure of downgrade is more expensive than
+				## doing the above regexp w/ utf8 semantics
+
+    while(length $code)
+    {
 	my $oldi = $i;
 	my $w    = 1;
     LOOP:
 	for (my $k = BASE; 1; $k += BASE) {
 	    my $cp = substr($code, 0, 1, '');
-	    my $digit = _digit_value($cp);
-	    defined $digit or return croak("invalid punycode input");
+	    my $digit = ord $cp;
+		
+	    ## NB: this depends on the PunyRE catching invalid digit characters
+	    ## before they turn up here
+	    ##
+	    $digit = $digit < 0x40 ? $digit + (26-0x30) : ($digit & 0x1f) -1;
+
 	    $i += $digit * $w;
-	    my $t = ($k <= $bias) ? TMIN
-		: ($k >= $bias + TMAX) ? TMAX : $k - $bias;
+	    my $t =  $k - $bias;
+	    $t = $t < TMIN ? TMIN : $t > TMAX ? TMAX : $t;
+
 	    last LOOP if $digit < $t;
 	    $w *= (BASE - $t);
 	}
@@ -90,48 +91,60 @@ sub decode_punycode {
 	warn "bias becomes $bias" if $DEBUG;
 	$n += $i / (@output + 1);
 	$i = $i % (@output + 1);
-	splice(@output, $i, 0, $n);
+	splice(@output, $i, 0, chr($n));
 	warn join " ", map sprintf('%04x', $_), @output if $DEBUG;
 	$i++;
     }
-    return join '', map chr, @output;
+    return join '', @output;
 }
 
 sub encode_punycode {
     my $input = shift;
-    # my @input = split //, $input; # doesn't work in 5.6.x!
-    my @input = map substr($input, $_, 1), 0..length($input)-1;
+    my $input_length = length $input;
 
-    my $n     = INITIAL_N;
+    ## my $output = join '', $input =~ m/([$BasicRE]+)/og; ## slower
+    my $output = $input; $output =~ s/[^$BasicRE]+//ogs;
+
+    my $h = my $b = length $output;
+    $output .= $Delimiter if $b > 0;
+    warn "basic codepoints: ($output)" if $DEBUG;
+    utf8::downgrade($output);	## no unnecessary use of utf8 semantics
+
+    my @input = map ord, split //, $input;
+    my @chars = sort grep { $_ >= INITIAL_N } @input;
+
+    my $n = INITIAL_N;
     my $delta = 0;
-    my $bias  = INITIAL_BIAS;
+    my $bias = INITIAL_BIAS;
 
-    my @output;
-    my @basic = grep /$BasicRE/, @input;
-    my $h = my $b = @basic;
-    push @output, @basic, $Delimiter if $b > 0;
-    warn "basic codepoints: (@output)" if $DEBUG;
-
-    while ($h < @input) {
-	my $m = min(grep { $_ >= $n } map ord, @input);
+    foreach my $m (@chars) {
+ 	next if $m < $n;
+	#local $DEBUG = 1;
 	warn sprintf "next code point to insert is %04x", $m if $DEBUG;
+
 	$delta += ($m - $n) * ($h + 1);
 	$n = $m;
-	for my $i (@input) {
-	    my $c = ord($i);
+	for(my $i = 0; $i < $input_length; $i++)
+	{
+	    my $c = $input[$i];
 	    $delta++ if $c < $n;
 	    if ($c == $n) {
 		my $q = $delta;
 	    LOOP:
 		for (my $k = BASE; 1; $k += BASE) {
-		    my $t = ($k <= $bias) ? TMIN :
-			($k >= $bias + TMAX) ? TMAX : $k - $bias;
+		    my $t = $k - $bias;
+	            $t = $t < TMIN ? TMIN : $t > TMAX ? TMAX : $t;
+
 		    last LOOP if $q < $t;
-		    my $cp = _code_point($t + (($q - $t) % (BASE - $t)));
-		    push @output, chr($cp);
+
+                    my $o = $t + (($q - $t) % (BASE - $t));
+                    $output .= chr $o + ($o < 26 ? 0x61 : 0x30-26);
+
 		    $q = ($q - $t) / (BASE - $t);
 		}
-		push @output, chr(_code_point($q));
+		die "input exceeds punycode limit" if $q > BASE;
+                $output .= chr $q + ($q < 26 ? 0x61 : 0x30-26);
+
 		$bias = _adapt($delta, $h + 1, $h == $b);
 		warn "bias becomes $bias" if $DEBUG;
 		$delta = 0;
@@ -141,7 +154,7 @@ sub encode_punycode {
 	$delta++;
 	$n++;
     }
-    return join '', @output;
+    return $output;
 }
 
 1;

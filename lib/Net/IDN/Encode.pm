@@ -3,13 +3,13 @@ package Net::IDN::Encode;
 use strict;
 use utf8;
 use warnings;
-require 5.006_000;
 
-our $VERSION = '0.99_20091226';
+our $VERSION = "0.99_20091231";
 $VERSION = eval $VERSION;
 
 use Carp;
 use Exporter;
+
 use Net::IDN::Nameprep;
 use Net::IDN::Punycode;
 
@@ -111,6 +111,8 @@ sub email_to_unicode { _email(shift,\&_to_unicode) }
 
 __END__
 
+=encoding utf8
+
 =head1 NAME
 
 Net::IDN::Encode - Internationalizing Domain Names in Applications (S<RFC 3490>)
@@ -118,8 +120,9 @@ Net::IDN::Encode - Internationalizing Domain Names in Applications (S<RFC 3490>)
 =head1 SYNOPSIS
 
   use Net::IDN::Encode;
-  $ascii = domain_to_ascii("m\xFCller.example.org");
-  $ascii = domain_to_ascii("\x{4f8b}.\x{30c6}\x{30b9}\x{30c8}");
+  my $a = domain_to_ascii("müller.example.org");
+  my $e = email_to_ascii("POSTMASTER@例。テスト");
+  my $u = domain_to_unicode('EXAMPLE.XN--11B5BS3A9AJ6G');
 
 =head1 DESCRIPTION
 
@@ -189,7 +192,7 @@ Claus FE<auml>rber <CFAERBER@cpan.org>
 
 =head1 LICENSE
 
-Copyright 2007-2009 Claus FE<auml>rber.
+Copyright 2007-2010 Claus FE<auml>rber.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

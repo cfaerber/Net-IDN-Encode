@@ -4,7 +4,7 @@ use strict;
 use utf8;
 use warnings;
 
-our $VERSION = "0.99_20091231";
+our $VERSION = "1.00";
 $VERSION = eval $VERSION;
 
 require Exporter;

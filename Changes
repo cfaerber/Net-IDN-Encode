@@ -1,5 +1,8 @@
 Revision history for Perl extension Net::IDN::Encode
 
+1.00 (2009-01-01)
+	- release as 1.00
+
 0.99_20091231
 	- depend on perl 5.8.3
 	- optimise Net::IDN::Punycode

@@ -6,14 +6,17 @@ use strict;
 use utf8;
 use warnings;
 
+require DynaLoader;
+require Exporter;
+
 use Carp;
-use Exporter;
 
 our $VERSION = "1.00";
-$VERSION = eval $VERSION;
 
-our @ISA    = qw(Exporter);
+our @ISA    = qw(Exporter DynaLoader);
 our @EXPORT = qw(encode_punycode decode_punycode);
+
+bootstrap Net::IDN::Punycode;
 
 use integer;
 
@@ -51,6 +54,7 @@ sub decode_punycode {
     my $bias   = INITIAL_BIAS;
     my @output;
 
+    return undef unless defined $input;
     return '' unless length $input;
 
     if($input =~ s/(.*)$Delimiter//os) {
@@ -98,7 +102,7 @@ sub decode_punycode {
     return join '', @output;
 }
 
-sub encode_punycode {
+sub _noxs_encode_punycode {
     my $input = shift;
     my $input_length = length $input;
 

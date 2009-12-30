@@ -11,8 +11,6 @@ OVERVIEW
   Net::IDN::Punycode -- ASCII-compatible encoding of Unicode 
   			(Punycode, RFC 3492)
 
-  IDNA::Punycode     -- Compatibility with earlier versions
-
 INSTALLATION
 
   To install this module type the following:

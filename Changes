@@ -1,6 +1,7 @@
 Revision history for Perl extension Net::IDN::Encode
 
 1.00 (2009-01-01)
+	- drop IDNA::Punycode
 	- release as 1.00
 
 0.99_20091231

@@ -10,7 +10,7 @@ $VERSION = eval $VERSION;
 use Carp;
 use Exporter;
 
-use Net::IDN::Nameprep;
+# use Net::IDN::Nameprep;
 use Net::IDN::Punycode;
 
 our @ISA = ('Exporter');
@@ -30,7 +30,7 @@ sub _to_ascii {
   my ($label,%param) = @_;
 
   if($label =~ m/[^\x00-\x7F]/) {
-    $label = nameprep($label);
+    $label = _nameprep($label);
   }
 
   if($param{'UseSTD3ASCIIRules'}) {
@@ -56,7 +56,7 @@ sub _to_unicode {
 
   return eval {
     if($label =~ m/[^\x00-\x7F]/) {
-      $label = nameprep($label);
+      $label = _nameprep($label);
     }
 
     my $save3 = $label;
@@ -106,6 +106,35 @@ sub domain_to_unicode { _domain(shift,\&_to_unicode) }
 
 sub email_to_ascii { _email(shift,\&_to_ascii) }
 sub email_to_unicode { _email(shift,\&_to_unicode) }
+
+use Unicode::Stringprep;
+
+use Unicode::Stringprep::Mapping;
+use Unicode::Stringprep::Prohibited;
+
+## NB: Do not rely on this function being here. It will go away with IDNA2008.
+## If you need a separate nameprep, use Net::IDN::Nameprep (when it's fixed).
+##
+*_nameprep = Unicode::Stringprep->new(
+  3.2,
+  [ 
+    @Unicode::Stringprep::Mapping::B1, 
+    @Unicode::Stringprep::Mapping::B2 
+  ],
+  'KC',
+  [
+    @Unicode::Stringprep::Prohibited::C12,
+    @Unicode::Stringprep::Prohibited::C22,
+    @Unicode::Stringprep::Prohibited::C3,
+    @Unicode::Stringprep::Prohibited::C4,
+    @Unicode::Stringprep::Prohibited::C5,
+    @Unicode::Stringprep::Prohibited::C6,
+    @Unicode::Stringprep::Prohibited::C7,
+    @Unicode::Stringprep::Prohibited::C8,
+    @Unicode::Stringprep::Prohibited::C9
+  ],
+  1,
+);
 
 1;
 

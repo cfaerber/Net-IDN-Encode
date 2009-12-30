@@ -5,13 +5,8 @@ OVERVIEW
 			toASCII and toUNICODE as defined in
 			RFC 3490)
 
-  Net::IDN::Nameprep -- normalization of domain names (Nameprep,
-			RFC 3491)
-
   Net::IDN::Punycode -- ASCII-compatible encoding of Unicode 
   			(Punycode, RFC 3492)
-
-  IDNA::Punycode     -- Compatibility with earlier versions
 
 INSTALLATION
 

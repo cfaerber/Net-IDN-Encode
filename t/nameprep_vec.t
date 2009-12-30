@@ -4,7 +4,10 @@ use utf8;
 use Test::More;
 use Test::NoWarnings;
 
-use Net::IDN::Nameprep;
+# use Net::IDN::Nameprep;
+use Net::IDN::Encode;
+
+*nameprep = \&Net::IDN::Encode::_nameprep;
 
 no warnings 'utf8';
 

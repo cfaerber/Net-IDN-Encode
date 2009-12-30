@@ -118,7 +118,7 @@ and extended by Robert Urban E<lt>urban@UNIX-Beratung.deE<gt>.
 
 =head1 LICENSE
 
-Copyright 2007-2009 Claus FE<auml>rber.
+Copyright 2007-2010 Claus FE<auml>rber.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

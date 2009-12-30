@@ -16,7 +16,7 @@ my $b = Module::Build->new(
 
 	'requires'	=> {
 		'Net::IDN::Encode' => 1,
-		'perl' => 5.008003,
+		'Net::IDN::Punycode' => 1,
 	},
 	'build_requires' => {
 		'Test::More' => 0, 

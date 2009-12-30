@@ -1,56 +1,15 @@
-Revision history for Perl extension Net::IDN::Encode
+Revision history for Perl extension IDNA::Punycode
 
 1.00 (2009-01-01)
-	- release as 1.00
+	- complete rewrite based on Net::IDN::Punycode/::Encode
+	- deprecate this module, only provide it for compatibility
 
-0.99_20091231
-	- depend on perl 5.8.3
-	- optimise Net::IDN::Punycode
+0.03  Thu Sep  1 14:49:17 MEST 2005
+	* added idn_prefix() function
+	* made "xn--" default prefix for punycode format
 
-0.99_20091226 Sat Dec 26 00:00:00 2009
-	- some clean-ups
+0.02  Mon May 20 12:17:26 JST 2002
+	* [API change] now exception is thrown in conversion failure
 
-0.99_20091216 Wed Dec 16 00:00:00 2009
-	- switch to Module::Build
-	- switch to Github, remove svn:keywords, add .gitignore
-
-	- use ASCII in POD, fixes FAILs with perl 5.6.x
-	- add examples in eg/
-
-0.99_20080913 Sun Sep 13 12:00:00 2008
-	- fixed perl 5.6.x (no warnings 'utf8')
-
-0.99_20080913 Sat Sep 13 12:00:00 2008
-	- require perl version 5.6.0 instead of 5.6.6
-	- skip more tests in lower perl versions
-
-	- removed Encode::Punycode; Encode is only available from
-	  perl 5.7.3
-	- renamed back to Net::IDN::Encode; without
-	  Encode::Punycode, the new name does not make sense.
-
-0.99_20071012 Fri Oct 12 12:00:00 2007
-	- renamed Net-IDN-Encode distribution to Net-IDN-tools
-
-	- includes Net::IDN::Punycode (from IDNA::Punycode v0.02)
-	- includes Net::IDN::Nameprep (complete rewrite, uses
-	  Unicode::Stringprep)
-	- includes IDNA::Punycode (deprecated, new version based
-	  on Net::IDN::Punycode/::Encode)
-	- includes Encode::Punycode (new version based on
-	  Net::IDN::Punycode)
-	- uses Unicode::Stringprep
-
-	- more tests, including test vectors from Internet Draft
-	  draft-josefsson-idn-test-vectors-00.
-
-	- FIXES: #16150: Net::IDN::Encode depends on non-modulelist module IDNA::Punycode
-	- FIXES: #16145: IDNA::Punycode 0.03
-	- FIXES: #28123: Undeclared dependency on Unicode::String (reported by ANDK)
-	- FIXES WARNING: v-string in use/require non-portable (Net::IDN::Nameprep[::*])
-
-0.02  Sun Jun 20 00:00:00 2004
-	- fixed handling of incomplete/empty email addresses
-
-0.01  Sun May 30 00:00:00 2004
-	- first release
+0.01  Tue May  7 11:47:28 2002
+	- original version

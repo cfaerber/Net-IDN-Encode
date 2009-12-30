@@ -6,25 +6,21 @@ use utf8;
 use Module::Build;
 
 my $b = Module::Build->new(
-	'module_name'	=> 'Net::IDN::Encode',
+	'module_name'	=> 'IDNA::Punycode',
 	'license'	=> 'perl',
 	'dist_author'	=> 'Claus Färber <CFAERBER@cpan.org>',
-	'dist_abstract' => 'Internationalizing Domain Names in Applications (RFC 3490)',
 
 	'sign'		=> 1,
 	'create_license' => 1,
 	'create_makefile_pl' => 'traditional',
 
 	'requires'	=> {
-		'Unicode::Stringprep' => 1.10,
+		'Net::IDN::Encode' => 1,
 		'perl' => 5.008003,
 	},
 	'build_requires' => {
 		'Test::More' => 0, 
 		'Test::NoWarnings' => 0,
-	},
-	'no_index' => {
-		'directory' => 'eg'
 	},
 	'resources' => {
 		'homepage' => 'http://search.cpan.org/dist/Net-IDN-Encode',

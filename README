@@ -1,17 +1,6 @@
 OVERVIEW
 
-  Net::IDN::Encode   -- high-level interface for encoding and 
-  			decoding of domain names (implements
-			toASCII and toUNICODE as defined in
-			RFC 3490)
-
-  Net::IDN::Nameprep -- normalization of domain names (Nameprep,
-			RFC 3491)
-
-  Net::IDN::Punycode -- ASCII-compatible encoding of Unicode 
-  			(Punycode, RFC 3492)
-
-  IDNA::Punycode     -- Compatibility with earlier versions
+  IDNA::Punycode     -- DEPRECATED module for IDNA and Punyode
 
 INSTALLATION
 
@@ -26,7 +15,8 @@ DEPENDENCIES
 
   This module requires these other modules and libraries:
 
-    Unicode::Stringprep
+    Net::IDN::Encode
+    Net::IDN::Punycode	(is Net-IDN-Encode)
 
 AUTHOR
 

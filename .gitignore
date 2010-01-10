@@ -11,3 +11,5 @@ SIGNATURE
 _build
 blib
 pm_to_blib
+*.c
+*.o

@@ -1,9 +1,13 @@
 Revision history for Perl extension Net::IDN::Encode
 
-1.00 (2009-01-09)
+0.999_20090112 (2009-01-10)
+	- add XS for decode_punycode
+
+0.999_20090110 (2009-01-10)
+	- add XS for encode_punycode
+
 	- include Net::IDN::Nameprep into Net::IDN::Encode *sigh*
 	- drop IDNA::Punycode
-	- release as 1.00
 
 0.99_20091231
 	- depend on perl 5.8.3

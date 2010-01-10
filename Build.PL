@@ -7,6 +7,7 @@ use Module::Build;
 
 my $b = Module::Build->new(
 	'module_name'	=> 'Net::IDN::Encode',
+
 	'license'	=> 'perl',
 	'dist_author'	=> 'Claus Färber <CFAERBER@cpan.org>',
 	'dist_abstract' => 'Internationalizing Domain Names in Applications (RFC 3490)',

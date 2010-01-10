@@ -4,8 +4,9 @@ Build.PL
 Makefile.PL
 MANIFEST
 lib/Net/IDN/Encode.pm
-lib/Net/IDN/Nameprep.pm
 lib/Net/IDN/Punycode.pm
+lib/Net/IDN/Punycode.xs
+lib/Net/IDN/PunycodePP.pm
 t/00use.t
 t/encode_bytes.t
 t/encode_utf8.t

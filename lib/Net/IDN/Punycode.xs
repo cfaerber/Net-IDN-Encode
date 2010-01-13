@@ -61,8 +61,6 @@ encode_punycode(input)
 
 		STRLEN length_guess, u8;
 
-		SV* output;
-
 	PPCODE:	
 		if(!SvOK(input)) XSRETURN_UNDEF;
 
@@ -77,11 +75,11 @@ encode_punycode(input)
 								   length of domain names */
 		length_guess += 2;				/* plus DELIM + '\0' */
 
-		output = NEWSV('P',length_guess);
-		sv_2mortal(output);				/* so we can use croak w/o memory leaks */
-		SvPOK_only(output);				/* UTF8 is off (BASE chars only) */
-		re_s = re_p = SvPV_nolen(output);
-		re_e = re_s + SvLEN(output);
+		RETVAL = NEWSV('P',length_guess);
+		sv_2mortal(RETVAL);				/* so we can use croak w/o memory leaks */
+		SvPOK_only(RETVAL);				/* UTF8 is off (BASE chars only) */
+		re_s = re_p = SvPV_nolen(RETVAL);
+		re_e = re_s + SvLEN(RETVAL);
 
 		while(in_p < in_e) {
 		  if( isBASE(*in_p) ) 
@@ -132,7 +130,7 @@ encode_punycode(input)
 		      for(k = BASE;; k += BASE) {
 			if(re_p >= re_e) {
 			  length_guess = re_e - re_s + 16;
-			  re_e = SvGROW(output, length_guess);
+			  re_e = SvGROW(RETVAL, length_guess);
 			  re_p = re_e + (re_p - re_s);
 			  re_s = re_e;
 			  re_e = re_s + length_guess;
@@ -143,6 +141,7 @@ encode_punycode(input)
 			*re_p++ = enc_digit[t + ((q-t) % (BASE-t))];
 		        q = (q-t) / (BASE-t);
   		      }
+		      if(q > BASE) croak("input exceeds punycode limit");
 	              *re_p++ = enc_digit[q];
 		      bias = adapt(delta, h+1, first);
                       delta = first = 0;
@@ -155,8 +154,8 @@ encode_punycode(input)
 		  ++n;
 		}
 		*re_p = 0;
-		SvCUR_set(output, re_p - re_s);
-		ST(0) = output;
+		SvCUR_set(RETVAL, re_p - re_s);
+		ST(0) = RETVAL;
 		XSRETURN(1);
 
 SV*
@@ -172,8 +171,6 @@ decode_punycode(input)
 		char *in_s, *in_p, *in_e, *re_s, *re_p, *re_e, *skip_p;
 		int first = 1;
 		STRLEN length_guess, h, u8;
-		
-		SV* output;
 
 	PPCODE:	
 		if(!SvOK(input)) XSRETURN_UNDEF;
@@ -185,11 +182,11 @@ decode_punycode(input)
 
 		if(length_guess < 256) length_guess = 256;
 
-		output = NEWSV('D',length_guess);
-		sv_2mortal(output);				/* so we can use croak w/o memory leaks */
-		SvPOK_only(output);
-		re_s = re_p = SvPV_nolen(output);
-		re_e = re_s + SvLEN(output);
+		RETVAL = NEWSV('D',length_guess);
+		sv_2mortal(RETVAL);				/* so we can use croak w/o memory leaks */
+		SvPOK_only(RETVAL);
+		re_s = re_p = SvPV_nolen(RETVAL);
+		re_e = re_s + SvLEN(RETVAL);
 
 		skip_p = NULL;
 		for(in_p = in_s; in_p < in_e; in_p++) {
@@ -232,10 +229,10 @@ decode_punycode(input)
 
 		  if(re_p + u8 >= re_e) {
 		    length_guess = re_e - re_p + u8 + 16;
-		    re_e = SvGROW(output, length_guess);
+		    re_e = SvGROW(RETVAL, length_guess);
 		    re_p = re_e + (re_p - re_s);
 		    re_s = re_e;
-		    re_e = re_s + SvLEN(output);
+		    re_e = re_s + SvLEN(RETVAL);
 		  }
 
 		  j = i;
@@ -248,8 +245,8 @@ decode_punycode(input)
 		  uvuni_to_utf8_flags(skip_p, n, UNICODE_ALLOW_ANY);
 		}
 
-		if(!first) SvUTF8_on(output);			/* UTF-8 chars have been inserted */
+		if(!first) SvUTF8_on(RETVAL);			/* UTF-8 chars have been inserted */
 		*re_p = 0;
-		SvCUR_set(output, re_p - re_s);
-		ST(0) = output;
+		SvCUR_set(RETVAL, re_p - re_s);
+		ST(0) = RETVAL;
 		XSRETURN(1);

@@ -1,10 +1,8 @@
 use strict;
 use utf8;
 
-use Test::More;
-use Test::NoWarnings;
-
-use Net::IDN::Punycode ':all';
+use Net::IDN::Punycode;
+use Net::IDN::Punycode::PP;
 
 our @idna = (
   ["Arabic (Egyptian)",
@@ -101,34 +99,14 @@ our @idna = (
     "b1abfaaepdrnnbgefbadotcwatmq2g4l", 0, 0, 1, 1 ],
    );
 
-plan tests => ($#idna+1)*2 + 1;
+use Benchmark qw(timethese);
 
+my @in = map { $_->[1] } @idna;
+my @out = map { $_->[2] } @idna;
 
-foreach my $test (@idna) 
-{
-  my ($comment,$in,$out,$allowunassigned,$usestd3asciirules,$toascii,$tounicode) = @{$test};
-
-  is(encode_punycode($in), $out, $comment.' (encode_punycode)');
-  is(decode_punycode($out), $in, $comment.' (decode_punycode)');
-}
-
-# Test vectors extracted from:
-#
-#                    Nameprep and IDNA Test Vectors
-#                   draft-josefsson-idn-test-vectors
-#
-# Copyright (C) The Internet Society (2003). All Rights Reserved.
-#
-# This document and translations of it may be copied and furnished
-# to others, and derivative works that comment on or otherwise
-# explain it or assist in its implementation may be prepared,
-# copied, published and distributed, in whole or in part, without
-# restriction of any kind, provided that the above copyright
-# notice and this paragraph are included on all such copies and
-# derivative works. However, this document itself may not be
-# modified in any way, such as by removing the copyright notice or
-# references to the Internet Society or other Internet
-# organizations, except as needed for the purpose of developing
-# Internet standards in which case the procedures for copyrights
-# defined in the Internet Standards process must be followed, or
-# as required to translate it into languages other than English.
+timethese( -5, {
+  'encode_pp'	=> sub { Net::IDN::Punycode::PP::_encode_punycode($_) foreach(@in); },
+  'encode_xs'	=> sub { Net::IDN::Punycode::encode_punycode($_) foreach(@in); },
+  'decode_pp'	=> sub { Net::IDN::Punycode::PP::_decode_punycode($_) foreach(@out); },
+  'decode_xs'	=> sub { Net::IDN::Punycode::decode_punycode($_) foreach(@out); },
+});

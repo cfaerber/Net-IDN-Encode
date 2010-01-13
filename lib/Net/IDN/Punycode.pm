@@ -1,16 +1,18 @@
 package Net::IDN::Punycode;
 
-use 5.008_003;
+use 5.006;
 
 use strict;
 use utf8;
 use warnings;
 
 use Exporter;
-our $VERSION = "0.999_20100112";
+our $VERSION = "1.000";
 
-our @ISA    = qw(Exporter);
-our @EXPORT = qw(encode_punycode decode_punycode);
+our @ISA = qw(Exporter);
+our @EXPORT = ();
+our @EXPORT_OK = qw(encode_punycode decode_punycode);
+our %EXPORT_TAGS = ( 'all' => \@EXPORT_OK );
 
 eval { 
   require XSLoader;
@@ -18,9 +20,8 @@ eval {
 };
 
 if (!defined(&encode_punycode)) {
-  require Net::IDN::PunycodePP;
-  *Net::IDN::Punycode::encode_punycode = \&Net::IDN::PunycodePP::_encode_punycode;
-  *Net::IDN::Punycode::decode_punycode = \&Net::IDN::PunycodePP::_decode_punycode;
+  require Net::IDN::Punycode::PP;
+  Net::IDN::Punycode::PP->import(qw(:all));
 }
 
 1;
@@ -32,7 +33,7 @@ Net::IDN::Punycode - A Bootstring encoding of Unicode for IDNA (S<RFC 3492>)
 
 =head1 SYNOPSIS
 
-  use Net::IDN::Punycode;
+  use Net::IDN::Punycode qw(:all);
   $punycode = encode_punycode($unicode);
   $unicode  = decode_punycode($punycode);
 
@@ -51,7 +52,10 @@ prefix or suffix, either.
 
 =head1 FUNCTIONS
 
-The following functions are exported by default.
+No functions are exported by default. You can use the tag C<:all>
+or import them individually.
+
+The following functions are available:
 
 =over 4
 
@@ -79,7 +83,7 @@ Claus FE<auml>rber E<lt>CFAERBER@cpan.orgE<gt> (from version 1.00)
 
 Copyright 2002-2004 Tatsuhiko Miyagawa E<lt>miyagawa@bulknews.netE<gt>
 
-Copyright 2007-2009 Claus FE<auml>rber E<lt>CFAERBER@cpan.orgE<gt>
+Copyright 2007-2010 Claus FE<auml>rber E<lt>CFAERBER@cpan.orgE<gt>
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

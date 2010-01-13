@@ -1,16 +1,22 @@
-package Net::IDN::PunycodePP;
+package Net::IDN::Punycode::PP;
 
-use 5.008_003;
+use 5.007_001;
 
 use strict;
 use utf8;
 use warnings;
 
 use Carp;
+use Exporter;
+
+our $VERSION = "1.000";
+
+our @ISA = qw(Exporter);
+our @EXPORT = ();
+our @EXPORT_OK = qw(encode_punycode decode_punycode);
+our %EXPORT_TAGS = ( 'all' => \@EXPORT_OK );
 
 use integer;
-
-our $DEBUG = 0;
 
 use constant BASE => 36;
 use constant TMIN => 1;
@@ -36,8 +42,8 @@ sub _adapt {
     return $k + (((BASE - TMIN + 1) * $delta) / ($delta + SKEW));
 }
 
-sub _decode_punycode {
-    die("Usage: decode_punycode(input)") unless @_;
+sub decode_punycode {
+    die("Usage: Net::IDN::Punycode::decode_punycode(input)") unless @_;
 
     my $input = shift;
 
@@ -51,13 +57,13 @@ sub _decode_punycode {
 
     if($input =~ s/(.*)$Delimiter//os) {
       my $base_chars = $1;
-      die 'non-basic characters in input' 
+      croak("non-base character in input for decode_punycode")
         if $base_chars =~ m/[^$BasicRE]/os;
       push @output, split //, $base_chars;
     }
     my $code = $input;
 
-    croak('invalid punycode code point') if $code =~ m/[^$PunyRE]/os;
+    croak('invalid digit in input for decode_punycode') if $code =~ m/[^$PunyRE]/os;
 
     utf8::downgrade($input);	## handling failure of downgrade is more expensive than
 				## doing the above regexp w/ utf8 semantics
@@ -69,6 +75,7 @@ sub _decode_punycode {
     LOOP:
 	for (my $k = BASE; 1; $k += BASE) {
 	    my $cp = substr($code, 0, 1, '');
+	    croak("incomplete encoded code point in decode_punycode") if !defined $cp;
 	    my $digit = ord $cp;
 		
 	    ## NB: this depends on the PunyRE catching invalid digit characters
@@ -84,18 +91,16 @@ sub _decode_punycode {
 	    $w *= (BASE - $t);
 	}
 	$bias = _adapt($i - $oldi, @output + 1, $oldi == 0);
-	warn "bias becomes $bias" if $DEBUG;
 	$n += $i / (@output + 1);
 	$i = $i % (@output + 1);
 	splice(@output, $i, 0, chr($n));
-	warn join " ", map sprintf('%04x', $_), @output if $DEBUG;
 	$i++;
     }
     return join '', @output;
 }
 
-sub _encode_punycode {
-    die("Usage: encode_punycode(input)") unless @_;
+sub encode_punycode {
+    die("Usage: Net::IDN::Punycode::encode_punycode(input)") unless @_;
 
     my $input = shift;
     my $input_length = length $input;
@@ -105,7 +110,6 @@ sub _encode_punycode {
 
     my $h = my $b = length $output;
     $output .= $Delimiter if $b > 0;
-    warn "basic codepoints: ($output)" if $DEBUG;
     utf8::downgrade($output);	## no unnecessary use of utf8 semantics
 
     my @input = map ord, split //, $input;
@@ -117,9 +121,6 @@ sub _encode_punycode {
 
     foreach my $m (@chars) {
  	next if $m < $n;
-	#local $DEBUG = 1;
-	warn sprintf "next code point to insert is %04x", $m if $DEBUG;
-
 	$delta += ($m - $n) * ($h + 1);
 	$n = $m;
 	for(my $i = 0; $i < $input_length; $i++)
@@ -140,11 +141,10 @@ sub _encode_punycode {
 
 		    $q = ($q - $t) / (BASE - $t);
 		}
-		die "input exceeds punycode limit" if $q > BASE;
+		croak("input exceeds punycode limit") if $q > BASE;
                 $output .= chr $q + ($q < 26 ? 0x61 : 0x30-26);
 
 		$bias = _adapt($delta, $h + 1, $h == $b);
-		warn "bias becomes $bias" if $DEBUG;
 		$delta = 0;
 		$h++;
 	    }
@@ -162,6 +162,10 @@ __END__
 
 Net::IDN::Punycode::PP - pure-perl implementation of Net::IDN::Punycode
 
+=head1 DESCRIPTION
+
+See L<Net::IDN::Punycode>.
+
 =head1 AUTHORS
 
 Tatsuhiko Miyagawa E<lt>miyagawa@bulknews.netE<gt> (versions 0.01 to 0.02)
@@ -172,7 +176,7 @@ Claus FE<auml>rber E<lt>CFAERBER@cpan.orgE<gt> (from version 1.00)
 
 Copyright 2002-2004 Tatsuhiko Miyagawa E<lt>miyagawa@bulknews.netE<gt>
 
-Copyright 2007-2009 Claus FE<auml>rber E<lt>CFAERBER@cpan.orgE<gt>
+Copyright 2007-2010 Claus FE<auml>rber E<lt>CFAERBER@cpan.orgE<gt>
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

@@ -4,33 +4,36 @@ use strict;
 use utf8;
 use warnings;
 
-our $VERSION = "0.999_20090112";
+our $VERSION = "1.000";
 $VERSION = eval $VERSION;
 
 use Carp;
 use Exporter;
 
-# use Net::IDN::Nameprep;
-use Net::IDN::Punycode;
+use Net::IDN::Nameprep 1 ();
+use Net::IDN::Punycode 1 ();
 
 our @ISA = ('Exporter');
-our @EXPORT = (
+our @EXPORT = ();
+our @EXPORT_OK = (
+  'to_ascii', 'to_unicode',
   'domain_to_ascii',
   'domain_to_unicode',
   'email_to_ascii',
   'email_to_unicode',
 );
+our %EXPORT_TAGS = ( 'all' => \@EXPORT_OK );
 
 our $IDNA_prefix = 'xn--';
 
-sub _to_ascii {
+sub to_ascii {
   use bytes;
   no warnings qw(utf8); # needed for perl v5.6.x
 
   my ($label,%param) = @_;
 
   if($label =~ m/[^\x00-\x7F]/) {
-    $label = _nameprep($label);
+    $label = Net::IDN::Nameprep::nameprep($label);
   }
 
   if($param{'UseSTD3ASCIIRules'}) {
@@ -42,13 +45,13 @@ sub _to_ascii {
 
   if($label =~ m/[^\x00-\x7F]/) {
     croak 'Invalid label (toASCII, step 5)' if $label =~ m/^$IDNA_prefix/;
-    return $IDNA_prefix.encode_punycode($label);
+    return $IDNA_prefix.(Net::IDN::Punycode::encode_punycode($label));
   } else {
     return $label;
   }
 }
 
-sub _to_unicode {
+sub to_unicode {
   use bytes;
 
   my ($label,%param) = @_;
@@ -62,9 +65,9 @@ sub _to_unicode {
     my $save3 = $label;
     die unless $label =~ s/^$IDNA_prefix//;
 
-    $label = decode_punycode($label);
+    $label = Net::IDN::Punycode::decode_punycode($label);
     
-    my $save6 = _to_ascii($label,%param);
+    my $save6 = to_ascii($label,%param);
 
     die unless uc($save6) eq uc($save3);
 
@@ -74,18 +77,19 @@ sub _to_unicode {
 
 sub _domain {
   use utf8;
-  my ($domain,$_to_function,@param) = @_;
-  return undef unless $domain;
+  my ($domain,$to_function,@param) = @_;
+  return $domain if !defined($domain) || $domain eq '';
+
   return join '.',
     grep { croak 'Invalid domain name' if length($_) > 63 && !m/[^\x00-\x7F]/; 1 }
-      map { $_to_function->($_, @param, 'UseSTD3ASCIIRules' => 1) }
+      map { $to_function->($_, @param, 'UseSTD3ASCIIRules' => 1) }
         split /[\.。．｡]/, $domain;
 }
 
 sub _email {
   use utf8;
-  my ($email,$_to_function,@param) = @_;
-  return undef unless $email;
+  my ($email,$to_function,@param) = @_;
+  return $email if !defined($email) || $email eq '';
 
   $email =~ m/^([^"\@＠]+|"(?:(?:[^"]|\\.)*[^\\])?")(?:[\@＠]
     (?:([^\[\]]*)|(\[.*\]))?)?$/x || croak "Invalid email address";
@@ -94,18 +98,18 @@ sub _email {
   $local_part =~ m/[^\x00-\x7F]/ && croak "Invalid email address";
   $domain_literal =~ m/[^\x00-\x7F]/ && croak "Invalid email address" if $domain_literal;
 
-  $domain = _domain($domain,$_to_function,@param) if $domain;
+  $domain = _domain($domain,$to_function,@param) if $domain;
 
   return ($domain || $domain_literal)
     ? ($local_part.'@'.($domain || $domain_literal))
     : ($local_part);
 }
 
-sub domain_to_ascii { _domain(shift,\&_to_ascii) }
-sub domain_to_unicode { _domain(shift,\&_to_unicode) }
+sub domain_to_ascii { _domain(shift,\&to_ascii) }
+sub domain_to_unicode { _domain(shift,\&to_unicode) }
 
-sub email_to_ascii { _email(shift,\&_to_ascii) }
-sub email_to_unicode { _email(shift,\&_to_unicode) }
+sub email_to_ascii { _email(shift,\&to_ascii) }
+sub email_to_unicode { _email(shift,\&to_unicode) }
 
 use Unicode::Stringprep;
 
@@ -148,7 +152,7 @@ Net::IDN::Encode - Internationalizing Domain Names in Applications (S<RFC 3490>)
 
 =head1 SYNOPSIS
 
-  use Net::IDN::Encode;
+  use Net::IDN::Encode ':all';
   my $a = domain_to_ascii("müller.example.org");
   my $e = email_to_ascii("POSTMASTER@例。テスト");
   my $u = domain_to_unicode('EXAMPLE.XN--11B5BS3A9AJ6G');
@@ -165,9 +169,47 @@ the ASCII characters already allowed in so-called host names today
 
 =head1 FUNCTIONS
 
-The following functions are exported by default.
+By default, this module does not export any subroutines. You may
+use the C<:all> tag to import everything. You can also use regular
+expressions such as C</^to_/> or C</^email_/> to select some of
+the functions, see L<Exporter> for details.
+
+The following functions are available:
 
 =over
+
+=item to_ascii( $label [, 'UseSTD3ASCIIRules' => 1  ] )
+
+Converts a single label C<$label> to ASCII. Will throw an
+exception on invalid input.
+
+This function takes the following parameter:
+
+=over
+
+=item UseSTD3ASCIIRules
+
+(boolean) If set to a true value, checks the label for compliance with S<STD 3>
+(S<RFC 1123>) syntax for host name parts.
+
+=back
+
+This function does not try to handle strings that consist of
+multiple lables (such as domain names).
+
+=item to_unicode( $label )
+
+Converts a single label C<$label> to Unicode. Will throw an
+exception on invalid input.
+
+This function does not try to handle strings that consist of
+multiple lables (such as domain names).
+
+=item domain_to_unicode( $domain )
+
+Converts all labels of the hostname C<$domain> (with labels
+seperated by dots) to Unicode. Will throw an exception on invalid
+input.
 
 =item domain_to_ascii( $domain )
 

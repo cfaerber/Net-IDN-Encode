@@ -1,0 +1,5 @@
+Benchmark: running decode_pp, decode_xs, encode_pp, encode_xs for at least 5 CPU seconds...
+ decode_pp:  7 wallclock secs ( 5.05 usr +  0.20 sys =  5.25 CPU) @ 586.48/s (n=3079)
+ decode_xs:  6 wallclock secs ( 5.18 usr +  0.11 sys =  5.29 CPU) @ 26842.53/s (n=141997)
+ encode_pp:  7 wallclock secs ( 4.99 usr +  0.22 sys =  5.21 CPU) @ 285.22/s (n=1486)
+ encode_xs:  6 wallclock secs ( 5.16 usr +  0.19 sys =  5.35 CPU) @ 4700.56/s (n=25148)

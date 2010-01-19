@@ -15,8 +15,10 @@ DEPENDENCIES
 
   This module requires these other modules and libraries:
 
-    Net::IDN::Encode
-    Net::IDN::Punycode	(is Net-IDN-Encode)
+    Net::IDN::Encode	(in Net-IDN-Encode)
+    Net::IDN::Punycode	(in Net-IDN-Encode)
+    Net::IDN::Nameprep	(indirectly)
+    Unicode::Stringprep (indirectly)
 
 AUTHOR
 

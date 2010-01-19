@@ -4,7 +4,7 @@ use strict;
 use utf8;
 use warnings;
 
-our $VERSION = "1.00";
+our $VERSION = "1.000";
 $VERSION = eval $VERSION;
 
 require Exporter;
@@ -84,7 +84,7 @@ Previous versions written by Tatsuhiko Miyagawa E<lt>miyagawa@bulknews.netE<gt>
 
 =head1 LICENSE
 
-Copyright 2007-2009 Claus FE<auml>rber.
+Copyright 2007-2010 Claus FE<auml>rber.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

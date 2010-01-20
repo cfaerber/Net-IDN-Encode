@@ -4,7 +4,7 @@ use strict;
 use utf8;
 use warnings;
 
-our $VERSION = '0.99_20091223';
+our $VERSION = '1.000';
 $VERSION = eval $VERSION;
 
 require Encode;
@@ -45,22 +45,24 @@ Encode::Punycode - Encode plugin for Punycode (S<RFC 3492>)
 =head1 SYNOPSIS
 
   use Encode;
-
   $unicode  = decode('Punycode', $punycode);
   $punycode = encode('Punycode', $unicode);
 
 =head1 DESCRIPTION
 
-Encode::Punycode is an Encode plugin, which implements the
-Punycode encoding.  Punycode is an instance of a more general
-algorithm called Bootstring, which allows strings composed from a
-small set of "basic" code points to uniquely represent any string
-of code points drawn from a larger set.  Punycode is Bootstring
-with particular parameter values appropriate for IDNA.
+Encode::Punycode is an Encode plugin, which implements the Punycode encoding.
 
-Note that this module does not do any string preparation as
-specified by I<nameprep>/I<stringprep>. It does not do add any
-prefix or suffix, either.
+Punycode is an instance of a more general algorithm called Bootstring, which
+allows strings composed from a small set of "basic" code points to uniquely
+represent any string of code points drawn from a larger set.  Punycode is
+Bootstring with particular parameter values appropriate for IDNA.  For a more
+generic (but less efficient) Bootstring implementation, see
+L<Encode::Bootstring>.
+
+This module does not do any string preparation or mappings as
+specified by Nameprep. It does not do add any prefix or suffix, either.  For
+higher-level handling of full Internationalised Domain Names, see
+L<Net::IDN::Encode>.
 
 =head1 AUTHOR
 
@@ -70,7 +72,7 @@ Previous versions written by Tatsuhiko Miyagawa E<lt>miyagawa@bulknews.netE<gt>
 
 =head1 COPYRIGHT
 
-Copyright 2007-2009 Claus FE<auml>rber
+Copyright 2007-2010 Claus FE<auml>rber.
 
 This library is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself.

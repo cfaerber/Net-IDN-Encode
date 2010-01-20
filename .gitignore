@@ -2,6 +2,7 @@ Build
 .DS_Store
 LICENSE
 MANIFEST
+MANIFEST.bak
 META.yml
 Makefile
 Makefile.PL

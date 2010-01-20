@@ -4,7 +4,7 @@ use strict;
 use utf8;
 use warnings;
 
-our $VERSION = "1.000";
+our $VERSION = "1.001";
 $VERSION = eval $VERSION;
 
 require Exporter;
@@ -23,7 +23,7 @@ sub idn_prefix {
 sub decode_punycode {
 	if ($PREFIX) {
 		local $Net::IDN::Encode::IDNA_prefix = $PREFIX;
-		return Net::IDN::Encode::_to_unicode(shift);
+		return Net::IDN::Encode::to_unicode(shift);
 	} else {
 		return Net::IDN::Punycode::decode_punycode(shift);
 	}
@@ -32,7 +32,7 @@ sub decode_punycode {
 sub encode_punycode {
 	if ($PREFIX) {
 		local $Net::IDN::Encode::IDNA_prefix = $PREFIX;
-		return Net::IDN::Encode::_to_ascii(shift);
+		return Net::IDN::Encode::to_ascii(shift);
 	} else {
 		return Net::IDN::Punycode::encode_punycode(shift);
 	}

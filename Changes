@@ -1,6 +1,9 @@
 Revision history for Perl extension IDNA::Punycode
 
-1.00 (2009-01-01)
+1.001 (2010-01-20)
+	- fixed incompability with Net::IDN::Encode >= 1.00
+
+1.000 (2010-01-20)
 	- complete rewrite based on Net::IDN::Punycode/::Encode
 	- deprecate this module, only provide it for compatibility
 

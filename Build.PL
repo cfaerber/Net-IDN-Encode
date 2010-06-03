@@ -16,7 +16,7 @@ my $b = Module::Build->new(
 	'create_makefile_pl' => 'traditional',
 
 	'requires'	=> {
-		'Unicode::Stringprep' => 1,
+		'Unicode::Stringprep' => 1.1,
 	##	'perl' => 5.008003, ## whatever U::S needs
 	},
 	'build_requires' => {

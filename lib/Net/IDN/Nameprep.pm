@@ -11,7 +11,7 @@ require Exporter;
 our @ISA    = qw(Exporter);
 our @EXPORT = qw(nameprep);
 
-use Unicode::Stringprep;
+use Unicode::Stringprep 1.1;
 
 use Unicode::Stringprep::Mapping;
 use Unicode::Stringprep::Prohibited;
@@ -25,9 +25,9 @@ sub nameprep {
       !exists($param{'AllowUnassigned'})
    || $param{'AllowUnassigned'}
   ) {
-    return &$_nameprep_query($input);
+    goto &$_nameprep_query;
   } else {
-    return &$_nameprep_stored($input);
+    goto &$_nameprep_stored;
   }
 }
 

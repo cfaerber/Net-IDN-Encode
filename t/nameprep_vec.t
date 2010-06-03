@@ -199,14 +199,20 @@ our @strprep = (
        "Bidi: RandALCat character U+0627 U+0031 U+0628",
        "\x{0627}\x31\x{0628}", "\x{0627}\x31\x{0628}"
      ],
-
-## stored identifiers are not yet supported
-
-#     [
-#       "Unassigned code point U+E0002",
-#       "\x{E0002}", undef, "Nameprep", 'STRINGPREP_NO_UNASSIGNED',
-#       'STRINGPREP_CONTAINS_UNASSIGNED'
-#     ],
+     [
+       "Unassigned code point U+E0002 (AllowUnassigned => 0)",
+       "\x{E0002}", "\x{E0002}", "Nameprep",
+       {AllowUnassigned => 0}, 'STRINGPREP_CONTAINS_UNASSIGNED',
+     ],
+     [
+       "Unassigned code point U+E0002 (AllowUnassigned => 1)",
+       "\x{E0002}", "\x{E0002}", "Nameprep",
+       {AllowUnassigned => 1},
+     ],
+     [
+       "Unassigned code point U+E0002 (default)",
+       "\x{E0002}", "\x{E0002}", "Nameprep",
+     ],
      [
        "Larger test (shrinking)",
        "X\x{00AD}\x{00DF}\x{0130}\x{2121}\x6a\x{030C}\x{00A0}".
@@ -233,7 +239,7 @@ foreach my $test (@strprep)
         $min_perl_reason || "test", 
         int($min_perl), int($min_perl*1000)%1000, int($min_perl*1000*1000)%1000,), 1 
       if(($min_perl || 0) > $^V);
-    is(eval{nameprep($in)}, $rc ? undef : $out, $comment);
+    is(eval{nameprep($in, $flags ? %$flags : ())}, $rc ? undef : $out, $comment);
   }
 }
 

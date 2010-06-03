@@ -4,7 +4,7 @@ use strict;
 use utf8;
 use warnings;
 
-our $VERSION = "1.000";
+our $VERSION = "1.100";
 $VERSION = eval $VERSION;
 
 require Exporter;
@@ -16,26 +16,53 @@ use Unicode::Stringprep;
 use Unicode::Stringprep::Mapping;
 use Unicode::Stringprep::Prohibited;
 
-*nameprep = Unicode::Stringprep->new(
-  3.2,
-  [ 
-    @Unicode::Stringprep::Mapping::B1, 
-    @Unicode::Stringprep::Mapping::B2 
-  ],
-  'KC',
-  [
-    @Unicode::Stringprep::Prohibited::C12,
-    @Unicode::Stringprep::Prohibited::C22,
-    @Unicode::Stringprep::Prohibited::C3,
-    @Unicode::Stringprep::Prohibited::C4,
-    @Unicode::Stringprep::Prohibited::C5,
-    @Unicode::Stringprep::Prohibited::C6,
-    @Unicode::Stringprep::Prohibited::C7,
-    @Unicode::Stringprep::Prohibited::C8,
-    @Unicode::Stringprep::Prohibited::C9
-  ],
-  1,
-);
+our $_nameprep_stored;
+our $_nameprep_query;
+
+sub nameprep {
+  my ($input, %param) = @_;
+  if (
+      !exists($param{'AllowUnassigned'})
+   || $param{'AllowUnassigned'}
+  ) {
+    return &$_nameprep_query($input);
+  } else {
+    return &$_nameprep_stored($input);
+  }
+}
+
+BEGIN {
+  my @_common_args = (
+    3.2,
+    [
+      @Unicode::Stringprep::Mapping::B1,
+      @Unicode::Stringprep::Mapping::B2
+    ],
+    'KC',
+    [
+      @Unicode::Stringprep::Prohibited::C12,
+      @Unicode::Stringprep::Prohibited::C22,
+      @Unicode::Stringprep::Prohibited::C3,
+      @Unicode::Stringprep::Prohibited::C4,
+      @Unicode::Stringprep::Prohibited::C5,
+      @Unicode::Stringprep::Prohibited::C6,
+      @Unicode::Stringprep::Prohibited::C7,
+      @Unicode::Stringprep::Prohibited::C8,
+      @Unicode::Stringprep::Prohibited::C9
+    ],
+    1,
+  );
+
+  our $_nameprep_stored = Unicode::Stringprep->new(
+    @_common_args,
+    1,
+  );
+
+  our $_nameprep_query = Unicode::Stringprep->new(
+    @_common_args,
+    0,
+  );
+}
 
 1;
 __END__
@@ -64,7 +91,7 @@ This module implements a single function, C<nameprep>, which is exported by defa
 
 =over
 
-=item B<nameprep($input)>
+=item nameprep( $input [, AllowUnassigned => 1 ] )
 
 Processes C<$input> according to the I<nameprep> specification and
 returns the result.
@@ -72,7 +99,21 @@ returns the result.
 If C<$input> contains characters not allowed for I<nameprep>, it
 throws an exception (so use C<eval> if necessary).
 
-This function currently supports preparation for I<query> strings only.
+This function takes the following optional parameter:
+
+=over
+
+=item AllowUnassigned
+
+(boolean) If set to a false value, unassigned code points in C<$input> are not allowed.
+
+False MUST be used for I<stored strings>.
+
+True MAY be used for I<queries>.
+
+The default is true (backwards compatibility).
+
+=back
 
 =back
 

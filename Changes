@@ -1,5 +1,18 @@
 Revision history for Perl extension Net::IDN::Encode
 
+1.100 (2010-06-08)
+	- new parameters AllowUnassigned/UseSTD3ASCIIRules for
+	  to_ascii, to_unicode (RFC 3490)
+	  domain_to_ascii, domain_to_unicode
+	- case insensitive ACE prefix (RFC 3490)
+	- new length 255 check in domain_to_ascii (RFC 1034)
+	- length 63 check moved to to_ascii
+	- dots replacement only in domain_to_ascii
+	  (domain_to_unicode does not require it)
+	- o-modifier in regexs
+	- _domain replaced by domain_to_unicode and domain_to_ascii
+	- _nameprep replaced by NET::IDN::Nameprep
+
 1.000 (2010-01-13)
 	- clean-up
 	- release

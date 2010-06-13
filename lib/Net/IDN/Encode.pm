@@ -4,13 +4,13 @@ use strict;
 use utf8;
 use warnings;
 
-our $VERSION = "1.000";
+our $VERSION = "1.100";
 $VERSION = eval $VERSION;
 
 use Carp;
 use Exporter;
 
-use Net::IDN::Nameprep 1 ();
+use Net::IDN::Nameprep 1.1 ();
 use Net::IDN::Punycode 1 ();
 
 our @ISA = ('Exporter');
@@ -25,6 +25,7 @@ our @EXPORT_OK = (
 our %EXPORT_TAGS = ( 'all' => \@EXPORT_OK );
 
 our $IDNA_prefix = 'xn--';
+our $DOT = qr/[\.。．｡]/;
 
 sub to_ascii {
   use bytes;
@@ -33,22 +34,26 @@ sub to_ascii {
   my ($label,%param) = @_;
 
   if($label =~ m/[^\x00-\x7F]/) {
-    $label = Net::IDN::Nameprep::nameprep($label);
+    $label = Net::IDN::Nameprep::nameprep($label,%param);
   }
 
   if($param{'UseSTD3ASCIIRules'}) {
-    croak 'Invalid domain name (toASCII, step 3)' if 
+    croak 'Invalid label (toASCII, step 3)' if
       $label =~ m/^-/ ||
-      $label =~ m/-$/ || 
+      $label =~ m/-$/ ||
       $label =~ m/[\x00-\x2C\x2E-\x2F\x3A-\x40\x5B-\x60\x7B-\x7F]/;
   }
 
   if($label =~ m/[^\x00-\x7F]/) {
-    croak 'Invalid label (toASCII, step 5)' if $label =~ m/^$IDNA_prefix/;
-    return $IDNA_prefix.(Net::IDN::Punycode::encode_punycode($label));
-  } else {
-    return $label;
+    croak 'Invalid label (toASCII, step 5)' if $label =~ m/^$IDNA_prefix/io;
+    $label = $IDNA_prefix.(Net::IDN::Punycode::encode_punycode($label));
   }
+
+  croak 'Invalid label length (toASCII, step 8)' if
+    length($label) == 0 ||
+    length($label) > 63;
+
+  return $label;
 }
 
 sub to_unicode {
@@ -59,31 +64,38 @@ sub to_unicode {
 
   return eval {
     if($label =~ m/[^\x00-\x7F]/) {
-      $label = _nameprep($label);
+      $label = Net::IDN::Nameprep::nameprep($label,%param);
     }
 
     my $save3 = $label;
-    die unless $label =~ s/^$IDNA_prefix//;
-
+    croak 'Missing IDNA prefix (ToUnicode, step 3)'
+      unless $label =~ s/^$IDNA_prefix//io;
     $label = Net::IDN::Punycode::decode_punycode($label);
-    
+
     my $save6 = to_ascii($label,%param);
 
-    die unless uc($save6) eq uc($save3);
+    croak 'Invalid label (ToUnicode, step 7)' unless uc($save6) eq uc($save3);
 
     $label;
   } || $orig;
 }
 
-sub _domain {
-  use utf8;
-  my ($domain,$to_function,@param) = @_;
-  return $domain if !defined($domain) || $domain eq '';
+sub domain_to_ascii {
+  my ($domain,%param) = @_;
+  $param{'UseSTD3ASCIIRules'} = 1 unless exists $param{'UseSTD3ASCIIRules'};
+  $domain = join '.',
+    map { to_ascii($_, %param) }
+      split /$DOT/o, $domain;
+  croak 'Invalid domain length' if length($domain) > 255;
+  return $domain;
+}
 
-  return join '.',
-    grep { croak 'Invalid domain name' if length($_) > 63 && !m/[^\x00-\x7F]/; 1 }
-      map { $to_function->($_, @param, 'UseSTD3ASCIIRules' => 1) }
-        split /[\.。．｡]/, $domain;
+sub domain_to_unicode {
+  my ($domain,%param) = @_;
+  $param{'UseSTD3ASCIIRules'} = 1 unless exists $param{'UseSTD3ASCIIRules'};
+  return join '',
+    map { /$DOT/o ? $_ : to_unicode($_, %param) }
+      split /($DOT+)/o, $domain;
 }
 
 sub _email {
@@ -98,47 +110,15 @@ sub _email {
   $local_part =~ m/[^\x00-\x7F]/ && croak "Invalid email address";
   $domain_literal =~ m/[^\x00-\x7F]/ && croak "Invalid email address" if $domain_literal;
 
-  $domain = _domain($domain,$to_function,@param) if $domain;
+  $domain = $to_function->($domain,@param) if $domain;
 
   return ($domain || $domain_literal)
     ? ($local_part.'@'.($domain || $domain_literal))
     : ($local_part);
 }
 
-sub domain_to_ascii { _domain(shift,\&to_ascii) }
-sub domain_to_unicode { _domain(shift,\&to_unicode) }
-
-sub email_to_ascii { _email(shift,\&to_ascii) }
-sub email_to_unicode { _email(shift,\&to_unicode) }
-
-use Unicode::Stringprep;
-
-use Unicode::Stringprep::Mapping;
-use Unicode::Stringprep::Prohibited;
-
-## NB: Do not rely on this function being here. It will go away with IDNA2008.
-## If you need a separate nameprep, use Net::IDN::Nameprep (when it's fixed).
-##
-*_nameprep = Unicode::Stringprep->new(
-  3.2,
-  [ 
-    @Unicode::Stringprep::Mapping::B1, 
-    @Unicode::Stringprep::Mapping::B2 
-  ],
-  'KC',
-  [
-    @Unicode::Stringprep::Prohibited::C12,
-    @Unicode::Stringprep::Prohibited::C22,
-    @Unicode::Stringprep::Prohibited::C3,
-    @Unicode::Stringprep::Prohibited::C4,
-    @Unicode::Stringprep::Prohibited::C5,
-    @Unicode::Stringprep::Prohibited::C6,
-    @Unicode::Stringprep::Prohibited::C7,
-    @Unicode::Stringprep::Prohibited::C8,
-    @Unicode::Stringprep::Prohibited::C9
-  ],
-  1,
-);
+sub email_to_ascii { _email(shift,\&domain_to_ascii) }
+sub email_to_unicode { _email(shift,\&domain_to_unicode) }
 
 1;
 
@@ -178,54 +158,79 @@ The following functions are available:
 
 =over
 
-=item to_ascii( $label [, 'UseSTD3ASCIIRules' => 1  ] )
+=item to_ascii( $label [, AllowUnassigned => 0] [, UseSTD3ASCIIRules => 1 ] )
 
 Converts a single label C<$label> to ASCII. Will throw an
 exception on invalid input.
 
-This function takes the following parameter:
+This function takes the following optional parameters:
 
 =over
+
+=item AllowUnassigned
+
+(boolean) If set to a false value, unassigned code points in the label are not allowed.
+
+The default is determinated by C<Net::IDN::Nameprep::nameprep>.
 
 =item UseSTD3ASCIIRules
 
 (boolean) If set to a true value, checks the label for compliance with S<STD 3>
 (S<RFC 1123>) syntax for host name parts.
 
+The default is false (unlike C<domain_to_ascii>).
+
 =back
 
 This function does not try to handle strings that consist of
-multiple lables (such as domain names).
+multiple labels (such as domain names).
 
-=item to_unicode( $label )
+=item to_unicode( $label [, AllowUnassigned => 0] [, UseSTD3ASCIIRules => 1 ] )
 
-Converts a single label C<$label> to Unicode. Will throw an
-exception on invalid input.
+Converts a single label C<$label> to Unicode. Any input is valid.
+
+This function takes the same optional parameters as C<to_ascii>,
+with the same defaults.
 
 This function does not try to handle strings that consist of
-multiple lables (such as domain names).
+multiple labels (such as domain names).
 
-=item domain_to_unicode( $domain )
-
-Converts all labels of the hostname C<$domain> (with labels
-seperated by dots) to Unicode. Will throw an exception on invalid
-input.
-
-=item domain_to_ascii( $domain )
+=item domain_to_ascii( $label [, AllowUnassigned => 0] [, UseSTD3ASCIIRules => 1 ] )
 
 Converts all labels of the hostname C<$domain> (with labels
 seperated by dots) to ASCII. Will throw an exception on invalid
 input.
 
+This function takes the following optional parameters:
+
+=over
+
+=item AllowUnassigned
+
+(boolean) If set to a false value, unassigned code points in the label are not allowed.
+
+The default determinated by C<Net::IDN::Nameprep::nameprep>.
+
+=item UseSTD3ASCIIRules
+
+(boolean) If set to a true value, checks the label for compliance with S<STD 3>
+(S<RFC 1123>) syntax for host name parts.
+
+The default is true (unlike C<to_ascii>).
+
+=back
+
 The following characters are recognized as dots: U+002E (full
 stop), U+3002 (ideographic full stop), U+FF0E (fullwidth full
 stop), U+FF61 (halfwidth ideographic full stop).
 
-=item domain_to_unicode( $domain )
+=item domain_to_unicode( $domain [, AllowUnassigned => 0] [, UseSTD3ASCIIRules => 1 ] )
 
 Converts all labels of the hostname C<$domain> (with labels
-seperated by dots) to Unicode. Will throw an exception on invalid
-input.
+seperated by dots) to Unicode. Any input is valid.
+
+This function takes the same optional parameters as C<domain_to_ascii>,
+with the same defaults.
 
 The following characters are recognized as dots: U+002E (full
 stop), U+3002 (ideographic full stop), U+FF0E (fullwidth full

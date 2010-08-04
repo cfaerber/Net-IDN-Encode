@@ -50,7 +50,7 @@ sub to_ascii {
   }
 
   croak 'Invalid label length (toASCII, step 8)' if
-    length($label) == 0 ||
+    length($label) < 1 ||
     length($label) > 63;
 
   return $label;
@@ -80,45 +80,61 @@ sub to_unicode {
   } || $orig;
 }
 
-sub domain_to_ascii {
+sub _old_domain_to_ascii {
   my ($domain,%param) = @_;
   $param{'UseSTD3ASCIIRules'} = 1 unless exists $param{'UseSTD3ASCIIRules'};
   $domain = join '.',
     map { to_ascii($_, %param) }
       split /$DOT/o, $domain;
-  croak 'Invalid domain length' if length($domain) > 255;
+
+  # NB: Not mandated by IDNA spec
+  # croak 'Invalid domain length' if length($domain) > 255;
   return $domain;
 }
 
-sub domain_to_unicode {
+sub _old_domain_to_unicode {
   my ($domain,%param) = @_;
   $param{'UseSTD3ASCIIRules'} = 1 unless exists $param{'UseSTD3ASCIIRules'};
+  my $even_odd = 0;
   return join '',
-    map { /$DOT/o ? $_ : to_unicode($_, %param) }
-      split /($DOT+)/o, $domain;
+    map { $even_odd++ % 2 ? $_ : to_unicode($_, %param) }
+      split /($DOT)/o, $domain;
+}
+
+sub _domain {
+  my ($domain,$to_function,$ascii,%param) = @_;
+  $param{'UseSTD3ASCIIRules'} = 1 unless exists $param{'UseSTD3ASCIIRules'};
+
+  my $even_odd = 1;
+  return join '',
+    map { $even_odd++ % 2 ? $to_function->($_, %param) : $ascii ? '.' : $_ }
+      split /($DOT)/o, $domain;
 }
 
 sub _email {
-  use utf8;
-  my ($email,$to_function,@param) = @_;
+  my ($email,$to_function,$ascii,%param) = @_;
   return $email if !defined($email) || $email eq '';
 
-  $email =~ m/^([^"\@＠]+|"(?:(?:[^"]|\\.)*[^\\])?")(?:[\@＠]
+  $email =~ m/^([^"\@＠]+|"(?:(?:[^"]|\\.)*[^\\])?")(?:([\@＠])
     (?:([^\[\]]*)|(\[.*\]))?)?$/x || croak "Invalid email address";
-  my($local_part,$domain,$domain_literal) = ($1,$2,$3);
+  my($local_part,$at,$domain,$domain_literal) = ($1,$2,$3);
 
   $local_part =~ m/[^\x00-\x7F]/ && croak "Invalid email address";
   $domain_literal =~ m/[^\x00-\x7F]/ && croak "Invalid email address" if $domain_literal;
 
-  $domain = $to_function->($domain,@param) if $domain;
+  $domain = $to_function->($domain,%param) if $domain;
+  $at = '@' if $ascii;
 
   return ($domain || $domain_literal)
-    ? ($local_part.'@'.($domain || $domain_literal))
+    ? ($local_part.$at.($domain || $domain_literal))
     : ($local_part);
 }
 
-sub email_to_ascii { _email(shift,\&domain_to_ascii) }
-sub email_to_unicode { _email(shift,\&domain_to_unicode) }
+sub domain_to_ascii { _domain(shift, \&to_ascii, 1, @_) }
+sub domain_to_unicode { _domain(shift, \&to_unicode, 0, @_) }
+
+sub email_to_ascii { _email(shift, \&domain_to_ascii, 1, @_) }
+sub email_to_unicode { _email(shift, \&domain_to_unicode, 0, @_) }
 
 1;
 
@@ -161,7 +177,7 @@ The following functions are available:
 =item to_ascii( $label [, AllowUnassigned => 0] [, UseSTD3ASCIIRules => 1 ] )
 
 Converts a single label C<$label> to ASCII. Will throw an
-exception on invalid input.
+exception on invalid input. 
 
 This function takes the following optional parameters:
 
@@ -185,15 +201,19 @@ The default is false (unlike C<domain_to_ascii>).
 This function does not try to handle strings that consist of
 multiple labels (such as domain names).
 
+This function implements the ToASCII operation from S<RFC 3490>.
+
 =item to_unicode( $label [, AllowUnassigned => 0] [, UseSTD3ASCIIRules => 1 ] )
 
-Converts a single label C<$label> to Unicode. Any input is valid.
+Converts a single label C<$label> to Unicode. to_unicode never fails.
 
 This function takes the same optional parameters as C<to_ascii>,
 with the same defaults.
 
 This function does not try to handle strings that consist of
 multiple labels (such as domain names).
+
+This function implements the ToUnicode operation from S<RFC 3490>.
 
 =item domain_to_ascii( $label [, AllowUnassigned => 0] [, UseSTD3ASCIIRules => 1 ] )
 

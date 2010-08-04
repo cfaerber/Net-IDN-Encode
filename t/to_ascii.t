@@ -34,6 +34,7 @@ my @to_ascii = (
 # Minor bug, irrelevant for encoding strict UTF-8 on 32/64 bit machines.
 #  ['not ascii (punycode integer overflow)', 'a'.chr(~0), undef, 1, 0],
   ['not ascii (too long)', 'x' x 56 . 'ä', undef, 1, 0],
+  ['overlong label (64 characters)', 'abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijkl', undef, 0, 1],
 );
 
 plan tests => (@to_ascii + 1);

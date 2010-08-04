@@ -11,6 +11,8 @@ my @domain_to_ascii = (
   ['mixed dots', 'www.a.b。c．d｡com', 'www.a.b.c.d.com', 0, 1],
   ['blank (without STD3 rules)', 'www.a ä o ö u ü.org', 'www.xn--a  o  u -1za7prc.org', 0, 0],
   ['blank (with STD3 rules)', 'www.a ä o ö u ü.org', undef, 0, 1],
+  ['zero-length label', 'www..com', undef, 0, 1],
+  ['terminating dot', 'www.example.com..', 'www.example.com.', 0, 1],
 );
 
 plan tests => (@domain_to_ascii + 1);

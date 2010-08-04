@@ -1,6 +1,6 @@
 Revision history for Perl extension Net::IDN::Encode
 
-1.100 (2010-06-08)
+1.100 (2010-06-08, patch by Loïc Etienne)
 	- new parameters AllowUnassigned/UseSTD3ASCIIRules for
 	  to_ascii, to_unicode (RFC 3490)
 	  domain_to_ascii, domain_to_unicode

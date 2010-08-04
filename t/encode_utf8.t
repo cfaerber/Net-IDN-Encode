@@ -35,9 +35,9 @@ is(email_to_ascii(undef), undef);
 is(email_to_ascii('test'), 'test');
 
 is(email_to_unicode('hans@mueller.example.com'),'hans@mueller.example.com');
-is(email_to_unicode('hans＠mueller.example.com'),'hans@mueller.example.com');
+is(email_to_unicode('hans＠mueller.example.com'),'hans＠mueller.example.com');
 is(email_to_unicode('hans@xn--mller-kva.example.com'),'hans@müller.example.com');
-is(email_to_unicode('hans＠xn--mller-kva.example.com'),'hans@müller.example.com');
+is(email_to_unicode('hans＠xn--mller-kva.example.com'),'hans＠müller.example.com');
 is(email_to_unicode('test@xn--fiq80yua78t.tw'),'test@中央大学.tw');
 is(email_to_unicode(''),'');
 is(email_to_unicode(undef), undef);

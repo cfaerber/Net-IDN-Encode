@@ -15,7 +15,7 @@ my $b = Module::Build->new(
 	'create_makefile_pl' => 'traditional',
 
 	'requires'	=> {
-		'Net::IDN::Encode' => 1,
+		'Net::IDN::Nameprep' => 1,
 		'Net::IDN::Punycode' => 1,
 	},
 	'build_requires' => {

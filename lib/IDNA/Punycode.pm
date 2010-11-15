@@ -4,13 +4,14 @@ use strict;
 use utf8;
 use warnings;
 
-our $VERSION = "1.001";
+our $VERSION = "1.100";
 $VERSION = eval $VERSION;
 
 require Exporter;
 our @ISA	= qw(Exporter);
 our @EXPORT 	= qw(encode_punycode decode_punycode idn_prefix);
 
+use Carp;
 use Net::IDN::Punycode();
 use Net::IDN::Encode();
 
@@ -20,10 +21,55 @@ sub idn_prefix {
 	$PREFIX = shift;
 }
 
+# These functions are copied from Net::IDN::Encode. This allows us to optimise
+# Net::IDN::Encode for the static prefix (e.g. by using /o), while we continue
+# to support changing the prefix here.
+
+sub _to_ascii {
+  use bytes;
+  no warnings qw(utf8); # needed for perl v5.6.x
+
+  my $label = shift;
+
+  if($label =~ m/[^\x00-\x7F]/) {
+    $label = Net::IDN::Nameprep::nameprep($label);
+    croak 'Invalid label (toASCII, step 5)' if $label =~ m/^$PREFIX/i;
+    $label = $PREFIX.(Net::IDN::Punycode::encode_punycode($label));
+  }
+
+  croak 'Invalid label length (toASCII, step 8)' if
+    length($label) < 1 ||
+    length($label) > 63;
+
+  return $label;
+}
+
+sub _to_unicode {
+  use bytes;
+
+  my $label = shift;
+  my $result = $label;
+
+  eval {
+    if($label =~ m/[^\x00-\x7F]/) {
+      $label = Net::IDN::Nameprep::nameprep($label);
+    }
+
+    my $save3 = $label;
+    croak 'Missing IDNA prefix (ToUnicode, step 3)' unless $label =~ s/^$PREFIX//i;
+    $label = Net::IDN::Punycode::decode_punycode($label);
+
+    my $save6 = _to_ascii($label);
+    croak 'Invalid label (ToUnicode, step 7)' unless uc($save6) eq uc($save3);
+    $result = $label;
+  };
+
+  return $result;
+}
+
 sub decode_punycode {
 	if ($PREFIX) {
-		local $Net::IDN::Encode::IDNA_prefix = $PREFIX;
-		return Net::IDN::Encode::to_unicode(shift);
+		return _to_unicode(shift);
 	} else {
 		return Net::IDN::Punycode::decode_punycode(shift);
 	}
@@ -31,8 +77,7 @@ sub decode_punycode {
 
 sub encode_punycode {
 	if ($PREFIX) {
-		local $Net::IDN::Encode::IDNA_prefix = $PREFIX;
-		return Net::IDN::Encode::to_ascii(shift);
+		return _to_ascii(shift);
 	} else {
 		return Net::IDN::Punycode::encode_punycode(shift);
 	}

@@ -13,7 +13,8 @@ our @EXPORT 	= qw(encode_punycode decode_punycode idn_prefix);
 
 use Carp;
 use Net::IDN::Punycode();
-use Net::IDN::Encode();
+use Net::IDN::Nameprep();
+# use Net::IDN::Encode();
 
 our $PREFIX = 'xn--';
 

@@ -3,6 +3,9 @@ Build
 LICENSE
 MANIFEST
 META.yml
+META.json
+MYMETA.yml
+MYMETA.json
 Makefile
 Makefile.PL
 Makefile.old

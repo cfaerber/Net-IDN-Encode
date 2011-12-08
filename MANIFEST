@@ -16,3 +16,4 @@ t/punycode_vec.t
 t/punycode_vec-pp.t
 LICENSE
 META.yml
+META.json

@@ -1,5 +1,10 @@
 Revision history for Perl extension Net::IDN::Encode
 
+1.101 (2011-12-08)
+
+	- FIXES: #72615 faulty data in Build.PL causes a lack of
+	  meta files, which breaks carton.
+
 1.100 (2010-06-08, patch by Loïc Etienne)
 	- new parameters AllowUnassigned/UseSTD3ASCIIRules for
 	  to_ascii, to_unicode (RFC 3490)

@@ -1,5 +1,9 @@
 Revision history for Perl extension Encode::Punycode
 
+1.001 (2011-12-08)
+	- FIXES: #72615 faulty data in Build.PL causes a lack of
+	  meta files, which breaks carton.
+
 0.99_20091223 Wed Dec 23 00:00:00 2009
 	- switch to Module::Build
 	- cleanup after switch to Github

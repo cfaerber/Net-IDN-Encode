@@ -4,6 +4,9 @@ LICENSE
 MANIFEST
 MANIFEST.bak
 META.yml
+META.json
+MYMETA.yml
+MYMETA.json
 Makefile
 Makefile.PL
 Makefile.old

@@ -4,7 +4,7 @@ use strict;
 use utf8;
 use warnings;
 
-our $VERSION = '1.000';
+our $VERSION = '1.001';
 $VERSION = eval $VERSION;
 
 require Encode;

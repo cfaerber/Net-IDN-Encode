@@ -10,3 +10,4 @@ Makefile.PL
 LICENSE
 META.yml
 SIGNATURE    Added here by Module::Build
+META.json

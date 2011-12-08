@@ -24,7 +24,7 @@ my $b = Module::Build->new(
 		'Test::NoWarnings' => 0,
 	},
 	'no_index' => {
-		'directory' => 'eg'
+		'directory' => ['eg']
 	},
 	'resources' => {
 		'homepage' => 'http://search.cpan.org/dist/Net-IDN-Encode',

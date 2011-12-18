@@ -16,6 +16,10 @@ t/encode_bytes.t
 t/encode_utf8.t
 t/punycode_vec.t
 t/punycode_vec-pp.t
+t/uts46_to_ascii-trans.t
+t/uts46_to_ascii.t
+t/uts46_to_unicode-trans.t
+t/uts46_to_unicode.t
 LICENSE
 META.yml
 META.json

@@ -4,7 +4,7 @@ use strict;
 use utf8;
 use warnings;
 
-our $VERSION = "1.900_20111212";
+our $VERSION = "1.900_20111218";
 $VERSION = eval $VERSION;
 
 use Carp;
@@ -70,7 +70,7 @@ __END__
 
 =head1 NAME
 
-Net::IDN::Encode - Internationalizing Domain Names in Applications (S<RFC 3490>)
+Net::IDN::Encode - Internationalizing Domain Names in Applications (S<UTS #46>)
 
 =head1 SYNOPSIS
 
@@ -78,6 +78,11 @@ Net::IDN::Encode - Internationalizing Domain Names in Applications (S<RFC 3490>)
   my $a = domain_to_ascii("müller.example.org");
   my $e = email_to_ascii("POSTMASTER@例。テスト");
   my $u = domain_to_unicode('EXAMPLE.XN--11B5BS3A9AJ6G');
+
+=head1 NOTE
+
+This developer version now implements UTS #46. The documentation
+has not been updated so far, beware!
 
 =head1 DESCRIPTION
 

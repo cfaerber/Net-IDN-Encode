@@ -8,7 +8,7 @@ use warnings;
 
 use Carp;
 
-our $VERSION = "1.900_20111212";
+our $VERSION = "1.900_20111218";
 $VERSION = eval $VERSION;
 
 our $IDNA_prefix = 'xn--';
@@ -30,7 +30,7 @@ sub to_ascii {
   my ($label, %param) = @_;
   no warnings 'utf8';
 
-  my $pass_through = 1;
+  my $pass_through = $label !~ m/[^\p{ASCII}\x2E\x{FF0E}\x{3002}\x{FF61}]/;
 
 # 1. Apply appropriate processing
 # 2. Break the result into labels at U+002E full stop;
@@ -54,7 +54,7 @@ sub to_ascii {
   croak "label too long: '$1' [A4]" if $label =~ m/([^\.]{64,})/;
   croak "label empty: '$label' [A4]" if $label =~ m/\.\./;
   croak "domain name too long: '$label' [A4]" if $label =~ m/.{253}[^\.]/;
-  croak "domain name empty: '$label' [A4]" if $label !~ m/[^\.]/ && !$pass_through;
+  croak "domain name empty: '$label' [A4]" if $label !~ m/[^\.]/ && !$pass_through && !$param{'TransitionalProcessing'};
 
   return $label;
 }

@@ -10,31 +10,32 @@ binmode IdnaTest, ':utf8';
 
 my @tests;
 
+my $line = 0;
 while(<IdnaTest>) {
-  chomp;
+  chomp; ++$line;
   s/\s*#.*//; next if !m/\S/;
 
-  my @c = split /;/;
+  my @c = ($line, split /;/);
   foreach(@c) { s/^\s+//; s/\s+$//; };
 
-  die "format error: '$_' $#c <@c>" if $#c < 3;
-
-  die "unknown test type: $c[0]" if $c[0] !~ m/^(B|N|T)$/;
+  die "format error: '$_' $#c <@c>" if $#c < 4;
+  die "unknown test type: $c[1]" if $c[1] !~ m/^(B|N|T)$/;
+  
   push @tests, \@c;
 }
 
 die "no tests" unless @tests;
 
-write_test('nontransitional', 'unicode', 3, { 'TransitionalProcessing' => 0, }, grep { $_->[0] =~ m/B|N/ } @tests);
-write_test('nontransitional', 'ascii', , 4, { 'TransitionalProcessing' => 0, }, grep { $_->[0] =~ m/B|N/ } @tests);
-write_test('transitional',    'unicode', 3, { 'TransitionalProcessing' => 1, }, grep { $_->[0] =~ m/B|T/ } @tests);
-write_test('transitional',    'ascii', , 4, { 'TransitionalProcessing' => 1, }, grep { $_->[0] =~ m/B|T/ } @tests);
+write_test('', 		'unicode', 3, { 'TransitionalProcessing' => 0, }, grep { $_->[1] =~ m/B|N/ } @tests);
+write_test('-trans',    'unicode', 3, { 'TransitionalProcessing' => 1, }, grep { $_->[1] =~ m/B|T/ } @tests);
+write_test('', 		'ascii', , 4, { 'TransitionalProcessing' => 0, }, grep { $_->[1] =~ m/B|N/ } @tests);
+write_test('-trans',    'ascii', , 4, { 'TransitionalProcessing' => 1, }, grep { $_->[1] =~ m/B|T/ } @tests);
 exit(0);
 
 sub write_test {
   my($type, $to, $column, $para) = splice @_,0,4;
 
-  my $fn = "t/uts46_to_$to-$type.t";
+  my $fn = "t/uts46_to_$to$type.t";
 
   print STDERR "generating $fn\n" if -t STDERR;
 
@@ -69,20 +70,21 @@ __EOF
   print "my %p = (".qhash(%{$para}).");\n\n";
 
   foreach (@_) {
-    my $src  = $_->[1];
-    my $dest = $_->[$column-1];
+    my $line = $_->[0];
+    my $src  = $_->[2];
+    my $dest = $_->[$column];
     
-    $dest = $src if $dest eq '';
+    $dest = $src if $dest eq '' && ($src !~ m/^\\u200[CD]$/); # ouch
     my $err = '';
 
     my $com = "to_$to('".$src."')";
 
     if($dest =~ m/^\[(.*)\]$/) {
       $dest = undef;
-      $com .= " # $1";
+      $com .= " is error $1";
     }
 
-
+    $com .= " [$SRC:$line]";
 
     print "is(eval{to_$to(", qstr($src), ",\t%p)}, ", qstr($dest), ',', "\t", '"', quotemeta($com), '"', ");\n";
 

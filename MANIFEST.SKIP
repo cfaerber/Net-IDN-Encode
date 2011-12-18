@@ -2,6 +2,10 @@
 # Avoid configuration metadata file
 ^MYMETA\.
 
+# Don't package generators, but the generated files
+^lib/Unicode/.*\.PL$
+^t/.*\.PL$
+
 # Avoid Module::Build generated and utility files.
 \bBuild$
 \bBuild.bat$
@@ -10,6 +14,7 @@
 \bBUILD.COM$
 \bbuild.com$
 ^MANIFEST\.SKIP
+
 
 # Avoid archives of this distribution
 \bNet-IDN-Encode-[\d\.\_]+

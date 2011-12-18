@@ -4,14 +4,15 @@ use strict;
 use utf8;
 use warnings;
 
-our $VERSION = "1.101";
+our $VERSION = "1.900_20111212";
 $VERSION = eval $VERSION;
 
 use Carp;
 use Exporter;
 
-use Net::IDN::Nameprep 1.1 ();
+# use Net::IDN::Nameprep 1.1 ();
 use Net::IDN::Punycode 1 ();
+use Unicode::UTS46 ();
 
 our @ISA = ('Exporter');
 our @EXPORT = ();
@@ -27,88 +28,13 @@ our %EXPORT_TAGS = ( 'all' => \@EXPORT_OK );
 our $IDNA_prefix = 'xn--';
 our $DOT = qr/[\.。．｡]/;
 
-sub to_ascii {
-  use bytes;
-  no warnings qw(utf8); # needed for perl v5.6.x
-
-  my ($label,%param) = @_;
-
-  if($label =~ m/[^\x00-\x7F]/) {
-    $label = Net::IDN::Nameprep::nameprep($label,%param);
-  }
-
-  if($param{'UseSTD3ASCIIRules'}) {
-    croak 'Invalid label (toASCII, step 3)' if
-      $label =~ m/^-/ ||
-      $label =~ m/-$/ ||
-      $label =~ m/[\x00-\x2C\x2E-\x2F\x3A-\x40\x5B-\x60\x7B-\x7F]/;
-  }
-
-  if($label =~ m/[^\x00-\x7F]/) {
-    croak 'Invalid label (toASCII, step 5)' if $label =~ m/^$IDNA_prefix/io;
-    $label = $IDNA_prefix.(Net::IDN::Punycode::encode_punycode($label));
-  }
-
-  croak 'Invalid label length (toASCII, step 8)' if
-    length($label) < 1 ||
-    length($label) > 63;
-
-  return $label;
-}
-
-sub to_unicode {
-  use bytes;
-
-  my ($label,%param) = @_;
-  my $orig = $label;
-
-  return eval {
-    if($label =~ m/[^\x00-\x7F]/) {
-      $label = Net::IDN::Nameprep::nameprep($label,%param);
-    }
-
-    my $save3 = $label;
-    croak 'Missing IDNA prefix (ToUnicode, step 3)'
-      unless $label =~ s/^$IDNA_prefix//io;
-    $label = Net::IDN::Punycode::decode_punycode($label);
-
-    my $save6 = to_ascii($label,%param);
-
-    croak 'Invalid label (ToUnicode, step 7)' unless uc($save6) eq uc($save3);
-
-    $label;
-  } || $orig;
-}
-
-sub _old_domain_to_ascii {
-  my ($domain,%param) = @_;
-  $param{'UseSTD3ASCIIRules'} = 1 unless exists $param{'UseSTD3ASCIIRules'};
-  $domain = join '.',
-    map { to_ascii($_, %param) }
-      split /$DOT/o, $domain;
-
-  # NB: Not mandated by IDNA spec
-  # croak 'Invalid domain length' if length($domain) > 255;
-  return $domain;
-}
-
-sub _old_domain_to_unicode {
-  my ($domain,%param) = @_;
-  $param{'UseSTD3ASCIIRules'} = 1 unless exists $param{'UseSTD3ASCIIRules'};
-  my $even_odd = 0;
-  return join '',
-    map { $even_odd++ % 2 ? $_ : to_unicode($_, %param) }
-      split /($DOT)/o, $domain;
-}
+*to_unicode =		\&Unicode::UTS46::to_unicode;
+*to_ascii =		\&Unicode::UTS46::to_ascii;
 
 sub _domain {
   my ($domain,$to_function,$ascii,%param) = @_;
   $param{'UseSTD3ASCIIRules'} = 1 unless exists $param{'UseSTD3ASCIIRules'};
-
-  my $even_odd = 1;
-  return join '',
-    map { $even_odd++ % 2 ? $to_function->($_, %param) : $ascii ? '.' : $_ }
-      split /($DOT)/o, $domain;
+  return $to_function->($domain, %param);
 }
 
 sub _email {
@@ -133,8 +59,8 @@ sub _email {
 sub domain_to_ascii { _domain(shift, \&to_ascii, 1, @_) }
 sub domain_to_unicode { _domain(shift, \&to_unicode, 0, @_) }
 
-sub email_to_ascii { _email(shift, \&domain_to_ascii, 1, @_) }
-sub email_to_unicode { _email(shift, \&domain_to_unicode, 0, @_) }
+sub email_to_ascii   { _email(shift, \&to_ascii, 1, @_) }
+sub email_to_unicode { _email(shift, \&to_unicode, 0, @_) }
 
 1;
 

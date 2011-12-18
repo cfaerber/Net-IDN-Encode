@@ -5,6 +5,8 @@ Makefile.PL
 MANIFEST
 eg/hello_idn.pl
 eg/hello_idn_email.pl
+lib/Unicode/UTS46.pm
+lib/Unicode/UTS46/Mapping.pm
 lib/Net/IDN/Encode.pm
 lib/Net/IDN/Punycode.pm
 lib/Net/IDN/Punycode.xs

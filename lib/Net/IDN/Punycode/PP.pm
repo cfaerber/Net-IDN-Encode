@@ -9,7 +9,7 @@ use warnings;
 use Carp;
 use Exporter;
 
-our $VERSION = "1.000";
+our $VERSION = "1.001";
 
 our @ISA = qw(Exporter);
 our @EXPORT = ();
@@ -32,10 +32,10 @@ my $PunyRE    = "A-Za-z0-9";
 
 sub _adapt {
     my($delta, $numpoints, $firsttime) = @_;
-    $delta = $firsttime ? $delta / DAMP : $delta / 2;
-    $delta += $delta / $numpoints;
+    $delta = int($firsttime ? $delta / DAMP : $delta / 2);
+    $delta += int($delta / $numpoints);
     my $k = 0;
-    while ($delta > ((BASE - TMIN) * TMAX) / 2) {
+    while ($delta > int(((BASE - TMIN) * TMAX) / 2)) {
 	$delta /= BASE - TMIN;
 	$k += BASE;
     }
@@ -108,12 +108,12 @@ sub encode_punycode {
     ## my $output = join '', $input =~ m/([$BasicRE]+)/og; ## slower
     my $output = $input; $output =~ s/[^$BasicRE]+//ogs;
 
-    my $h = my $b = length $output;
-    $output .= $Delimiter if $b > 0;
+    my $h = my $bb = length $output;
+    $output .= $Delimiter if $bb > 0;
     utf8::downgrade($output);	## no unnecessary use of utf8 semantics
 
     my @input = map ord, split //, $input;
-    my @chars = sort grep { $_ >= INITIAL_N } @input;
+    my @chars = sort { $a<=> $b } grep { $_ >= INITIAL_N } @input;
 
     my $n = INITIAL_N;
     my $delta = 0;
@@ -139,12 +139,12 @@ sub encode_punycode {
                     my $o = $t + (($q - $t) % (BASE - $t));
                     $output .= chr $o + ($o < 26 ? 0x61 : 0x30-26);
 
-		    $q = ($q - $t) / (BASE - $t);
+		    $q = int(($q - $t) / (BASE - $t));
 		}
 		croak("input exceeds punycode limit") if $q > BASE;
                 $output .= chr $q + ($q < 26 ? 0x61 : 0x30-26);
 
-		$bias = _adapt($delta, $h + 1, $h == $b);
+		$bias = _adapt($delta, $h + 1, $h == $bb);
 		$delta = 0;
 		$h++;
 	    }

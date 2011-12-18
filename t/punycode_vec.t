@@ -99,10 +99,17 @@ our @idna = (
     "\x{0440}\x{044f}\x{0442}\x{043f}\x{043e}\x{0440}\x{0443}\x{0441}\x{0441}".
     "\x{043a}\x{0438}",
     "b1abfaaepdrnnbgefbadotcwatmq2g4l", 0, 0, 1, 1 ],
+
+## Test vector from IdnaTest.txt
+
+  ["Hebrew (combining)",
+    "\x{05D0}\x{0308}",
+    "ssa73l",
+  ],
+
    );
 
 plan tests => ($#idna+1)*2 + 1;
-
 
 foreach my $test (@idna) 
 {

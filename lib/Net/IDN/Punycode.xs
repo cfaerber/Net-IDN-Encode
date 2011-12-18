@@ -57,7 +57,7 @@ encode_punycode(input)
 
 		char *in_s, *in_p, *in_e, *re_s, *re_p, *re_e, *skip_p;
 		int first = 1;
-		STRLEN h, remain;
+		STRLEN h;
 
 		STRLEN length_guess, u8;
 
@@ -146,7 +146,6 @@ encode_punycode(input)
 		      bias = adapt(delta, h+1, first);
                       delta = first = 0;
 		      ++h;
-		      --remain;
                     }
 		    in_p += u8;
 		  }

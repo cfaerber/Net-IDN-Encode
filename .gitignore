@@ -3,7 +3,8 @@ Build
 LICENSE
 MANIFEST
 MANIFEST.bak
-META.yml
+META.*
+MYMETA.*
 Makefile
 Makefile.PL
 Makefile.old

@@ -1,5 +1,8 @@
 Revision history for Perl extension Net::IDN::Encode
 
+1.102 (2011-12-19)	
+	- FIXES bug in Net::IDN::Punycode::PP
+
 1.101 (2011-12-08)
 
 	- FIXES: #72615 faulty data in Build.PL causes a lack of

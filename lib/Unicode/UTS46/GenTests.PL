@@ -54,15 +54,15 @@ use strict;
 use utf8;
 use warnings;
 
+BEGIN {
+  binmode STDOUT, ':utf8';
+  binmode STDERR, ':utf8';
+}
+
 use Test::More tests => $c + 1;
 use Test::NoWarnings;
 
 use Net::IDN::Encode qw(:all);
-
-my \$builder = Test::More->builder;
-binmode \$builder->output,         ":utf8";
-binmode \$builder->failure_output, ":utf8";
-binmode \$builder->todo_output,    ":utf8";
 
 no warnings 'utf8';
 

@@ -26,5 +26,5 @@
 /pm_to_blib
 /Net-IDN-Encode-*
 /SIGNATURE
-/lib/Unicode/UTS46/Mapping.pm
+/lib/Net/IDN/UTS46/Mapping.pm
 /t/uts46_to_*.t

@@ -4,7 +4,7 @@ use strict;
 use utf8;
 use warnings;
 
-our $VERSION = "1.900_20111219";
+our $VERSION = "1.900_20111220";
 $VERSION = eval $VERSION;
 
 use Carp;
@@ -12,7 +12,7 @@ use Exporter;
 
 # use Net::IDN::Nameprep 1.1 ();
 use Net::IDN::Punycode 1 ();
-use Unicode::UTS46 ();
+use Net::IDN::UTS46 ();
 
 our @ISA = ('Exporter');
 our @EXPORT = ();
@@ -28,8 +28,8 @@ our %EXPORT_TAGS = ( 'all' => \@EXPORT_OK );
 our $IDNA_prefix = 'xn--';
 our $DOT = qr/[\.。．｡]/;
 
-*to_unicode =		\&Unicode::UTS46::to_unicode;
-*to_ascii =		\&Unicode::UTS46::to_ascii;
+*to_unicode =		\&Net::IDN::UTS46::to_unicode;
+*to_ascii =		\&Net::IDN::UTS46::to_ascii;
 
 sub _domain {
   my ($domain,$to_function,$ascii,%param) = @_;

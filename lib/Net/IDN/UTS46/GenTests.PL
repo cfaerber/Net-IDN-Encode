@@ -59,8 +59,8 @@ BEGIN {
   binmode STDERR, ':utf8';
 }
 
-use Test::More tests => $c + 1;
-use Test::NoWarnings;
+use Test::More tests => $c; # + 1;
+# use Test::NoWarnings;
 
 use Net::IDN::Encode qw(:all);
 
@@ -73,8 +73,18 @@ __EOF
     my $line = $_->[0];
     my $src  = $_->[2];
     my $dest = $_->[$column];
-    
-    $dest = $src if $dest eq '' && ($src !~ m/^\\u200[CD]$/); # ouch
+
+    my $src_u8  = parse_str($src);
+    my $dest_u8 = parse_str($dest);
+
+    my $skip = undef; my @st = map { parse_str($_) } @_[2..4];
+
+    if(defined $dest) {
+      $skip = 1	if grep { m/\P{Assigned}/ } @st;
+      $skip = 1	if grep { m/\P{Present_In: 3.2}/ } @st;
+    };
+
+    $dest = $src if $dest eq '' && ($src_u8 !~ m/^\p{Join_Control}$/); # ouch
     my $err = '';
 
     my $com = "to_$to('".$src."')";
@@ -86,8 +96,10 @@ __EOF
 
     $com .= " [$SRC:$line]";
 
-    print "is(eval{to_$to(", qstr($src), ",\t%p)}, ", qstr($dest), ',', "\t", '"', quotemeta($com), '"', ");\n";
-
+    print "SKIP: { skip 'perl too old', 1; " if $skip;
+    print "is(eval{to_$to(", qstr($src), ",\t%p)}, ", qstr($dest), ',', "\t", '"', quotemeta($com), '"', ")",' or ($@ and diag($@))',";";
+    print "}" if $skip;
+    print "\n";
   }
   print "\n\nexit(0);\n";
 
@@ -101,6 +113,14 @@ sub qhash {
     $s .= qstr($_);
     $s .= ' => '.qstr($h{$_});
   }
+  return $s;
+}
+
+sub parse_str {
+  my $s = shift;
+  return 'undef' if !defined $s;
+  $s =~ s/\\u(D[89AB][[:xdigit:]]{2})\\u(D[CDEF][[:xdigit:]]{2})/ chr(0x10000 + (hex($1)&0x3FF)*0x400 + (hex($2)&0x3FF)) /gei;
+  $s =~ s/\\u([[:xdigit:]]{4})/ chr(hex $1) /gei;
   return $s;
 }
 

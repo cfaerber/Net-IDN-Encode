@@ -3,7 +3,7 @@
 ^MYMETA\.
 
 # Don't package generators, but the generated files
-^lib/Unicode/.*\.PL$
+^lib/.*\.PL$
 ^t/.*\.PL$
 
 # Avoid Module::Build generated and utility files.

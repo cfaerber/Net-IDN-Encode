@@ -1,6 +1,8 @@
 use strict;
 use utf8;
 
+BEGIN { binmode STDOUT, ':utf8'; binmode STDERR, ':utf8'; }
+
 use Test::More;
 use Test::NoWarnings;
 

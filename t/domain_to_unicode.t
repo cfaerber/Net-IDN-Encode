@@ -1,14 +1,12 @@
 use utf8;
 use strict;
 
+BEGIN { binmode STDOUT, ':utf8'; binmode STDERR, ':utf8'; }
+
 use Test::More tests => 1 + 5;
 use Test::NoWarnings;
 
 use Net::IDN::Encode qw(:all);
-
-binmode Test::More->builder->output,         ":utf8";
-binmode Test::More->builder->failure_output, ":utf8";
-binmode Test::More->builder->todo_output,    ":utf8";
 
 is(eval{to_unicode('xn--mller-kva')} || $@, 'müller', 'single label (to_unicode)');
 is(eval{to_unicode('www.jürg.xn--mller-kva.com', )} || $@, 'www.jürg.müller.com', 'mixed utf8/ace/ascii (to_unicode)');

@@ -1,4 +1,4 @@
-package Unicode::UTS46;
+package Net::IDN::UTS46;
 
 require 5.008_001;
 
@@ -15,7 +15,7 @@ our $IDNA_prefix = 'xn--';
 
 use Unicode::Normalize 1 ();
 use Net::IDN::Punycode 1 ();
-use Unicode::UTS46::Mapping 5.002 ('/^(Map|Is).*/');				# UTS #46 is only defined from Unicode 5.2.0
+use Net::IDN::UTS46::Mapping 5.002 ('/^(Map|Is).*/');				# UTS #46 is only defined from Unicode 5.2.0
 
 sub to_unicode {
   my ($label, %param) = @_;
@@ -182,7 +182,7 @@ sub _validate_bidi {
 sub _validate_contextj {
   my($l,%param) = @_;
   no warnings 'utf8';
-  return 1 unless length($l);
+  return 1 unless defined($l) && length($l);
 
 # catch ContextJ characters without defined rule (currently none)
 #

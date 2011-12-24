@@ -8,7 +8,7 @@ use warnings;
 
 use Carp;
 
-our $VERSION = "1.900_20111218";
+our $VERSION = "1.900_20111224";
 $VERSION = eval $VERSION;
 
 our $IDNA_prefix = 'xn--';

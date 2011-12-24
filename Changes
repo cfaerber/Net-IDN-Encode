@@ -1,5 +1,8 @@
 Revision history for Perl extension Net::IDN::Encode
 
+1.900_20111224
+	- FIXES compatibility with perl 5.8.x 5.10.x
+
 1.900_20111220
 	- FIXES 'wide character' warning with tests if tests fail.
 

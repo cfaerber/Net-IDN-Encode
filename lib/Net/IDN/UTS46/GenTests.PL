@@ -33,7 +33,7 @@ write_test('-trans',    'ascii', , 4, { 'TransitionalProcessing' => 1, }, grep {
 exit(0);
 
 sub write_test {
-  my($type, $to, $column, $para) = splice @_,0,4;
+  my($type, $to, $column, $para, $min_perl) = splice @_,0,4;
 
   my $fn = "t/uts46_to_$to$type.t";
 
@@ -77,13 +77,6 @@ __EOF
     my $src_u8  = parse_str($src);
     my $dest_u8 = parse_str($dest);
 
-    my $skip = undef; my @st = map { parse_str($_) } @_[2..4];
-
-    if(defined $dest) {
-      $skip = 1	if grep { m/\P{Assigned}/ } @st;
-      $skip = 1	if grep { m/\P{Present_In: 3.2}/ } @st;
-    };
-
     $dest = $src if $dest eq '' && ($src_u8 !~ m/^\p{Join_Control}$/); # ouch
     my $err = '';
 
@@ -94,11 +87,35 @@ __EOF
       $com .= " is error $1";
     }
 
+    my $l_u8 = join '-', map { parse_str($_) } @{$_};
+
+    my $min_perl = undef;
+    if(!defined $dest)					{ ;; } # error is ok
+    if(($l_u8 =~ m/\P{Assigned}/) && (defined $dest))	{ $min_perl = -1 }
+    elsif(eval{$l_u8 =~ m/\P{Present_In: 6.0}/})	{ $min_perl = -1 }	# don't know
+    elsif(eval{$l_u8 =~ m/\P{Present_In: 5.2}/})	{ $min_perl = 5.014 }
+    elsif(eval{$l_u8 =~ m/\P{Present_In: 5.1}/})	{ $min_perl = 5.012 }
+    elsif(eval{$l_u8 =~ m/\P{Present_In: 5.0}/})	{ $min_perl = 5.010_001 }
+    elsif(eval{$l_u8 =~ m/\P{Present_In: 4.1}/})	{ $min_perl = 5.010 }
+    elsif(eval{$l_u8 =~ m/\P{Present_In: 4.0.1}/})	{ $min_perl = 5.008_007 }
+    elsif(eval{$l_u8 =~ m/\P{Present_In: 4.0}/})	{ $min_perl = 5.008_004 }
+    elsif(eval{$l_u8 =~ m/\P{Present_In: 3.2}/})	{ $min_perl = 5.008_001 };
+
     $com .= " [$SRC:$line]";
 
-    print "SKIP: { skip 'perl too old', 1; " if $skip;
+    if(defined $min_perl) {
+       if($min_perl < 0) {
+        print 'TODO: { local $TODO = "test file was generated on perl '.$].', which is too old"; ';
+       } else {
+         print 'SKIP: { skip "requires perl '.$min_perl.', this is only perl $]", 1 if $] < '.$min_perl.'; ';
+       }
+    }
+
     print "is(eval{to_$to(", qstr($src), ",\t%p)}, ", qstr($dest), ',', "\t", '"', quotemeta($com), '"', ")",' or ($@ and diag($@))',";";
-    print "}" if $skip;
+    if(defined $min_perl) {
+      print ' }';
+    }
+
     print "\n";
   }
   print "\n\nexit(0);\n";

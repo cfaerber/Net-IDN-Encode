@@ -4,7 +4,7 @@ use strict;
 use utf8;
 use warnings;
 
-our $VERSION = "1.900_20111220";
+our $VERSION = "1.900_20111221";
 $VERSION = eval $VERSION;
 
 use Carp;

@@ -184,6 +184,4 @@ sub _mk_prop {
 }
 __BREAK__
 
-=Test
-
 __END__

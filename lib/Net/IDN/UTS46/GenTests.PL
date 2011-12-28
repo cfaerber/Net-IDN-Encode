@@ -26,8 +26,7 @@ while(<IdnaTest>) {
 
 die "no tests" unless @tests;
 
-write_test('', 		'unicode', 3, { 'TransitionalProcessing' => 0, }, grep { $_->[1] =~ m/B|N/ } @tests);
-write_test('-trans',    'unicode', 3, { 'TransitionalProcessing' => 1, }, grep { $_->[1] =~ m/B|T/ } @tests);
+write_test('', 		'unicode', 3, { 'TransitionalProcessing' => 0, }, @tests);
 write_test('', 		'ascii', , 4, { 'TransitionalProcessing' => 0, }, grep { $_->[1] =~ m/B|N/ } @tests);
 write_test('-trans',    'ascii', , 4, { 'TransitionalProcessing' => 1, }, grep { $_->[1] =~ m/B|T/ } @tests);
 exit(0);
@@ -62,7 +61,7 @@ BEGIN {
 use Test::More tests => $c; # + 1;
 # use Test::NoWarnings;
 
-use Net::IDN::Encode qw(:all);
+use Net::IDN::UTS46 ();
 
 no warnings 'utf8';
 
@@ -111,7 +110,7 @@ __EOF
        }
     }
 
-    print "is(eval{to_$to(", qstr($src), ",\t%p)}, ", qstr($dest), ',', "\t", '"', quotemeta($com), '"', ")",' or ($@ and diag($@))',";";
+    print "is(eval{Net::IDN::UTS46::to_$to(", qstr($src), ",\t%p)}, ", qstr($dest), ',', "\t", '"', quotemeta($com), '"', ")",' or ($@ and diag($@))',";";
     if(defined $min_perl) {
       print ' }';
     }

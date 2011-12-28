@@ -97,6 +97,13 @@ __EOF
 
   while(<DATA>) { last if m/^__BREAK__$/; print; }
 
+  print "  use Net::IDN::UTS46 5.2;\t\t# require Unicode 5.2\n";
+  print "  \n";
+  print "  \@Net::IDN::UTS46::Mapping::".uc($_).";\n" foreach sort keys(%is), keys(%map);
+  print "  \n";
+  print "  \%Net::IDN::UTS46::Mapping::".uc($_).";\n" foreach sort keys %map;
+  print "\n=cut\n";
+
   write_is($_, @{$is{$_}} ) foreach sort keys(%is);
   write_map($_, @{$map{$_}} ) foreach sort keys(%map);
 
@@ -182,6 +189,51 @@ sub _mk_prop {
   }
   return join "\n", @ll;
 }
+
+=encoding utf8
+
+=head1 NAME
+
+Net::IDN::UTS46::Mapping - Tables from Unicode Technical Standard #46 (S<UTS #46>)
+
+=head1 SYNOPSIS
+
 __BREAK__
+
+1;
+
+__END__
+
+=head1 DESCRIPTION
+
+The tables are provided as arrays, which contain pairs of Unicode codepoints
+(as integers) defining the start and end of a Unicode range.
+
+For character classes that have a mapping value, the tables are also provided
+as a hash, with Unicode codepoint (as an integer) as the key and replacements
+string (as a UTF8 perl string) as the data.
+
+The tables are suitable as input for L<Net::IDN::Stringprep>.
+
+The C<$VERSION> of this module is based on the underlying Unicode version, i.e.
+the version is C<x.yyyzzzvvv> referring to Unicode version C<x.y.z>, module version C<v>
+
+The module also implements some private functions for L<Net::IDN::UTS46>; these
+can also be imported (but don't do that).
+
+=head1 AUTHOR
+
+Claus FE<auml>rber <CFAERBER@cpan.org>
+
+=head1 LICENSE
+
+Copyright 2011 Claus FE<auml>rber.
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=head1 SEE ALSO
+
+L<Net::IDN::UTS46>, L<Net::IDN::Stringprep>, S<UTS #46> (L<http://www.unicode.org/reports/tr46/>)
 
 __END__

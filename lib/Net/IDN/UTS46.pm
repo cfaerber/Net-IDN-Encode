@@ -8,25 +8,28 @@ use warnings;
 
 use Carp;
 
-our $VERSION = "1.900_20111224";
+our $VERSION = "1.999_20111228";
 $VERSION = eval $VERSION;
 
-our $IDNA_prefix = 'xn--';
+our @ISA = ('Exporter');
+our @EXPORT = ();
+our @EXPORT_OK = ('uts46_to_ascii', 'uts46_to_unicode', 'uts46_mapping');
+
+our $IDNA_prefix;
+*IDNA_prefix = \'xn--';
 
 use Unicode::Normalize 1 ();
+
 use Net::IDN::Punycode 1 ();
-use Net::IDN::UTS46::Mapping 5.002 ('/^(Map|Is).*/');				# UTS #46 is only defined from Unicode 5.2.0
+use Net::IDN::UTS46::Mapping 5.002 ('/^(Is).*/');				# UTS #46 is only defined from Unicode 5.2.0
 
-sub to_unicode {
+sub uts46_to_unicode {
   my ($label, %param) = @_;
-  no warnings 'utf8';
-
-  $param{'TransitionalProcessing'} = 0;
-  $label = process($label, %param);
-  return $label;
+  croak "Transitional processing is not defined for ToUnicode" if $param{'TransitionalProcessing'};
+  goto &_process;
 }
 
-sub to_ascii {
+sub uts46_to_ascii {
   my ($label, %param) = @_;
   no warnings 'utf8';
 
@@ -35,7 +38,7 @@ sub to_ascii {
 # 1. Apply appropriate processing
 # 2. Break the result into labels at U+002E full stop;
 #
-  my @ll = process($label, %param);
+  my @ll = _process($label, %param);
 
 # 3. Convert each label with non-ASCII characters into Punycode [RFC3492].
 #
@@ -59,12 +62,23 @@ sub to_ascii {
   return $label;
 }
 
-sub process {
+sub uts46_mapping {
+  croak "Too many arguments" if $#_ > 0;
+  goto &_process;
+}
+
+*to_unicode	= \&uts46_to_unicode;
+*to_ascii	= \&uts46_to_ascii;
+*mapping	= \&uts46_mapping;
+
+sub _process {
   my ($label, %param) = @_;
   no warnings 'utf8';
+  croak "The following parameter is invalid: $_"
+    foreach(grep { !m/^(?:TransitionalProcessing|UseSTD3ASCIIRules|AllowUnassigned)$/ } keys %param);
 
   $param{'TransitionalProcessing'} = 0	unless exists $param{'TransitionalProcessing'};
-  $param{'UseSTD3ASCIIRules'} = 0	unless exists $param{'UseSTD3ASCIIRules'};
+  $param{'UseSTD3ASCIIRules'} = 1	unless exists $param{'UseSTD3ASCIIRules'};
   $param{'AllowUnassigned'} = 0		unless exists $param{'AllowUnassigned'};
 
 # 1. Map
@@ -84,16 +98,16 @@ sub process {
 
 #   - ignored
 #
-  $label = MapIgnored($label);
-  ## $label = MapDisallowedSTD3Ignored($label)	if(!$param{'UseSTD3ASCIIRules'});
+  $label = Net::IDN::UTS46::Mapping::MapIgnored($label);
+  ## $label = Net::IDN::UTS46::Mapping::MapDisallowedSTD3Ignored($label)	if(!$param{'UseSTD3ASCIIRules'});
 
 #   - mapped
 #
-  $label = MapMapped($label);
-  $label = MapDisallowedSTD3Mapped($label) 	if(!$param{'UseSTD3ASCIIRules'});
+  $label = Net::IDN::UTS46::Mapping::MapMapped($label);
+  $label = Net::IDN::UTS46::Mapping::MapDisallowedSTD3Mapped($label) 	if(!$param{'UseSTD3ASCIIRules'});
 
 #  - deviation
-  $label = MapDeviation($label)			if($param{'TransitionalProcessing'});
+  $label = Net::IDN::UTS46::Mapping::MapDeviation($label)		if($param{'TransitionalProcessing'});
 
 # 2. Normalize
 #
@@ -109,8 +123,11 @@ sub process {
 
   foreach (@ll) {
     if(m/^$IDNA_prefix(\p{ASCII}+)$/oi) {
-      $_ = Net::IDN::Punycode::decode_punycode($1);
-      _validate_label($_,%param, 'TransitionalProcessing' => 0);
+      eval { $_ = Net::IDN::Punycode::decode_punycode($1); };
+      _validate_label($_,%param,
+	'TransitionalProcessing' => 0,
+	'AllowUnassigned' => 0,			## keep the Punycode version
+      ) unless $@;
     } else {
       _validate_label($_,%param,'_AssumeNFC' => 1);
     }
@@ -257,3 +274,166 @@ sub _validate_contextj {
 	(\x{200D})
     /xo and defined($1) and croak sprintf "rule for CONTEXTJ character U+%04X not satisfied [C2]", ord($1);
 }
+
+1;
+
+__END__
+
+=encoding utf8
+
+=head1 NAME
+
+Net::IDN::UTS46 - Unicode IDNA Compatibility Processing (S<UTS #46>)
+
+=head1 SYNOPSIS
+
+  use Net::IDN:: ':all';
+  my $a = uts46_to_ascii("müller.example.org");
+  my $b = Net::IDN::UTS46::to_unicode('EXAMPLE.XN--11B5BS3A9AJ6G');
+  
+  $domain =~ m/\P{Net::IDN::UTS46::IsDisallowed} and die 'oops';
+
+=head1 DESCRIPTION
+
+This module implements the Unicode Technical Standard #46 (Unicode IDNA
+Compatibility Processing). UTS #46 is one variant of Internationalized Domain
+Names (IDN), which aims to be compatible with domain names registered under
+either IDNA2003 or IDNA2008.
+
+You should use this module if you want an exact implementation of the UTS #46
+specification.
+
+However, if you just want to convert domain names and don't care which standard
+is used internally, you should use L<Net::IDN::Encode> instead.
+
+=head1 FUNCTIONS
+
+By default, this module does not export any subroutines. You may use the
+C<:all> tag to import everything. 
+
+You can omit the C<'uts46_'> prefix when accessing the functions with a
+full-qualified module name (e.g. you can access C<uts46_to_unicode> as
+C<Net::IDN::UTS46::uts46_to_unicode> or C<Net::IDN::UTS46::to_unicode>. 
+
+The following functions are available:
+
+=over
+
+=item uts46_to_ascii( $domain, %param )
+
+Implements the "ToASCII" function from UTS #46, section 4.2. It converts a domain name to
+ASCII and throws an exception on invalid input.
+
+This function takes the following optional parameters (C<%param>):
+
+=over
+
+=item AllowUnassigned
+
+(boolean) If set to a true value, unassigned code points in the label are
+allowed. This is an extension over UTS #46.
+
+The default is false.
+
+=item UseSTD3ASCIIRules
+
+(boolean) If set to a true value, checks the label for compliance with S<STD 3>
+(S<RFC 1123>) syntax for host name parts.
+
+The default is true.
+
+=item TransitionalProcessing
+
+(boolean) If set to true, the conversion will be compatible with IDNA2003. This
+only affects four characters: C<'ß'> (U+00DF), 'ς' (U+03C2), ZWJ (U+200D) and
+ZWNJ (U+200C). Usually, you will want to set this to false.
+
+The default is false.
+
+=back
+
+=item uts46_to_unicode( $label, %param )
+
+Implements the "ToUnicode" function from UTS #46, section 4.3. It converts a domain name to
+Unicode and throws an exception on invalid input.
+
+This function takes the following optional parameters (C<%param>):
+
+=over
+
+=item AllowUnassigned
+
+  see above.
+
+=item UseSTD3ASCIIRules
+
+  see above.
+
+=item TransitionalProcessing
+
+(boolean) If given, this parameter must be false. The UTS #46 specification
+does not define transitional processing for ToUnicode.
+
+=back
+
+=item uts46_mapping( $label ) 
+
+Implements the "Preprocessing for IDNA2008" from UTS #46, section 4.4. It will
+prepare a domain name for subsequent processing with IDNA2008.
+
+This function currently does not take any parameters.
+
+=back
+
+=head1 UNICODE CHARACTER PROPERTIES
+
+This module also defines the character properties listed below.
+
+Each character has exactly one of the following properties:
+
+=over
+
+=item C<\p{Net::IDN::UTS46::IsValid}>
+
+The code point is valid, and not modified (i.e. a deviation character) in UTS #46.
+
+=item C<\p{Net::IDN::UTS46::IsIgnored}>
+
+The code point is removed (i.e. mapped to an empty string) in UTS #46.
+
+=item C<\p{Net::IDN::UTS46::IsMapped}>
+
+The code point is replaced by another string in UTS #46.
+
+=item C<\p{Net::IDN::UTS46::IsDeviation}>
+
+The code point is either mapped or valid, depending on whether the processing is transitional or not.
+
+=item C<\p{Net::IDN::UTS46::IsDisallowed}>
+
+The code point is not allowed in UTS #46.
+
+=item C<\p{Net::IDN::UTS46::IsDisallowedSTD3Ignored}>
+
+The code point is not allowed in UTS #46 if C<UseSTDASCIIRules> are used but would be ignored otherwise.
+
+=item C<\p{Net::IDN::UTS46::IsDisallowedSTD3Mapped}>
+
+The code point is not allowed in UTS #46 if C<UseSTDASCIIRules> are used but would be mapped otherwise.
+
+=back
+
+=head1 AUTHOR
+
+Claus FE<auml>rber <CFAERBER@cpan.org>
+
+=head1 LICENSE
+
+Copyright 2011 Claus FE<auml>rber.
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=head1 SEE ALSO
+
+L<Net::IDN::UTS46::Mapping>, L<Net::IDN::Encode>, S<UTS #46> (L<http://www.unicode.org/reports/tr46/>)

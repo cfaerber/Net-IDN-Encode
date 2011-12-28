@@ -1,5 +1,9 @@
 Revision history for Perl extension Net::IDN::Encode
 
+1.999_20111228
+	- documentation update
+	- make Net::IDN::Encode behave more like previous versions
+
 1.900_20111224
 	- FIXES compatibility with perl 5.8.x 5.10.x
 

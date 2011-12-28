@@ -4,7 +4,7 @@ use strict;
 use Test::More;
 use Test::NoWarnings;
 
-use Net::IDN::Encode qw(:all);
+use Net::IDN::IDNA2003 qw(:all);
 
 my @to_unicode = (
   ['Invalid deltas', 'xn--oops', 'xn--oops', 0, 1],
@@ -40,5 +40,5 @@ for (@to_unicode) {
     AllowUnassigned => $allowunassigned,
     UseSTD3ASCIIRules => $usestd3asciirules
   );
-  is(to_unicode($in, %param), $out, $comment);
+  is(idna2003_to_unicode($in, %param), $out, $comment);
 }

@@ -6,17 +6,18 @@ use utf8;
 use Module::Build;
 
 my $b = Module::Build->new(
-	'module_name'	=> 'Net::IDN::Encode',
+	'module_name'	=> 'Net::IDN::IDNA2003',
 
 	'license'	=> 'perl',
 	'dist_author'	=> 'Claus Färber <CFAERBER@cpan.org>',
-	'dist_abstract' => 'Internationalizing Domain Names in Applications (RFC 3490)',
+	'dist_abstract' => 'Internationalizing Domain Names, 2003 edition (RFC 3490)',
 
 	'sign'		=> 1,
 	'create_license' => 1,
 	'create_makefile_pl' => 'traditional',
 
 	'requires'	=> {
+		'Net::IDN::Punycode' => 1,
 		'Net::IDN::Nameprep' => 1.1,
 	},
 	'build_requires' => {

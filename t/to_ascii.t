@@ -5,7 +5,7 @@ use Test::More;
 use Test::NoWarnings;
 use Encode;
 
-use Net::IDN::Encode qw(:all);
+use Net::IDN::IDNA2003 qw(:all);
 
 my @to_ascii = (
   ['ascii (mixed case)', 'Weiss', 'Weiss', 0, 1],
@@ -27,7 +27,7 @@ my @to_ascii = (
   ['not ascii (nameprep mapping C.7)', 'a⿰b', undef, 1, 0],
   ['not ascii (nameprep mapping C.8)', 'a⁯b', undef, 1, 0],
   ['not ascii (nameprep mapping C.9)', 'a'.chr(0xE0001).'b', undef, 1, 0],
-  ['not ascii (nameprep KC normalization)', 'a'.chr(0x0340), to_ascii(chr(0xE0)), 0, 1],
+  ['not ascii (nameprep KC normalization)', 'a'.chr(0x0340), idna2003_to_ascii(chr(0xE0)), 0, 1],
   ['not ascii (nameprep bidirectional)', 'א1', undef, 1, 0],
   ['not ascii (with ACS prefix)', 'xn--müller', undef, 1, 0],
 # Overflow handling (RFC 3492 6.4) not implemented.
@@ -45,5 +45,5 @@ for (@to_ascii) {
     AllowUnassigned => $allowunassigned,
     UseSTD3ASCIIRules => $usestd3asciirules
   );
-  is(eval {to_ascii($in, %param)}, $out, $comment);
+  is(eval {idna2003_to_ascii($in, %param)}, $out, $comment);
 }

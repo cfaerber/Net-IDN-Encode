@@ -1,5 +1,5 @@
 use strict;
-use Test::More tests => 1 + 5;
+use Test::More tests => 1 + 3;
 use Test::NoWarnings;
 
 use_ok 'Net::IDN::Punycode';

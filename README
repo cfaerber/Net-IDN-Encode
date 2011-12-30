@@ -1,0 +1,28 @@
+OVERVIEW
+
+  Net::IDN::Punycode --	A Bootstring encoding of Unicode for IDNA
+			(S<RFC 3492>)
+
+  Net::IDN::Stupid --	Stupid implementation of Internationalized
+			Domain Names (IDNA)
+
+INSTALLATION
+
+  To install this module type the following:
+
+    perl Build.PL
+    ./Build
+    ./Build test
+    ./Build install
+
+DEPENDENCIES
+
+  none
+
+AUTHOR
+
+  Claus Färber <CFAERBER@cpan.org>
+
+ACKNOWLEDGMENTS
+
+  Tatsuhiko Miyagawa <miyagawa@bulknews.net>

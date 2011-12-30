@@ -19,7 +19,6 @@
 /Makefile
 /Makefile.PL
 /PM_to_blib
-/README
 /_build
 /blib
 /cover_db

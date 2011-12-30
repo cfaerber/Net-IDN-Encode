@@ -4,7 +4,7 @@ use strict;
 use utf8;
 use warnings;
 
-our $VERSION = "0.999_20111228";
+our $VERSION = "0.999_20111229";
 $VERSION = eval $VERSION;
 
 use Carp;
@@ -94,7 +94,7 @@ __END__
 
 =head1 NAME
 
-Net::IDN::IDNA2003 - Internationalizing Domain Names in Applications, 2003 version (S<RFC 3490>)
+Net::IDN::IDNA2003 - Internationalizing Domain Names in Applications (2003) (S<RFC 3490>)
 
 =head1 SYNOPSIS
 

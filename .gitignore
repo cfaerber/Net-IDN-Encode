@@ -24,7 +24,5 @@
 /blib
 /cover_db
 /pm_to_blib
-/Net-IDN-Encode-*
+/Net-IDN-Punycode-*
 /SIGNATURE
-/lib/Net/IDN/UTS46/Mapping.pm
-/t/uts46_to_*.t

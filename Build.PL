@@ -10,7 +10,7 @@ my $b = Module::Build->new(
 
 	'license'	=> 'perl',
 	'dist_author'	=> 'Claus Färber <CFAERBER@cpan.org>',
-	'dist_abstract' => 'Internationalizing Domain Names, 2003 edition (RFC 3490)',
+	'dist_abstract' => 'Internationalizing Domain Names in Applications (2003) (RFC 3490)',
 
 	'sign'		=> 1,
 	'create_license' => 1,

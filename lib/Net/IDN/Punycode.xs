@@ -98,7 +98,7 @@ encode_punycode(input)
 		  q = skip_delta = 0;
 
 		  for(in_p = skip_p = in_s; in_p < in_e;) {
-		    c = utf8_to_uvuni(in_p, &u8);
+		    c = utf8_to_uvuni((U8*)in_p, &u8);
 		    if(c >= n && c < m) {
  		      m = c;
 		      skip_p = in_p;
@@ -120,7 +120,7 @@ encode_punycode(input)
 
 		  delta += skip_delta;
 		  for(in_p = skip_p; in_p < in_e;) {
-		    c = utf8_to_uvuni(in_p, &u8);
+		    c = utf8_to_uvuni((U8*)in_p, &u8);
 		    
 		    if(c < n) {
 		      ++delta;
@@ -241,7 +241,7 @@ decode_punycode(input)
 		  if(skip_p < re_p)				/* move succeeding chars */
 		    Move(skip_p, skip_p + u8, re_p - skip_p, char); 
 		  re_p += u8;
-		  uvuni_to_utf8_flags(skip_p, n, UNICODE_ALLOW_ANY);
+		  uvuni_to_utf8_flags((U8*)skip_p, n, UNICODE_ALLOW_ANY);
 		}
 
 		if(!first) SvUTF8_on(RETVAL);			/* UTF-8 chars have been inserted */

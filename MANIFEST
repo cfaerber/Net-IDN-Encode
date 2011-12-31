@@ -13,7 +13,7 @@ t/11pod_cover.t
 t/api_call.t
 t/encode_bytes.t
 t/encode_utf8.t
-t/punycode_vec.t
+t/punycode_vec-xs.t
 t/punycode_vec-pp.t
 LICENSE
 META.yml

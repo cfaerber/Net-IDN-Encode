@@ -7,7 +7,7 @@ use utf8;
 use warnings;
 
 use Exporter;
-our $VERSION = "1.009_20111230";
+our $VERSION = "1.009_20111231";
 $VERSION = eval $VERSION;
 
 our @ISA = qw(Exporter);

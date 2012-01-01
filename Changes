@@ -1,11 +1,11 @@
-Revision history for Perl extension Net::IDN::Encode
+Revision history for Perl extension Net::IDN::UTS46
 
-1.999_20111231
-	- move Net::IDN::Punycode to separate distribution
+0.999_20120101
+	- move Net::IDN::UTS46 to separate distribution
 
-1.999_20111228
-	- documentation update
-	- make Net::IDN::Encode behave more like previous versions
+Revision history for Perl extension Net::IDN::Encode (excerpt)
+
+...
 
 1.900_20111224
 	- FIXES compatibility with perl 5.8.x 5.10.x
@@ -21,85 +21,4 @@ Revision history for Perl extension Net::IDN::Encode
 	- initial implementation for UTS #46
 	- FIXES bug in Net::IDN::Punycode::PP
 
-1.101 (2011-12-08)
-
-	- FIXES: #72615 faulty data in Build.PL causes a lack of
-	  meta files, which breaks carton.
-
-1.100 (2010-06-08, patch by Loïc Etienne)
-	- new parameters AllowUnassigned/UseSTD3ASCIIRules for
-	  to_ascii, to_unicode (RFC 3490)
-	  domain_to_ascii, domain_to_unicode
-	- case insensitive ACE prefix (RFC 3490)
-	- new length 255 check in domain_to_ascii (RFC 1034)
-	- length 63 check moved to to_ascii
-	- dots replacement only in domain_to_ascii
-	  (domain_to_unicode does not require it)
-	- o-modifier in regexs
-	- _domain replaced by domain_to_unicode and domain_to_ascii
-	- _nameprep replaced by NET::IDN::Nameprep
-
-1.000 (2010-01-13)
-	- clean-up
-	- release
-
-0.999_20090112 (2010-01-10)
-	- add XS for decode_punycode
-
-0.999_20090110 (2010-01-10)
-	- add XS for encode_punycode
-
-	- include Net::IDN::Nameprep into Net::IDN::Encode *sigh*
-	- drop IDNA::Punycode
-
-0.99_20091231
-	- depend on perl 5.8.3
-	- optimise Net::IDN::Punycode
-
-0.99_20091226 Sat Dec 26 00:00:00 2009
-	- some clean-ups
-
-0.99_20091216 Wed Dec 16 00:00:00 2009
-	- switch to Module::Build
-	- switch to Github, remove svn:keywords, add .gitignore
-
-	- use ASCII in POD, fixes FAILs with perl 5.6.x
-	- add examples in eg/
-
-0.99_20080913 Sun Sep 13 12:00:00 2008
-	- fixed perl 5.6.x (no warnings 'utf8')
-
-0.99_20080913 Sat Sep 13 12:00:00 2008
-	- require perl version 5.6.0 instead of 5.6.6
-	- skip more tests in lower perl versions
-
-	- removed Encode::Punycode; Encode is only available from
-	  perl 5.7.3
-	- renamed back to Net::IDN::Encode; without
-	  Encode::Punycode, the new name does not make sense.
-
-0.99_20071012 Fri Oct 12 12:00:00 2007
-	- renamed Net-IDN-Encode distribution to Net-IDN-tools
-
-	- includes Net::IDN::Punycode (from IDNA::Punycode v0.02)
-	- includes Net::IDN::Nameprep (complete rewrite, uses
-	  Unicode::Stringprep)
-	- includes IDNA::Punycode (deprecated, new version based
-	  on Net::IDN::Punycode/::Encode)
-	- includes Encode::Punycode (new version based on
-	  Net::IDN::Punycode)
-	- uses Unicode::Stringprep
-
-	- more tests, including test vectors from Internet Draft
-	  draft-josefsson-idn-test-vectors-00.
-
-	- FIXES: #16150: Net::IDN::Encode depends on non-modulelist module IDNA::Punycode
-	- FIXES: #16145: IDNA::Punycode 0.03
-	- FIXES: #28123: Undeclared dependency on Unicode::String (reported by ANDK)
-	- FIXES WARNING: v-string in use/require non-portable (Net::IDN::Nameprep[::*])
-
-0.02  Sun Jun 20 00:00:00 2004
-	- fixed handling of incomplete/empty email addresses
-
-0.01  Sun May 30 00:00:00 2004
-	- first release
+...

@@ -6,11 +6,11 @@ use utf8;
 use Module::Build;
 
 my $b = Module::Build->new(
-	'module_name'	=> 'Net::IDN::Encode',
+	'module_name'	=> 'Net::IDN::UTS46',
 
 	'license'	=> 'perl',
 	'dist_author'	=> 'Claus Färber <CFAERBER@cpan.org>',
-	'dist_abstract' => 'Internationalizing Domain Names in Applications (IDNA)',
+	'dist_abstract' => 'Unicode IDNA Compatibility Processing (UTS #46)',
 
 	'sign'		=> 1,
 	'create_license' => 1,

@@ -8,20 +8,20 @@ use warnings;
 
 use Carp;
 
-our $VERSION = "1.999_20111228";
+our $VERSION = "0.999_20120101";
 $VERSION = eval $VERSION;
 
 our @ISA = ('Exporter');
 our @EXPORT = ();
 our @EXPORT_OK = ('uts46_to_ascii', 'uts46_to_unicode', 'uts46_mapping');
-
-our $IDNA_prefix;
-*IDNA_prefix = \'xn--';
+our %EXPORT_TAGS = ( 'all' => \@EXPORT_OK );
 
 use Unicode::Normalize 1 ();
-
 use Net::IDN::Punycode 1 ();
-use Net::IDN::UTS46::Mapping 5.002 ('/^(Is).*/');				# UTS #46 is only defined from Unicode 5.2.0
+use Net::IDN::UTS46::Mapping 5.002 ('/^(Is).*/');	# UTS #46 is only defined from Unicode 5.2.0
+
+our $IDNA_prefix;
+*IDNA_prefix = \$Net::IDN::Punycode::IDNA_prefix;
 
 sub uts46_to_unicode {
   my ($label, %param) = @_;

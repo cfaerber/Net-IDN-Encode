@@ -10,13 +10,14 @@ my $b = Module::Build->new(
 
 	'license'	=> 'perl',
 	'dist_author'	=> 'Claus Färber <CFAERBER@cpan.org>',
-	'dist_abstract' => 'Internationalizing Domain Names in Applications (UTS #46)',
+	'dist_abstract' => 'Internationalizing Domain Names in Applications (IDNA)',
 
 	'sign'		=> 1,
 	'create_license' => 1,
 	'create_makefile_pl' => 'traditional',
 
 	'requires'	=> {
+		'Net::IDN::Punycode' => 1.009,
 		'Unicode::Normalize' => 1,
 		'perl'	=> 5.008_003,
 	},
@@ -26,8 +27,11 @@ my $b = Module::Build->new(
 	},
 	'PL_Files' => {
 		'lib/Unicode/UTS46/Mapping.PL'  => 'lib/Unicode/UTS46/Mapping.pm',
-		'lib/Unicode/UTS46/GenTests.PL'	 => [	't/uts46_to_ascii-transitional.t', 't/uts46_to_ascii-nontransitional.t',
-							't/uts46_to_unicode-transitional.t', 't/uts46_to_unicode-nontransitional.t', ],
+		'lib/Unicode/UTS46/GenTests.PL'	 => [
+			't/uts46_to_ascii.t',
+			't/uts46_to_ascii-trans.t',
+			't/uts46_to_unicode.t',
+		]
 	},
 	'no_index' => {
 		'directory' => ['eg', 'data']

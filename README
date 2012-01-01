@@ -5,9 +5,6 @@ OVERVIEW
 			toASCII and toUNICODE as defined in
 			RFC 3490)
 
-  Net::IDN::Punycode -- ASCII-compatible encoding of Unicode 
-  			(Punycode, RFC 3492)
-
 INSTALLATION
 
   To install this module type the following:

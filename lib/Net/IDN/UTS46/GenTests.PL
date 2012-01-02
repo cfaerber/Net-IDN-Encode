@@ -61,7 +61,7 @@ BEGIN {
 use Test::More tests => $c; # + 1;
 # use Test::NoWarnings;
 
-use Net::IDN::UTS46 ();
+use Net::IDN::UTS46 (':all');
 
 no warnings 'utf8';
 
@@ -83,7 +83,7 @@ __EOF
 
     if($dest =~ m/^\[(.*)\]$/) {
       $dest = undef;
-      $com .= " is error $1";
+      $com .= " throws error $1";
     }
 
     my $l_u8 = join '-', map { parse_str($_) } @{$_};
@@ -110,7 +110,7 @@ __EOF
        }
     }
 
-    print "is(eval{Net::IDN::UTS46::to_$to(", qstr($src), ",\t%p)}, ", qstr($dest), ',', "\t", '"', quotemeta($com), '"', ")",' or ($@ and diag($@))',";";
+    print "is(eval{uts46_to_$to(", qstr($src), ", %p)},\t", qstr($dest), ',', "\t", '"', quotemeta($com), '"', ")",' or ($@ and diag($@))',";";
     if(defined $min_perl) {
       print ' }';
     }

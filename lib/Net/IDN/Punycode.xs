@@ -21,7 +21,7 @@ static char enc_digit[BASE] = {
   '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 
 };
 
-static UV dec_digit[0x80] = {
+static IV dec_digit[0x80] = {
   -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, /* 00..0F */
   -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, /* 10..1F */
   -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, /* 20..2F */
@@ -162,17 +162,19 @@ decode_punycode(input)
 		SV * input	
 	PREINIT:
 		UV c, n = INITIAL_N;
+		IV dc;
 		int i = 0, oldi, j, k, t, w;
 
 		int bias = INITIAL_BIAS;
 		int delta = 0, skip_delta;
 
-		char *in_s, *in_p, *in_e, *re_s, *re_p, *re_e, *skip_p;
+		const char *in_s, *in_p, *in_e, *skip_p;
+		char *re_s, *re_p, *re_e;
 		int first = 1;
 		STRLEN length_guess, h, u8;
 
 	PPCODE:	
-		if(!SvOK(input)) XSRETURN_UNDEF;
+		/*if(!SvOK(input)) XSRETURN_UNDEF; */
 		
 		in_s = in_p = SvPV_nolen(input);
 		in_e = SvEND(input);
@@ -211,8 +213,9 @@ decode_punycode(input)
 
 	          for(k = BASE;; k+= BASE) {
 		    if(!(in_p < in_e)) croak("incomplete encoded code point in decode_punycode");
-		    c = dec_digit[*in_p++];			/* we already know it's in 0..127 */
-		    if(((IV)c) < 0) croak("invalid digit in input for decode_punycode");
+		    dc = dec_digit[*in_p++];			/* we already know it's in 0..127 */
+		    if(dc < 0) croak("invalid digit in input for decode_punycode");
+		    c = (UV)dc;
 		    i += c * w;
 		    t = TMIN_MAX(k - bias);
 		    if(c < t) break;

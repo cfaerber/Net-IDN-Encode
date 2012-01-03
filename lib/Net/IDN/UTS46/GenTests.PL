@@ -58,8 +58,8 @@ BEGIN {
   binmode STDERR, ':utf8';
 }
 
-use Test::More tests => $c; # + 1;
-# use Test::NoWarnings;
+use Test::More tests => $c + 1;
+use Test::NoWarnings;
 
 use Net::IDN::UTS46 (':all');
 

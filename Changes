@@ -1,5 +1,8 @@
 Revision history for Perl extension Net::IDN::UTS46
 
+0.999_20120102
+	- FIXES failing tests in XS version of Net::IDN::Punycode
+
 0.999_20120101
 	- move Net::IDN::UTS46 to separate distribution
 

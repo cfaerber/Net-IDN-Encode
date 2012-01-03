@@ -1,7 +1,7 @@
 OVERVIEW
 
   Net::IDN::Punycode --	A Bootstring encoding of Unicode for IDNA
-			(S<RFC 3492>)
+			(RFC 3492)
 
   Net::IDN::Stupid --	Stupid implementation of Internationalized
 			Domain Names (IDNA)

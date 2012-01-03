@@ -4,39 +4,43 @@ use strict;
 use utf8;
 use warnings;
 
-our $VERSION = "1.009_20111231";
-$VERSION = eval $VERSION;
-
 use Carp;
 use Exporter;
 
-use Net::IDN::Punycode 1.009 ();
+use Net::IDN::Punycode 1 (':all');
+
+our $VERSION = "1.000";
+$VERSION = eval $VERSION;
 
 our @ISA = ('Exporter');
 our @EXPORT = ();
-our @EXPORT_OK = (
-  'stupid_to_ascii',
-  'stupid_to_unicode',
+our @EXPORT_OK = ();
+our %EXPORT_TAGS = (
+  'all'  => 	[ 'stupid_to_ascii', 'stupid_to_unicode', ],
 );
-our %EXPORT_TAGS = ( 'all' => \@EXPORT_OK );
+Exporter::export_ok_tags(keys %EXPORT_TAGS);
+
+our($IDNA_PREFIX,$IDNA_DOT_RE);
+*IDNA_PREFIX	= \'xn--';
+*IDNA_DOT_RE	= \qr/[\.。．｡]/;
 
 sub stupid_to_ascii {
   my($label,%param) = @_;
-  croak 'Invalid label' if $label =~ m/$Net::IDN::Punycode::IDNA_dot/oi 
-	or $label =~ m/^$Net::IDN::Punycode::IDNA_prefix.*\P{ASCII}/oi;
+  croak 'Invalid label' if $label =~ m/$IDNA_DOT_RE/oi 
+	or $label =~ m/^$IDNA_PREFIX.*\P{ASCII}/oi;
 
   if($label =~ m/\P{ASCII}/) {
-    $label = $Net::IDN::Punycode::IDNA_prefix.Net::IDN::Punycode::encode_punycode($label);
+    $label = $IDNA_PREFIX.encode_punycode($label);
   }
   return $label;
 }
 
 sub stupid_to_unicode {
   my($label,%param) = @_;
-  croak 'Invalid label' if $label =~ m/$Net::IDN::Punycode::IDNA_dot/oi;
+  croak 'Invalid label' if $label =~ m/$IDNA_DOT_RE/oi;
 
-  if($label =~ m/^$Net::IDN::Punycode::IDNA_prefix(.+)$/oi) {
-    eval { $label = Net::IDN::Punycode::decode_punycode($1); }
+  if($label =~ m/^$IDNA_PREFIX(.+)$/oi) {
+    eval { $label = decode_punycode($1); }
   }
   return $label;
 }
@@ -57,26 +61,24 @@ Net::IDN::Stupid - Stupid implementation of Internationalized Domain Names (IDNA
 =head1 SYNOPSIS
 
   use Net::IDN::Stupid ':all';
-  my $a = domain_to_ascii("müller.example.org");
-  my $e = email_to_ascii("POSTMASTER@例。テスト");
-  my $u = domain_to_unicode('EXAMPLE.XN--11B5BS3A9AJ6G');
+  my $a = stupid_to_ascii("müller");
+  my $u = stupid_to_unicode('XN--11B5BS3A9AJ6G');
 
 =head1 DESCRIPTION
 
-This module provides a high-level interface for converting domain
-name labels, without any preparation.  Use this module only if you
-know that your internationalized domain names are valid and in
-cannonical format (or if you don't care).
+This module converts labels from domain names between ASCII and
+Unicode, but without any preparation (mapping and validation).
+Use this module only if you know that your internationalized
+domain names are valid and in cannonical format (or if you don't
+care).
 
 Usually, it is not a good idea to leave out the prepration. You
 might end up with a converted domain name that is not
-interoperable or even poses security issues due to spoofing. The
-name of the module reminds you of this issue.
+interoperable or even poses security issues due to spoofing. 
 
 On the plus side, this module has few dependencies, is fast, and
 is even compatible with perl 5.6 (whereas the other modules
 require perl 5.8 or 5.12).
-
 
 For a more complete IDNA implementation, see L<Net::IDN::Encode>.
 
@@ -117,7 +119,7 @@ Claus FE<auml>rber <CFAERBER@cpan.org>
 
 =head1 LICENSE
 
-Copyright 2007-2011 Claus FE<auml>rber.
+Copyright 2011-2012 Claus FE<auml>rber.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

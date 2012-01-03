@@ -1,6 +1,6 @@
 Revision history for Perl extension Net::IDN::Punycode
 
-1.100 (2012-01-02)
+1.100 (TODO)
 	- move Net::IDN::Punycode to a separate distribution
 	- add Net::IDN::Stupid
 	- FIXES potential portability problem in XS

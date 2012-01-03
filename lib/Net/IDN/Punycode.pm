@@ -7,21 +7,15 @@ use utf8;
 use warnings;
 
 use Exporter;
-our $VERSION = "1.009_20111231";
+
+our $VERSION = "1.009_20120102";
 $VERSION = eval $VERSION;
 
 our @ISA = qw(Exporter);
 our @EXPORT = ();
-our %EXPORT_TAGS = (
-  'all'  => [ qw(encode_punycode decode_punycode) ],
-  '_var' => [ qw($IDNA_prefix $IDNA_dot $IDNA_at) ],
-);
-our @EXPORT_OK = map { @{$EXPORT_TAGS{$_}} } keys %EXPORT_TAGS;
-
-our($IDNA_prefix, $IDNA_dot, $IDNA_at);
-$IDNA_prefix	= 'xn--';
-*IDNA_dot	= \qr/[\.。．｡]/;
-*IDNA_at	= \qr/[\@＠]/;
+our @EXPORT_OK = ();
+our %EXPORT_TAGS = ( 'all'  => [ qw(encode_punycode decode_punycode) ], );
+Exporter::export_ok_tags(keys %EXPORT_TAGS);
 
 eval { 
   require XSLoader;
@@ -91,7 +85,7 @@ Claus FE<auml>rber E<lt>CFAERBER@cpan.orgE<gt> (from version 1.00)
 
 Copyright 2002-2004 Tatsuhiko Miyagawa E<lt>miyagawa@bulknews.netE<gt>
 
-Copyright 2007-2011 Claus FE<auml>rber E<lt>CFAERBER@cpan.orgE<gt>
+Copyright 2007-2012 Claus FE<auml>rber E<lt>CFAERBER@cpan.orgE<gt>
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

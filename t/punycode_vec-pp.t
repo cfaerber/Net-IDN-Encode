@@ -107,9 +107,12 @@ our @idna = (
   ["Hebrew (combining)",
     "\x{05D0}\x{0308}",
     "ssa73l",
-  ]
-
-   );
+  ],
+  ['U+094D',
+    "a\x{094D}b",
+    "ab-fsf",
+  ],
+);
 
 plan tests => ($#idna+1)*2 + 1;
 

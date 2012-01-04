@@ -7,6 +7,7 @@ lib/Net/IDN/Punycode.pm
 lib/Net/IDN/Punycode.xs
 lib/Net/IDN/Punycode/PP.pm
 lib/Net/IDN/Stupid.pm
+lib/Net/IDN/Stupid/_Mapping.pm
 t/00use.t
 t/10pod.t
 t/11pod_cover.t
@@ -15,6 +16,11 @@ t/encode_bytes.t
 t/encode_utf8.t
 t/punycode_vec-xs.t
 t/punycode_vec-pp.t
+t/stupid_width.t
+t/stupid_nfc-p0.t
+t/stupid_nfc-p1.t
+t/stupid_nfc-p2.t
+t/stupid_nfc-p3.t
 LICENSE
 META.yml
 META.json

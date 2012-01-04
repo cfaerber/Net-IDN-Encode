@@ -8,6 +8,7 @@ use Carp;
 use Exporter;
 
 use Net::IDN::Punycode 1 (':all');
+use Net::IDN::Stupid::_Mapping (':all');
 
 our $VERSION = "1.000";
 $VERSION = eval $VERSION;
@@ -30,6 +31,7 @@ sub stupid_to_ascii {
 	or $label =~ m/^$IDNA_PREFIX.*\P{ASCII}/oi;
 
   if($label =~ m/\P{ASCII}/) {
+    $label = NFC(lc(MapWidth($label)));
     $label = $IDNA_PREFIX.encode_punycode($label);
   }
   return $label;

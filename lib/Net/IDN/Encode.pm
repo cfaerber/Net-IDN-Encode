@@ -4,33 +4,43 @@ use strict;
 use utf8;
 use warnings;
 
-our $VERSION = "1.999_20111228";
+our $VERSION = "1.999_20120107";
 $VERSION = eval $VERSION;
 
 use Carp;
 use Exporter;
 
-use Net::IDN::Punycode 1 ();
-use Net::IDN::UTS46 ();
-
 our @ISA = ('Exporter');
 our @EXPORT = ();
-our @EXPORT_OK = (
-  'to_ascii', 'to_unicode',
-  'domain_to_ascii',
-  'domain_to_unicode',
-  'email_to_ascii',
-  'email_to_unicode',
+our %EXPORT_TAGS = (
+  'all'	 => [
+      'to_ascii',
+      'to_unicode',
+      'domain_to_ascii',
+      'domain_to_unicode',
+      'email_to_ascii',
+      'email_to_unicode',
+    ],
+  '_var' => [
+      '$IDNA_PREFIX',
+      '$IDNA_DOT',
+      '$IDNA_ATSIGN',
+    ]
 );
-our %EXPORT_TAGS = ( 'all' => \@EXPORT_OK );
+Exporter::export_ok_tags(keys %EXPORT_TAGS);
 
-our ($IDNA_prefix,$DOT);
-*IDNA_prefix 	= \$Net::IDN::UTS46::IDNA_prefix;
-*DOT		= \qr/[\.。．｡]/;
+use Net::IDN::Punycode 1 ();
+
+our ($IDNA_PREFIX,$IDNA_DOT,$IDNA_ATSIGN);
+*IDNA_PREFIX 	= \'xn--';
+*IDNA_DOT	= \qr/[\.。．｡]/;
+*IDNA_ATSIGN	= \qr/[\@＠]/;
+
+require Net::IDN::UTS46; # after declaration of vars!
 
 sub to_ascii {
   my($label,%param) = @_;
-  croak 'Invalid label' if $label =~ m/$DOT/oi;
+  croak 'Invalid label' if $label =~ m/$IDNA_DOT/o;
   eval { $label = Net::IDN::UTS46::to_ascii(@_) };
   die $@ if $@ and ($label =~ m/\P{ASCII}/ or $label !~ m/^\p{Alnum}(?:-*\p{Alnum})*$/i);
   return $label;
@@ -38,7 +48,7 @@ sub to_ascii {
 
 sub to_unicode {
   my($label,%param) = @_;
-  croak 'Invalid label' if $label =~ m/$DOT/oi;
+  croak 'Invalid label' if $label =~ m/$IDNA_DOT/o;
   eval { $label = Net::IDN::UTS46::to_unicode(@_) };
   die $@ if $@ and ($label =~ m/\P{ASCII}/ or $label !~ m/^\p{Alnum}(?:-*\p{Alnum})*$/i);
   return $label;
@@ -51,15 +61,22 @@ sub _domain {
   my $even_odd = 1;
   return join '',
     map { $even_odd++ % 2 ? $to_function->($_, %param) : $ascii ? '.' : $_ }
-      split /($DOT)/o, $domain;
+      split /($IDNA_DOT)/o, $domain;
 }
 
 sub _email {
   my ($email,$to_function,$ascii,%param) = @_;
   return $email if !defined($email) || $email eq '';
 
-  $email =~ m/^([^"\@＠]+|"(?:(?:[^"]|\\.)*[^\\])?")(?:([\@＠])
-    (?:([^\[\]]*)|(\[.*\]))?)?$/x || croak "Invalid email address";
+  $email =~ m/^(
+	(?(?!$IDNA_ATSIGN|").|(?!))+
+	|
+	"(?:(?:[^"]|\\.)*[^\\])?"
+      )
+      (?:
+	($IDNA_ATSIGN)
+   	(?:([^\[\]]*)|(\[.*\]))?
+      )?$/xo || croak "Invalid email address";
   my($local_part,$at,$domain,$domain_literal) = ($1,$2,$3);
 
   $local_part =~ m/\P{ASCII}/ && croak "Non-ASCII characters in local-part";
@@ -279,78 +296,13 @@ separators). The follwing characters are recognized as at signs: U+0040
 
 =back
 
-=head1 IDNA STANDARDS
- 
-This module currently implements UTS #46 (Unicode IDNA Compatibility
-Processing), which is the specification that will create the least surprising
-results for most use cases.
-
-UTS #46, however, is only one of several different standards covering the
-internationalization of domain names. Although all standards are mostly
-compatible, they do differ in some aspects:
-
-=over
-
-=item IDNA2003
-
-IDNA2003, which is defined in S<RFC 3490>
-(L<http://tools.ietf.org/html/rfc3490>) and related documents, was the original
-specification for internationalization of domain names.
-
-However, some issues were subsequently identified with IDNA2003:
-The specification was tied to Unicode 3.2 and therefore did not allow
-characters added in newer versions of Unicode (without updating the
-specifications).
-
-Furthermore, a few characters were mapped to other characters or deleted
-although they would carry meaning in some languages (i.e. 'ß' and 'ς' were
-mapped to 'ss' and 'σ'; ZWJ and ZWNJ were mapped to nothing, although some
-scripts require them for correct display).
-
-See also L<Net::IDN::IDNA2003>.
-
-=item IDNA2008
-
-IDNA2008, which is defined in S<RFC 5890>
-(L<http://tools.ietf.org/html/rfc5890>) and related documents, resolves the
-issues found in IDNA2003.
-
-For most parts, IDNA2008 only allows domain names that would be disallowed
-and/or mapped to other domain names under IDNA2003. An implementation of
-IDNA2003 would not be able to access these domain names, of course.
-
-However, IDNA2008 also disallows a number of characters had been allowed in
-IDNA2003 (mostly symbols). An implementation of IDNA2008 would therefore no
-longer be able to access domain names such as C<√.com>, which had been
-registered under IDNA2003.
-
-See also L<Net::IDN::IDNA2008>.
-
-=item UTS #46
-
-Unicode Technical Standard #46 (UTS #46) solves this problem by allowing domain
-names that are valid in either IDNA2003 or IDNA2008, and thus to all domains
-registered under either IDNA2003 or IDNA2008.
-
-UTS #46 also allows some domain names that are valid in neither IDNA2003 nor
-IDNA2008, relying on DNS lookup failing for such domain names. This makes
-UTS #46 the perfect fit for domain lookup (be liberal in what you accept) but
-unsuitable for validating domain names prior to registration (be conservative
-in what you send).
-
-See also L<Net::IDN::UTS46>.
-
-=back
-
-For more information, see the specifications indicated above.
-
 =head1 AUTHOR
 
 Claus FE<auml>rber <CFAERBER@cpan.org>
 
 =head1 LICENSE
 
-Copyright 2007-2011 Claus FE<auml>rber.
+Copyright 2007-2012 Claus FE<auml>rber.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

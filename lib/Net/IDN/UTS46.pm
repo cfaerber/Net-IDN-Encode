@@ -1,6 +1,6 @@
 package Net::IDN::UTS46;
 
-require 5.008_001;
+require 5.006;
 
 use strict;
 use utf8;
@@ -17,11 +17,10 @@ our @EXPORT_OK = ('uts46_to_ascii', 'uts46_to_unicode');
 our %EXPORT_TAGS = ( 'all' => \@EXPORT_OK );
 
 use Unicode::Normalize 1 ();
-use Net::IDN::Punycode 1 (':all');
-use Net::IDN::UTS46::_Mapping 5.002 ('/^(Is|Map).*/');	# UTS #46 is only defined from Unicode 5.2.0
 
-our $IDNA_PREFIX;
-*IDNA_PREFIX = \'xn--';
+use Net::IDN::Punycode 1 (':all');
+use Net::IDN::Encode 1.009_2012 (':_var');
+use Net::IDN::UTS46::_Mapping 5.002 ('/^(Is|Map).*/');	# UTS #46 is only defined from Unicode 5.2.0
 
 sub uts46_to_unicode {
   my ($label, %param) = @_;
@@ -421,7 +420,7 @@ Claus FE<auml>rber <CFAERBER@cpan.org>
 
 =head1 LICENSE
 
-Copyright 2011 Claus FE<auml>rber.
+Copyright 2011-2012 Claus FE<auml>rber.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

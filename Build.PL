@@ -18,16 +18,21 @@ my $b = Module::Build->new(
 
 	'requires'	=> {
 		'Unicode::Normalize' => 1,
-		'perl'	=> 5.008_003,
+		'perl'	=> 5.006,
 	},
 	'build_requires' => {
 		'Test::More' => 0, 
 		'Test::NoWarnings' => 0,
 	},
 	'PL_Files' => {
-		'lib/Unicode/UTS46/Mapping.PL'  => 'lib/Unicode/UTS46/Mapping.pm',
-		'lib/Unicode/UTS46/GenTests.PL'	 => [	't/uts46_to_ascii-transitional.t', 't/uts46_to_ascii-nontransitional.t',
-							't/uts46_to_unicode-transitional.t', 't/uts46_to_unicode-nontransitional.t', ],
+		'lib/Unicode/UTS46/Mapping.PL'  => [
+			 'lib/Unicode/UTS46/Mapping.pm',
+		],
+		'lib/Unicode/UTS46/GenTests.PL'	 => [	
+			't/uts46_to_ascii.t',
+			't/uts46_to_ascii-trans.t',
+ 			't/uts46_to_unicode.t',
+		],
 	},
 	'no_index' => {
 		'directory' => ['eg', 'data']

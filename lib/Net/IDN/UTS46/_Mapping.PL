@@ -76,7 +76,7 @@ sub write_data {
 #
 package Net::IDN::UTS46::_Mapping;
 
-require 5.008_001;
+require 5.006;
 
 use strict;
 use utf8;

@@ -1,9 +1,10 @@
 OVERVIEW
 
-  Net::IDN::Encode   -- high-level interface for encoding and 
-  			decoding of domain names (implements
-			toASCII and toUNICODE as defined in
-			RFC 3490)
+  Net::IDN::Encode   -- Internationalized Domain Names in
+			Applications (IDNA)
+
+  Net::IDN::UTS46    --	Unicode IDNA Compatibility Processing
+			(UTS #46)
 
   Net::IDN::Punycode -- ASCII-compatible encoding of Unicode 
   			(Punycode, RFC 3492)

@@ -1,5 +1,11 @@
 Revision history for Perl extension Net::IDN::Encode
 
+1.999_20120107
+	- FIXES potential portability problem Net::IDN::Punycode XS
+	- FIXES strange behaviour in Net::IdN::Punycode XS when
+	  argument is a special variable
+	- XS cleanup
+
 1.999_20111228
 	- documentation update
 	- make Net::IDN::Encode behave more like previous versions
@@ -92,7 +98,7 @@ Revision history for Perl extension Net::IDN::Encode
 
 	- FIXES: #16150: Net::IDN::Encode depends on non-modulelist module IDNA::Punycode
 	- FIXES: #16145: IDNA::Punycode 0.03
-	- FIXES: #28123: Undeclared dependency on Unicode::String (reported by ANDK)
+	- FIXES: #28123: Undeclared dependency on Unicode::Stringprep (reported by ANDK)
 	- FIXES WARNING: v-string in use/require non-portable (Net::IDN::Nameprep[::*])
 
 0.02  Sun Jun 20 00:00:00 2004

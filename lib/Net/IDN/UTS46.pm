@@ -8,20 +8,20 @@ use warnings;
 
 use Carp;
 
-our $VERSION = "1.999_20111228";
+our $VERSION = "0.999_20120102";
 $VERSION = eval $VERSION;
 
 our @ISA = ('Exporter');
 our @EXPORT = ();
 our @EXPORT_OK = ('uts46_to_ascii', 'uts46_to_unicode', 'uts46_mapping');
-
-our $IDNA_prefix;
-*IDNA_prefix = \'xn--';
+our %EXPORT_TAGS = ( 'all' => \@EXPORT_OK );
 
 use Unicode::Normalize 1 ();
+use Net::IDN::Punycode 1 (':all');
+use Net::IDN::UTS46::Mapping 5.002 ('/^(Is).*/');	# UTS #46 is only defined from Unicode 5.2.0
 
-use Net::IDN::Punycode 1 ();
-use Net::IDN::UTS46::Mapping 5.002 ('/^(Is).*/');				# UTS #46 is only defined from Unicode 5.2.0
+our $IDNA_PREFIX;
+*IDNA_PREFIX = \'xn--';
 
 sub uts46_to_unicode {
   my ($label, %param) = @_;
@@ -44,8 +44,8 @@ sub uts46_to_ascii {
 #
   foreach(@ll) {
     if(m/\P{ASCII}/) {
-      eval { $_ = $IDNA_prefix . Net::IDN::Punycode::encode_punycode($_) };
-      die "$@ [A3]" if $@;
+      eval { $_ = $IDNA_PREFIX . encode_punycode($_) };
+      croak "$@ [A3]" if $@;
       $pass_through = 0;
     }
   }
@@ -121,17 +121,19 @@ sub _process {
 #
   my $bidi = 0;
 
-  foreach (@ll) {
-    if(m/^$IDNA_prefix(\p{ASCII}+)$/oi) {
-      eval { $_ = Net::IDN::Punycode::decode_punycode($1); };
-      _validate_label($_,%param,
+  foreach my $l (@ll) {
+    if($l =~ m/^$IDNA_PREFIX(\p{ASCII}+)$/oi) {
+      eval { $l = decode_punycode($1); };
+      croak 'Invalid Punycode sequence [P4]' if $@;
+
+      _validate_label($l, %param,
 	'TransitionalProcessing' => 0,
 	'AllowUnassigned' => 0,			## keep the Punycode version
       ) unless $@;
     } else {
-      _validate_label($_,%param,'_AssumeNFC' => 1);
+      _validate_label($l,%param,'_AssumeNFC' => 1);
     }
-    $bidi++ if !$bidi && m/[\p{Bc:R}\p{Bc:AL}\p{Bc:AN}]/;
+    $bidi++ if !$bidi && ($l =~ m/[\p{Bc:R}\p{Bc:AL}\p{Bc:AN}]/);
   }
 
   if($bidi) {
@@ -183,7 +185,7 @@ sub _validate_bidi {
   no warnings 'utf8';
   return 1 unless length($l);
 
-  $l =~ m/^(?:(\p{Bc:L})|\p{Bc:R}|\p{Bc:AL})/ or die 'starts with character of wrong bidi class [B1]';
+  $l =~ m/^(?:(\p{Bc:L})|\p{Bc:R}|\p{Bc:AL})/ or croak 'starts with character of wrong bidi class [B1]';
 
   if(!defined $1) { # RTL
     $l =~ m/[^\p{Bc:R}\p{Bc:AL}\p{Bc:AN}\p{Bc:EN}\p{Bc:ES}\p{Bc:CS}\p{Bc:ET}\p{Bc:ON}\p{Bc:BN}\p{Bc:NSM}]/ and croak 'contains characters with wrong bidi class for RTL [B2]';

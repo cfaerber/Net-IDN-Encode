@@ -7,12 +7,15 @@ use utf8;
 use warnings;
 
 use Exporter;
-our $VERSION = "1.001";
+
+our $VERSION = "1.009_20120106";
+$VERSION = eval $VERSION;
 
 our @ISA = qw(Exporter);
 our @EXPORT = ();
-our @EXPORT_OK = qw(encode_punycode decode_punycode);
-our %EXPORT_TAGS = ( 'all' => \@EXPORT_OK );
+our @EXPORT_OK = ();
+our %EXPORT_TAGS = ( 'all'  => [ qw(encode_punycode decode_punycode) ], );
+Exporter::export_ok_tags(keys %EXPORT_TAGS);
 
 eval { 
   require XSLoader;
@@ -39,16 +42,15 @@ Net::IDN::Punycode - A Bootstring encoding of Unicode for IDNA (S<RFC 3492>)
 
 =head1 DESCRIPTION
 
-This module implements the Punycode encoding. Punycode is an
-instance of a more general algorithm called Bootstring, which
-allows strings composed from a small set of "basic" code points to
-uniquely represent any string of code points drawn from a larger
-set.  Punycode is Bootstring with particular parameter values
-appropriate for IDNA.
+This module implements the Punycode encoding. Punycode is an instance of a more
+general algorithm called Bootstring, which allows strings composed from a small
+set of "basic" code points to uniquely represent any string of code points
+drawn from a larger set. Punycode is Bootstring with particular parameter
+values appropriate for IDNA.
 
-Note that this module does not do any string preparation as
-specified by I<nameprep>/I<stringprep>. It does not do add any
-prefix or suffix, either.
+Note that this module does not do any string preparation as specified by
+I<Nameprep>/I<Precis>. It does not do add any prefix or suffix, either. Use
+L<Net::IDN::Stupid> or L<Net::IDN::Encode> for conversion of domain labels.
 
 =head1 FUNCTIONS
 
@@ -61,7 +63,7 @@ The following functions are available:
 
 =item encode_punycode($input)
 
-Decodes C<$input> with Punycode and returns the result.
+Encodes C<$input> with Punycode and returns the result.
 
 This function will throw an exception on invalid input.
 
@@ -83,7 +85,7 @@ Claus FE<auml>rber E<lt>CFAERBER@cpan.orgE<gt> (from version 1.00)
 
 Copyright 2002-2004 Tatsuhiko Miyagawa E<lt>miyagawa@bulknews.netE<gt>
 
-Copyright 2007-2010 Claus FE<auml>rber E<lt>CFAERBER@cpan.orgE<gt>
+Copyright 2007-2012 Claus FE<auml>rber E<lt>CFAERBER@cpan.orgE<gt>
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

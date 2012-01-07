@@ -4,9 +4,15 @@ use utf8;
 BEGIN { binmode STDOUT, ':utf8'; binmode STDERR, ':utf8'; }
 
 use Test::More;
-use Test::NoWarnings;
-
 use Net::IDN::Punycode ':all';
+
+BEGIN { 
+	plan skip_all => 'no XS version' if eval {
+		\&Net::IDN::Punycode::encode_punycode ==
+		\&Net::IDN::Punycode::PP::encode_punycode; }
+}
+
+use Test::NoWarnings;
 
 our @idna = (
   ["Arabic (Egyptian)",
@@ -108,10 +114,14 @@ our @idna = (
     "\x{05D0}\x{0308}",
     "ssa73l",
   ],
+  ['U+094D',
+    "a\x{094D}b",
+    "ab-fsf",
+   ],
+);
 
-   );
-
-plan tests => ($#idna+1)*2 + 1;
+my $tests = 2 * (scalar @idna);
+plan tests => 1 + $tests;
 
 foreach my $test (@idna) 
 {

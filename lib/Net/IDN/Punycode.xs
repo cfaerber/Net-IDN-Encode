@@ -21,7 +21,7 @@ static char enc_digit[BASE] = {
   '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 
 };
 
-static UV dec_digit[0x80] = {
+static IV dec_digit[0x80] = {
   -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, /* 00..0F */
   -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, /* 10..1F */
   -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, /* 20..2F */
@@ -55,24 +55,17 @@ encode_punycode(input)
 		int bias = INITIAL_BIAS;
 		int delta = 0, skip_delta;
 
-		char *in_s, *in_p, *in_e, *re_s, *re_p, *re_e, *skip_p;
+		const char *in_s, *in_p, *in_e, *skip_p;
+ 		char *re_s, *re_p, *re_e;
 		int first = 1;
-		STRLEN h;
-
-		STRLEN length_guess, u8;
+		STRLEN length_guess, len, h, u8;
 
 	PPCODE:	
-		if(!SvOK(input)) XSRETURN_UNDEF;
+		in_s = in_p = SvPVutf8(input, len);
+		in_e = in_s + len;
 
-		length_guess = sv_utf8_upgrade(input);
-		
-		in_s = in_p = SvPV_nolen(input);
-		in_e = SvEND(input);
-
-		/* copy basic code points */
-
-		if(length_guess < 64) length_guess = 64;	/* optimise for maximum 
-								   length of domain names */
+		length_guess = len;
+		if(length_guess < 64) length_guess = 64;	/* optimise for maximum length of domain names */
 		length_guess += 2;				/* plus DELIM + '\0' */
 
 		RETVAL = NEWSV('P',length_guess);
@@ -81,6 +74,7 @@ encode_punycode(input)
 		re_s = re_p = SvPV_nolen(RETVAL);
 		re_e = re_s + SvLEN(RETVAL);
 
+		/* copy basic code points */
 		while(in_p < in_e) {
 		  if( isBASE(*in_p) ) 
 		    *re_p++ = *in_p;
@@ -98,7 +92,7 @@ encode_punycode(input)
 		  q = skip_delta = 0;
 
 		  for(in_p = skip_p = in_s; in_p < in_e;) {
-		    c = utf8_to_uvuni(in_p, &u8);
+		    c = utf8_to_uvuni((U8*)in_p, &u8);
 		    if(c >= n && c < m) {
  		      m = c;
 		      skip_p = in_p;
@@ -120,7 +114,7 @@ encode_punycode(input)
 
 		  delta += skip_delta;
 		  for(in_p = skip_p; in_p < in_e;) {
-		    c = utf8_to_uvuni(in_p, &u8);
+		    c = utf8_to_uvuni((U8*)in_p, &u8);
 		    
 		    if(c < n) {
 		      ++delta;
@@ -133,7 +127,7 @@ encode_punycode(input)
 			  re_e = SvGROW(RETVAL, length_guess);
 			  re_p = re_e + (re_p - re_s);
 			  re_s = re_e;
-			  re_e = re_s + length_guess;
+			  re_e = re_s + SvLEN(RETVAL);
 			}
 
 			t = TMIN_MAX(k - bias);
@@ -162,23 +156,22 @@ decode_punycode(input)
 		SV * input	
 	PREINIT:
 		UV c, n = INITIAL_N;
+		IV dc;
 		int i = 0, oldi, j, k, t, w;
 
 		int bias = INITIAL_BIAS;
 		int delta = 0, skip_delta;
 
-		char *in_s, *in_p, *in_e, *re_s, *re_p, *re_e, *skip_p;
+		const char *in_s, *in_p, *in_e, *skip_p;
+		char *re_s, *re_p, *re_e;
 		int first = 1;
-		STRLEN length_guess, h, u8;
+		STRLEN length_guess, len, h, u8;
 
 	PPCODE:	
-		if(!SvOK(input)) XSRETURN_UNDEF;
-		
 		in_s = in_p = SvPV_nolen(input);
 		in_e = SvEND(input);
-		length_guess = SvCUR(input);
-		length_guess *= 2;
 
+		length_guess = SvCUR(input) * 2;
 		if(length_guess < 256) length_guess = 256;
 
 		RETVAL = NEWSV('D',length_guess);
@@ -211,8 +204,9 @@ decode_punycode(input)
 
 	          for(k = BASE;; k+= BASE) {
 		    if(!(in_p < in_e)) croak("incomplete encoded code point in decode_punycode");
-		    c = dec_digit[*in_p++];			/* we already know it's in 0..127 */
-		    if(((IV)c) < 0) croak("invalid digit in input for decode_punycode");
+		    dc = dec_digit[*in_p++];			/* we already know it's in 0..127 */
+		    if(dc < 0) croak("invalid digit in input for decode_punycode");
+		    c = (UV)dc;
 		    i += c * w;
 		    t = TMIN_MAX(k - bias);
 		    if(c < t) break;
@@ -241,7 +235,7 @@ decode_punycode(input)
 		  if(skip_p < re_p)				/* move succeeding chars */
 		    Move(skip_p, skip_p + u8, re_p - skip_p, char); 
 		  re_p += u8;
-		  uvuni_to_utf8_flags(skip_p, n, UNICODE_ALLOW_ANY);
+		  uvuni_to_utf8_flags((U8*)skip_p, n, UNICODE_ALLOW_ANY);
 		}
 
 		if(!first) SvUTF8_on(RETVAL);			/* UTF-8 chars have been inserted */

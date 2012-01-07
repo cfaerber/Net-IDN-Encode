@@ -3,9 +3,6 @@ OVERVIEW
   Net::IDN::Punycode --	A Bootstring encoding of Unicode for IDNA
 			(RFC 3492)
 
-  Net::IDN::Stupid --	Stupid implementation of Internationalized
-			Domain Names (IDNA)
-
 INSTALLATION
 
   To install this module type the following:

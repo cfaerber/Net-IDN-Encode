@@ -2,15 +2,15 @@ Revision history for Perl extension Net::IDN::Punycode
 
 1.100 (TODO)
 	- move Net::IDN::Punycode to a separate distribution
-	- add Net::IDN::Stupid
 	- FIXES potential portability problem in XS
 	- FIXES strange behaviour in XS when argument is 
 	  a special variable
+	- XS cleanup
 
 Revision history for Perl extension Net::IDN::Encode (excerpt)
 
 1.102 (2011-12-19)	
-	- FIXES bug in Net::IDN::Punycode::PP
+	- FIXES encoding bug in Net::IDN::Punycode::PP
 …
 
 0.999_20090112 (2010-01-10)

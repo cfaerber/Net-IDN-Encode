@@ -13,7 +13,7 @@ $VERSION = eval $VERSION;
 
 our @ISA = ('Exporter');
 our @EXPORT = ();
-our @EXPORT_OK = ('uts46_to_ascii', 'uts46_to_unicode', 'uts46_mapping');
+our @EXPORT_OK = ('uts46_to_ascii', 'uts46_to_unicode');
 our %EXPORT_TAGS = ( 'all' => \@EXPORT_OK );
 
 use Unicode::Normalize 1 ();
@@ -62,14 +62,8 @@ sub uts46_to_ascii {
   return $label;
 }
 
-sub uts46_mapping {
-  croak "Too many arguments" if $#_ > 0;
-  goto &_process;
-}
-
 *to_unicode	= \&uts46_to_unicode;
 *to_ascii	= \&uts46_to_ascii;
-*mapping	= \&uts46_mapping;
 
 sub _process {
   my ($label, %param) = @_;

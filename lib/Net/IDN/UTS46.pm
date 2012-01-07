@@ -18,7 +18,7 @@ our %EXPORT_TAGS = ( 'all' => \@EXPORT_OK );
 
 use Unicode::Normalize 1 ();
 use Net::IDN::Punycode 1 (':all');
-use Net::IDN::UTS46::Mapping 5.002 ('/^(Is).*/');	# UTS #46 is only defined from Unicode 5.2.0
+use Net::IDN::UTS46::_Mapping 5.002 ('/^(Is|Map).*/');	# UTS #46 is only defined from Unicode 5.2.0
 
 our $IDNA_PREFIX;
 *IDNA_PREFIX = \'xn--';
@@ -98,19 +98,22 @@ sub _process {
 
 #   - ignored
 #
-  $label = Net::IDN::UTS46::Mapping::MapIgnored($label);
-  ## $label = Net::IDN::UTS46::Mapping::MapDisallowedSTD3Ignored($label)	if(!$param{'UseSTD3ASCIIRules'});
+  $label = MapIgnored($label);
+  ## $label = MapDisallowedSTD3Ignored($label)	if(!$param{'UseSTD3ASCIIRules'});
 
 #   - mapped
 #
-  $label = Net::IDN::UTS46::Mapping::MapMapped($label);
-  $label = Net::IDN::UTS46::Mapping::MapDisallowedSTD3Mapped($label) 	if(!$param{'UseSTD3ASCIIRules'});
+  $label = MapMapped($label);
+  $label = MapDisallowedSTD3Mapped($label) 	if(!$param{'UseSTD3ASCIIRules'});
 
 #  - deviation
-  $label = Net::IDN::UTS46::Mapping::MapDeviation($label)		if($param{'TransitionalProcessing'});
+  $label = MapDeviation($label)			if($param{'TransitionalProcessing'});
 
 # 2. Normalize
 #
+
+## TODO: replace with own implementation in _Mapping
+##
   $label = Unicode::Normalize::NFC($label);
 
 # 3. Break
@@ -377,13 +380,6 @@ This function takes the following optional parameters (C<%param>):
 does not define transitional processing for ToUnicode.
 
 =back
-
-=item uts46_mapping( $label ) 
-
-Implements the "Preprocessing for IDNA2008" from UTS #46, section 4.4. It will
-prepare a domain name for subsequent processing with IDNA2008.
-
-This function currently does not take any parameters.
 
 =back
 

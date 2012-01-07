@@ -9,28 +9,44 @@ open UnicodeData, '<', "data/UnicodeData.txt" or
 my %width;
 my %ccc;
 my %nfc;
+my %lc;
 
 while(<UnicodeData>) {
   chomp;
-  my($cp,$name,$x,$ccc,$y,$map) = split /\s*;\s*/;
+  my($cp,$name,$ccc,$map,$simple_lc) = (split /\s*;\s*/)[0,1,3,5,13)];
   $cp = hex $cp;
-
-  if($map =~ m/^<(?:wide|narrow)>\s*(.*)/i) {
-    $width{$cp} = h2a($1);
-  }
 
   if($ccc) {
     $ccc{$cp} = int($ccc);
   }
 
+  if($map =~ m/^<(?:wide|narrow)>\s*(.*)/i) {
+    $width{$cp} = h2a($1);
+  }
+
   if($map =~ m/^[[:xdigit:]]/) {
     $nfc{$cp} = h2a($map);
   }
+
+  if($simple_lc) {
+    $lc{$cp} = h2a($simple_lc)
+  }
+}
+
+open SpecialCasing, '<', "data/SpecialCasing.txt" or
+  die "Cannot open data/SpecialCasing.txt";
+my %np;
+
+while(<SpecialCasing>) {
+  chomp;
+  s/\s*#.*//; next unless m/\S/;
+  my($cp,$uc,$lc,$ucfirst) = split /\s*;\s*/;
+  my($from,$to) = map { hex } split /\.+/, $cp;
+  $lc{$_} = $lc foreach($to ? ($from..$to+1) : ($from,));
 }
 
 open DNormalizationProps, '<', "data/DerivedNormalizationProps.txt" or
   die "Cannot open data/DerivedNormalizationProps.txt";
-
 my %np;
 
 while(<DNormalizationProps>) {
@@ -55,8 +71,10 @@ print "  \$s =~ tr/", join('/',h2q(%width)), "/;\n";
 print "  return \$s;\n";
 print "}\n";
 
-print "\nsub NFC {";
+print "\nsub lcNFC {\n";
+print "  use utf8;\n";
 print "  my \$s = shift;\n";
+print "  utf8::upgrade(\$s); \$s = lc \$s;\n";
 print "  \$s =~ s/(.?[",a2q(keys(%{$np{'nfc_qc'}}),
   keys(%{$np{'full_composition_exclusion'}}),
   keys(%ccc)),"]+)/ _nfc(\$1) /ge;\n";
@@ -188,7 +206,7 @@ use strict;
 
 use Exporter;
 our @ISA = ('Exporter');
-our @EXPORT_OK = ('NFC', 'MapWidth');
+our @EXPORT_OK = ('lcNFC', 'MapWidth');
 our %EXPORT_TAGS = ( 'all' => \@EXPORT_OK );
 
 __BREAK__

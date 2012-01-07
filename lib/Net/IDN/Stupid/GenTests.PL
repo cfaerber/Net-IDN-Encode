@@ -27,8 +27,8 @@ while(<NormalizationTest>) {
   w($c[2], $c[2], "$com c2 == NFC(c2))");
   w($c[3], $c[2], "$com c2 == NFC(c3))");
 
-  w($c[4], $c[4], "$com c4 == NFC(c4))");
-  w($c[5], $c[4], "$com c4 == NFC(c5))");
+  ## w($c[4], $c[4], "$com c4 == NFC(c4))");
+  ## w($c[5], $c[4], "$com c4 == NFC(c5))");
 }
 f(undef);
 exit(0);
@@ -38,7 +38,7 @@ sub w {
 
   #print "TODO: { local \$TODO = 'HANGUL not implemented'; " if $c =~ m/hangul/i;
 
-  printf "is(_(NFC(\"%s\")),\t_(\"%s\"),\t\"%s\");",
+  printf "is(_(lcNFC(\"%s\")),\t_(lc(\"%s\")),\t\"%s\");",
     _($s), _($d), quotemeta($c);
 
   #print "}" if $c =~ m/hangul/i;
@@ -62,7 +62,7 @@ if(defined $cur_part) {
 done_testing();
 exit(0);
 
-sub _{ return join ' ', map {sprintf '%04X', ord \$_} split //, shift}
+sub _{ return shift; return join ' ', map {sprintf '%04X', ord \$_} split //, shift}
 __END__
 __EOF
   close STDOUT;

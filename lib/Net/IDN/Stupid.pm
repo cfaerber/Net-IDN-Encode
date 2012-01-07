@@ -31,7 +31,7 @@ sub stupid_to_ascii {
 	or $label =~ m/^$IDNA_PREFIX.*\P{ASCII}/oi;
 
   if($label =~ m/\P{ASCII}/) {
-    $label = NFC(lc(MapWidth($label)));
+    $label = lcNFC(MapWidth($label));
     $label = $IDNA_PREFIX.encode_punycode($label);
   }
   return $label;

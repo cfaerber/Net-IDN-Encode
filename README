@@ -1,7 +1,7 @@
 OVERVIEW
 
-  Net::IDN::Punycode --	A Bootstring encoding of Unicode for IDNA
-			(RFC 3492)
+  Net::IDN::Punycode --	A Bootstring encoding of Unicode for 
+			IDNA (RFC 3492)
 
 INSTALLATION
 
@@ -14,7 +14,7 @@ INSTALLATION
 
 DEPENDENCIES
 
-  none
+  perl 5.6.x or higher
 
 AUTHOR
 

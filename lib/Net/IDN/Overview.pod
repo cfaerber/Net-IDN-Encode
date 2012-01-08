@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-Net::IDN::* - Internationalized Domain Names for Applications (IDNA)
+Net::IDN::Overwiew - Internationalized Domain Names for Applications (IDNA)
 
 =head1 DESCRIPTION
 

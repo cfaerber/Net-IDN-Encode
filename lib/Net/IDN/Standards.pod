@@ -2,8 +2,7 @@
 
 =head1 NAME
 
-Standards for
-Internationalized Domain Names for Applications (IDNA)
+Net::IDN::Standards -- Internationalized Domain Names for Applications (IDNA)
 
 =head1 INTRODUCTION
 

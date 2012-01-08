@@ -18,14 +18,12 @@ my $b = Module::Build->new(
 
 	'requires'	=> {
 		'Net::IDN::Punycode' => 1,
+		'Net::IDN::Encode'   => 2,
 		'Net::IDN::Nameprep' => 1.1,
 	},
 	'build_requires' => {
 		'Test::More' => 0, 
 		'Test::NoWarnings' => 0,
-	},
-	'no_index' => {
-		'directory' => ['eg']
 	},
 	'resources' => {
 		'homepage' => 'http://search.cpan.org/dist/Net-IDN-Encode',

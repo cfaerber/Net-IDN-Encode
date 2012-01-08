@@ -10,8 +10,9 @@ $VERSION = eval $VERSION;
 use Carp;
 use Exporter;
 
-use Net::IDN::Nameprep 1.1 ();
+use Net::IDN::Encode 2 (':_var');
 use Net::IDN::Punycode 1 ();
+use Net::IDN::Nameprep 1.1 ();
 
 our @ISA = ('Exporter');
 our @EXPORT = ();
@@ -20,9 +21,6 @@ our @EXPORT_OK = (
   'idna2003_to_unicode',
 );
 our %EXPORT_TAGS = ( 'all' => \@EXPORT_OK );
-
-our $IDNA_prefix;
-*IDNA_prefix = \'xn--';
 
 sub idna2003_to_ascii {
   use bytes;
@@ -45,8 +43,8 @@ sub idna2003_to_ascii {
   }
 
   if($label =~ m/[^\x00-\x7F]/) {
-    croak 'Invalid label (toASCII, step 5)' if $label =~ m/^$IDNA_prefix/io;
-    $label = $IDNA_prefix.(Net::IDN::Punycode::encode_punycode($label));
+    croak 'Invalid label (toASCII, step 5)' if $label =~ m/^$IDNA_PREFIX/io;
+    $label = $IDNA_PREFIX.(Net::IDN::Punycode::encode_punycode($label));
   }
 
   croak 'Invalid label length (toASCII, step 8)' if
@@ -72,7 +70,7 @@ sub idna2003_to_unicode {
 
     my $save3 = $label;
     croak 'Missing IDNA prefix (ToUnicode, step 3)'
-      unless $label =~ s/^$IDNA_prefix//io;
+      unless $label =~ s/^$IDNA_PREFIX//io;
     $label = Net::IDN::Punycode::decode_punycode($label);
 
     my $save6 = to_ascii($label,%param);

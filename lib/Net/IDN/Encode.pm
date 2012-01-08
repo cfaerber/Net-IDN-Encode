@@ -140,8 +140,8 @@ The following functions are available:
 =item to_ascii( $label, %param )
 
 Converts a single label C<$label> to ASCII. Will throw an exception on invalid
-input. If C<$label> is already in ASCII, this function will never fail but
-return C<$label> as is as a last resort.
+input. If C<$label> is already a valid ASCII domain label, this function will never fail but
+return C<$label> as-is if conversion would fail.
 
 This function takes the following optional parameters (C<%param>):
 
@@ -182,9 +182,8 @@ domain names). Use C<domain_to_ascii> instead.
 =item to_unicode( $label, %param )
 
 Converts a single label C<$label> to Unicode.  Will throw an exception on
-invalid input. If C<$label> is in ASCII, this function will never fail but
-return C<$label> as is as a last resort.
-
+invalid input. If C<$label> is a valid ASCII label, this function will never
+fail but return C<$label> as-is if conversion would fail.
 
 This function takes the same optional parameters as C<to_ascii>,
 with the same defaults.

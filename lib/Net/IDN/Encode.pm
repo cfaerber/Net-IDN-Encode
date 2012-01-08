@@ -42,7 +42,7 @@ sub to_ascii {
   my($label,%param) = @_;
   croak 'Invalid label' if $label =~ m/$IDNA_DOT/o;
   eval { $label = Net::IDN::UTS46::to_ascii(@_) };
-  die $@ if $@ and ($label =~ m/\P{ASCII}/ or $label !~ m/^\p{Alnum}(?:-*\p{Alnum})*$/i);
+  die $@ if $@ and ($label =~ m/\P{ASCII}/ or $label =~ m/\s/i);
   return $label;
 }
 
@@ -50,7 +50,7 @@ sub to_unicode {
   my($label,%param) = @_;
   croak 'Invalid label' if $label =~ m/$IDNA_DOT/o;
   eval { $label = Net::IDN::UTS46::to_unicode(@_) };
-  die $@ if $@ and ($label =~ m/\P{ASCII}/ or $label !~ m/^\p{Alnum}(?:-*\p{Alnum})*$/i);
+  die $@ if $@ and ($label =~ m/\P{ASCII}/ or $label =~ m/\s/i);
   return $label;
 }
 

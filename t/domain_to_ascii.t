@@ -5,7 +5,7 @@ BEGIN { binmode STDOUT, ':utf8'; binmode STDERR, ':utf8'; }
 
 use Net::IDN::Encode qw(:all);
 
-use Test::More tests => 1 + 6;
+use Test::More tests => 1 + 7;
 use Test::NoWarnings;
 
 use Net::IDN::Encode qw(:all);
@@ -17,3 +17,4 @@ is(eval{domain_to_ascii('www.xn--a o u -1za7prc.org', 'UseSTD3ASCIIRules' => 0)}
 is(eval{domain_to_ascii('www.xn--a o u -1za7prc.org', 'UseSTD3ASCIIRules' => 1)}, undef, 'blank (with STD3 rules)');
 is(eval{domain_to_ascii('www.xn--garbage')}, 'www.xn--garbage', 'Invalid A-label');
 
+is(eval{domain_to_ascii('_test._srv.müller.example.com')}, '_test._srv.xn--mller-kva.example.com', 'SRV record');

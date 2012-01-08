@@ -8,7 +8,7 @@ use warnings;
 
 use Exporter;
 
-our $VERSION = "1.009_20120107";
+our $VERSION = "1.100";
 $VERSION = eval $VERSION;
 
 our @ISA = qw(Exporter);

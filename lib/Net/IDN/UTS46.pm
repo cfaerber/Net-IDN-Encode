@@ -8,7 +8,7 @@ use warnings;
 
 use Carp;
 
-our $VERSION = "0.999_20120102";
+our $VERSION = "1.000";
 $VERSION = eval $VERSION;
 
 our @ISA = ('Exporter');
@@ -18,8 +18,8 @@ our %EXPORT_TAGS = ( 'all' => \@EXPORT_OK );
 
 use Unicode::Normalize 1 ();
 
-use Net::IDN::Punycode 1 (':all');
-use Net::IDN::Encode 1.009_2012 (':_var');
+use Net::IDN::Punycode 1.1 (':all');
+use Net::IDN::Encode 2 (':_var');
 use Net::IDN::UTS46::_Mapping 5.002 ('/^(Is|Map).*/');	# UTS #46 is only defined from Unicode 5.2.0
 
 sub uts46_to_unicode {

@@ -1,32 +1,23 @@
 Revision history for Perl extension Net::IDN::Encode
 
-1.999_20120108
-	- FIXES handling for NON-LDH labels (e.g. SRV record)
-	- FIXES handling for UseSTD3Rules=false
-
-1.999_20120107
-	- FIXES potential portability problem Net::IDN::Punycode XS
-	- FIXES strange behaviour in Net::IdN::Punycode XS when
-	  argument is a special variable
-	- XS cleanup
-
-1.999_20111228
-	- documentation update
-	- make Net::IDN::Encode behave more like previous versions
-
-1.900_20111224
-	- FIXES compatibility with perl 5.8.x 5.10.x
-
-1.900_20111220
-	- FIXES 'wide character' warning with tests if tests fail.
-
-1.900_20111219
-	- FIXES 'wide character' warning with tests it TB2 if used on modern
-	  perl installations.
-
-1.900_20111218
-	- initial implementation for UTS #46
-	- FIXES bug in Net::IDN::Punycode::PP
+2.000 (2012-01-08)
+	- switch to Unicode Technical Standard #46 (previously,
+	  IDNA2003 has been used, which is now available as
+	  Net::IDN::IDNA2003):
+	- add Net::IDN::UTS46 + test vectors from UTS #46
+	- remove Net::IDN::Nameprep (only required for IDNA2003)
+	- add documentation about IDNA Standards and IDNA module
+	  Overview/Roadmad
+	- allow NON-LDH labels (e.g. for SRV records), even if
+	  UseSTD3Rules=true (parameter now only applies to
+	  U-labels and A-labels, i.e. labels that are converted by
+	  IDNA).
+	- FIXES potential portability problems in
+	  Net::IDN::Punycode XS 1.999_20120108
+	- FIXES 'wide character' warning with tests if tests
+	  fail/if TB2 is used on modern perl installations.
+	- FIXES decoding bug in Net::IDN::Punycode::PP (discovered
+	  through UTS #46 test vectors)
 
 1.101 (2011-12-08)
 	- FIXES: #72615 faulty data in Build.PL causes a lack of
@@ -43,7 +34,7 @@ Revision history for Perl extension Net::IDN::Encode
 	  (domain_to_unicode does not require it)
 	- o-modifier in regexs
 	- _domain replaced by domain_to_unicode and domain_to_ascii
-	- _nameprep replaced by NET::IDN::Nameprep
+	- _nameprep replaced by Net::IDN::Nameprep
 
 1.000 (2010-01-13)
 	- clean-up

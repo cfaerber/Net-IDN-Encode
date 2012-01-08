@@ -3,13 +3,12 @@ Changes
 Build.PL
 Makefile.PL
 MANIFEST
-eg/hello_idn.pl
-eg/hello_idn_email.pl
 lib/Net/IDN/Encode.pm
 lib/Net/IDN/Punycode.pm
 lib/Net/IDN/Punycode.xs
 lib/Net/IDN/Punycode/PP.pm
 lib/Net/IDN/Overview.pod
+lib/Net/IDN/Standards.pod
 lib/Net/IDN/UTS46.pm
 lib/Net/IDN/UTS46/_Mapping.pm
 t/00use.t
@@ -25,6 +24,8 @@ t/uts46_encode_utf8.t
 t/uts46_to_ascii.t
 t/uts46_to_ascii-trans.t
 t/uts46_to_unicode.t
+eg/hello_idn.pl
+eg/hello_idn_email.pl
 LICENSE
 META.yml
 META.json

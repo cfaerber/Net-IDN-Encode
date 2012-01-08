@@ -42,7 +42,7 @@ sub to_ascii {
   my($label,%param) = @_;
   croak 'Invalid label' if $label =~ m/$IDNA_DOT/o;
   eval { $label = Net::IDN::UTS46::to_ascii(@_) };
-  die $@ if $@ and ($label =~ m/\P{ASCII}/ or $label =~ m/\s/i);
+  die $@ if $@ and ($label =~ m/\P{ASCII}/);
   return $label;
 }
 
@@ -50,7 +50,7 @@ sub to_unicode {
   my($label,%param) = @_;
   croak 'Invalid label' if $label =~ m/$IDNA_DOT/o;
   eval { $label = Net::IDN::UTS46::to_unicode(@_) };
-  die $@ if $@ and ($label =~ m/\P{ASCII}/ or $label =~ m/\s/i);
+  die $@ if $@ and ($label =~ m/\P{ASCII}/);
   return $label;
 }
 
@@ -140,8 +140,9 @@ The following functions are available:
 =item to_ascii( $label, %param )
 
 Converts a single label C<$label> to ASCII. Will throw an exception on invalid
-input. If C<$label> is already a valid ASCII domain label, this function will never fail but
-return C<$label> as-is if conversion would fail.
+input. If C<$label> is already a valid ASCII domain label (including most
+NON-LDH labels such as those used for SRV records and fake A-labels), this
+function will never fail but return C<$label> as-is if conversion would fail.
 
 This function takes the following optional parameters (C<%param>):
 
@@ -164,6 +165,10 @@ The default is false.
 (S<RFC 1123>) syntax for host name parts. The exact checks done depend on the
 IDNA standard used. Usually, you will want to set this to true.
 
+Please note that UseSTD3ASCIIRules only affects the conversion between ASCII
+labels (A-labels) and Unicode labels (U-labels). Labels that are in ASCII may
+still be passed-through as-is.
+
 For historical reasons, the default is false (unlike C<domain_to_ascii>).
 
 =item TransitionalProcessing
@@ -181,9 +186,10 @@ domain names). Use C<domain_to_ascii> instead.
 
 =item to_unicode( $label, %param )
 
-Converts a single label C<$label> to Unicode.  Will throw an exception on
-invalid input. If C<$label> is a valid ASCII label, this function will never
-fail but return C<$label> as-is if conversion would fail.
+Converts a single label C<$label> to Unicode. Will throw an exception on
+invalid input. If C<$label> is an ASCII label (including most NON-LDH labels
+such as those used for SRV records), this function will not fail but return
+C<$label> as-is if conversion would fail.
 
 This function takes the same optional parameters as C<to_ascii>,
 with the same defaults.

@@ -159,19 +159,19 @@ sub _validate_label {
   $l =~ m/\./				and croak "contains U+0023 FULL STOP [V4]";
   $l =~ m/^\p{IsMark}/			and croak "begins with General_Category=Mark [V5]";
 
-  if($param{'AllowUnassigned'}) {
-    if($param{'TransitionalProcessing'}) {
-      $l =~ m/[^\p{IsValid}\P{Assigned}]/			and croak "contains character that is not valid [V6]";
-    } else {
-      $l =~ m/[^\p{IsValid}\p{IsDeviation}\P{Assigned}]/	and croak "contains charachter that is not either valid or deviation [V6]";
-    }
-  } else {
-    if($param{'TransitionalProcessing'}) {
-      $l =~ m/[^\p{IsValid}]/					and croak "contains character that is not valid [V6]";
-    } else {
-      $l =~ m/[^\p{IsValid}\p{IsDeviation}]/			and croak "contains charachter that is not either valid or deviation [V6]";
-    }
+  unless($param{'AllowUnassigned'}) {
+    $l =~m/(\p{Unassigned})/		and croak sprintf "contains unassigned character U+%04X [V6]", ord $1;
   }
+
+  if($param{'UseSTD3ASCIIRules'}) {
+    $l =~m/(\p{IsDisallowedSTD3Valid})/	and croak sprintf "contains disallowed_STD3_valid character U+%04X [V6]", ord $1;
+  }
+
+  if($param{'TransitionalProcessing'}) {
+    $l =~m/(\p{IsDeviation})/		and croak sprintf "contains deviation character U+%04X [V6]", ord $1;
+  }
+
+  $l =~ m/(\p{IsDisallowed})/		and croak sprintf "contains disallowed character U+%04X [V6]", ord $1;
 
   return 1;
 }

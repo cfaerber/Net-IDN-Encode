@@ -16,6 +16,8 @@ t/10pod.t
 t/11pod_cover.t
 t/encode_bytes.t
 t/encode_utf8.t
+t/domain_to_ascii.t
+t/domain_to_unicode.t
 t/punycode_vec-xs.t
 t/punycode_vec-pp.t
 t/uts46_api_call.t

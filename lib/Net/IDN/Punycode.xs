@@ -2,6 +2,11 @@
 #include "perl.h"
 #include "XSUB.h"
 
+#ifdef XS_VERSION
+#undef XS_VERSION
+#endif
+#define XS_VERSION "1.100"
+
 #define BASE 36
 #define TMIN 1
 #define TMAX 26

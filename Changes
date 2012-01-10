@@ -1,5 +1,8 @@
 Revision history for Perl extension Net::IDN::Encode
 
+2.001 (2012-01-10)
+	- FIXES XS_VERSION mismatch
+
 2.000 (2012-01-08)
 	- switch to Unicode Technical Standard #46 (previously,
 	  IDNA2003 has been used, which is now available as

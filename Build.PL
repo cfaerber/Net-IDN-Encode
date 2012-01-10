@@ -24,6 +24,8 @@ my $b = Module::Build->new(
 		'Test::More' => 0, 
 		'Test::NoWarnings' => 0,
 	},
+	'needs_compiler' => undef,
+
 	'PL_Files' => {
 		'lib/Unicode/UTS46/Mapping.PL'  => [
 			 'lib/Unicode/UTS46/Mapping.pm',

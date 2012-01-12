@@ -17,7 +17,7 @@ my $b = Module::Build->new(
 	'create_makefile_pl' => 'traditional',
 
 	'requires'	=> {
-		'Unicode::Normalize' => 1,
+		'Unicode::Normalize' => undef,
 		'perl'	=> 5.006,
 	},
 	'build_requires' => {

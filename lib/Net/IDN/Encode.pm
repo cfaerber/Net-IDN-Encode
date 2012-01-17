@@ -1,10 +1,12 @@
 package Net::IDN::Encode;
 
+require 5.006;
+
 use strict;
 use utf8;
 use warnings;
 
-our $VERSION = "2.001";
+our $VERSION = "2.002";
 $VERSION = eval $VERSION;
 
 use Carp;

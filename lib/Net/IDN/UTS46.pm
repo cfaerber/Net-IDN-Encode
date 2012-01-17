@@ -1,6 +1,6 @@
 package Net::IDN::UTS46;
 
-require 5.006;
+require 5.008005;	# Unicode BiDi classes
 
 use strict;
 use utf8;

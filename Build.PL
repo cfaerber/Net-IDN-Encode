@@ -1,4 +1,4 @@
-use 5.006;
+require 5.008005;
 
 use strict;
 use utf8;
@@ -17,8 +17,8 @@ my $b = Module::Build->new(
 	'create_makefile_pl' => 'traditional',
 
 	'requires'	=> {
-		'Unicode::Normalize' => undef,
-		'perl'	=> 5.006,
+		'Unicode::Normalize' => 0,
+		'perl'	=> 5.008005,
 	},
 	'build_requires' => {
 		'Test::More' => 0, 
@@ -27,8 +27,8 @@ my $b = Module::Build->new(
 	'needs_compiler' => undef,
 
 	'PL_Files' => {
-		'lib/Unicode/UTS46/Mapping.PL'  => [
-			 'lib/Unicode/UTS46/Mapping.pm',
+		'lib/Unicode/UTS46/_Mapping.PL'  => [
+			 'lib/Unicode/UTS46/_Mapping.pm',
 		],
 		'lib/Unicode/UTS46/GenTests.PL'	 => [	
 			't/uts46_to_ascii.t',

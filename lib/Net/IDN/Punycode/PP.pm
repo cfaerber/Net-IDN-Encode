@@ -1,6 +1,6 @@
 package Net::IDN::Punycode::PP;
 
-use 5.007_001;
+use 5.006;
 
 use strict;
 use utf8;
@@ -9,7 +9,7 @@ use warnings;
 use Carp;
 use Exporter;
 
-our $VERSION = "1.001";
+our $VERSION = "1.100";
 
 our @ISA = qw(Exporter);
 our @EXPORT = ();

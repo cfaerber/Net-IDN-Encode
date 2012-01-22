@@ -6,7 +6,7 @@ use strict;
 use utf8;
 use warnings;
 
-our $VERSION = "2.002";
+our $VERSION = "2.003";
 $VERSION = eval $VERSION;
 
 use Carp;

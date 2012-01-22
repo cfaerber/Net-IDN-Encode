@@ -1,7 +1,11 @@
 Revision history for Perl extension Net::IDN::Encode
 
+2.003 (2012-01-22)
+	- FIXES required version of Unicode::Normalize in UTS46.pm
+	  (reported by CPAN testers)
+
 2.002 (2012-01-18)
-	- FIX dependencies/required perl version
+	- FIXES dependencies/required perl version
 	- FIXES: #74021 Makefile.PL bad value for
 	  version-requirement
 

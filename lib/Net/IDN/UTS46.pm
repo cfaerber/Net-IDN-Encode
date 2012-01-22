@@ -16,7 +16,7 @@ our @EXPORT = ();
 our @EXPORT_OK = ('uts46_to_ascii', 'uts46_to_unicode');
 our %EXPORT_TAGS = ( 'all' => \@EXPORT_OK );
 
-use Unicode::Normalize 1 ();
+use Unicode::Normalize ();
 
 use Net::IDN::Punycode 1.1 (':all');
 use Net::IDN::Encode 2 (':_var');

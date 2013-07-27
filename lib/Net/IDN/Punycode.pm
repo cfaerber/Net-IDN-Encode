@@ -16,8 +16,10 @@ our @EXPORT = ();
 our @EXPORT_OK = ();
 our %EXPORT_TAGS = ( 'all'  => [ qw(encode_punycode decode_punycode) ], );
 Exporter::export_ok_tags(keys %EXPORT_TAGS);
+our $_NO_XS = undef;
 
 eval { 
+  die if $_NO_XS;
   require XSLoader;
   XSLoader::load('Net::IDN::Punycode'); 
 };

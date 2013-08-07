@@ -26,6 +26,9 @@ use constant DAMP => 700;
 use constant INITIAL_BIAS => 72;
 use constant INITIAL_N => 128;
 
+use constant UNICODE_MIN => 0;
+use constant UNICODE_MAX => 0x10FFFF;
+
 my $Delimiter = chr 0x2D;
 my $BasicRE   = "\x00-\x7f";
 my $PunyRE    = "A-Za-z0-9";
@@ -93,6 +96,7 @@ sub decode_punycode {
 	$bias = _adapt($i - $oldi, @output + 1, $oldi == 0);
 	$n += $i / (@output + 1);
 	$i = $i % (@output + 1);
+	croak('invalid code point') if $n < UNICODE_MIN or $n > UNICODE_MAX;
 	splice(@output, $i, 0, chr($n));
 	$i++;
     }

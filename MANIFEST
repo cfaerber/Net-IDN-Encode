@@ -11,9 +11,7 @@ lib/Net/IDN/Punycode.xs
 lib/Net/IDN/Punycode/PP.pm
 lib/Net/IDN/Standards.pod
 lib/Net/IDN/UTS46.pm
-lib/Net/IDN/UTS46/_Mapping.PL
 lib/Net/IDN/UTS46/_Mapping.pm
-lib/Net/IDN/UTS46/GenTests.PL
 LICENSE
 Makefile.PL
 MANIFEST

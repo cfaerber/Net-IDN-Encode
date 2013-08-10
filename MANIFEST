@@ -5,7 +5,6 @@ eg/hello_idn_email.pl
 lib/Net/IDN/Encode.pm
 lib/Net/IDN/Overview.pod
 lib/Net/IDN/Punycode.c
-lib/Net/IDN/Punycode.o
 lib/Net/IDN/Punycode.pm
 lib/Net/IDN/Punycode.xs
 lib/Net/IDN/Punycode/PP.pm
@@ -30,7 +29,13 @@ t/punycode_vec-xs.t
 t/uts46_api_call.t
 t/uts46_encode_bytes.t
 t/uts46_encode_utf8.t
-t/uts46_to_ascii-trans.t
+t/uts46_to_ascii-pp.t
+t/uts46_to_ascii-xs.t
 t/uts46_to_ascii.t
+t/uts46_to_ascii_trans-pp.t
+t/uts46_to_ascii_trans-xs.t
+t/uts46_to_ascii_trans.t
+t/uts46_to_unicode-pp.t
+t/uts46_to_unicode-xs.t
 t/uts46_to_unicode.t
-t/xtra_pp.t
+SIGNATURE    Added here by Module::Build

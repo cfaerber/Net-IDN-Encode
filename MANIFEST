@@ -4,7 +4,6 @@ eg/hello_idn.pl
 eg/hello_idn_email.pl
 lib/Net/IDN/Encode.pm
 lib/Net/IDN/Overview.pod
-lib/Net/IDN/Punycode.c
 lib/Net/IDN/Punycode.pm
 lib/Net/IDN/Punycode.xs
 lib/Net/IDN/Punycode/PP.pm

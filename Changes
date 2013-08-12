@@ -1,5 +1,9 @@
 Revision history for Perl extension Net::IDN::Encode
 
+2.004 (2013-08-12)
+	- FIXES: #85552 3 uts46 tests FAIL under perl-5.18.0	
+	  (reported by d.thomas@*****.au)
+
 2.003 (2012-01-22)
 	- FIXES required version of Unicode::Normalize in UTS46.pm
 	  (reported by CPAN testers)

@@ -217,7 +217,7 @@ domain names). Use C<domain_to_unicode> instead.
 
 =item domain_to_ascii( $label, %param )
 
-Converts all labels of the hostname C<$domain> (with labels seperated by dots)
+Converts all labels of the hostname C<$domain> (with labels separated by dots)
 to ASCII (using C<to_ascii>). Will throw an exception on invalid input.
 
 This function takes the following optional parameters (C<%param>):
@@ -246,7 +246,7 @@ ideographic full stop).
 
 =item domain_to_unicode( $domain, %param )
 
-Converts all labels of the hostname C<$domain> (with labels seperated by dots)
+Converts all labels of the hostname C<$domain> (with labels separated by dots)
 to Unicode. Will throw an exception on invalid input.
 
 This function takes the same optional parameters as C<domain_to_ascii>,

@@ -23,7 +23,7 @@ wire, converted domain names start with C<xn-->, followed by the
 ASCII encoding of the Unicode string.  The Unicode version is
 typically only shown in applications presenting the domain to the
 user (hence Internationalized Domain Names for Applications,
-IDNA).  Internationalized Ressource Identifiers (IRIs), the
+IDNA).  Internationalized Resource Identifiers (IRIs), the
 Unicode version of URLs, may also include domain names in their
 Unicode form.
 

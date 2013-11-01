@@ -31,4 +31,5 @@ t/uts46_encode_utf8.t
 t/uts46_to_ascii-trans.t
 t/uts46_to_ascii.t
 t/uts46_to_unicode.t
-t/xtra_pp.t
+t/xtra-pp.t
+t/xtra-xs.t

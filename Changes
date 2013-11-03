@@ -1,5 +1,9 @@
 Revision history for Perl extension Net::IDN::Encode
 
+2.004 (2013-11-03)
+	- better documentation for unassigned characters,
+	  FIXES: #89750: Can't create IDN for a special domain
+	  (reported by felix.*****@*****.de)
 	- FIXES: #89270: [PATCH] fix spelling errors in the docs
 	  (reported by cstamas@*****.hu)
 

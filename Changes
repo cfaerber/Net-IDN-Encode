@@ -1,5 +1,9 @@
 Revision history for Perl extension Net::IDN::Encode
 
+2.004_20131103
+2.004_20131101
+	- add tests for xn--u19a (see bug #89750)
+
 	- FIXES: #89270: [PATCH] fix spelling errors in the docs
 	  (reported by cstamas@*****.hu)
 

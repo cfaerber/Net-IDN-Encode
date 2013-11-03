@@ -5,8 +5,6 @@ use warnings;
 BEGIN { binmode STDOUT, ':utf8'; binmode STDERR, ':utf8'; }
 
 use Test::More;
-use Test::NoWarnings;
-
 use Net::IDN::UTS46 (':all');
 
 BEGIN { 
@@ -15,6 +13,7 @@ BEGIN {
 		\&Net::IDN::Punycode::PP::encode_punycode; }
 
 }
+use Test::NoWarnings;
 
 plan tests => 1 + 4;
 no warnings 'utf8';

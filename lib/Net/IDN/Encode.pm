@@ -128,6 +128,13 @@ the ASCII characters already allowed in so-called host names today
 Use this module if you just want to convert domain names (or email addresses),
 using whatever IDNA standard is the best choice at the moment.
 
+=head1 UNICODE VERSION
+
+To convert labels correctly between Unicode and ASCII, each character in the
+label must be present in the Unicode version supported by your perl.
+Consequently, this module will refuse to convert labels with new Unicode
+characters on older perl versions (see below).
+
 =head1 FUNCTIONS
 
 By default, this module does not export any subroutines. You may
@@ -152,12 +159,17 @@ This function takes the following optional parameters (C<%param>):
 
 =item AllowUnassigned
 
-(boolean) If set to a true value, unassigned code points in the label are
-allowed. While maximizing the compatibility with future versions of Unicode
-and/or IDNA, this option is also dangerous: Characters added in future versions
-of Unicode might have properties that affect the conversion; you might
-therefore end up with a conversion that is incompatible with later standards.
-Therefore, set this to false unless you know what you are doing.
+(boolean) If set to a true value, code points that are unassigned in the
+Unicode version supported by your perl are allowed. This is an extension over
+UTS #46.
+
+While this increases the number of labels that can be converted successfully
+(especially on older perls) and may thus maximizes the compatibility with
+domain names created under future versions of Unicode, it also introduces the
+risk of incorrect conversions.  Characters added in later versions of Unicode
+might have properties that affect the conversion; if these properties are not
+known on your version of perl, you might therefore end up with an incorrect
+conversion.
 
 The default is false.
 
@@ -207,8 +219,8 @@ This function takes the following optional parameters (C<%param>):
 
 =item UseSTD3ASCIIRules
 
-See C<to_unicode> above. Please note that there is no C<TransitionalProcessing>
-for C<to_unicode>.
+See C<to_unicode> above. Please note that there is no need for
+C<TransitionalProcessing> for C<to_unicode>.
 
 =back
 

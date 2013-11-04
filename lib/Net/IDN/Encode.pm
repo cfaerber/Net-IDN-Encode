@@ -33,10 +33,9 @@ Exporter::export_ok_tags(keys %EXPORT_TAGS);
 
 use Net::IDN::Punycode 1 ();
 
-our ($IDNA_PREFIX,$IDNA_DOT,$IDNA_ATSIGN);
-*IDNA_PREFIX 	= \'xn--';
-*IDNA_DOT	= \qr/[\.。．｡]/;
-*IDNA_ATSIGN	= \qr/[\@＠]/;
+our $IDNA_PREFIX = 'xn--';
+our $IDNA_DOT    = qr/(?:\.|\x{3002}|\x{ff0e}|\x{ff61}|\xe3\x80\x82|\xef\xbc\x8e|\xef\xbd\xa1)/;
+our $IDNA_ATSIGN = qr/(?:\@|\x{ff20}|\x{fe6b}|\xef\xbc\xa0|\xef\xb9\xab)/;
 
 require Net::IDN::UTS46; # after declaration of vars!
 

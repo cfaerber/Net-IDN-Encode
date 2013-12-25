@@ -1,5 +1,8 @@
 Revision history for Perl extension Net::IDN::Encode
 
+	- preserve case in ASCII labels in domain_to_unicode
+	  FIXES: #91059: case not preserved
+
 2.004 (2013-11-03)
 	- better documentation for unassigned characters,
 	  FIXES: #89750: Can't create IDN for a special domain

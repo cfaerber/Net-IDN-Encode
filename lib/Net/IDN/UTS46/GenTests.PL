@@ -4,18 +4,19 @@ use strict;
 use utf8;
 use warnings;
 
+no warnings 'utf8';
+
 our $SRC = "data/IdnaTest.txt";
 open IdnaTest, '<', $SRC || die "cannot open $SRC: $!";
 binmode IdnaTest, ':utf8';
 
 my @tests;
 
-my $line = 0;
 while(<IdnaTest>) {
-  chomp; ++$line;
+  chomp; 
   s/\s*#.*//; next if !m/\S/;
 
-  my @c = ($line, split /;/);
+  my @c = ($., split /;/);
   foreach(@c) { s/^\s+//; s/\s+$//; };
 
   die "format error: '$_' $#c <@c>" if $#c < 4;
@@ -69,14 +70,15 @@ __EOF
   print "my %p = (".qhash(%{$para}).");\n\n";
 
   foreach (@_) {
-    my $line = $_->[0];
+    $.       = $_->[0];
     my $src  = $_->[2];
     my $dest = $_->[$column];
 
     my $src_u8  = parse_str($src);
     my $dest_u8 = parse_str($dest);
 
-    $dest = $src if $dest eq '' && ($src_u8 !~ m/^\p{Join_Control}$/); # ouch
+    $dest = $_->[3] if $dest eq '' && $column != 3;
+    $dest = $src if $dest eq ''; # && ($src_u8 !~ m/^\p{Join_Control}$/); # ouch
     my $err = '';
 
     my $com = "to_$to('".$src."')";
@@ -93,6 +95,9 @@ __EOF
 
     if(!defined $dest)					{ ;; } # error is ok
     if(($l_u8 =~ m/\P{Assigned}/) && (defined $dest))	{ $min_perl = -1 }
+    elsif(eval{$l_u8 =~ m/\P{Present_In: 6.3}/})	{ $min_perl = -1 }	# don't know
+    elsif(eval{$l_u8 =~ m/\P{Present_In: 6.2}/})	{ $min_perl = -1 }	# don't know
+    elsif(eval{$l_u8 =~ m/\P{Present_In: 6.1}/})	{ $min_perl = -1 }	# don't know
     elsif(eval{$l_u8 =~ m/\P{Present_In: 6.0}/})	{ $min_perl = -1 }	# don't know
     elsif(eval{$l_u8 =~ m/\P{Present_In: 5.2}/})	{ $min_perl = 5.014 }
     elsif(eval{$l_u8 =~ m/\P{Present_In: 5.1}/})	{ $min_perl = 5.012 }
@@ -102,9 +107,9 @@ __EOF
     elsif(eval{$l_u8 =~ m/\P{Present_In: 4.0}/})	{ $min_perl = 5.008_004 }
     elsif(eval{$l_u8 =~ m/\P{Present_In: 3.2}/})	{ $min_perl = 5.008_001 };
 
-    if(lc($src) eq 'xn--0.pt' and $to eq 'unicode')	{ $TODO = 'to be debugged'; }
+#    if(lc($src) eq 'xn--0.pt' and $to eq 'unicode')	{ $TODO = 'to be debugged'; }
 
-    $com .= " [$SRC:$line]";
+    $com .= " [$SRC:$.]";
 
     if(defined $TODO) {
         print 'TODO: { local $TODO = "'.quotemeta($TODO).'"; ';

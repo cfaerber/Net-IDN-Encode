@@ -1,6 +1,11 @@
 Revision history for Perl extension Net::IDN::Encode
 
-2.004 (2013-11-03)
+	- update to Unicode 6.3.0 and UTS #46 r11, including:
+	  - new test vectors in IdnaTest.txt
+	  - tweaks and fixes to get in line with test vectors
+	- update tests for newer Unicode versions (on newer perls)
+
+2.005 (2013-11-03)
 	- better documentation for unassigned characters,
 	  FIXES: #89750: Can't create IDN for a special domain
 	  (reported by felix.*****@*****.de)

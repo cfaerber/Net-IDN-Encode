@@ -25,47 +25,30 @@ use Net::IDN::UTS46::_Mapping 5.002 ('/^(Is|Map).*/');	# UTS #46 is only defined
 sub uts46_to_unicode {
   my ($label, %param) = @_;
   croak "Transitional processing is not defined for ToUnicode" if $param{'TransitionalProcessing'};
+
+  splice @_, 1, 0, undef;
   goto &_process;
 }
 
 sub uts46_to_ascii {
   my ($label, %param) = @_;
-  no warnings 'utf8';
 
-  my $pass_through = $label !~ m/[^\p{ASCII}\x2E\x{FF0E}\x{3002}\x{FF61}]/;
-
-# 1. Apply appropriate processing
-# 2. Break the result into labels at U+002E full stop;
-#
-  my @ll = _process($label, %param);
-
-# 3. Convert each label with non-ASCII characters into Punycode [RFC3492].
-#
-  foreach(@ll) {
+  splice @_, 1, 0, sub {
+    local $_ = shift;
     if(m/\P{ASCII}/) {
       eval { $_ = $IDNA_PREFIX . encode_punycode($_) };
       croak "$@ [A3]" if $@;
-      $pass_through = 0;
     }
-  }
-
-# 4. Verify DNS length restrictions.
-#
-  $label = join '.', @ll unless $pass_through;
-
-  croak "label too long: '$1' [A4]" if $label =~ m/([^\.]{64,})/;
-  croak "label empty: '$label' [A4]" if $label =~ m/\.\./;
-  croak "domain name too long: '$label' [A4]" if $label =~ m/.{253}[^\.]/;
-  croak "domain name empty: '$label' [A4]" if $label !~ m/[^\.]/ && !$pass_through && !$param{'TransitionalProcessing'};
-
-  return $label;
+    return $_;
+  };
+  goto &_process;
 }
 
 *to_unicode	= \&uts46_to_unicode;
 *to_ascii	= \&uts46_to_ascii;
 
 sub _process {
-  my ($label, %param) = @_;
+  my ($label, $to_ascii, %param) = @_;
   no warnings 'utf8';
   croak "The following parameter is invalid: $_"
     foreach(grep { !m/^(?:TransitionalProcessing|UseSTD3ASCIIRules|AllowUnassigned)$/ } keys %param);
@@ -104,19 +87,17 @@ sub _process {
 
 # 2. Normalize
 #
-
-## TODO: replace with own implementation in _Mapping
-##
   $label = Unicode::Normalize::NFC($label);
 
 # 3. Break
 #
   my @ll = split /\./, $label, -1;
 
+  shift @ll while @ll and (length $ll[0] <= 0);
+  my $rooted = length $ll[$#ll] <= 0; pop @ll if $rooted;
+
 # 4. Convert/Validate
 #
-  my $bidi = 0;
-
   foreach my $l (@ll) {
     if($l =~ m/^$IDNA_PREFIX(\p{ASCII}+)$/oi) {
       eval { $l = decode_punycode($1); };
@@ -129,22 +110,26 @@ sub _process {
     } else {
       _validate_label($l,%param,'_AssumeNFC' => 1);
     }
-    $bidi++ if !$bidi && ($l =~ m/[\p{Bc:R}\p{Bc:AL}\p{Bc:AN}]/);
-  }
 
-  if($bidi) {
-    foreach(@ll) {
-      _validate_bidi($_,%param);
+    _validate_bidi($l,%param);
+    _validate_contextj($l,%param);
+
+    if(defined $to_ascii) {
+      $l = $to_ascii->($l, %param);
     }
+
+    croak "empty label [A4_2]" if length($l) < 1;
+    croak "label too long [A4_2]" if length($l) > 63 and defined $to_ascii;
   }
 
-  foreach(@ll) {
-    _validate_contextj($_,%param);
-  }
+  my $domain = join('.', @ll);
 
-# Done: Join and return
-#
-  return wantarray ? (@ll) : join('.', @ll);
+  croak "empty domain name [A4_1]" if length($domain) < 1;
+  croak "domain name too long [A4_1]" if length($domain) > 253 and defined $to_ascii;
+
+  $domain .= '.' if $rooted;
+
+  return $domain;
 }
 
 sub _validate_label {
@@ -179,19 +164,26 @@ sub _validate_label {
 sub _validate_bidi {
   my($l,%param) = @_;
   no warnings 'utf8';
+
   return 1 unless length($l);
+  return 1 unless $l =~ m/[\p{Bc:R}\p{Bc:AL}\p{Bc:AN}]/;
 
-  $l =~ m/^(?:(\p{Bc:L})|\p{Bc:R}|\p{Bc:AL})/ or croak 'starts with character of wrong bidi class [B1]';
+  my $diag = sub{ sprintf '(U+%04X in "")', ord(shift), $l };
 
-  if(!defined $1) { # RTL
+  if( $l =~ m/^[\p{Bc:NSM}\p{Bc:EN}]*\p{Bc:L}/ ) { # LTR (left-to-right)
+    $l =~ m/[^\p{Bc:L}\p{Bc:EN}\p{Bc:ES}\p{Bc:CS}\p{Bc:ET}\p{Bc:BN}\p{Bc:ON}\p{Bc:NSM}]/ and croak 'contains characters with wrong bidi class for LTR [B5]';
+    $l =~ m/[\p{Bc:L}\p{Bc:EN}][\p{Bc:NSM}\P{Assigned}]*$/ or croak 'ends with character of wrong bidi class for LTR [B6]';
+    return 1;
+  } 
+
+  if( $l =~ m/^[\p{Bc:R}\p{Bc:AL}]/ ) { # RTL (right-to-left)
     $l =~ m/[^\p{Bc:R}\p{Bc:AL}\p{Bc:AN}\p{Bc:EN}\p{Bc:ES}\p{Bc:CS}\p{Bc:ET}\p{Bc:ON}\p{Bc:BN}\p{Bc:NSM}]/ and croak 'contains characters with wrong bidi class for RTL [B2]';
     $l =~ m/[\p{Bc:R}\p{Bc:AL}\p{Bc:EN}\p{Bc:AN}][\p{Bc:NSM}\P{Assigned}]*$/ or croak 'ends with character of wrong bidi class for RTL [B3]';
     $l =~ m/\p{Bc:EN}.*\p{Bc:AN}|\p{Bc:AN}.*\p{Bc:EN}/ and croak 'contains characters with both bidi class EN and AN [B4]';
-  } else { # LTR
-    $l =~ m/[^\p{Bc:L}\p{Bc:EN}\p{Bc:ES}\p{Bc:CS}\p{Bc:ET}\p{Bc:ON}\p{Bc:BN}\p{Bc:NSM}]/ and croak 'contains characters with wrong bidi class for LTR [B5]';
-    $l =~ m/[\p{Bc:L}\p{Bc:EN}][\p{Bc:NSM}\P{Assigned}]*$/ or croak 'ends with character of wrong bidi class for LTR [B6]';
+    return 1;
   }
-  return 1;
+
+  croak 'starts with character of wrong bidi class [B1]' . $diag->(substr $l,0,1) ;
 }
 
 # For perl versions < 5.11, we use a conrete list of characters; this is safe

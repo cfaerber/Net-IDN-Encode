@@ -27,16 +27,21 @@ our %EXPORT_TAGS = (
       '$IDNA_PREFIX',
       '$IDNA_DOT',
       '$IDNA_ATSIGN',
+      'IsIDNADot',
+      'IsIDNAAtsign',
     ]
 );
 Exporter::export_ok_tags(keys %EXPORT_TAGS);
 
 use Net::IDN::Punycode 1 ();
 
+sub IsIDNADot 	{ "002E\nFF0E\n3002\nFF61" }
+sub IsIDNAAtsign{ "0040\nFF20" }
+
 our ($IDNA_PREFIX,$IDNA_DOT,$IDNA_ATSIGN);
 *IDNA_PREFIX 	= \'xn--';
-*IDNA_DOT	= \qr/[\.。．｡]/;
-*IDNA_ATSIGN	= \qr/[\@＠]/;
+*IDNA_DOT	= \qr/\p{Net::IDN::Encode::IsIDNADot}/o;
+*IDNA_ATSIGN	= \qr/\p{Net::IDN::Encode::IsIDNAAtsign}/o;
 
 require Net::IDN::UTS46; # after declaration of vars!
 

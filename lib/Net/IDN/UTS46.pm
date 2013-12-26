@@ -93,8 +93,16 @@ sub _process {
 #
   my @ll = split /\./, $label, -1;
 
+  ## Note: leading dots must be ignored (IDNA test vectors)
+  ##
   shift @ll while @ll and (length $ll[0] <= 0);
-  my $rooted = length $ll[$#ll] <= 0; pop @ll if $rooted;
+
+  ## IDNA test vectors: an empty label at the end (separating the root domain
+  ##                    "", if present) must be preserved. It is not checked for
+  ##			the minumum length criteria and the dot separting it is
+  ##			not included in the maximum length of the domain.
+  ##
+  my $rooted = @ll && length($ll[$#ll]) < 1; pop @ll if $rooted;
 
 # 4. Convert/Validate
 #
@@ -118,12 +126,18 @@ sub _process {
       $l = $to_ascii->($l, %param);
     }
 
+    ## IDNA test vectors: labels have to be checked for the minimum length of 1 (but not for the
+    ##                    maximum length of 63) even in to_unicode.
+    ##
     croak "empty label [A4_2]" if length($l) < 1;
     croak "label too long [A4_2]" if length($l) > 63 and defined $to_ascii;
   }
 
   my $domain = join('.', @ll);
 
+  ## IDNA test vectors: domains have to be checked for the minimum length of 1 (but not for the
+  ##                    maximum length of 253 excluding a final dot) even in to_unicode.
+  ##
   croak "empty domain name [A4_1]" if length($domain) < 1;
   croak "domain name too long [A4_1]" if length($domain) > 253 and defined $to_ascii;
 
@@ -165,11 +179,17 @@ sub _validate_bidi {
   my($l,%param) = @_;
   no warnings 'utf8';
 
-  return 1 unless length($l);
+  ## IDNA test vectors: _labels_ that don't contain RTL characters are skipped
+  ##			(RFC 5893 mandates checks for _all_ labels if the 
+  ##			_domain_ contains RTL characters in any label) 
+  return 1 unless length($l); 
   return 1 unless $l =~ m/[\p{Bc:R}\p{Bc:AL}\p{Bc:AN}]/;
 
-  my $diag = sub{ sprintf '(U+%04X in "")', ord(shift), $l };
 
+  ## IDNA test vectors: LTR labels may start with "neutral" characters of
+  ##			BidiClass NSM or EN (RFC 5893 says LTR labels must
+  ##			start with BidiClass L)
+  ##
   if( $l =~ m/^[\p{Bc:NSM}\p{Bc:EN}]*\p{Bc:L}/ ) { # LTR (left-to-right)
     $l =~ m/[^\p{Bc:L}\p{Bc:EN}\p{Bc:ES}\p{Bc:CS}\p{Bc:ET}\p{Bc:BN}\p{Bc:ON}\p{Bc:NSM}]/ and croak 'contains characters with wrong bidi class for LTR [B5]';
     $l =~ m/[\p{Bc:L}\p{Bc:EN}][\p{Bc:NSM}\P{Assigned}]*$/ or croak 'ends with character of wrong bidi class for LTR [B6]';
@@ -183,7 +203,7 @@ sub _validate_bidi {
     return 1;
   }
 
-  croak 'starts with character of wrong bidi class [B1]' . $diag->(substr $l,0,1) ;
+  croak 'starts with character of wrong bidi class [B1]';
 }
 
 # For perl versions < 5.11, we use a conrete list of characters; this is safe

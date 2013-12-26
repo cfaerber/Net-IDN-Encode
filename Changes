@@ -3,7 +3,8 @@ Revision history for Perl extension Net::IDN::Encode
 	- update to Unicode 6.3.0 and UTS #46 r11, including:
 	  - new test vectors in IdnaTest.txt
 	  - tweaks and fixes to get in line with test vectors
-	- preserve case in ASCII labels in domain_to_unicode
+	- update list of Unicode version vs. perl version
+	- preserve case in pure-ASCII labels (bypass en-/decoding)
 	  FIXES: #91059: case not preserved (reported by DMUEY)
 
 2.005 (2013-11-03)

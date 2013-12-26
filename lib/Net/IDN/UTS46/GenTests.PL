@@ -93,21 +93,33 @@ __EOF
     my $min_perl = undef;
     my $TODO = undef;
 
-    if(!defined $dest)					{ ;; } # error is ok
-    if(($l_u8 =~ m/\P{Assigned}/) && (defined $dest))	{ $min_perl = -1 }
-    elsif(eval{$l_u8 =~ m/\P{Present_In: 6.3}/})	{ $min_perl = -1 }	# don't know
-    elsif(eval{$l_u8 =~ m/\P{Present_In: 6.2}/})	{ $min_perl = -1 }	# don't know
-    elsif(eval{$l_u8 =~ m/\P{Present_In: 6.1}/})	{ $min_perl = -1 }	# don't know
-    elsif(eval{$l_u8 =~ m/\P{Present_In: 6.0}/})	{ $min_perl = -1 }	# don't know
-    elsif(eval{$l_u8 =~ m/\P{Present_In: 5.2}/})	{ $min_perl = 5.014 }
-    elsif(eval{$l_u8 =~ m/\P{Present_In: 5.1}/})	{ $min_perl = 5.012 }
-    elsif(eval{$l_u8 =~ m/\P{Present_In: 5.0}/})	{ $min_perl = 5.010_001 }
-    elsif(eval{$l_u8 =~ m/\P{Present_In: 4.1}/})	{ $min_perl = 5.010 }
-    elsif(eval{$l_u8 =~ m/\P{Present_In: 4.0.1}/})	{ $min_perl = 5.008_007 }
-    elsif(eval{$l_u8 =~ m/\P{Present_In: 4.0}/})	{ $min_perl = 5.008_004 }
-    elsif(eval{$l_u8 =~ m/\P{Present_In: 3.2}/})	{ $min_perl = 5.008_001 };
+#	    my @unicode_to_perl_version = (
+#	      '3.2'	=> undef,
+#	      '4.0'	=> 5.008_001,
+#	      '4.0.1'	=> 5.008_004,
+#	      '4.1'	=> 5.008_007,
+#	      '5.0'	=> 5.009_005,
+#	      '5.1'	=> 5.010_001,
+#	      '5.2'	=> 5.011_005,
+#	      '6.0'	=> 5.013_007,
+#	      '6.1'	=> 5.015_008,
+#	      '6.2'	=> 5.017_001,
+#	      '6.3'	=> 5.019_005,
+#	    );
 
-#    if(lc($src) eq 'xn--0.pt' and $to eq 'unicode')	{ $TODO = 'to be debugged'; }
+    if($l_u8 =~ m/\P{Assigned}/)	{ $min_perl = -1 }	# don't know (not present in perl used to generate file)
+    elsif(eval{$l_u8 =! m/\P{Present_In: 3.2}/})	{ $min_perl = undef }
+    elsif(eval{$l_u8 =! m/\P{Present_In: 4.0}/})	{ $min_perl = 5.008_001 }
+    elsif(eval{$l_u8 =! m/\P{Present_In: 4.0.1}/})	{ $min_perl = 5.008_004 }
+    elsif(eval{$l_u8 =! m/\P{Present_In: 4.1}/})	{ $min_perl = 5.008_007 }
+    elsif(eval{$l_u8 =! m/\P{Present_In: 5.0}/})	{ $min_perl = 5.009_005 }
+    elsif(eval{$l_u8 =! m/\P{Present_In: 5.1}/})	{ $min_perl = 5.010_001 }
+    elsif(eval{$l_u8 =! m/\P{Present_In: 5.2}/})	{ $min_perl = 5.011_005 }
+    elsif(eval{$l_u8 =! m/\P{Present_In: 6.0}/})	{ $min_perl = 5.013_007 }
+    elsif(eval{$l_u8 =! m/\P{Present_In: 6.1}/})	{ $min_perl = 5.015_008 }
+    elsif(eval{$l_u8 =! m/\P{Present_In: 6.2}/})	{ $min_perl = 5.017_001 }
+    elsif(eval{$l_u8 =! m/\P{Present_In: 6.3}/})	{ $min_perl = 5.019_005 }
+    else { $min_perl = -1; }
 
     $com .= " [$SRC:$.]";
 

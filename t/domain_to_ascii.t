@@ -20,6 +20,6 @@ is(eval{domain_to_ascii('www.xn--   -7kav3ivb.example', 'UseSTD3ASCIIRules' => 0
 is(eval{domain_to_ascii('www.xn--   -7kav3ivb.example', 'UseSTD3ASCIIRules' => 1)}, 'www.xn--   -7kav3ivb.example', 'blank (with STD3 rules) (to_unicode pass-through)') or diag $@;
 
 is(eval{domain_to_ascii("I.\x{2665}.Perl.invalid")}, 'I.xn--g6h.Perl.invalid', 'mixed case');
-is(eval{domain_to_unicode("I.xn--g6h.Perl.invalid")}, 'I.xn--g6h.Perl.invalid', 'mixed case');
+is(eval{domain_to_ascii("I.xn--g6h.Perl.invalid")}, 'I.xn--g6h.Perl.invalid', 'mixed case');
 is(eval{domain_to_ascii('www.xn--garbage')}, 'www.xn--garbage', 'Invalid A-label');
 is(eval{domain_to_ascii('_test._srv.müller.example.com')}, '_test._srv.xn--mller-kva.example.com', 'SRV record');

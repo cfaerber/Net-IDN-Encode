@@ -15,7 +15,7 @@ is(eval{domain_to_unicode('www.a.b。c．d｡com', )} || $@, 'www.a.b。c．d｡
 is(eval{domain_to_unicode('www.ä ö ü ß.example', 'UseSTD3ASCIIRules' => 0)}, 'www.ä ö ü ß.example', 'blank (without STD3 rules) (to_unicode)') or diag $@;
 is(eval{domain_to_unicode('www.ä ö ü ß.example', 'UseSTD3ASCIIRules' => 1)}, undef, 'blank (without STD3 rules) (to_unicode pass-through)') or diag $@;
 is(eval{domain_to_unicode('www.xn--   -7kav3ivb.example', 'UseSTD3ASCIIRules' => 0)}, 'www.ä ö ü ß.example', 'blank (with STD3 rules) (to_unicode)') or diag $@;
-is(eval{domain_to_unicode('www.xn--   -7kav3ivb.example', 'UseSTD3ASCIIRules' => 1)}, 'www.xn--   -7kav3ivb.example', 'blank (with STD3 rules) (to_unicode pass-through)') or diag $@;
+is(eval{domain_to_unicode('www.xn--   -7kav3ivb.example', 'UseSTD3ASCIIRules' => 1)}, undef, 'blank (with STD3 rules) (to_unicode pass-through)') or diag $@;
 
 is(eval{domain_to_unicode("I.\x{2665}.Perl.invalid")}, "I.\x{2665}.Perl.invalid", 'mixed case');
 is(eval{domain_to_unicode('I.xn--g6h.Perl.invalid')}, "I.\x{2665}.Perl.invalid", 'mixed case');

@@ -5,7 +5,7 @@ BEGIN { binmode STDOUT, ':utf8'; binmode STDERR, ':utf8'; }
 
 use Net::IDN::Encode qw(:all);
 
-use Test::More tests => 1 + 9;
+use Test::More tests => 1 + 11;
 use Test::NoWarnings;
 
 use Net::IDN::Encode qw(:all);
@@ -19,6 +19,7 @@ is(eval{domain_to_ascii('www.ä ö ü ß.example', 'UseSTD3ASCIIRules' => 1)}, u
 is(eval{domain_to_ascii('www.xn--   -7kav3ivb.example', 'UseSTD3ASCIIRules' => 0)}, 'www.xn--   -7kav3ivb.example', 'blank (without STD3 rules) (to_unicode pass-through)') or diag $@;
 is(eval{domain_to_ascii('www.xn--   -7kav3ivb.example', 'UseSTD3ASCIIRules' => 1)}, 'www.xn--   -7kav3ivb.example', 'blank (with STD3 rules) (to_unicode pass-through)') or diag $@;
 
+is(eval{domain_to_ascii("I.\x{2665}.Perl.invalid")}, 'I.xn--g6h.Perl.invalid', 'mixed case');
+is(eval{domain_to_unicode("I.xn--g6h.Perl.invalid")}, 'I.xn--g6h.Perl.invalid', 'mixed case');
 is(eval{domain_to_ascii('www.xn--garbage')}, 'www.xn--garbage', 'Invalid A-label');
-
 is(eval{domain_to_ascii('_test._srv.müller.example.com')}, '_test._srv.xn--mller-kva.example.com', 'SRV record');

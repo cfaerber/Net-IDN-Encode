@@ -48,16 +48,23 @@ require Net::IDN::UTS46; # after declaration of vars!
 sub to_ascii {
   my($label,%param) = @_;
   croak 'Invalid label' if $label =~ m/$IDNA_DOT/o;
-  eval { $label = Net::IDN::UTS46::to_ascii(@_) };
-  die $@ if $@ and ($label =~ m/\P{ASCII}/);
+
+  if($label =~ m/\P{ASCII}/o) {
+    $label = Net::IDN::UTS46::to_ascii(@_);
+  } else {
+    croak 'label empty' if length($label) < 1;
+    croak 'label too long' if length($label) > 63;
+  }
   return $label;
 }
 
 sub to_unicode {
   my($label,%param) = @_;
   croak 'Invalid label' if $label =~ m/$IDNA_DOT/o;
-  eval { $label = Net::IDN::UTS46::to_unicode(@_) };
-  die $@ if $@ and ($label =~ m/\P{ASCII}/);
+
+  if($label =~ m/\P{ASCII}|^$IDNA_PREFIX/o) {
+    $label = Net::IDN::UTS46::to_unicode(@_);
+  }
   return $label;
 }
 

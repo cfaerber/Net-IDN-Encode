@@ -5,7 +5,7 @@
 #ifdef XS_VERSION
 #undef XS_VERSION
 #endif
-#define XS_VERSION "1.100"
+#define XS_VERSION "1.101"
 
 #define BASE 36
 #define TMIN 1
@@ -97,10 +97,15 @@ encode_punycode(input)
 		  q = skip_delta = 0;
 
 		  for(in_p = skip_p = in_s; in_p < in_e;) {
+#ifdef NATIVE_TO_UNI
+		    c = utf8_to_uvchr_buf((U8*)in_p, (U8*)in_e, &u8);
+		    c = NATIVE_TO_UNI(c);
+#else
 #ifdef utf8_to_uvuni_buf
 		    c = utf8_to_uvuni_buf((U8*)in_p, (U8*)in_e, &u8);
 #else
 		    c = utf8_to_uvuni((U8*)in_p, &u8);
+#endif
 #endif
 		    if(c >= n && c < m) {
  		      m = c;
@@ -123,12 +128,16 @@ encode_punycode(input)
 
 		  delta += skip_delta;
 		  for(in_p = skip_p; in_p < in_e;) {
+#ifdef NATIVE_TO_UNI
+		    c = utf8_to_uvchr_buf((U8*)in_p, (U8*)in_e, &u8);
+		    c = NATIVE_TO_UNI(c);
+#else
 #ifdef utf8_to_uvuni_buf
 		    c = utf8_to_uvuni_buf((U8*)in_p, (U8*)in_e, &u8);
 #else
 		    c = utf8_to_uvuni((U8*)in_p, &u8);
 #endif
-		    
+#endif
 		    if(c < n) {
 		      ++delta;
                     } else if( c == n ) {

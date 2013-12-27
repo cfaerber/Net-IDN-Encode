@@ -5,6 +5,10 @@ Revision history for Perl extension Net::IDN::Encode
 	- Net::IDN::Encode: preserve case in pure-ASCII labels (bypass
 	  en-/decoding) 
 	  FIXES: #91059: case not preserved (reported by DMUEY)
+	- Net::IDN::Encode: simplify scalar-via-blob syntax (pull req.
+	  by DMUEY)
+	- Net::IDN::Encode: add SMALL COMMERCIAL AT to list of possible
+	  @ signs (pull req. by DMUEY)
 
 	- Net::IDN::UTS46: update to Unicode® 6.3.0 and UTS #46 r11:
 	  * new UTS #46 test vectors in data/IdnaTest.txt 

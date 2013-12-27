@@ -25,8 +25,6 @@ our %EXPORT_TAGS = (
     ],
   '_var' => [
       '$IDNA_PREFIX',
-      '$IDNA_DOT',
-      '$IDNA_ATSIGN',
       'IsIDNADot',
       'IsIDNAAtsign',
     ]
@@ -35,19 +33,15 @@ Exporter::export_ok_tags(keys %EXPORT_TAGS);
 
 use Net::IDN::Punycode 1 ();
 
-sub IsIDNADot 	{ "002E\nFF0E\n3002\nFF61" }
-sub IsIDNAAtsign{ "0040\nFF20" }
-
-our ($IDNA_PREFIX,$IDNA_DOT,$IDNA_ATSIGN);
-*IDNA_PREFIX 	= \'xn--';
-*IDNA_DOT	= \qr/\p{Net::IDN::Encode::IsIDNADot}/o;
-*IDNA_ATSIGN	= \qr/\p{Net::IDN::Encode::IsIDNAAtsign}/o;
+our $IDNA_PREFIX = 'xn--';
+sub IsIDNADot 	{ "002E\n3002\nFF0E\nFF61" }
+sub IsIDNAAtsign{ "0040\nFE6B\nFF20" }
 
 require Net::IDN::UTS46; # after declaration of vars!
 
 sub to_ascii {
   my($label,%param) = @_;
-  croak 'Invalid label' if $label =~ m/$IDNA_DOT/o;
+  croak 'Invalid label' if $label =~ m/\p{IsIDNADot}/o;
 
   if($label =~ m/\P{ASCII}/o) {
     $label = Net::IDN::UTS46::to_ascii(@_);
@@ -60,7 +54,7 @@ sub to_ascii {
 
 sub to_unicode {
   my($label,%param) = @_;
-  croak 'Invalid label' if $label =~ m/$IDNA_DOT/o;
+  croak 'Invalid label' if $label =~ m/\p{IsIDNADot}/o;
 
   if($label =~ m/\P{ASCII}|^$IDNA_PREFIX/o) {
     $label = Net::IDN::UTS46::to_unicode(@_);
@@ -75,7 +69,7 @@ sub _domain {
   my $even_odd = 1;
   return join '',
     map { $even_odd++ % 2 ? $to_function->($_, %param) : $ascii ? '.' : $_ }
-      split /($IDNA_DOT)/o, $domain;
+      split /(\p{IsIDNADot})/o, $domain;
 }
 
 sub _email {
@@ -83,12 +77,12 @@ sub _email {
   return $email if !defined($email) || $email eq '';
 
   $email =~ m/^(
-	(?(?!$IDNA_ATSIGN|").|(?!))+
+	(?(?!\p{IsIDNAAtsign}|").|(?!))+
 	|
 	"(?:(?:[^"]|\\.)*[^\\])?"
       )
       (?:
-	($IDNA_ATSIGN)
+	(\p{IsIDNAAtsign})
    	(?:([^\[\]]*)|(\[.*\]))?
       )?$/xo || croak "Invalid email address";
   my($local_part,$at,$domain,$domain_literal) = ($1,$2,$3);
@@ -307,7 +301,8 @@ conversion for the local-part, should one be standardized.
 
 This function will convert the at sign to ASCII, i.e. to U+0040 (commercial
 at), as well as label separators.  The follwing characters are recognized as at
-signs: U+0040 (commercial at), U+FF20 (fullwidth commercial at).
+signs: U+0040 (commercial at), U+FE6B (small commercial at) and U+FF20
+(fullwidth commercial at).
 
 =item email_to_unicode( $email, %param )
 
@@ -323,7 +318,8 @@ from ASCII for the local-part, should one be standardized.
 
 This function will preserve the original version of at signs (and label
 separators). The follwing characters are recognized as at signs: U+0040
-(commercial at), U+FF20 (fullwidth commercial at).
+(commercial at), U+FE6B (small commercial at) and U+FF20 (fullwidth commercial
+at).
 
 =back
 
@@ -333,7 +329,7 @@ Claus FE<auml>rber <CFAERBER@cpan.org>
 
 =head1 LICENSE
 
-Copyright 2007-2012 Claus FE<auml>rber.
+Copyright 2007-2013 Claus FE<auml>rber.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

@@ -97,7 +97,11 @@ encode_punycode(input)
 		  q = skip_delta = 0;
 
 		  for(in_p = skip_p = in_s; in_p < in_e;) {
+#ifdef utf8_to_uvuni_buf
+		    c = utf8_to_uvuni_buf((U8*)in_p, (U8*)in_e, &u8);
+#else
 		    c = utf8_to_uvuni((U8*)in_p, &u8);
+#endif
 		    if(c >= n && c < m) {
  		      m = c;
 		      skip_p = in_p;
@@ -119,7 +123,11 @@ encode_punycode(input)
 
 		  delta += skip_delta;
 		  for(in_p = skip_p; in_p < in_e;) {
+#ifdef utf8_to_uvuni_buf
+		    c = utf8_to_uvuni_buf((U8*)in_p, (U8*)in_e, &u8);
+#else
 		    c = utf8_to_uvuni((U8*)in_p, &u8);
+#endif
 		    
 		    if(c < n) {
 		      ++delta;

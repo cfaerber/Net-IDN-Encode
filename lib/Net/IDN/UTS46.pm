@@ -19,7 +19,7 @@ our %EXPORT_TAGS = ( 'all' => \@EXPORT_OK );
 use Unicode::Normalize ();
 
 use Net::IDN::Punycode 1.1 (':all');
-use Net::IDN::Encode 2 (':_var');
+use Net::IDN::Encode 2.099 (':_var');
 use Net::IDN::UTS46::_Mapping 5.002 ('/^(Is|Map).*/');	# UTS #46 is only defined from Unicode 5.2.0
 
 sub uts46_to_unicode {
@@ -432,7 +432,7 @@ Claus FE<auml>rber <CFAERBER@cpan.org>
 
 =head1 LICENSE
 
-Copyright 2011-2012 Claus FE<auml>rber.
+Copyright 2011-2013 Claus FE<auml>rber.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

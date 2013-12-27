@@ -122,7 +122,7 @@ __EOF
       if(!defined $min_ucd) {
         print 'TODO: { local $TODO = "test file was generated on perl '.$].', which is too old"; ';
 	$need_closing_bracket++;
-      } elsif ($min_perl gt v5.8.0) {
+      } elsif ($min_perl gt v5.8.5) {	# 5.8.5 required by Net::IDN::UTS46
         print 'SKIP: { skip sprintf("requires Unicode® ',sprintf('v%vd', $min_ucd),
 	  ' (perl ',sprintf('v%vd', $min_perl),') or higher,',
   	  ' only v%vd is supported (perl v%vd)", $UCD_VERSION, $^V)',

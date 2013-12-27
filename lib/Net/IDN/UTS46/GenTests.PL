@@ -62,9 +62,12 @@ BEGIN {
 use Test::More tests => $c + 1;
 use Test::NoWarnings;
 
+use Unicode::UCD;
 use Net::IDN::UTS46 (':all');
 
 no warnings 'utf8';
+
+our \$UCD_VERSION = eval('v'.(Unicode::UCD::UnicodeVersion()));
 
 __EOF
   print "my %p = (".qhash(%{$para}).");\n\n";
@@ -78,64 +81,60 @@ __EOF
     my $dest_u8 = parse_str($dest);
 
     $dest = $_->[3] if $dest eq '' && $column != 3;
-    $dest = $src if $dest eq ''; # && ($src_u8 !~ m/^\p{Join_Control}$/); # ouch
-    my $err = '';
+    $dest = $src if $dest eq '';
+    my $err = undef;
 
     my $com = "to_$to('".$src."')";
 
     if($dest =~ m/^\[(.*)\]$/) {
       $dest = undef;
-      $com .= " throws error $1";
+      $err = $1;
+      $com .= " throws error $err";
     }
 
     my $l_u8 = join '-', map { parse_str($_) } @{$_};
+    my ($min_ucd,$min_perl, $need_closing_bracket);
+    unless(defined($err) and ($err =~ m/P1/) and ($err =~ m/V6/)) { ## should be invalid anyway
 
-    my $min_perl = undef;
-    my $TODO = undef;
+      my %unicode_to_perl_version = (
+        v3.2	=> v5.8.0,
+        v4.0	=> v5.8.1,
+        v4.0.1	=> v5.8.4,
+        v4.1	=> v5.8.7,
+        v5.0	=> v5.9.5,
+        v5.1	=> v5.10.1,
+        v5.2	=> v5.11.5,
+        v6.0	=> v5.13.7,
+        v6.1	=> v5.15.8,
+        v6.2	=> v5.17.1,
+        v6.3	=> v5.19.5,
+      );
+  
+      foreach my $ucd_ver (sort keys %unicode_to_perl_version) {
+        my $ucd_ver_str = sprintf '%vd', $ucd_ver;
+        if(eval{$l_u8 !~ m/\P{Present_In: $ucd_ver_str}/}) { 
+   	  $min_ucd = $ucd_ver;
+  	  $min_perl = $unicode_to_perl_version{$ucd_ver};
+	  last;
+        }
+      }
 
-#	    my @unicode_to_perl_version = (
-#	      '3.2'	=> undef,
-#	      '4.0'	=> 5.008_001,
-#	      '4.0.1'	=> 5.008_004,
-#	      '4.1'	=> 5.008_007,
-#	      '5.0'	=> 5.009_005,
-#	      '5.1'	=> 5.010_001,
-#	      '5.2'	=> 5.011_005,
-#	      '6.0'	=> 5.013_007,
-#	      '6.1'	=> 5.015_008,
-#	      '6.2'	=> 5.017_001,
-#	      '6.3'	=> 5.019_005,
-#	    );
-
-    if($l_u8 =~ m/\P{Assigned}/)	{ $min_perl = -1 }	# don't know (not present in perl used to generate file)
-    elsif(eval{$l_u8 =! m/\P{Present_In: 3.2}/})	{ $min_perl = undef }
-    elsif(eval{$l_u8 =! m/\P{Present_In: 4.0}/})	{ $min_perl = 5.008_001 }
-    elsif(eval{$l_u8 =! m/\P{Present_In: 4.0.1}/})	{ $min_perl = 5.008_004 }
-    elsif(eval{$l_u8 =! m/\P{Present_In: 4.1}/})	{ $min_perl = 5.008_007 }
-    elsif(eval{$l_u8 =! m/\P{Present_In: 5.0}/})	{ $min_perl = 5.009_005 }
-    elsif(eval{$l_u8 =! m/\P{Present_In: 5.1}/})	{ $min_perl = 5.010_001 }
-    elsif(eval{$l_u8 =! m/\P{Present_In: 5.2}/})	{ $min_perl = 5.011_005 }
-    elsif(eval{$l_u8 =! m/\P{Present_In: 6.0}/})	{ $min_perl = 5.013_007 }
-    elsif(eval{$l_u8 =! m/\P{Present_In: 6.1}/})	{ $min_perl = 5.015_008 }
-    elsif(eval{$l_u8 =! m/\P{Present_In: 6.2}/})	{ $min_perl = 5.017_001 }
-    elsif(eval{$l_u8 =! m/\P{Present_In: 6.3}/})	{ $min_perl = 5.019_005 }
-    else { $min_perl = -1; }
+      if(!defined $min_ucd) {
+        print 'TODO: { local $TODO = "test file was generated on perl '.$].', which is too old"; ';
+	$need_closing_bracket++;
+      } elsif ($min_perl gt v5.8.0) {
+        print 'SKIP: { skip sprintf("requires Unicode® ',sprintf('v%vd', $min_ucd),
+	  ' (perl ',sprintf('v%vd', $min_perl),') or higher,',
+  	  ' only v%vd is supported (perl v%vd)", $UCD_VERSION, $^V)',
+  	  ', 1 if $UCD_VERSION lt ',sprintf('v%vd', $min_ucd),'; ';
+	$need_closing_bracket++;
+      }
+    } # unless 
 
     $com .= " [$SRC:$.]";
-
-    if(defined $TODO) {
-        print 'TODO: { local $TODO = "'.quotemeta($TODO).'"; ';
-    }
-    elsif(defined $min_perl) {
-       if($min_perl < 0) {
-        print 'TODO: { local $TODO = "test file was generated on perl '.$].', which is too old"; ';
-       } else {
-         print 'SKIP: { skip "requires perl '.$min_perl.', this is only perl $]", 1 if $] < '.$min_perl.'; ';
-       }
-    }
-
     print "is(eval{uts46_to_$to(", qstr($src), ", %p)},\t", qstr($dest), ',', "\t", '"', quotemeta($com), '"', ")",' or ($@ and diag($@))',";";
-    if(defined($TODO) || defined($min_perl)) {
+
+    if(defined $need_closing_bracket) {
       print ' }';
     }
 

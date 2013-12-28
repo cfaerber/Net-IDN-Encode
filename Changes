@@ -19,10 +19,9 @@ Revision history for Perl extension Net::IDN::Encode
 	- Net::IDN::UTS46: test vectors supposed to fail due to
 	  Unassigned characters are no longer skipped.
 
-	- Net::IDN::Punycode: use utf8_to_uvuni/chr_buf instead of
-	  deprecated utf8_to_uvuni (perl 5.15.9 and higher)
-	- Net::IDN::Punycode: use NATIVE_TO_UNI and utf8_to_uvchr_buf instead
-	  of deprecated utf8_to_uvuni_buf (perl 5.19.5 and higher)
+	- Net::IDN::Punycode: use utf8_to_uvchr_buf instead of deprecated
+	  utf8_to_uvuni (perl 5.15.9 and higher; utf8_to_uvuni_buf is
+	  deprecated from perl 5.19.5)
 
 2.005 (2013-11-03)
 	- better documentation for unassigned characters,

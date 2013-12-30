@@ -1,7 +1,6 @@
 Revision history for Perl extension Net::IDN::Encode
 
-2.100 (xxxx-xx-xx)
-
+2.100 (2013-12-30)
 	- Net::IDN::Encode: preserve case in pure-ASCII labels (bypass
 	  en-/decoding) 
 	  FIXES: #91059: case not preserved (reported by DMUEY)

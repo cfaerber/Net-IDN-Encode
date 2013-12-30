@@ -19,7 +19,7 @@ our %EXPORT_TAGS = ( 'all' => \@EXPORT_OK );
 use Unicode::Normalize ();
 
 use Net::IDN::Punycode 1.1 (':all');
-use Net::IDN::Encode 2.099 (':_var');
+use Net::IDN::Encode 2.100 (':_var');
 use Net::IDN::UTS46::_Mapping 5.002 ('/^(Is|Map).*/');	# UTS #46 is only defined from Unicode 5.2.0
 
 sub uts46_to_unicode {

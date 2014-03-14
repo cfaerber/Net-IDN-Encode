@@ -300,7 +300,7 @@ This function currently does not handle internationalization of the local-part
 conversion for the local-part, should one be standardized.
 
 This function will convert the at sign to ASCII, i.e. to U+0040 (commercial
-at), as well as label separators.  The follwing characters are recognized as at
+at), as well as label separators.  The following characters are recognized as at
 signs: U+0040 (commercial at), U+FE6B (small commercial at) and U+FF20
 (fullwidth commercial at).
 
@@ -317,7 +317,7 @@ This function currently does not handle internationalization of the local-part
 from ASCII for the local-part, should one be standardized.
 
 This function will preserve the original version of at signs (and label
-separators). The follwing characters are recognized as at signs: U+0040
+separators). The following characters are recognized as at signs: U+0040
 (commercial at), U+FE6B (small commercial at) and U+FF20 (fullwidth commercial
 at).
 

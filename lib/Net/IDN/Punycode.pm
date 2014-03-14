@@ -57,7 +57,7 @@ I<Nameprep>/I<IDNA2008>/I<PRECIS> and does not add nor remove the ACE prefix
 =head1 WARNING
 
 Usually, it is not a good idea to use this module directly. If you convert
-domain labels (or other strings) without proper prepration, you may end up with
+domain labels (or other strings) without proper preparation, you may end up with
 an ASCII encoding that is not interoperable or even poses security issues due
 to spoofing.
 

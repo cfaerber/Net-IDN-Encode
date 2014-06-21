@@ -37,7 +37,7 @@ provide the "least surprising" results.
 
 =head3 STANDARD-SPECIFIC
 
-These modules implement different versions of the IDNA
+These modules implement different versions of the the IDNA
 specifications. Use one of these modules only if you require
 compatibility with a specific incarnation of IDNA.
 
@@ -45,7 +45,7 @@ compatibility with a specific incarnation of IDNA.
 
 =item L<Net::IDN::IDNA2003>
 
-implements the original IDNA specification, released in 2003
+implements the orginal IDNA specification, released in 2003
 (IDNA2003), which is now obsolete.
 
 IDNA2003 is defined in RFC 3490 L<http://tools.ietf.org/rfc/3490>
@@ -88,7 +88,7 @@ L<http://tools.ietf.org/rfc/3492> and related documents.
 
 Usually, it is not a good idea to use this module directly. If you
 convert domain labels (or other strings) without proper
-preparation, you may end up with an ASCII encoding that is not
+prepration, you may end up with an ASCII encoding that is not
 interoperable or poses security issues due to spoofing.
 
 Even if you think that your domain names are valid and in

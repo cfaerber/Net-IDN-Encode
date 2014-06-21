@@ -99,7 +99,7 @@ sub _process {
 
   ## IDNA test vectors: an empty label at the end (separating the root domain
   ##                    "", if present) must be preserved. It is not checked for
-  ##			the minimum length criteria and the dot separating it is
+  ##			the minumum length criteria and the dot separting it is
   ##			not included in the maximum length of the domain.
   ##
   my $rooted = @ll && length($ll[$#ll]) < 1; pop @ll if $rooted;
@@ -206,7 +206,7 @@ sub _validate_bidi {
   croak 'starts with character of wrong bidi class [B1]';
 }
 
-# For perl versions < 5.11, we use a concrete list of characters; this is safe
+# For perl versions < 5.11, we use a conrete list of characters; this is safe
 # because the Unicode version supported by theses perl versions will not be
 # updated. For newer perl versions, we use the Unicode property (which is
 # supported from 5.11), so we will always be up-to-date with the Unicode

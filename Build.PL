@@ -39,11 +39,9 @@ my $b = Module::Build->new(
 	'no_index' => {
 		'directory' => ['eg', 'data']
 	},
-	'meta_merge' => {
-		'resources' => {
-			'homepage' => 'http://search.cpan.org/dist/Net-IDN-Encode',
-			'repository' => 'http://github.com/cfaerber/Net-IDN-Encode',
-		},
+	'resources' => {
+		'homepage' => 'http://search.cpan.org/dist/Net-IDN-Encode',
+		'repository' => 'http://github.com/cfaerber/Net-IDN-Encode',
 	},
 );
 

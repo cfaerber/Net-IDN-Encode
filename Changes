@@ -1,7 +1,7 @@
 Revision history for Perl extension Net::IDN::Encode
 
-2.199_20140618
 	- Net::IDN::UTS46: update to Unicode® 7.0.0 and UTS #46 r13
+	- typo and metadata fixes from dstreinbrunner
 
 2.100 (2013-12-30)
 	- Net::IDN::Encode: preserve case in pure-ASCII labels (bypass

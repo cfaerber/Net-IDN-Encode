@@ -1,5 +1,6 @@
 Revision history for Perl extension Net::IDN::Encode
 
+2.200 (2014-06-21)
 	- Net::IDN::UTS46: update to Unicode® 7.0.0 and UTS #46 r13
 	- typo and metadata fixes from dstreinbrunner
 

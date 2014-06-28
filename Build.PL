@@ -28,7 +28,7 @@ my $b = Module::Build->new(
 
 	'PL_Files' => {
 		'lib/Unicode/UTS46/_Mapping.PL'  => [
-			 'lib/Unicode/UTS46/_Mapping.pm',
+			 'lib/Net/IDN/UTS46/_Mapping.pm',
 		],
 		'lib/Unicode/UTS46/GenTests.PL'	 => [	
 			't/uts46_to_ascii.t',

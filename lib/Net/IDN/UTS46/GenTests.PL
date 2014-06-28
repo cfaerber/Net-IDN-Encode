@@ -108,6 +108,7 @@ __EOF
         v6.1	=> v5.15.8,
         v6.2	=> v5.17.1,
         v6.3	=> v5.19.5,
+	v7.0	=> v5.21.1,
       );
   
       foreach my $ucd_ver (sort keys %unicode_to_perl_version) {

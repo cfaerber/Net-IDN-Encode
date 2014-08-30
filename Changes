@@ -1,5 +1,11 @@
 Revision history for Perl extension Net::IDN::Encode
 
+2.201 (2014-08-30)
+	- correct handling of uppercase a-labels in
+	  domain_to_{ascii,unicode}
+	- FIXES: #98354: Capitalized ACE prefix does not work (reported
+	  by victor@*****.ru)
+
 2.200 (2014-06-21)
 	- Net::IDN::UTS46: update to Unicode® 7.0.0 and UTS #46 r13
 	- typo and metadata fixes from dstreinbrunner

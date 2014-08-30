@@ -5,12 +5,14 @@ BEGIN { binmode STDOUT, ':utf8'; binmode STDERR, ':utf8'; }
 
 use Net::IDN::Encode qw(:all);
 
-use Test::More tests => 1 + 11;
+use Test::More tests => 1 + 12;
 use Test::NoWarnings;
 
 use Net::IDN::Encode qw(:all);
 
-is(eval{domain_to_ascii('müller')} || $@, 'xn--mller-kva', 'single label');
+is(eval{domain_to_ascii('müller')} || $@, 'xn--mller-kva', 'single label (to_ascii)');
+is(eval{domain_to_ascii('XN--MLLER-KVA')} || $@, 'XN--MLLER-KVA', 'single uppercase label (to_ascii)');
+
 is(eval{domain_to_ascii('www.jürg.xn--mller-kva.com', )} || $@, 'www.xn--jrg-hoa.xn--mller-kva.com', 'mixed utf8/ace/ascii');
 is(eval{domain_to_ascii('www.a.b。c．d｡com', )} || $@, 'www.a.b.c.d.com', 'mixed dots');
 

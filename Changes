@@ -1,5 +1,8 @@
 Revision history for Perl extension Net::IDN::Encode
 
+	- use updated IdnaTest.txt from Unicode 7.0.0 database
+	  FIXES: #96749: Fails with bleadperl
+
 2.201 (2014-08-30)
 	- correct handling of uppercase a-labels in
 	  domain_to_{ascii,unicode}

@@ -1,5 +1,5 @@
 # IdnaTest7.0.0.txt
-# Date: 2014-04-10 15:40:28 GMT [MD]
+# Date: 2014-06-30 12:50:22 GMT [MD]
 #
 # Copyright (c) 1991-2014 Unicode, Inc.
 # For terms of use, see http://www.unicode.org/terms_of_use.html
@@ -563,16 +563,16 @@ B;	\u3164\u094DႠ\uDB40\uDD4C.\u180B;	[P1 V6];	[P1 V6]	#	ㅤ्Ⴀ.
 B;	\u1160\u094DႠ\uDB40\uDD4C.\u180B;	[P1 V6];	[P1 V6]	#	ᅠ्Ⴀ.
 B;	\u1160\u094Dⴀ\uDB40\uDD4C.\u180B;	[P1 V6];	[P1 V6]	#	ᅠ्ⴀ.
 B;	\u3164\u094Dⴀ\uDB40\uDD4C.\u180B;	[P1 V6];	[P1 V6]	#	ㅤ्ⴀ.
-T;	🞀\u200D．\u0E3A\u1CDA\u073B\uDB40\uDD6E;	[P1 V6 V5 C2];	[P1 V6 V5]	#	🞀‍.ฺܻ᳚
-N;	🞀\u200D．\u0E3A\u1CDA\u073B\uDB40\uDD6E;	[P1 V6 V5 C2];	[P1 V6 V5 C2]	#	🞀‍.ฺܻ᳚
-T;	🞀\u200D．\u0E3A\u073B\u1CDA\uDB40\uDD6E;	[P1 V6 V5 C2];	[P1 V6 V5]	#	🞀‍.ฺܻ᳚
-N;	🞀\u200D．\u0E3A\u073B\u1CDA\uDB40\uDD6E;	[P1 V6 V5 C2];	[P1 V6 V5 C2]	#	🞀‍.ฺܻ᳚
-T;	🞀\u200D.\u0E3A\u073B\u1CDA\uDB40\uDD6E;	[P1 V6 V5 C2];	[P1 V6 V5]	#	🞀‍.ฺܻ᳚
-N;	🞀\u200D.\u0E3A\u073B\u1CDA\uDB40\uDD6E;	[P1 V6 V5 C2];	[P1 V6 V5 C2]	#	🞀‍.ฺܻ᳚
+T;	🞀\u200D．\u0E3A\u1CDA\u073B\uDB40\uDD6E;	[V5 C2];	[V5]	#	🞀‍.ฺܻ᳚
+N;	🞀\u200D．\u0E3A\u1CDA\u073B\uDB40\uDD6E;	[V5 C2];	[V5 C2]	#	🞀‍.ฺܻ᳚
+T;	🞀\u200D．\u0E3A\u073B\u1CDA\uDB40\uDD6E;	[V5 C2];	[V5]	#	🞀‍.ฺܻ᳚
+N;	🞀\u200D．\u0E3A\u073B\u1CDA\uDB40\uDD6E;	[V5 C2];	[V5 C2]	#	🞀‍.ฺܻ᳚
+T;	🞀\u200D.\u0E3A\u073B\u1CDA\uDB40\uDD6E;	[V5 C2];	[V5]	#	🞀‍.ฺܻ᳚
+N;	🞀\u200D.\u0E3A\u073B\u1CDA\uDB40\uDD6E;	[V5 C2];	[V5 C2]	#	🞀‍.ฺܻ᳚
 B;	≮\uD802\uDE04\uD803\uDC06.≯\uDB35\uDE7Dᢕ;	[P1 V6 B1];	[P1 V6 B1]	#	≮𐨄𐰆.≯󝙽ᢕ
 B;	<\u0338\uD802\uDE04\uD803\uDC06.>\u0338\uDB35\uDE7Dᢕ;	[P1 V6 B1];	[P1 V6 B1]	#	≮𐨄𐰆.≯󝙽ᢕ
-B;	\u1DE3\uD802\uDF80\u0695\uDB40\uDD75｡\u0ACDᡵ;	[P1 V5 V6 B1];	[P1 V5 V6 B1]	#	ᷣ𐮀ڕ.્ᡵ
-B;	\u1DE3\uD802\uDF80\u0695\uDB40\uDD75。\u0ACDᡵ;	[P1 V5 V6 B1];	[P1 V5 V6 B1]	#	ᷣ𐮀ڕ.્ᡵ
+B;	\u1DE3\uD802\uDF80\u0695\uDB40\uDD75｡\u0ACDᡵ;	[V5 B1];	[V5 B1]	#	ᷣ𐮀ڕ.્ᡵ
+B;	\u1DE3\uD802\uDF80\u0695\uDB40\uDD75。\u0ACDᡵ;	[V5 B1];	[V5 B1]	#	ᷣ𐮀ڕ.્ᡵ
 B;	\uDB40\uDDC5。\uDB01\uDFE7;	[P1 V6];	[P1 V6]	#	󐟧
 B;	\uD804\uDF4D\u1DE1．\u1160;	[P1 V5 V6];	[P1 V5 V6]	#	𑍍ᷡ.ᅠ
 B;	\uD804\uDF4D\u1DE1.\u1160;	[P1 V5 V6];	[P1 V5 V6]	#	𑍍ᷡ.ᅠ
@@ -620,9 +620,9 @@ B;	䷃Σ\uDB09\uDE76｡\uFFA0;	[P1 V6];	[P1 V6]	#	䷃σ󒙶.ﾠ
 B;	䷃σ\uDB09\uDE76｡\uFFA0;	[P1 V6];	[P1 V6]	#	䷃σ󒙶.ﾠ
 B;	ꡆ\uD804\uDC80ᠨ\u06A1.\uD803\uDDC1\uD805\uDE3FႣ;	[P1 V6 B5 B6 B2 B3];	[P1 V6 B5 B6 B2 B3]	#	ꡆ𑂀ᠨڡ.𐷁𑘿Ⴃ
 B;	ꡆ\uD804\uDC80ᠨ\u06A1.\uD803\uDDC1\uD805\uDE3Fⴃ;	[P1 V6 B5 B6 B2 B3];	[P1 V6 B5 B6 B2 B3]	#	ꡆ𑂀ᠨڡ.𐷁𑘿ⴃ
-B;	\uD803\uDE61\uD804\uDE35-킼.\u0E3A\u0344\u06DD≯;	[P1 V6 V5 B1];	[P1 V6 V5 B1]	#	𐹡𑈵-킼.ฺ̈́۝≯
-B;	\uD803\uDE61\uD804\uDE35-킼.\u0E3A\u0308\u0301\u06DD≯;	[P1 V6 V5 B1];	[P1 V6 V5 B1]	#	𐹡𑈵-킼.ฺ̈́۝≯
-B;	\uD803\uDE61\uD804\uDE35-킼.\u0E3A\u0308\u0301\u06DD>\u0338;	[P1 V6 V5 B1];	[P1 V6 V5 B1]	#	𐹡𑈵-킼.ฺ̈́۝≯
+B;	\uD803\uDE61\uD804\uDE35-킼.\u0E3A\u0344\u06DD≯;	[P1 V5 V6 B1];	[P1 V5 V6 B1]	#	𐹡𑈵-킼.ฺ̈́۝≯
+B;	\uD803\uDE61\uD804\uDE35-킼.\u0E3A\u0308\u0301\u06DD≯;	[P1 V5 V6 B1];	[P1 V5 V6 B1]	#	𐹡𑈵-킼.ฺ̈́۝≯
+B;	\uD803\uDE61\uD804\uDE35-킼.\u0E3A\u0308\u0301\u06DD>\u0338;	[P1 V5 V6 B1];	[P1 V5 V6 B1]	#	𐹡𑈵-킼.ฺ̈́۝≯
 B;	-。ᠶ\u0667\uDAE3\uDE3F\uD804\uDC46;	[P1 V3 V6 B5];	[P1 V3 V6 B5]	#	-.ᠶ٧󈸿𑁆
 T;	\u200D\uDA51\uDE1E\uDB40\uDDC5．\u0354\uDAF8\uDEE4\u0684𐋡;	[P1 V6 V5 C2 B1];	[P1 V6 V5 B1]	#	‍򤘞.͔󎋤ڄ𐋡
 N;	\u200D\uDA51\uDE1E\uDB40\uDDC5．\u0354\uDAF8\uDEE4\u0684𐋡;	[P1 V6 V5 C2 B1];	[P1 V6 V5 C2 B1]	#	‍򤘞.͔󎋤ڄ𐋡
@@ -724,8 +724,8 @@ T;	᠆몆\u200C-｡ⴛ\u072C︒;	[P1 V3 V6 C1 B5 B6];	[P1 V3 V6 B5 B6]	#	᠆몆�
 N;	᠆몆\u200C-｡ⴛ\u072C︒;	[P1 V3 V6 C1 B5 B6];	[P1 V3 V6 C1 B5 B6]	#	᠆몆‌-.ⴛܬ︒
 T;	✞.︒🞰\u200C\uD803\uDE7D;	[P1 V6 B1 C1];	[P1 V6 B1]	#	✞.︒🞰‌𐹽
 N;	✞.︒🞰\u200C\uD803\uDE7D;	[P1 V6 B1 C1];	[P1 V6 B1 C1]	#	✞.︒🞰‌𐹽
-T;	✞.。🞰\u200C\uD803\uDE7D;	[P1 V6 A4_2 B1 C1];	[P1 V6 A4_2 B1]	#	✞..🞰‌𐹽
-N;	✞.。🞰\u200C\uD803\uDE7D;	[P1 V6 A4_2 B1 C1];	[P1 V6 A4_2 B1 C1]	#	✞..🞰‌𐹽
+T;	✞.。🞰\u200C\uD803\uDE7D;	[A4_2 B1 C1];	[A4_2 B1]	#	✞..🞰‌𐹽
+N;	✞.。🞰\u200C\uD803\uDE7D;	[A4_2 B1 C1];	[A4_2 B1 C1]	#	✞..🞰‌𐹽
 B;	\uFDB1.\uD803\uDE62Ⴑ\uD8CA\uDDC6ᢌ;	[P1 V6 B1];	[P1 V6 B1]	#	ممي.𐹢Ⴑ񂧆ᢌ
 B;	\u0645\u0645\u064A.\uD803\uDE62Ⴑ\uD8CA\uDDC6ᢌ;	[P1 V6 B1];	[P1 V6 B1]	#	ممي.𐹢Ⴑ񂧆ᢌ
 B;	\u0645\u0645\u064A.\uD803\uDE62ⴑ\uD8CA\uDDC6ᢌ;	[P1 V6 B1];	[P1 V6 B1]	#	ممي.𐹢ⴑ񂧆ᢌ
@@ -764,8 +764,8 @@ B;	Σ\uD8F3\uDE18８.\uD83B\uDC07;	[P1 V6];	[P1 V6]	#	σ񌸘8.𞰇
 B;	σ\uD8F3\uDE18８.\uD83B\uDC07;	[P1 V6];	[P1 V6]	#	σ񌸘8.𞰇
 T;	\u200C\u0771🄀ᢊ．-\uD802\uDED0\uA67A;	[P1 V6 V3 B1 C1];	[P1 V6 V3 B2 B3 B1]	#	‌ݱ🄀ᢊ.-𐫐ꙺ
 N;	\u200C\u0771🄀ᢊ．-\uD802\uDED0\uA67A;	[P1 V6 V3 B1 C1];	[P1 V6 V3 B1 C1]	#	‌ݱ🄀ᢊ.-𐫐ꙺ
-T;	\u200C\u07710.ᢊ.-\uD802\uDED0\uA67A;	[P1 V3 V6 B1 C1];	[P1 V3 V6 B1]	#	‌ݱ0.ᢊ.-𐫐ꙺ
-N;	\u200C\u07710.ᢊ.-\uD802\uDED0\uA67A;	[P1 V3 V6 B1 C1];	[P1 V3 V6 B1 C1]	#	‌ݱ0.ᢊ.-𐫐ꙺ
+T;	\u200C\u07710.ᢊ.-\uD802\uDED0\uA67A;	[V3 B1 C1];	[V3 B1]	#	‌ݱ0.ᢊ.-𐫐ꙺ
+N;	\u200C\u07710.ᢊ.-\uD802\uDED0\uA67A;	[V3 B1 C1];	[V3 B1 C1]	#	‌ݱ0.ᢊ.-𐫐ꙺ
 B;	\uDB7D\uDC87。\uD83A\uDC94넯\uD96E\uDFF0;	[P1 V6 B2 B3];	[P1 V6 B2 B3]	#	󯒇.𞢔넯񫯰
 B;	\uDB7D\uDC87。\uD83A\uDC94넯\uD96E\uDFF0;	[P1 V6 B2 B3];	[P1 V6 B2 B3]	#	󯒇.𞢔넯񫯰
 B;	ꡒႸ。\u0600Ⴈ\uD804\uDF68;	[P1 V6 B1];	[P1 V6 B1]	#	ꡒႸ.؀Ⴈ𑍨
@@ -776,7 +776,7 @@ B;	19.🐩\u077F。牣\uD803\uDE64ⴜᣥ;	[B1 B5];	[B1 B5]	#	19.🐩ݿ.牣𐹤�
 B;	⒚🐩\u077F。牣\uD803\uDE64ⴜᣥ;	[P1 V6 B1 B5];	[P1 V6 B1 B5]	#	⒚🐩ݿ.牣𐹤ⴜᣥ
 B;	-𐋱\u080F⒈.Ⴓ;	[P1 V3 V6 B1];	[P1 V3 V6 B1]	#	-𐋱ࠏ⒈.Ⴓ
 B;	-𐋱\u080F1..Ⴓ;	[P1 V3 V6 B1 A4_2];	[P1 V3 V6 B1 A4_2]	#	-𐋱ࠏ1..Ⴓ
-B;	-𐋱\u080F1..ⴓ;	[P1 V3 V6 B1 A4_2];	[P1 V3 V6 B1 A4_2]	#	-𐋱ࠏ1..ⴓ
+B;	-𐋱\u080F1..ⴓ;	[V3 B1 A4_2];	[V3 B1 A4_2]	#	-𐋱ࠏ1..ⴓ
 B;	-𐋱\u080F⒈.ⴓ;	[P1 V3 V6 B1];	[P1 V3 V6 B1]	#	-𐋱ࠏ⒈.ⴓ
 T;	\u200C긃.\uDAE6\uDEB3-;	[P1 V3 V6 C1];	[P1 V3 V6]	#	‌긃.󉪳-
 N;	\u200C긃.\uDAE6\uDEB3-;	[P1 V3 V6 C1];	[P1 V3 V6 C1]	#	‌긃.󉪳-
@@ -855,8 +855,8 @@ B;	σ.ss\uDB9A\uDE5C\u0668\u1714;	[P1 V6 B5 B6];	[P1 V6 B5 B6]	#	σ.ss󶩜٨᜔
 B;	Σ.ss\uDB9A\uDE5C\u0668\u1714;	[P1 V6 B5 B6];	[P1 V6 B5 B6]	#	σ.ss󶩜٨᜔
 B;	Σ.ß\uDB9A\uDE5C\u0668\u1714;	[P1 V6 B5 B6];	[P1 V6 B5 B6]	#	σ.ß󶩜٨᜔
 B;	σ.ß\uDB9A\uDE5C\u0668\u1714;	[P1 V6 B5 B6];	[P1 V6 B5 B6]	#	σ.ß󶩜٨᜔
-B;	\u0846\u1B6C｡\uD803\uDE6B\uD805\uDDB5;	[P1 V6 B1];	[P1 V6 B1]	#	ࡆ᭬.𐹫𑖵
-B;	\u0846\u1B6C。\uD803\uDE6B\uD805\uDDB5;	[P1 V6 B1];	[P1 V6 B1]	#	ࡆ᭬.𐹫𑖵
+B;	\u0846\u1B6C｡\uD803\uDE6B\uD805\uDDB5;	[B1];	[B1]	#	ࡆ᭬.𐹫𑖵
+B;	\u0846\u1B6C。\uD803\uDE6B\uD805\uDDB5;	[B1];	[B1]	#	ࡆ᭬.𐹫𑖵
 T;	ꗆ\u200C\uD83B\uDC15｡\uDB43\uDEDD\uD897\uDCB3-\uD83A\uDE47;	[P1 V6 B5 B6 C1 B1];	[P1 V6 B5 B6 B1]	#	ꗆ‌𞰕.󠻝𵲳-𞩇
 N;	ꗆ\u200C\uD83B\uDC15｡\uDB43\uDEDD\uD897\uDCB3-\uD83A\uDE47;	[P1 V6 B5 B6 C1 B1];	[P1 V6 B5 B6 C1 B1]	#	ꗆ‌𞰕.󠻝𵲳-𞩇
 T;	ꗆ\u200C\uD83B\uDC15。\uDB43\uDEDD\uD897\uDCB3-\uD83A\uDE47;	[P1 V6 B5 B6 C1 B1];	[P1 V6 B5 B6 B1]	#	ꗆ‌𞰕.󠻝𵲳-𞩇
@@ -889,7 +889,7 @@ T;	\u094D\u0CCD\u0743.=\u0338\u200D㇛;	[P1 V5 V6 C2];	[P1 V5 V6]	#	्್݃.≠
 N;	\u094D\u0CCD\u0743.=\u0338\u200D㇛;	[P1 V5 V6 C2];	[P1 V5 V6 C2]	#	्್݃.≠‍㇛
 T;	Ⴁ𐋨娤.\u200D\uA9B6\u0601\u05A2;	[P1 V6 B1 C2];	[P1 V6 V5 B1]	#	Ⴁ𐋨娤.‍ꦶ؁֢
 N;	Ⴁ𐋨娤.\u200D\uA9B6\u0601\u05A2;	[P1 V6 B1 C2];	[P1 V6 B1 C2]	#	Ⴁ𐋨娤.‍ꦶ؁֢
-T;	ⴁ𐋨娤.\u200D\uA9B6\u0601\u05A2;	[P1 V6 B1 C2];	[P1 V6 V5 B1]	#	ⴁ𐋨娤.‍ꦶ؁֢
+T;	ⴁ𐋨娤.\u200D\uA9B6\u0601\u05A2;	[P1 V6 B1 C2];	[P1 V5 V6 B1]	#	ⴁ𐋨娤.‍ꦶ؁֢
 N;	ⴁ𐋨娤.\u200D\uA9B6\u0601\u05A2;	[P1 V6 B1 C2];	[P1 V6 B1 C2]	#	ⴁ𐋨娤.‍ꦶ؁֢
 B;	🄀Ⴄ\uD803\uDE7E\u2DFC。⒈\u105Fß;	[P1 V6 B1];	[P1 V6 B1]	#	🄀Ⴄ𐹾ⷼ.⒈ၟß
 B;	0.Ⴄ\uD803\uDE7E\u2DFC。1.\u105Fß;	[P1 V6 V5 B5 B6];	[P1 V6 V5 B5 B6]	#	0.Ⴄ𐹾ⷼ.1.ၟß
@@ -971,12 +971,12 @@ T;	\u0600⮣\u200C\u20EE。\uD9E7\uDDAC\u07E8;	[P1 V6 B1 C1 B5 B6];	[P1 V6 B1 B5
 N;	\u0600⮣\u200C\u20EE。\uD9E7\uDDAC\u07E8;	[P1 V6 B1 C1 B5 B6];	[P1 V6 B1 C1 B5 B6]	#	؀⮣‌⃮.򉶬ߨ
 B;	Ⴒ。デß\u06A8\uD805\uDE3F;	[P1 V6 B5 B6];	[P1 V6 B5 B6]	#	Ⴒ.デßڨ𑘿
 B;	Ⴒ。テ\u3099ß\u06A8\uD805\uDE3F;	[P1 V6 B5 B6];	[P1 V6 B5 B6]	#	Ⴒ.デßڨ𑘿
-B;	ⴒ。テ\u3099ß\u06A8\uD805\uDE3F;	[P1 V6 B5 B6];	[P1 V6 B5 B6]	#	ⴒ.デßڨ𑘿
-B;	ⴒ。デß\u06A8\uD805\uDE3F;	[P1 V6 B5 B6];	[P1 V6 B5 B6]	#	ⴒ.デßڨ𑘿
+B;	ⴒ。テ\u3099ß\u06A8\uD805\uDE3F;	[B5 B6];	[B5 B6]	#	ⴒ.デßڨ𑘿
+B;	ⴒ。デß\u06A8\uD805\uDE3F;	[B5 B6];	[B5 B6]	#	ⴒ.デßڨ𑘿
 B;	Ⴒ。デSS\u06A8\uD805\uDE3F;	[P1 V6 B5 B6];	[P1 V6 B5 B6]	#	Ⴒ.デssڨ𑘿
 B;	Ⴒ。テ\u3099SS\u06A8\uD805\uDE3F;	[P1 V6 B5 B6];	[P1 V6 B5 B6]	#	Ⴒ.デssڨ𑘿
-B;	ⴒ。テ\u3099ss\u06A8\uD805\uDE3F;	[P1 V6 B5 B6];	[P1 V6 B5 B6]	#	ⴒ.デssڨ𑘿
-B;	ⴒ。デss\u06A8\uD805\uDE3F;	[P1 V6 B5 B6];	[P1 V6 B5 B6]	#	ⴒ.デssڨ𑘿
+B;	ⴒ。テ\u3099ss\u06A8\uD805\uDE3F;	[B5 B6];	[B5 B6]	#	ⴒ.デssڨ𑘿
+B;	ⴒ。デss\u06A8\uD805\uDE3F;	[B5 B6];	[B5 B6]	#	ⴒ.デssڨ𑘿
 B;	Ⴒ。デSs\u06A8\uD805\uDE3F;	[P1 V6 B5 B6];	[P1 V6 B5 B6]	#	Ⴒ.デssڨ𑘿
 B;	Ⴒ。テ\u3099Ss\u06A8\uD805\uDE3F;	[P1 V6 B5 B6];	[P1 V6 B5 B6]	#	Ⴒ.デssڨ𑘿
 B;	\u0F84\u0CCD．７-\u0754;	[V5 B1];	[V5 B1]	#	྄್.7-ݔ
@@ -989,18 +989,28 @@ B;	\u0E4E\uD9CE\uDF8Fⴗ쏔。\uFBC6;	[P1 V5 V6];	[P1 V5 V6]	#	๎򃮏ⴗ�
 B;	\u0E4E\uD9CE\uDF8Fⴗ쏔。\uFBC6;	[P1 V5 V6];	[P1 V5 V6]	#	๎򃮏ⴗ쏔.﯆
 B;	ß｡𐋳Ⴌ\u1DD8;	[P1 V6];	[P1 V6]	#	ß.𐋳Ⴌᷘ
 B;	ß。𐋳Ⴌ\u1DD8;	[P1 V6];	[P1 V6]	#	ß.𐋳Ⴌᷘ
-B;	ß。𐋳ⴌ\u1DD8;	[P1 V6];	[P1 V6]	#	ß.𐋳ⴌᷘ
+T;	ß。𐋳ⴌ\u1DD8;	ß.𐋳ⴌ\u1DD8;	ss.xn--weg506dvy5n;	NV8	#	ß.𐋳ⴌᷘ
+N;	ß。𐋳ⴌ\u1DD8;	ß.𐋳ⴌ\u1DD8;	xn--zca.xn--weg506dvy5n;	NV8	#	ß.𐋳ⴌᷘ
 B;	SS。𐋳Ⴌ\u1DD8;	[P1 V6];	[P1 V6]	#	ss.𐋳Ⴌᷘ
-B;	ss。𐋳ⴌ\u1DD8;	[P1 V6];	[P1 V6]	#	ss.𐋳ⴌᷘ
-B;	ß｡𐋳ⴌ\u1DD8;	[P1 V6];	[P1 V6]	#	ß.𐋳ⴌᷘ
+B;	ss。𐋳ⴌ\u1DD8;	ss.𐋳ⴌ\u1DD8;	ss.xn--weg506dvy5n;	NV8	#	ss.𐋳ⴌᷘ
+B;	ss.xn--weg506dvy5n;	ss.𐋳ⴌ\u1DD8;	ss.xn--weg506dvy5n;	NV8	#	ss.𐋳ⴌᷘ
+B;	ss.𐋳ⴌ\u1DD8;	;	ss.xn--weg506dvy5n;	NV8	#	ss.𐋳ⴌᷘ
+B;	SS.𐋳Ⴌ\u1DD8;	[P1 V6];	[P1 V6]	#	ss.𐋳Ⴌᷘ
+B;	xn--zca.xn--weg506dvy5n;	ß.𐋳ⴌ\u1DD8;	xn--zca.xn--weg506dvy5n;	NV8	#	ß.𐋳ⴌᷘ
+T;	ß.𐋳ⴌ\u1DD8;	;	ss.xn--weg506dvy5n;	NV8	#	ß.𐋳ⴌᷘ
+N;	ß.𐋳ⴌ\u1DD8;	;	xn--zca.xn--weg506dvy5n;	NV8	#	ß.𐋳ⴌᷘ
+T;	ß｡𐋳ⴌ\u1DD8;	ß.𐋳ⴌ\u1DD8;	ss.xn--weg506dvy5n;	NV8	#	ß.𐋳ⴌᷘ
+N;	ß｡𐋳ⴌ\u1DD8;	ß.𐋳ⴌ\u1DD8;	xn--zca.xn--weg506dvy5n;	NV8	#	ß.𐋳ⴌᷘ
 B;	SS｡𐋳Ⴌ\u1DD8;	[P1 V6];	[P1 V6]	#	ss.𐋳Ⴌᷘ
-B;	ss｡𐋳ⴌ\u1DD8;	[P1 V6];	[P1 V6]	#	ss.𐋳ⴌᷘ
+B;	ss｡𐋳ⴌ\u1DD8;	ss.𐋳ⴌ\u1DD8;	ss.xn--weg506dvy5n;	NV8	#	ss.𐋳ⴌᷘ
 T;	-ᠽ\uD83A\uDF4E.\u200C\u0017\u1BAA;	[P1 V3 V6 B1 C1];	[P1 V3 V6 B1]	#	-ᠽ𞭎.‌᮪
 N;	-ᠽ\uD83A\uDF4E.\u200C\u0017\u1BAA;	[P1 V3 V6 B1 C1];	[P1 V3 V6 B1 C1]	#	-ᠽ𞭎.‌᮪
-T;	⯁ᡴ\u1DC2\uD804\uDD34.🖅\u200D;	[P1 V6 C2];	[P1 V6]	#	⯁ᡴ𑄴᷂.🖅‍
-N;	⯁ᡴ\u1DC2\uD804\uDD34.🖅\u200D;	[P1 V6 C2];	[P1 V6 C2]	#	⯁ᡴ𑄴᷂.🖅‍
-T;	⯁ᡴ\uD804\uDD34\u1DC2.🖅\u200D;	[P1 V6 C2];	[P1 V6]	#	⯁ᡴ𑄴᷂.🖅‍
-N;	⯁ᡴ\uD804\uDD34\u1DC2.🖅\u200D;	[P1 V6 C2];	[P1 V6 C2]	#	⯁ᡴ𑄴᷂.🖅‍
+T;	⯁ᡴ\u1DC2\uD804\uDD34.🖅\u200D;	[C2];	xn--h9e03yc8ncx7t.xn--vy8h	#	⯁ᡴ𑄴᷂.🖅‍
+N;	⯁ᡴ\u1DC2\uD804\uDD34.🖅\u200D;	[C2];	[C2]	#	⯁ᡴ𑄴᷂.🖅‍
+T;	⯁ᡴ\uD804\uDD34\u1DC2.🖅\u200D;	[C2];	xn--h9e03yc8ncx7t.xn--vy8h	#	⯁ᡴ𑄴᷂.🖅‍
+N;	⯁ᡴ\uD804\uDD34\u1DC2.🖅\u200D;	[C2];	[C2]	#	⯁ᡴ𑄴᷂.🖅‍
+B;	xn--h9e03yc8ncx7t.xn--vy8h;	⯁ᡴ\uD804\uDD34\u1DC2.🖅;	xn--h9e03yc8ncx7t.xn--vy8h;	NV8	#	⯁ᡴ𑄴᷂.🖅
+B;	⯁ᡴ\uD804\uDD34\u1DC2.🖅;	;	xn--h9e03yc8ncx7t.xn--vy8h;	NV8	#	⯁ᡴ𑄴᷂.🖅
 T;	\u0311\u200D\uDB40\uDEF9\uD802\uDEE0.ᡟ\u200C🡔;	[P1 V5 V6 B1 C2 C1];	[P1 V5 V6 B1]	#	̑‍󠋹𐫠.ᡟ‌🡔
 N;	\u0311\u200D\uDB40\uDEF9\uD802\uDEE0.ᡟ\u200C🡔;	[P1 V5 V6 B1 C2 C1];	[P1 V5 V6 B1 C2 C1]	#	̑‍󠋹𐫠.ᡟ‌🡔
 B;	Ⴑ．\u06BF\uFBE9\u0642;	[P1 V6];	[P1 V6]	#	Ⴑ.ڿىق
@@ -1077,18 +1087,18 @@ T;	\uD98F\uDD1D\u200C｡\u200C\uFD6Bσ;	[P1 V6 C1 B1];	[P1 V6 B2 B3]	#	񳴝‌.�
 N;	\uD98F\uDD1D\u200C｡\u200C\uFD6Bσ;	[P1 V6 C1 B1];	[P1 V6 C1 B1]	#	񳴝‌.‌شمخσ
 T;	堕\uD805\uDDBF\uDB43\uDCEE。ᢗ\uD802\uDED5\u200C-;	[P1 V6 V3 B5 B6 C1];	[P1 V6 V3 B5 B6]	#	堕𑖿󠳮.ᢗ𐫕‌-
 N;	堕\uD805\uDDBF\uDB43\uDCEE。ᢗ\uD802\uDED5\u200C-;	[P1 V6 V3 B5 B6 C1];	[P1 V6 V3 B5 B6 C1]	#	堕𑖿󠳮.ᢗ𐫕‌-
-B;	\uD803\uDE65\u0D4D\uD802\uDEED\u067C｡\u06BBςᡃς;	[P1 V6 B1 B2 B3];	[P1 V6 B1 B2 B3]	#	𐹥്𐫭ټ.ڻςᡃς
-B;	\uD803\uDE65\u0D4D\uD802\uDEED\u067C。\u06BBςᡃς;	[P1 V6 B1 B2 B3];	[P1 V6 B1 B2 B3]	#	𐹥്𐫭ټ.ڻςᡃς
-B;	\uD803\uDE65\u0D4D\uD802\uDEED\u067C。\u06BBΣᡃΣ;	[P1 V6 B1 B2 B3];	[P1 V6 B1 B2 B3]	#	𐹥്𐫭ټ.ڻσᡃσ
-B;	\uD803\uDE65\u0D4D\uD802\uDEED\u067C。\u06BBσᡃς;	[P1 V6 B1 B2 B3];	[P1 V6 B1 B2 B3]	#	𐹥്𐫭ټ.ڻσᡃς
-B;	\uD803\uDE65\u0D4D\uD802\uDEED\u067C。\u06BBσᡃσ;	[P1 V6 B1 B2 B3];	[P1 V6 B1 B2 B3]	#	𐹥്𐫭ټ.ڻσᡃσ
-B;	\uD803\uDE65\u0D4D\uD802\uDEED\u067C。\u06BBΣᡃσ;	[P1 V6 B1 B2 B3];	[P1 V6 B1 B2 B3]	#	𐹥്𐫭ټ.ڻσᡃσ
-B;	\uD803\uDE65\u0D4D\uD802\uDEED\u067C。\u06BBΣᡃς;	[P1 V6 B1 B2 B3];	[P1 V6 B1 B2 B3]	#	𐹥്𐫭ټ.ڻσᡃς
-B;	\uD803\uDE65\u0D4D\uD802\uDEED\u067C｡\u06BBΣᡃΣ;	[P1 V6 B1 B2 B3];	[P1 V6 B1 B2 B3]	#	𐹥്𐫭ټ.ڻσᡃσ
-B;	\uD803\uDE65\u0D4D\uD802\uDEED\u067C｡\u06BBσᡃς;	[P1 V6 B1 B2 B3];	[P1 V6 B1 B2 B3]	#	𐹥്𐫭ټ.ڻσᡃς
-B;	\uD803\uDE65\u0D4D\uD802\uDEED\u067C｡\u06BBσᡃσ;	[P1 V6 B1 B2 B3];	[P1 V6 B1 B2 B3]	#	𐹥്𐫭ټ.ڻσᡃσ
-B;	\uD803\uDE65\u0D4D\uD802\uDEED\u067C｡\u06BBΣᡃσ;	[P1 V6 B1 B2 B3];	[P1 V6 B1 B2 B3]	#	𐹥്𐫭ټ.ڻσᡃσ
-B;	\uD803\uDE65\u0D4D\uD802\uDEED\u067C｡\u06BBΣᡃς;	[P1 V6 B1 B2 B3];	[P1 V6 B1 B2 B3]	#	𐹥്𐫭ټ.ڻσᡃς
+B;	\uD803\uDE65\u0D4D\uD802\uDEED\u067C｡\u06BBςᡃς;	[B1 B2 B3];	[B1 B2 B3]	#	𐹥്𐫭ټ.ڻςᡃς
+B;	\uD803\uDE65\u0D4D\uD802\uDEED\u067C。\u06BBςᡃς;	[B1 B2 B3];	[B1 B2 B3]	#	𐹥്𐫭ټ.ڻςᡃς
+B;	\uD803\uDE65\u0D4D\uD802\uDEED\u067C。\u06BBΣᡃΣ;	[B1 B2 B3];	[B1 B2 B3]	#	𐹥്𐫭ټ.ڻσᡃσ
+B;	\uD803\uDE65\u0D4D\uD802\uDEED\u067C。\u06BBσᡃς;	[B1 B2 B3];	[B1 B2 B3]	#	𐹥്𐫭ټ.ڻσᡃς
+B;	\uD803\uDE65\u0D4D\uD802\uDEED\u067C。\u06BBσᡃσ;	[B1 B2 B3];	[B1 B2 B3]	#	𐹥്𐫭ټ.ڻσᡃσ
+B;	\uD803\uDE65\u0D4D\uD802\uDEED\u067C。\u06BBΣᡃσ;	[B1 B2 B3];	[B1 B2 B3]	#	𐹥്𐫭ټ.ڻσᡃσ
+B;	\uD803\uDE65\u0D4D\uD802\uDEED\u067C。\u06BBΣᡃς;	[B1 B2 B3];	[B1 B2 B3]	#	𐹥്𐫭ټ.ڻσᡃς
+B;	\uD803\uDE65\u0D4D\uD802\uDEED\u067C｡\u06BBΣᡃΣ;	[B1 B2 B3];	[B1 B2 B3]	#	𐹥്𐫭ټ.ڻσᡃσ
+B;	\uD803\uDE65\u0D4D\uD802\uDEED\u067C｡\u06BBσᡃς;	[B1 B2 B3];	[B1 B2 B3]	#	𐹥്𐫭ټ.ڻσᡃς
+B;	\uD803\uDE65\u0D4D\uD802\uDEED\u067C｡\u06BBσᡃσ;	[B1 B2 B3];	[B1 B2 B3]	#	𐹥്𐫭ټ.ڻσᡃσ
+B;	\uD803\uDE65\u0D4D\uD802\uDEED\u067C｡\u06BBΣᡃσ;	[B1 B2 B3];	[B1 B2 B3]	#	𐹥്𐫭ټ.ڻσᡃσ
+B;	\uD803\uDE65\u0D4D\uD802\uDEED\u067C｡\u06BBΣᡃς;	[B1 B2 B3];	[B1 B2 B3]	#	𐹥്𐫭ټ.ڻσᡃς
 B;	\uD978\uDF85．-𝟻ß;	[P1 V6 V3];	[P1 V6 V3]	#	񮎅.-5ß
 B;	\uD978\uDF85.-5ß;	[P1 V6 V3];	[P1 V6 V3]	#	񮎅.-5ß
 B;	\uD978\uDF85.-5SS;	[P1 V6 V3];	[P1 V6 V3]	#	񮎅.-5ss
@@ -1246,7 +1256,7 @@ B;	\uD803\uDE66\uFCCA<\u0338ⴢ．ⴃ;	[P1 V6 B1];	[P1 V6 B1]	#	𐹦لح≮ⴢ.�
 B;	\uD803\uDE66\uFCCA≮ⴢ．ⴃ;	[P1 V6 B1];	[P1 V6 B1]	#	𐹦لح≮ⴢ.ⴃ
 B;	\uD803\uDE66\uFCCA≮Ⴢ．ⴃ;	[P1 V6 B1];	[P1 V6 B1]	#	𐹦لح≮Ⴢ.ⴃ
 B;	\uD803\uDE66\uFCCA<\u0338Ⴢ．ⴃ;	[P1 V6 B1];	[P1 V6 B1]	#	𐹦لح≮Ⴢ.ⴃ
-B;	\uD804\uDEEA。-;	[P1 V5 V6 V3];	[P1 V5 V6 V3]	#	𑋪.-
+B;	\uD804\uDEEA。-;	[V5 V3];	[V5 V3]	#	𑋪.-
 B;	\u1039\uDB85\uDCD9\uDB41\uDCAD｡饈≠\uD803\uDE7B;	[P1 V5 V6 B5 B6];	[P1 V5 V6 B5 B6]	#	္󱓙󠒭.饈≠𐹻
 B;	\u1039\uDB85\uDCD9\uDB41\uDCAD｡饈=\u0338\uD803\uDE7B;	[P1 V5 V6 B5 B6];	[P1 V5 V6 B5 B6]	#	္󱓙󠒭.饈≠𐹻
 B;	\u1039\uDB85\uDCD9\uDB41\uDCAD。饈≠\uD803\uDE7B;	[P1 V5 V6 B5 B6];	[P1 V5 V6 B5 B6]	#	္󱓙󠒭.饈≠𐹻
@@ -1261,8 +1271,8 @@ B;	\uDBE4\uDDCC\u07E1\u200E.넨-\uDB98\uDE2A;	[P1 V6 B5];	[P1 V6 B5]	#	􉇌ߡ‎
 B;	\uDBE4\uDDCC\u07E1\u200E.넨-\uDB98\uDE2A;	[P1 V6 B5];	[P1 V6 B5]	#	􉇌ߡ‎.넨-󶈪
 T;	\u084Eᠰ\u200D⒈。𐋣-;	[P1 V6 V3 B2 C2];	[P1 V6 V3 B2]	#	ࡎᠰ‍⒈.𐋣-
 N;	\u084Eᠰ\u200D⒈。𐋣-;	[P1 V6 V3 B2 C2];	[P1 V6 V3 B2 C2]	#	ࡎᠰ‍⒈.𐋣-
-T;	\u084Eᠰ\u200D1.。𐋣-;	[P1 V3 V6 B2 C2 A4_2];	[P1 V3 V6 B2 A4_2]	#	ࡎᠰ‍1..𐋣-
-N;	\u084Eᠰ\u200D1.。𐋣-;	[P1 V3 V6 B2 C2 A4_2];	[P1 V3 V6 B2 C2 A4_2]	#	ࡎᠰ‍1..𐋣-
+T;	\u084Eᠰ\u200D1.。𐋣-;	[V3 B2 C2 A4_2];	[V3 B2 A4_2]	#	ࡎᠰ‍1..𐋣-
+N;	\u084Eᠰ\u200D1.。𐋣-;	[V3 B2 C2 A4_2];	[V3 B2 C2 A4_2]	#	ࡎᠰ‍1..𐋣-
 B;	Ⴌ。\uDAF2\uDEC6\uD803\uDC5A;	[P1 V6 B5 B6];	[P1 V6 B5 B6]	#	Ⴌ.󌫆𐱚
 B;	ⴌ。\uDAF2\uDEC6\uD803\uDC5A;	[P1 V6 B5 B6];	[P1 V6 B5 B6]	#	ⴌ.󌫆𐱚
 B;	\u075E\uD803\uDEE6.\u17D2\u065D-\uDAC0\uDC74;	[P1 V6 V5];	[P1 V6 V5]	#	ݞ𐻦.្ٝ-󀁴
@@ -1294,7 +1304,7 @@ B;	\u075E。Ӏ\uDB7F\uDDD8;	[P1 V6];	[P1 V6]	#	ݞ.Ӏ󯷘
 B;	\u075E。ӏ\uDB7F\uDDD8;	[P1 V6];	[P1 V6]	#	ݞ.ӏ󯷘
 B;	\u075E｡ӏ\uDB7F\uDDD8;	[P1 V6];	[P1 V6]	#	ݞ.ӏ󯷘
 B;	\u0666-。𪺟🎫ᄾ;	[V3 B1];	[V3 B1]	#	٦-.𪺟🎫ᄾ
-B;	-𐋷\u0F91。\u1B02;	[P1 V3 V6 V5];	[P1 V3 V6 V5]	#	-𐋷ྑ.ᬂ
+B;	-𐋷\u0F91。\u1B02;	[V3 V5];	[V3 V5]	#	-𐋷ྑ.ᬂ
 T;	\u200C\uD803\uDE74\u1CDE멈.\uAAF6\uDAB2\uDE74;	[P1 V5 V6 B1 C1];	[P1 V5 V6 B1]	#	‌𐹴᳞멈.꫶򼩴
 N;	\u200C\uD803\uDE74\u1CDE멈.\uAAF6\uDAB2\uDE74;	[P1 V5 V6 B1 C1];	[P1 V5 V6 B1 C1]	#	‌𐹴᳞멈.꫶򼩴
 T;	\u200C\uD803\uDE74\u1CDE멈.\uAAF6\uDAB2\uDE74;	[P1 V5 V6 B1 C1];	[P1 V5 V6 B1]	#	‌𐹴᳞멈.꫶򼩴
@@ -1345,8 +1355,8 @@ B;	\uD803\uDE75．\uD83A\uDF5F;	[P1 V6 B1];	[P1 V6 B1]	#	𐹵.𞭟
 B;	\uD803\uDE75.\uD83A\uDF5F;	[P1 V6 B1];	[P1 V6 B1]	#	𐹵.𞭟
 B;	-\uD802\uDED7｡Ↄ;	[P1 V3 V6 B1];	[P1 V3 V6 B1]	#	-𐫗.Ↄ
 B;	-\uD802\uDED7。Ↄ;	[P1 V3 V6 B1];	[P1 V3 V6 B1]	#	-𐫗.Ↄ
-B;	-\uD802\uDED7。ↄ;	[P1 V3 V6 B1];	[P1 V3 V6 B1]	#	-𐫗.ↄ
-B;	-\uD802\uDED7｡ↄ;	[P1 V3 V6 B1];	[P1 V3 V6 B1]	#	-𐫗.ↄ
+B;	-\uD802\uDED7。ↄ;	[V3 B1];	[V3 B1]	#	-𐫗.ↄ
+B;	-\uD802\uDED7｡ↄ;	[V3 B1];	[V3 B1]	#	-𐫗.ↄ
 T;	\u200D-︒\u07EE。ß哑\u200C\uD802\uDF0A;	[P1 V6 C2 B5 B6 C1];	[P1 V3 V6 B5 B6]	#	‍-︒߮.ß哑‌𐬊
 N;	\u200D-︒\u07EE。ß哑\u200C\uD802\uDF0A;	[P1 V6 C2 B5 B6 C1];	[P1 V6 C2 B5 B6 C1]	#	‍-︒߮.ß哑‌𐬊
 T;	\u200D-。\u07EE。ß哑\u200C\uD802\uDF0A;	[V3 V5 C2 B5 B6 C1];	[V3 V5 B5 B6]	#	‍-.߮.ß哑‌𐬊
@@ -1368,10 +1378,12 @@ B;	︒．\uD804\uDD34\u0333;	[P1 V6 V5];	[P1 V6 V5]	#	︒.𑄴̳
 B;	。.\uD804\uDD34\u0333;	[V5];	[V5]	#	𑄴̳
 T;	\uD834\uDD74。\u200D;	[P1 V6 C2];	[P1 V6]	#	𝅴.‍
 N;	\uD834\uDD74。\u200D;	[P1 V6 C2];	[P1 V6 C2]	#	𝅴.‍
-T;	\u200D🕆｡\uFC2D;	[P1 V6 C2];	[P1 V6]	#	‍🕆.فج
-N;	\u200D🕆｡\uFC2D;	[P1 V6 C2];	[P1 V6 C2]	#	‍🕆.فج
-T;	\u200D🕆。\u0641\u062C;	[P1 V6 C2];	[P1 V6]	#	‍🕆.فج
-N;	\u200D🕆。\u0641\u062C;	[P1 V6 C2];	[P1 V6 C2]	#	‍🕆.فج
+T;	\u200D🕆｡\uFC2D;	[C2];	xn--2w8h.xn--rgb5b	#	‍🕆.فج
+N;	\u200D🕆｡\uFC2D;	[C2];	[C2]	#	‍🕆.فج
+T;	\u200D🕆。\u0641\u062C;	[C2];	xn--2w8h.xn--rgb5b	#	‍🕆.فج
+N;	\u200D🕆。\u0641\u062C;	[C2];	[C2]	#	‍🕆.فج
+B;	xn--2w8h.xn--rgb5b;	🕆.\u0641\u062C;	xn--2w8h.xn--rgb5b;	NV8	#	🕆.فج
+B;	🕆.\u0641\u062C;	;	xn--2w8h.xn--rgb5b;	NV8	#	🕆.فج
 B;	-Ⴄ𝟢\u0669．\u0322ς;	[P1 V3 V6 V5 B1];	[P1 V3 V6 V5 B1]	#	-Ⴄ0٩.̢ς
 B;	-Ⴄ0\u0669.\u0322ς;	[P1 V3 V6 V5 B1];	[P1 V3 V6 V5 B1]	#	-Ⴄ0٩.̢ς
 B;	-ⴄ0\u0669.\u0322ς;	[V3 V5 B1];	[V3 V5 B1]	#	-ⴄ0٩.̢ς
@@ -1459,16 +1471,16 @@ T;	⒐\u200C衃ⴝ.\u075Aⴔ;	[P1 V6 C1 B2 B3];	[P1 V6 B2 B3]	#	⒐‌衃ⴝ.ݚ�
 N;	⒐\u200C衃ⴝ.\u075Aⴔ;	[P1 V6 C1 B2 B3];	[P1 V6 C1 B2 B3]	#	⒐‌衃ⴝ.ݚⴔ
 T;	⒐\u200C衃Ⴝ.\u075Aⴔ;	[P1 V6 C1 B2 B3];	[P1 V6 B2 B3]	#	⒐‌衃Ⴝ.ݚⴔ
 N;	⒐\u200C衃Ⴝ.\u075Aⴔ;	[P1 V6 C1 B2 B3];	[P1 V6 C1 B2 B3]	#	⒐‌衃Ⴝ.ݚⴔ
-T;	\uD802\uDFA9\u200C。--\u0EC8;	[P1 V6 V3 B3 C1];	[P1 V6 V3]	#	𐮩‌.--່
-N;	\uD802\uDFA9\u200C。--\u0EC8;	[P1 V6 V3 B3 C1];	[P1 V6 V3 B3 C1]	#	𐮩‌.--່
+T;	\uD802\uDFA9\u200C。--\u0EC8;	[V3 B3 C1];	[V3]	#	𐮩‌.--່
+N;	\uD802\uDFA9\u200C。--\u0EC8;	[V3 B3 C1];	[V3 B3 C1]	#	𐮩‌.--່
 B;	\uD803\uDEED．\uD802\uDEC2;	[P1 V6];	[P1 V6]	#	𐻭.𐫂
 B;	\uD803\uDEED.\uD802\uDEC2;	[P1 V6];	[P1 V6]	#	𐻭.𐫂
-B;	\u0302-．-\uD804\uDEEA;	[P1 V3 V5 V6];	[P1 V3 V5 V6]	#	̂-.-𑋪
-B;	\u0302-.-\uD804\uDEEA;	[P1 V3 V5 V6];	[P1 V3 V5 V6]	#	̂-.-𑋪
+B;	\u0302-．-\uD804\uDEEA;	[V3 V5];	[V3 V5]	#	̂-.-𑋪
+B;	\u0302-.-\uD804\uDEEA;	[V3 V5];	[V3 V5]	#	̂-.-𑋪
 B;	\u0F79\u06CF-.\uDB40\uDC42;	[P1 V3 V5 V6 B1];	[P1 V3 V5 V6 B1]	#	ླཱྀۏ-.󠁂
 B;	\u0FB3\u0F71\u0F80\u06CF-.\uDB40\uDC42;	[P1 V3 V5 V6 B1];	[P1 V3 V5 V6 B1]	#	ླཱྀۏ-.󠁂
-B;	\u06FA\uFE0D⮕\uD803\uDE6F.\u1BAA⒌\uD906\uDFF8;	[P1 V6 V5];	[P1 V6 V5]	#	ۺ⮕𐹯.᮪⒌񑯸
-B;	\u06FA\uFE0D⮕\uD803\uDE6F.\u1BAA5.\uD906\uDFF8;	[P1 V6 V5];	[P1 V6 V5]	#	ۺ⮕𐹯.᮪5.񑯸
+B;	\u06FA\uFE0D⮕\uD803\uDE6F.\u1BAA⒌\uD906\uDFF8;	[P1 V5 V6];	[P1 V5 V6]	#	ۺ⮕𐹯.᮪⒌񑯸
+B;	\u06FA\uFE0D⮕\uD803\uDE6F.\u1BAA5.\uD906\uDFF8;	[P1 V5 V6];	[P1 V5 V6]	#	ۺ⮕𐹯.᮪5.񑯸
 T;	\u08EB₀。\uDB40\uDC25\u200C\uD83A\uDD3A\u200D;	[P1 V5 V6 B1 C1 C2];	[P1 V5 V6 B1]	#	࣫0.󠀥‌𞤺‍
 N;	\u08EB₀。\uDB40\uDC25\u200C\uD83A\uDD3A\u200D;	[P1 V5 V6 B1 C1 C2];	[P1 V5 V6 B1 C1 C2]	#	࣫0.󠀥‌𞤺‍
 T;	\u08EB0。\uDB40\uDC25\u200C\uD83A\uDD3A\u200D;	[P1 V5 V6 B1 C1 C2];	[P1 V5 V6 B1]	#	࣫0.󠀥‌𞤺‍
@@ -1501,8 +1513,8 @@ B;	xn--gpb;	\u075C;	xn--gpb	#	ݜ
 B;	\u075C;	;	xn--gpb	#	ݜ
 T;	\u0604\u200C\uD803\uDE6C。\uDB41\uDE65;	[P1 V6 B1 C1];	[P1 V6 B1]	#	؄‌𐹬.󠙥
 N;	\u0604\u200C\uD803\uDE6C。\uDB41\uDE65;	[P1 V6 B1 C1];	[P1 V6 B1 C1]	#	؄‌𐹬.󠙥
-B;	\u2D7F\uDB40\uDD67\uAA7C𝟭。-\u061A;	[P1 V5 V6 V3];	[P1 V5 V6 V3]	#	⵿ꩼ1.-ؚ
-B;	\u2D7F\uDB40\uDD67\uAA7C1。-\u061A;	[P1 V5 V6 V3];	[P1 V5 V6 V3]	#	⵿ꩼ1.-ؚ
+B;	\u2D7F\uDB40\uDD67\uAA7C𝟭。-\u061A;	[V5 V3];	[V5 V3]	#	⵿ꩼ1.-ؚ
+B;	\u2D7F\uDB40\uDD67\uAA7C1。-\u061A;	[V5 V3];	[V5 V3]	#	⵿ꩼ1.-ؚ
 B;	\uD9F3\uDF7D。뙏;	[P1 V6];	[P1 V6]	#	򌽽.뙏
 B;	\uD9F3\uDF7D。뙏;	[P1 V6];	[P1 V6]	#	򌽽.뙏
 B;	\uD966\uDCBB\uDB40\uDD80\uDAB7\uDDCAꡬ.\u0753;	[P1 V6];	[P1 V6]	#	񩢻򽷊ꡬ.ݓ
@@ -1612,10 +1624,10 @@ B;	Ⴌ.\u0664。\u0BCD\uD803\uDEA3;	[P1 V6 V5 B1];	[P1 V6 V5 B1]	#	Ⴌ.٤.்�
 B;	ⴌ.\u0664。\u0BCD\uD803\uDEA3;	[P1 V5 V6 B1];	[P1 V5 V6 B1]	#	ⴌ.٤.்𐺣
 B;	ⴌ.\u0664︒\u0BCD\uD803\uDEA3;	[P1 V6 B1];	[P1 V6 B1]	#	ⴌ.٤︒்𐺣
 B;	\uDB4B\uDC46\uDB43\uDD04。\uD803\uDFB0\uDB40\uDC72;	[P1 V6 B3];	[P1 V6 B3]	#	󢱆󠴄.𐾰󠁲
-T;	\u200D♉\uD800\uDF77．\u0942\u102F\u0F84\u200D;	[P1 V6 V5 C2];	[P1 V6 V5]	#	‍♉𐍷.ूု྄‍
-N;	\u200D♉\uD800\uDF77．\u0942\u102F\u0F84\u200D;	[P1 V6 V5 C2];	[P1 V6 V5 C2]	#	‍♉𐍷.ूု྄‍
-T;	\u200D♉\uD800\uDF77.\u0942\u102F\u0F84\u200D;	[P1 V6 V5 C2];	[P1 V6 V5]	#	‍♉𐍷.ूု྄‍
-N;	\u200D♉\uD800\uDF77.\u0942\u102F\u0F84\u200D;	[P1 V6 V5 C2];	[P1 V6 V5 C2]	#	‍♉𐍷.ूု྄‍
+T;	\u200D♉\uD800\uDF77．\u0942\u102F\u0F84\u200D;	[V5 C2];	[V5]	#	‍♉𐍷.ूု྄‍
+N;	\u200D♉\uD800\uDF77．\u0942\u102F\u0F84\u200D;	[V5 C2];	[V5 C2]	#	‍♉𐍷.ूု྄‍
+T;	\u200D♉\uD800\uDF77.\u0942\u102F\u0F84\u200D;	[V5 C2];	[V5]	#	‍♉𐍷.ूု྄‍
+N;	\u200D♉\uD800\uDF77.\u0942\u102F\u0F84\u200D;	[V5 C2];	[V5 C2]	#	‍♉𐍷.ूု྄‍
 B;	\uD885\uDC16｡🄂;	[P1 V6];	[P1 V6]	#	𱐖.🄂
 B;	\uD885\uDC16。1,;	[P1 V6];	[P1 V6]	#	𱐖.1,
 B;	\uA951刍.\uDB40\uDE25;	[P1 V5 V6];	[P1 V5 V6]	#	ꥑ刍.󠈥
@@ -1720,7 +1732,7 @@ N;	\uD805\uDDBF｡\u200D\uDAFA\uDD18\uDB42\uDD9F\uD80D\uDE56;	[P1 V5 V6 C2];	[P1
 T;	\uD805\uDDBF。\u200D\uDAFA\uDD18\uDB42\uDD9F\uD80D\uDE56;	[P1 V5 V6 C2];	[P1 V5 V6]	#	𑖿.‍󎤘󠦟𓙖
 N;	\uD805\uDDBF。\u200D\uDAFA\uDD18\uDB42\uDD9F\uD80D\uDE56;	[P1 V5 V6 C2];	[P1 V5 V6 C2]	#	𑖿.‍󎤘󠦟𓙖
 B;	-\uD802\uDC96。⒚;	[P1 V3 V6 B1];	[P1 V3 V6 B1]	#	-𐢖.⒚
-B;	-\uD802\uDC96。19.;	[P1 V3 V6 B1];	[P1 V3 V6 B1]	#	-𐢖.19.
+B;	-\uD802\uDC96。19.;	[V3 B1];	[V3 B1]	#	-𐢖.19.
 T;	\uDA63\uDF4D\u0678\u200C｡\u06B8\u200D;	[P1 V6 B5 B6 C1 B3 C2];	[P1 V6 B5 B6]	#	򨽍يٴ‌.ڸ‍
 N;	\uDA63\uDF4D\u0678\u200C｡\u06B8\u200D;	[P1 V6 B5 B6 C1 B3 C2];	[P1 V6 B5 B6 C1 B3 C2]	#	򨽍يٴ‌.ڸ‍
 T;	\uDA63\uDF4D\u064A\u0674\u200C。\u06B8\u200D;	[P1 V6 B5 B6 C1 B3 C2];	[P1 V6 B5 B6]	#	򨽍يٴ‌.ڸ‍
@@ -1861,8 +1873,8 @@ B;	\uD93E\uDCF6ss\u0AC4\u06BC.\u2DE0ꡌ;	[P1 V6 V5 B5 B6];	[P1 V6 V5 B5 B6]	#	�
 B;	\uD93E\uDCF6Ss\u0AC4\u06BC.\u2DE0ꡌ;	[P1 V6 V5 B5 B6];	[P1 V6 V5 B5 B6]	#	񟣶ssૄڼ.ⷠꡌ
 B;	-\u06FC｡⒈;	[P1 V3 V6 B1];	[P1 V3 V6 B1]	#	-ۼ.⒈
 B;	-\u06FC。1.;	[V3 B1];	[V3 B1]	#	-ۼ.1.
-B;	壾\uD802\uDED2𝟡。ꡑ\u09CD;	[P1 V6 B5];	[P1 V6 B5]	#	壾𐫒9.ꡑ্
-B;	壾\uD802\uDED29。ꡑ\u09CD;	[P1 V6 B5];	[P1 V6 B5]	#	壾𐫒9.ꡑ্
+B;	壾\uD802\uDED2𝟡。ꡑ\u09CD;	[B5];	[B5]	#	壾𐫒9.ꡑ্
+B;	壾\uD802\uDED29。ꡑ\u09CD;	[B5];	[B5]	#	壾𐫒9.ꡑ্
 T;	\uD803\uDE68\u071E\uD803\uDE7D\uFEFF.\u200D;	[B1 C2];	[B1]	#	𐹨ܞ𐹽.‍
 N;	\uD803\uDE68\u071E\uD803\uDE7D\uFEFF.\u200D;	[B1 C2];	[B1 C2]	#	𐹨ܞ𐹽.‍
 B;	𝟘．Ⴇ\uDA72\uDE50\uD83B\uDDF6\uDA61\uDD2D;	[P1 V6 B5];	[P1 V6 B5]	#	0.Ⴇ򬩐𞷶򨔭
@@ -2088,7 +2100,7 @@ N;	⒈\u0661⒖\u200C.\u0619\uD802\uDE70;	[P1 V6 V5 B1 C1];	[P1 V6 V5 B1 C1]	#	�
 T;	1.\u066115.\u200C.\u0619\uD802\uDE70;	[V5 B1 C1];	[V5 B1 A4_2]	#	1.١15.‌.ؙ𐩰
 N;	1.\u066115.\u200C.\u0619\uD802\uDE70;	[V5 B1 C1];	[V5 B1 C1]	#	1.١15.‌.ؙ𐩰
 B;	\u0B63。-\uD805\uDE3FႫ;	[P1 V5 V3 V6];	[P1 V5 V3 V6]	#	ୣ.-𑘿Ⴋ
-B;	\u0B63。-\uD805\uDE3Fⴋ;	[P1 V5 V3 V6];	[P1 V5 V3 V6]	#	ୣ.-𑘿ⴋ
+B;	\u0B63。-\uD805\uDE3Fⴋ;	[V5 V3];	[V5 V3]	#	ୣ.-𑘿ⴋ
 B;	ßჀ.\u07E8刯Ⴝ;	[P1 V6 B2 B3];	[P1 V6 B2 B3]	#	ßჀ.ߨ刯Ⴝ
 B;	ßⴠ.\u07E8刯ⴝ;	[B2 B3];	[B2 B3]	#	ßⴠ.ߨ刯ⴝ
 B;	SSჀ.\u07E8刯Ⴝ;	[P1 V6 B2 B3];	[P1 V6 B2 B3]	#	ssჀ.ߨ刯Ⴝ
@@ -2098,17 +2110,19 @@ B;	\uABEDႣℲ｡\u06A4툻\uD83A\uDC61;	[P1 V5 V6 B2];	[P1 V5 V6 B2]	#	꯭Ⴃ�
 B;	\uABEDႣℲ｡\u06A4툻\uD83A\uDC61;	[P1 V5 V6 B2];	[P1 V5 V6 B2]	#	꯭ႣℲ.ڤ툻𞡡
 B;	\uABEDႣℲ。\u06A4툻\uD83A\uDC61;	[P1 V5 V6 B2];	[P1 V5 V6 B2]	#	꯭ႣℲ.ڤ툻𞡡
 B;	\uABEDႣℲ。\u06A4툻\uD83A\uDC61;	[P1 V5 V6 B2];	[P1 V5 V6 B2]	#	꯭ႣℲ.ڤ툻𞡡
-B;	\uABEDⴃⅎ。\u06A4툻\uD83A\uDC61;	[P1 V5 V6 B2];	[P1 V5 V6 B2]	#	꯭ⴃⅎ.ڤ툻𞡡
-B;	\uABEDⴃⅎ。\u06A4툻\uD83A\uDC61;	[P1 V5 V6 B2];	[P1 V5 V6 B2]	#	꯭ⴃⅎ.ڤ툻𞡡
+B;	\uABEDⴃⅎ。\u06A4툻\uD83A\uDC61;	[V5 B2];	[V5 B2]	#	꯭ⴃⅎ.ڤ툻𞡡
+B;	\uABEDⴃⅎ。\u06A4툻\uD83A\uDC61;	[V5 B2];	[V5 B2]	#	꯭ⴃⅎ.ڤ툻𞡡
 B;	\uABEDႣⅎ。\u06A4툻\uD83A\uDC61;	[P1 V5 V6 B2];	[P1 V5 V6 B2]	#	꯭Ⴃⅎ.ڤ툻𞡡
 B;	\uABEDႣⅎ。\u06A4툻\uD83A\uDC61;	[P1 V5 V6 B2];	[P1 V5 V6 B2]	#	꯭Ⴃⅎ.ڤ툻𞡡
-B;	\uABEDⴃⅎ｡\u06A4툻\uD83A\uDC61;	[P1 V5 V6 B2];	[P1 V5 V6 B2]	#	꯭ⴃⅎ.ڤ툻𞡡
-B;	\uABEDⴃⅎ｡\u06A4툻\uD83A\uDC61;	[P1 V5 V6 B2];	[P1 V5 V6 B2]	#	꯭ⴃⅎ.ڤ툻𞡡
+B;	\uABEDⴃⅎ｡\u06A4툻\uD83A\uDC61;	[V5 B2];	[V5 B2]	#	꯭ⴃⅎ.ڤ툻𞡡
+B;	\uABEDⴃⅎ｡\u06A4툻\uD83A\uDC61;	[V5 B2];	[V5 B2]	#	꯭ⴃⅎ.ڤ툻𞡡
 B;	\uABEDႣⅎ｡\u06A4툻\uD83A\uDC61;	[P1 V5 V6 B2];	[P1 V5 V6 B2]	#	꯭Ⴃⅎ.ڤ툻𞡡
 B;	\uABEDႣⅎ｡\u06A4툻\uD83A\uDC61;	[P1 V5 V6 B2];	[P1 V5 V6 B2]	#	꯭Ⴃⅎ.ڤ툻𞡡
 B;	\uDB43\uDDEB.ᠱ\uD803\uDE6B\u06A5;	[P1 V6 B5 B6];	[P1 V6 B5 B6]	#	󠷫.ᠱ𐹫ڥ
-B;	\uD802\uDED9\u073C。₇\u0DCA;	[P1 V6];	[P1 V6]	#	𐫙ܼ.7්
-B;	\uD802\uDED9\u073C。7\u0DCA;	[P1 V6];	[P1 V6]	#	𐫙ܼ.7්
+B;	\uD802\uDED9\u073C。₇\u0DCA;	\uD802\uDED9\u073C.7\u0DCA;	xn--job5304k.xn--7-ptf	#	𐫙ܼ.7්
+B;	\uD802\uDED9\u073C。7\u0DCA;	\uD802\uDED9\u073C.7\u0DCA;	xn--job5304k.xn--7-ptf	#	𐫙ܼ.7්
+B;	xn--job5304k.xn--7-ptf;	\uD802\uDED9\u073C.7\u0DCA;	xn--job5304k.xn--7-ptf	#	𐫙ܼ.7්
+B;	\uD802\uDED9\u073C.7\u0DCA;	;	xn--job5304k.xn--7-ptf	#	𐫙ܼ.7්
 T;	Ⴣ\u0663.\u200C\u0817≮〰;	[P1 V6 B5 B6 C1];	[P1 V6 V5 B5 B6]	#	Ⴣ٣.‌ࠗ≮〰
 N;	Ⴣ\u0663.\u200C\u0817≮〰;	[P1 V6 B5 B6 C1];	[P1 V6 B5 B6 C1]	#	Ⴣ٣.‌ࠗ≮〰
 T;	Ⴣ\u0663.\u200C\u0817<\u0338〰;	[P1 V6 B5 B6 C1];	[P1 V6 V5 B5 B6]	#	Ⴣ٣.‌ࠗ≮〰
@@ -2231,20 +2245,23 @@ B;	꧐Ӏ\uD805\uDE3F\u1073．눵;	[P1 V6];	[P1 V6]	#	꧐Ӏ𑘿ၳ.눵
 B;	꧐Ӏ\uD805\uDE3F\u1073．눵;	[P1 V6];	[P1 V6]	#	꧐Ӏ𑘿ၳ.눵
 B;	꧐Ӏ\uD805\uDE3F\u1073.눵;	[P1 V6];	[P1 V6]	#	꧐Ӏ𑘿ၳ.눵
 B;	꧐Ӏ\uD805\uDE3F\u1073.눵;	[P1 V6];	[P1 V6]	#	꧐Ӏ𑘿ၳ.눵
-B;	꧐ӏ\uD805\uDE3F\u1073.눵;	[P1 V6];	[P1 V6]	#	꧐ӏ𑘿ၳ.눵
-B;	꧐ӏ\uD805\uDE3F\u1073.눵;	[P1 V6];	[P1 V6]	#	꧐ӏ𑘿ၳ.눵
-B;	꧐ӏ\uD805\uDE3F\u1073．눵;	[P1 V6];	[P1 V6]	#	꧐ӏ𑘿ၳ.눵
-B;	꧐ӏ\uD805\uDE3F\u1073．눵;	[P1 V6];	[P1 V6]	#	꧐ӏ𑘿ၳ.눵
+B;	꧐ӏ\uD805\uDE3F\u1073.눵;	꧐ӏ\uD805\uDE3F\u1073.눵;	xn--s5a470dgr8jrwyd.xn--2e1b	#	꧐ӏ𑘿ၳ.눵
+B;	꧐ӏ\uD805\uDE3F\u1073.눵;	;	xn--s5a470dgr8jrwyd.xn--2e1b	#	꧐ӏ𑘿ၳ.눵
+B;	xn--s5a470dgr8jrwyd.xn--2e1b;	꧐ӏ\uD805\uDE3F\u1073.눵;	xn--s5a470dgr8jrwyd.xn--2e1b	#	꧐ӏ𑘿ၳ.눵
+B;	꧐ӏ\uD805\uDE3F\u1073．눵;	꧐ӏ\uD805\uDE3F\u1073.눵;	xn--s5a470dgr8jrwyd.xn--2e1b	#	꧐ӏ𑘿ၳ.눵
+B;	꧐ӏ\uD805\uDE3F\u1073．눵;	꧐ӏ\uD805\uDE3F\u1073.눵;	xn--s5a470dgr8jrwyd.xn--2e1b	#	꧐ӏ𑘿ၳ.눵
 B;	\u07A6｡\uDBF1\uDF87\u2063\uA674;	[P1 V5 V6];	[P1 V5 V6]	#	ަ.􌞇⁣ꙴ
 B;	\u07A6。\uDBF1\uDF87\u2063\uA674;	[P1 V5 V6];	[P1 V5 V6]	#	ަ.􌞇⁣ꙴ
 B;	\uD963\uDE8A\u2060。\uD99A\uDF1D≯⾇;	[P1 V6];	[P1 V6]	#	񨺊.񶬝≯舛
 B;	\uD963\uDE8A\u2060。\uD99A\uDF1D>\u0338⾇;	[P1 V6];	[P1 V6]	#	񨺊.񶬝≯舛
 B;	\uD963\uDE8A\u2060。\uD99A\uDF1D≯舛;	[P1 V6];	[P1 V6]	#	񨺊.񶬝≯舛
 B;	\uD963\uDE8A\u2060。\uD99A\uDF1D>\u0338舛;	[P1 V6];	[P1 V6]	#	񨺊.񶬝≯舛
-T;	\uD802\uDEC4\u066B\u200C．\u200D\u200C;	[P1 V6 B3 C1 C2];	[P1 V6]	#	𐫄٫‌.‍‌
-N;	\uD802\uDEC4\u066B\u200C．\u200D\u200C;	[P1 V6 B3 C1 C2];	[P1 V6 B3 C1 C2]	#	𐫄٫‌.‍‌
-T;	\uD802\uDEC4\u066B\u200C.\u200D\u200C;	[P1 V6 B3 C1 C2];	[P1 V6]	#	𐫄٫‌.‍‌
-N;	\uD802\uDEC4\u066B\u200C.\u200D\u200C;	[P1 V6 B3 C1 C2];	[P1 V6 B3 C1 C2]	#	𐫄٫‌.‍‌
+T;	\uD802\uDEC4\u066B\u200C．\u200D\u200C;	[B3 C1 C2];	xn--kib1144k.	#	𐫄٫‌.‍‌
+N;	\uD802\uDEC4\u066B\u200C．\u200D\u200C;	[B3 C1 C2];	[B3 C1 C2]	#	𐫄٫‌.‍‌
+T;	\uD802\uDEC4\u066B\u200C.\u200D\u200C;	[B3 C1 C2];	xn--kib1144k.	#	𐫄٫‌.‍‌
+N;	\uD802\uDEC4\u066B\u200C.\u200D\u200C;	[B3 C1 C2];	[B3 C1 C2]	#	𐫄٫‌.‍‌
+B;	xn--kib1144k.;	\uD802\uDEC4\u066B.;	xn--kib1144k.;	NV8	#	𐫄٫.
+B;	\uD802\uDEC4\u066B.;	;	xn--kib1144k.;	NV8	#	𐫄٫.
 T;	\uD8B2\uDC42砪≯\u06BA｡≯\uFE24\uD93D\uDD29\u200C;	[P1 V6 B5 B6 C1];	[P1 V6 B5 B6]	#	𼡂砪≯ں.≯︤񟔩‌
 N;	\uD8B2\uDC42砪≯\u06BA｡≯\uFE24\uD93D\uDD29\u200C;	[P1 V6 B5 B6 C1];	[P1 V6 B5 B6 C1]	#	𼡂砪≯ں.≯︤񟔩‌
 T;	\uD8B2\uDC42砪>\u0338\u06BA｡>\u0338\uFE24\uD93D\uDD29\u200C;	[P1 V6 B5 B6 C1];	[P1 V6 B5 B6]	#	𼡂砪≯ں.≯︤񟔩‌
@@ -2263,10 +2280,10 @@ B;	0\u066C。ⴒ\u063A\u1C2C\uD803\uDE74;	[B1 B5 B6];	[B1 B5 B6]	#	0٬.ⴒغᰬ�
 B;	𝟎\u066C。ⴒ\u063A\u1C2C\uD803\uDE74;	[B1 B5 B6];	[B1 B5 B6]	#	0٬.ⴒغᰬ𐹴
 B;	\uD992\uDF75\uDB40\uDDD0\uFFA0\uAAB2.\uD80A\uDE00\u09CD;	[P1 V6];	[P1 V6]	#	񴭵ﾠꪲ.𒨀্
 B;	\uD992\uDF75\uDB40\uDDD0\u1160\uAAB2.\uD80A\uDE00\u09CD;	[P1 V6];	[P1 V6]	#	񴭵ᅠꪲ.𒨀্
-T;	\u06DA.۳\u200C\uD805\uDCC2;	[P1 V5 V6 C1];	[P1 V5 V6]	#	ۚ.۳‌𑓂
-N;	\u06DA.۳\u200C\uD805\uDCC2;	[P1 V5 V6 C1];	[P1 V5 V6 C1]	#	ۚ.۳‌𑓂
+T;	\u06DA.۳\u200C\uD805\uDCC2;	[V5 C1];	[V5]	#	ۚ.۳‌𑓂
+N;	\u06DA.۳\u200C\uD805\uDCC2;	[V5 C1];	[V5 C1]	#	ۚ.۳‌𑓂
 B;	\u0750．︒\uD802\uDEDF;	[P1 V6 B1];	[P1 V6 B1]	#	ݐ.︒𐫟
-B;	\u0750.。\uD802\uDEDF;	[P1 V6 A4_2];	[P1 V6 A4_2]	#	ݐ..𐫟
+B;	\u0750.。\uD802\uDEDF;	[A4_2];	[A4_2]	#	ݐ..𐫟
 B;	\u0C4D\u20E7｡\u077A;	[V5];	[V5]	#	్⃧.ݺ
 B;	\u0C4D\u20E7。\u077A;	[V5];	[V5]	#	్⃧.ݺ
 B;	\uD83B\uDDD6。\u07DF\uD883\uDE72;	[P1 V6 B2 B3];	[P1 V6 B2 B3]	#	𞷖.ߟ𰹲
@@ -2300,8 +2317,8 @@ T;	\u0598\u200D⒈｡Ⴌ\uD83A\uDC0A;	[P1 V5 V6 C2 B5 B6];	[P1 V5 V6 B5 B6]	#	֘
 N;	\u0598\u200D⒈｡Ⴌ\uD83A\uDC0A;	[P1 V5 V6 C2 B5 B6];	[P1 V5 V6 C2 B5 B6]	#	֘‍⒈.Ⴌ𞠊
 T;	\u0598\u200D1.。Ⴌ\uD83A\uDC0A;	[P1 V5 V6 C2 A4_2 B5 B6];	[P1 V5 V6 A4_2 B5 B6]	#	֘‍1..Ⴌ𞠊
 N;	\u0598\u200D1.。Ⴌ\uD83A\uDC0A;	[P1 V5 V6 C2 A4_2 B5 B6];	[P1 V5 V6 C2 A4_2 B5 B6]	#	֘‍1..Ⴌ𞠊
-T;	\u0598\u200D1.。ⴌ\uD83A\uDC0A;	[P1 V5 V6 C2 A4_2 B5 B6];	[P1 V5 V6 A4_2 B5 B6]	#	֘‍1..ⴌ𞠊
-N;	\u0598\u200D1.。ⴌ\uD83A\uDC0A;	[P1 V5 V6 C2 A4_2 B5 B6];	[P1 V5 V6 C2 A4_2 B5 B6]	#	֘‍1..ⴌ𞠊
+T;	\u0598\u200D1.。ⴌ\uD83A\uDC0A;	[V5 C2 A4_2 B5 B6];	[V5 A4_2 B5 B6]	#	֘‍1..ⴌ𞠊
+N;	\u0598\u200D1.。ⴌ\uD83A\uDC0A;	[V5 C2 A4_2 B5 B6];	[V5 C2 A4_2 B5 B6]	#	֘‍1..ⴌ𞠊
 T;	\u0598\u200D⒈｡ⴌ\uD83A\uDC0A;	[P1 V5 V6 C2 B5 B6];	[P1 V5 V6 B5 B6]	#	֘‍⒈.ⴌ𞠊
 N;	\u0598\u200D⒈｡ⴌ\uD83A\uDC0A;	[P1 V5 V6 C2 B5 B6];	[P1 V5 V6 C2 B5 B6]	#	֘‍⒈.ⴌ𞠊
 B;	\uDB41\uDD59\uD804\uDF4D\uD89C\uDC9Cᡏ.ς\uDB20\uDFF8\uDB4B\uDF42;	[P1 V6];	[P1 V6]	#	󠕙𑍍𷂜ᡏ.ς󘏸󢽂
@@ -2309,8 +2326,8 @@ B;	\uDB41\uDD59\uD804\uDF4D\uD89C\uDC9Cᡏ.Σ\uDB20\uDFF8\uDB4B\uDF42;	[P1 V6];	
 B;	\uDB41\uDD59\uD804\uDF4D\uD89C\uDC9Cᡏ.σ\uDB20\uDFF8\uDB4B\uDF42;	[P1 V6];	[P1 V6]	#	󠕙𑍍𷂜ᡏ.σ󘏸󢽂
 T;	\u072F。\u200C\u07E7\uD892\uDFCF;	[P1 V6 B1 C1];	[P1 V6 B2 B3]	#	ܯ.‌ߧ𴯏
 N;	\u072F。\u200C\u07E7\uD892\uDFCF;	[P1 V6 B1 C1];	[P1 V6 B1 C1]	#	ܯ.‌ߧ𴯏
-B;	\u1DE0\u1DC2.\u1086ᡓ\u0758\uD81A\uDF36;	[P1 V5 V6 B1];	[P1 V5 V6 B1]	#	᷂ᷠ.ႆᡓݘ𖬶
-B;	\u1DC2\u1DE0.\u1086ᡓ\u0758\uD81A\uDF36;	[P1 V5 V6 B1];	[P1 V5 V6 B1]	#	᷂ᷠ.ႆᡓݘ𖬶
+B;	\u1DE0\u1DC2.\u1086ᡓ\u0758\uD81A\uDF36;	[V5 B1];	[V5 B1]	#	᷂ᷠ.ႆᡓݘ𖬶
+B;	\u1DC2\u1DE0.\u1086ᡓ\u0758\uD81A\uDF36;	[V5 B1];	[V5 B1]	#	᷂ᷠ.ႆᡓݘ𖬶
 T;	䂹\uD91F\uDC2F𐋦．\u200D;	[P1 V6 C2];	[P1 V6]	#	䂹񗰯𐋦.‍
 N;	䂹\uD91F\uDC2F𐋦．\u200D;	[P1 V6 C2];	[P1 V6 C2]	#	䂹񗰯𐋦.‍
 T;	䂹\uD91F\uDC2F𐋦.\u200D;	[P1 V6 C2];	[P1 V6]	#	䂹񗰯𐋦.‍
@@ -2374,14 +2391,14 @@ T;	\u1734\u200D\u200C。-\u200C;	[V5 V3 C1];	[V5 V3]	#	᜴‍‌.-‌
 N;	\u1734\u200D\u200C。-\u200C;	[V5 V3 C1];	[V5 V3 C1]	#	᜴‍‌.-‌
 B;	︒｡\u1BAAᢋ;	[P1 V6 V5];	[P1 V6 V5]	#	︒.᮪ᢋ
 B;	。。\u1BAAᢋ;	[V5];	[V5]	#	᮪ᢋ
-B;	ᠳß。ጫ\uD802\uDED7\u06D0𝟐;	[P1 V6 B5];	[P1 V6 B5]	#	ᠳß.ጫ𐫗ې2
-B;	ᠳß。ጫ\uD802\uDED7\u06D02;	[P1 V6 B5];	[P1 V6 B5]	#	ᠳß.ጫ𐫗ې2
-B;	ᠳSS。ጫ\uD802\uDED7\u06D02;	[P1 V6 B5];	[P1 V6 B5]	#	ᠳss.ጫ𐫗ې2
-B;	ᠳss。ጫ\uD802\uDED7\u06D02;	[P1 V6 B5];	[P1 V6 B5]	#	ᠳss.ጫ𐫗ې2
-B;	ᠳSs。ጫ\uD802\uDED7\u06D02;	[P1 V6 B5];	[P1 V6 B5]	#	ᠳss.ጫ𐫗ې2
-B;	ᠳSS。ጫ\uD802\uDED7\u06D0𝟐;	[P1 V6 B5];	[P1 V6 B5]	#	ᠳss.ጫ𐫗ې2
-B;	ᠳss。ጫ\uD802\uDED7\u06D0𝟐;	[P1 V6 B5];	[P1 V6 B5]	#	ᠳss.ጫ𐫗ې2
-B;	ᠳSs。ጫ\uD802\uDED7\u06D0𝟐;	[P1 V6 B5];	[P1 V6 B5]	#	ᠳss.ጫ𐫗ې2
+B;	ᠳß。ጫ\uD802\uDED7\u06D0𝟐;	[B5];	[B5]	#	ᠳß.ጫ𐫗ې2
+B;	ᠳß。ጫ\uD802\uDED7\u06D02;	[B5];	[B5]	#	ᠳß.ጫ𐫗ې2
+B;	ᠳSS。ጫ\uD802\uDED7\u06D02;	[B5];	[B5]	#	ᠳss.ጫ𐫗ې2
+B;	ᠳss。ጫ\uD802\uDED7\u06D02;	[B5];	[B5]	#	ᠳss.ጫ𐫗ې2
+B;	ᠳSs。ጫ\uD802\uDED7\u06D02;	[B5];	[B5]	#	ᠳss.ጫ𐫗ې2
+B;	ᠳSS。ጫ\uD802\uDED7\u06D0𝟐;	[B5];	[B5]	#	ᠳss.ጫ𐫗ې2
+B;	ᠳss。ጫ\uD802\uDED7\u06D0𝟐;	[B5];	[B5]	#	ᠳss.ጫ𐫗ې2
+B;	ᠳSs。ጫ\uD802\uDED7\u06D0𝟐;	[B5];	[B5]	#	ᠳss.ጫ𐫗ې2
 B;	\uD803\uDCE8\uFB60ᚲ.\uD805\uDCB5☝𝟚\uD804\uDEEA;	[P1 V6 V5 B2 B3];	[P1 V6 V5 B2 B3]	#	𐳨ٺᚲ.𑒵☝2𑋪
 B;	\uD803\uDCE8\u067Aᚲ.\uD805\uDCB5☝2\uD804\uDEEA;	[P1 V6 V5 B2 B3];	[P1 V6 V5 B2 B3]	#	𐳨ٺᚲ.𑒵☝2𑋪
 T;	-\uD804\uDC7F︒\u200D.\uDB34\uDE72\uDBC1\uDD7B;	[P1 V3 V6 C2];	[P1 V3 V6]	#	-𑁿︒‍.󝉲􀕻
@@ -2456,10 +2473,10 @@ T;	\uD83A\uDED9ss.ᡩ\u200D᠇-;	[P1 V6 V3 B2 B3 C2];	[P1 V6 V3 B2 B3]	#	𞫙ss.
 N;	\uD83A\uDED9ss.ᡩ\u200D᠇-;	[P1 V6 V3 B2 B3 C2];	[P1 V6 V3 B2 B3 C2]	#	𞫙ss.ᡩ‍᠇-
 T;	\uD83A\uDED9Ss.ᡩ\u200D᠇-;	[P1 V6 V3 B2 B3 C2];	[P1 V6 V3 B2 B3]	#	𞫙ss.ᡩ‍᠇-
 N;	\uD83A\uDED9Ss.ᡩ\u200D᠇-;	[P1 V6 V3 B2 B3 C2];	[P1 V6 V3 B2 B3 C2]	#	𞫙ss.ᡩ‍᠇-
-T;	\u06D9\u200D\uD802\uDED9．\u0662\uDAE5\uDC68-;	[P1 V5 V6 V3 B1 C2];	[P1 V5 V6 V3 B1]	#	ۙ‍𐫙.٢󉑨-
-N;	\u06D9\u200D\uD802\uDED9．\u0662\uDAE5\uDC68-;	[P1 V5 V6 V3 B1 C2];	[P1 V5 V6 V3 B1 C2]	#	ۙ‍𐫙.٢󉑨-
-T;	\u06D9\u200D\uD802\uDED9.\u0662\uDAE5\uDC68-;	[P1 V5 V6 V3 B1 C2];	[P1 V5 V6 V3 B1]	#	ۙ‍𐫙.٢󉑨-
-N;	\u06D9\u200D\uD802\uDED9.\u0662\uDAE5\uDC68-;	[P1 V5 V6 V3 B1 C2];	[P1 V5 V6 V3 B1 C2]	#	ۙ‍𐫙.٢󉑨-
+T;	\u06D9\u200D\uD802\uDED9．\u0662\uDAE5\uDC68-;	[P1 V5 V3 V6 B1 C2];	[P1 V5 V3 V6 B1]	#	ۙ‍𐫙.٢󉑨-
+N;	\u06D9\u200D\uD802\uDED9．\u0662\uDAE5\uDC68-;	[P1 V5 V3 V6 B1 C2];	[P1 V5 V3 V6 B1 C2]	#	ۙ‍𐫙.٢󉑨-
+T;	\u06D9\u200D\uD802\uDED9.\u0662\uDAE5\uDC68-;	[P1 V5 V3 V6 B1 C2];	[P1 V5 V3 V6 B1]	#	ۙ‍𐫙.٢󉑨-
+N;	\u06D9\u200D\uD802\uDED9.\u0662\uDAE5\uDC68-;	[P1 V5 V3 V6 B1 C2];	[P1 V5 V3 V6 B1 C2]	#	ۙ‍𐫙.٢󉑨-
 B;	⒒\uD8DB\uDF93\uDA2A\uDF6E\uD82F\uDC9D.-\uD82B\uDDFC;	[P1 V6 V3];	[P1 V6 V3]	#	⒒񆾓򚭮𛲝.-𚷼
 B;	11.\uD8DB\uDF93\uDA2A\uDF6E\uD82F\uDC9D.-\uD82B\uDDFC;	[P1 V6 V3];	[P1 V6 V3]	#	11.񆾓򚭮𛲝.-𚷼
 T;	-｡\u200D;	[V3 C2];	[V3]	#	-.‍
@@ -2519,7 +2536,7 @@ B;	-｡ᡌ;	[V3];	[V3]
 B;	-。ᡌ;	[V3];	[V3]
 B;	\u0740\uD8EC\uDFA8｡-⒈\u06C9\u069C;	[P1 V5 V6 V3 B1];	[P1 V5 V6 V3 B1]	#	݀񋎨.-⒈ۉڜ
 B;	\u0740\uD8EC\uDFA8。-1.\u06C9\u069C;	[P1 V5 V6 V3];	[P1 V5 V6 V3]	#	݀񋎨.-1.ۉڜ
-B;	璛\uD804\uDF4D\u0778.-;	[P1 V6 V3 B5 B6];	[P1 V6 V3 B5 B6]	#	璛𑍍ݸ.-
+B;	璛\uD804\uDF4D\u0778.-;	[V3 B5 B6];	[V3 B5 B6]	#	璛𑍍ݸ.-
 B;	\u1B02ᠰ\u1BF3샕．\uD803\uDE73휁;	[V5 B1];	[V5 B1]	#	ᬂᠰ᯳샕.𐹳휁
 B;	\u1B02ᠰ\u1BF3샕．\uD803\uDE73휁;	[V5 B1];	[V5 B1]	#	ᬂᠰ᯳샕.𐹳휁
 B;	\u1B02ᠰ\u1BF3샕.\uD803\uDE73휁;	[V5 B1];	[V5 B1]	#	ᬂᠰ᯳샕.𐹳휁
@@ -2595,10 +2612,10 @@ B;	8\uD803\uDE7D．\u0C62;	[V5 B1];	[V5 B1]	#	8𐹽.ౢ
 B;	8\uD803\uDE7D.\u0C62;	[V5 B1];	[V5 B1]	#	8𐹽.ౢ
 B;	🁈\uD803\uDE2C．\u07E7;	[P1 V6 B1];	[P1 V6 B1]	#	🁈𐸬.ߧ
 B;	🁈\uD803\uDE2C.\u07E7;	[P1 V6 B1];	[P1 V6 B1]	#	🁈𐸬.ߧ
-T;	\uD802\uDEC3ᢓ4．\u200D;	[P1 V6 B2 C2];	[P1 V6 B2]	#	𐫃ᢓ4.‍
-N;	\uD802\uDEC3ᢓ4．\u200D;	[P1 V6 B2 C2];	[P1 V6 B2 C2]	#	𐫃ᢓ4.‍
-T;	\uD802\uDEC3ᢓ4.\u200D;	[P1 V6 B2 C2];	[P1 V6 B2]	#	𐫃ᢓ4.‍
-N;	\uD802\uDEC3ᢓ4.\u200D;	[P1 V6 B2 C2];	[P1 V6 B2 C2]	#	𐫃ᢓ4.‍
+T;	\uD802\uDEC3ᢓ4．\u200D;	[B2 C2];	[B2]	#	𐫃ᢓ4.‍
+N;	\uD802\uDEC3ᢓ4．\u200D;	[B2 C2];	[B2 C2]	#	𐫃ᢓ4.‍
+T;	\uD802\uDEC3ᢓ4.\u200D;	[B2 C2];	[B2]	#	𐫃ᢓ4.‍
+N;	\uD802\uDEC3ᢓ4.\u200D;	[B2 C2];	[B2 C2]	#	𐫃ᢓ4.‍
 B;	⒗\uFE0C\u0364-.\uD803\uDE67⛣;	[P1 V3 V6 B1];	[P1 V3 V6 B1]	#	⒗ͤ-.𐹧⛣
 B;	16.\uFE0C\u0364-.\uD803\uDE67⛣;	[V3 V5 B1];	[V3 V5 B1]	#	16.ͤ-.𐹧⛣
 B;	-｡䏛;	[V3];	[V3]
@@ -2626,8 +2643,10 @@ B;	\uD803\uDFB5ꡡ-Ss｡\u1921効\uD803\uDE7A\uD806\uDD30;	[P1 V6 V5 B2 B3 B1];	
 B;	\u0A4D.⅋;	[V5];	[V5]	#	੍.⅋
 B;	\uDB40\uDFAA3\uD83B\uDCA8｡𝟘\uD804\uDE35\uD802\uDC1E;	[P1 V6 B1];	[P1 V6 B1]	#	󠎪3𞲨.0𑈵𐠞
 B;	\uDB40\uDFAA3\uD83B\uDCA8。0\uD804\uDE35\uD802\uDC1E;	[P1 V6 B1];	[P1 V6 B1]	#	󠎪3𞲨.0𑈵𐠞
-B;	\u075F６\u0613\uD802\uDF8A。\uDB40\uDD3A;	[P1 V6];	[P1 V6]	#	ݟ6ؓ𐮊.
-B;	\u075F6\u0613\uD802\uDF8A。\uDB40\uDD3A;	[P1 V6];	[P1 V6]	#	ݟ6ؓ𐮊.
+B;	\u075F６\u0613\uD802\uDF8A。\uDB40\uDD3A;	\u075F6\u0613\uD802\uDF8A.;	xn--6-ulc80h3630e.	#	ݟ6ؓ𐮊.
+B;	\u075F6\u0613\uD802\uDF8A。\uDB40\uDD3A;	\u075F6\u0613\uD802\uDF8A.;	xn--6-ulc80h3630e.	#	ݟ6ؓ𐮊.
+B;	xn--6-ulc80h3630e.;	\u075F6\u0613\uD802\uDF8A.;	xn--6-ulc80h3630e.	#	ݟ6ؓ𐮊.
+B;	\u075F6\u0613\uD802\uDF8A.;	;	xn--6-ulc80h3630e.	#	ݟ6ؓ𐮊.
 T;	\uD803\uDE7E-ॴႢ。\uDA39\uDFC0\u200D;	[P1 V6 B1 C2];	[P1 V6 B1]	#	𐹾-ॴႢ.򞟀‍
 N;	\uD803\uDE7E-ॴႢ。\uDA39\uDFC0\u200D;	[P1 V6 B1 C2];	[P1 V6 B1 C2]	#	𐹾-ॴႢ.򞟀‍
 T;	\uD803\uDE7E-ॴⴂ。\uDA39\uDFC0\u200D;	[P1 V6 B1 C2];	[P1 V6 B1]	#	𐹾-ॴⴂ.򞟀‍
@@ -2688,10 +2707,10 @@ T;	\u200Cⴚ｡σ;	[C1];	xn--ilj.xn--4xa	#	‌ⴚ.σ
 N;	\u200Cⴚ｡σ;	[C1];	[C1]	#	‌ⴚ.σ
 B;	\u0679．\uD803\uDE79;	[B1];	[B1]	#	ٹ.𐹹
 B;	\u0679.\uD803\uDE79;	[B1];	[B1]	#	ٹ.𐹹
-T;	\u200D⾕。\u200C\u0B44\uD804\uDCB9\uD802\uDFAA;	[P1 V6 C2 B1 C1];	[P1 V5 V6 B1]	#	‍谷.‌ୄ𑂹𐮪
-N;	\u200D⾕。\u200C\u0B44\uD804\uDCB9\uD802\uDFAA;	[P1 V6 C2 B1 C1];	[P1 V6 C2 B1 C1]	#	‍谷.‌ୄ𑂹𐮪
-T;	\u200D谷。\u200C\u0B44\uD804\uDCB9\uD802\uDFAA;	[P1 V6 C2 B1 C1];	[P1 V5 V6 B1]	#	‍谷.‌ୄ𑂹𐮪
-N;	\u200D谷。\u200C\u0B44\uD804\uDCB9\uD802\uDFAA;	[P1 V6 C2 B1 C1];	[P1 V6 C2 B1 C1]	#	‍谷.‌ୄ𑂹𐮪
+T;	\u200D⾕。\u200C\u0B44\uD804\uDCB9\uD802\uDFAA;	[C2 B1 C1];	[V5 B1]	#	‍谷.‌ୄ𑂹𐮪
+N;	\u200D⾕。\u200C\u0B44\uD804\uDCB9\uD802\uDFAA;	[C2 B1 C1];	[C2 B1 C1]	#	‍谷.‌ୄ𑂹𐮪
+T;	\u200D谷。\u200C\u0B44\uD804\uDCB9\uD802\uDFAA;	[C2 B1 C1];	[V5 B1]	#	‍谷.‌ୄ𑂹𐮪
+N;	\u200D谷。\u200C\u0B44\uD804\uDCB9\uD802\uDFAA;	[C2 B1 C1];	[C2 B1 C1]	#	‍谷.‌ୄ𑂹𐮪
 T;	\u07CF-뉔．\u07D0\u200C;	[B2 B3 C1];	[B2 B3]	#	ߏ-뉔.ߐ‌
 N;	\u07CF-뉔．\u07D0\u200C;	[B2 B3 C1];	[B2 B3 C1]	#	ߏ-뉔.ߐ‌
 T;	\u07CF-뉔．\u07D0\u200C;	[B2 B3 C1];	[B2 B3]	#	ߏ-뉔.ߐ‌
@@ -2700,16 +2719,16 @@ T;	\u07CF-뉔.\u07D0\u200C;	[B2 B3 C1];	[B2 B3]	#	ߏ-뉔.ߐ‌
 N;	\u07CF-뉔.\u07D0\u200C;	[B2 B3 C1];	[B2 B3 C1]	#	ߏ-뉔.ߐ‌
 T;	\u07CF-뉔.\u07D0\u200C;	[B2 B3 C1];	[B2 B3]	#	ߏ-뉔.ߐ‌
 N;	\u07CF-뉔.\u07D0\u200C;	[B2 B3 C1];	[B2 B3 C1]	#	ߏ-뉔.ߐ‌
-B;	𡼫５ᦛς.\uD805\uDCC2ᡓ\uAA36\u0FAE;	[P1 V5 V6];	[P1 V5 V6]	#	𡼫5ᦛς.𑓂ᡓꨶྮ
-B;	𡼫5ᦛς.\uD805\uDCC2ᡓ\uAA36\u0FAE;	[P1 V5 V6];	[P1 V5 V6]	#	𡼫5ᦛς.𑓂ᡓꨶྮ
-B;	𡼫5ᦛΣ.\uD805\uDCC2ᡓ\uAA36\u0FAE;	[P1 V5 V6];	[P1 V5 V6]	#	𡼫5ᦛσ.𑓂ᡓꨶྮ
-B;	𡼫5ᦛσ.\uD805\uDCC2ᡓ\uAA36\u0FAE;	[P1 V5 V6];	[P1 V5 V6]	#	𡼫5ᦛσ.𑓂ᡓꨶྮ
-B;	𡼫５ᦛΣ.\uD805\uDCC2ᡓ\uAA36\u0FAE;	[P1 V5 V6];	[P1 V5 V6]	#	𡼫5ᦛσ.𑓂ᡓꨶྮ
-B;	𡼫５ᦛσ.\uD805\uDCC2ᡓ\uAA36\u0FAE;	[P1 V5 V6];	[P1 V5 V6]	#	𡼫5ᦛσ.𑓂ᡓꨶྮ
+B;	𡼫５ᦛς.\uD805\uDCC2ᡓ\uAA36\u0FAE;	[V5];	[V5]	#	𡼫5ᦛς.𑓂ᡓꨶྮ
+B;	𡼫5ᦛς.\uD805\uDCC2ᡓ\uAA36\u0FAE;	[V5];	[V5]	#	𡼫5ᦛς.𑓂ᡓꨶྮ
+B;	𡼫5ᦛΣ.\uD805\uDCC2ᡓ\uAA36\u0FAE;	[V5];	[V5]	#	𡼫5ᦛσ.𑓂ᡓꨶྮ
+B;	𡼫5ᦛσ.\uD805\uDCC2ᡓ\uAA36\u0FAE;	[V5];	[V5]	#	𡼫5ᦛσ.𑓂ᡓꨶྮ
+B;	𡼫５ᦛΣ.\uD805\uDCC2ᡓ\uAA36\u0FAE;	[V5];	[V5]	#	𡼫5ᦛσ.𑓂ᡓꨶྮ
+B;	𡼫５ᦛσ.\uD805\uDCC2ᡓ\uAA36\u0FAE;	[V5];	[V5]	#	𡼫5ᦛσ.𑓂ᡓꨶྮ
 B;	淽。ᡑ;	淽.ᡑ;	xn--34w.xn--h8e
 B;	xn--34w.xn--h8e;	淽.ᡑ;	xn--34w.xn--h8e
 B;	淽.ᡑ;	;	xn--34w.xn--h8e
-B;	\uD803\uDE73\uD804\uDE37。-;	[P1 V6 V3 B1];	[P1 V6 V3 B1]	#	𐹳𑈷.-
+B;	\uD803\uDE73\uD804\uDE37。-;	[V3 B1];	[V3 B1]	#	𐹳𑈷.-
 B;	\uD980\uDCABႳ⸫｡\u1CE5;	[P1 V6 V5];	[P1 V6 V5]	#	񰂫Ⴓ⸫.᳥
 B;	\uD980\uDCABႳ⸫。\u1CE5;	[P1 V6 V5];	[P1 V6 V5]	#	񰂫Ⴓ⸫.᳥
 B;	\uD980\uDCABⴓ⸫。\u1CE5;	[P1 V6 V5];	[P1 V6 V5]	#	񰂫ⴓ⸫.᳥
@@ -2736,10 +2755,10 @@ T;	\u200C\u0668\u084FႧ｡Ssⴃ;	[P1 V6 B1 C1];	[P1 V6 B1]	#	‌٨ࡏႧ.ssⴃ
 N;	\u200C\u0668\u084FႧ｡Ssⴃ;	[P1 V6 B1 C1];	[P1 V6 B1 C1]	#	‌٨ࡏႧ.ssⴃ
 B;	\uDA98\uDFDA｡\uD803\uDEFB;	[P1 V6];	[P1 V6]	#	򶏚.𐻻
 B;	\uDA98\uDFDA。\uD803\uDEFB;	[P1 V6];	[P1 V6]	#	򶏚.𐻻
-T;	\u1A58\u200D｡\uD805\uDE3F\u2DE1;	[P1 V5 V6 C2];	[P1 V5 V6]	#	ᩘ‍.𑘿ⷡ
-N;	\u1A58\u200D｡\uD805\uDE3F\u2DE1;	[P1 V5 V6 C2];	[P1 V5 V6 C2]	#	ᩘ‍.𑘿ⷡ
-T;	\u1A58\u200D。\uD805\uDE3F\u2DE1;	[P1 V5 V6 C2];	[P1 V5 V6]	#	ᩘ‍.𑘿ⷡ
-N;	\u1A58\u200D。\uD805\uDE3F\u2DE1;	[P1 V5 V6 C2];	[P1 V5 V6 C2]	#	ᩘ‍.𑘿ⷡ
+T;	\u1A58\u200D｡\uD805\uDE3F\u2DE1;	[V5 C2];	[V5]	#	ᩘ‍.𑘿ⷡ
+N;	\u1A58\u200D｡\uD805\uDE3F\u2DE1;	[V5 C2];	[V5 C2]	#	ᩘ‍.𑘿ⷡ
+T;	\u1A58\u200D。\uD805\uDE3F\u2DE1;	[V5 C2];	[V5]	#	ᩘ‍.𑘿ⷡ
+N;	\u1A58\u200D。\uD805\uDE3F\u2DE1;	[V5 C2];	[V5 C2]	#	ᩘ‍.𑘿ⷡ
 B;	-≠\u0844．ᠵ\u06B6≮\uD926\uDC7F;	[P1 V3 V6 B1 B5];	[P1 V3 V6 B1 B5]	#	-≠ࡄ.ᠵڶ≮񙡿
 B;	-=\u0338\u0844．ᠵ\u06B6<\u0338\uD926\uDC7F;	[P1 V3 V6 B1 B5];	[P1 V3 V6 B1 B5]	#	-≠ࡄ.ᠵڶ≮񙡿
 B;	-≠\u0844.ᠵ\u06B6≮\uD926\uDC7F;	[P1 V3 V6 B1 B5];	[P1 V3 V6 B1 B5]	#	-≠ࡄ.ᠵڶ≮񙡿
@@ -2886,8 +2905,9 @@ B;	\uDAB7\uDEE8\u0A42Ⴊ\uD92D\uDFEC.≮;	[P1 V6];	[P1 V6]	#	򽻨ੂႪ񛟬.≮
 B;	\uDAB7\uDEE8\u0A42Ⴊ\uD92D\uDFEC.<\u0338;	[P1 V6];	[P1 V6]	#	򽻨ੂႪ񛟬.≮
 B;	\uDAB7\uDEE8\u0A42ⴊ\uD92D\uDFEC.<\u0338;	[P1 V6];	[P1 V6]	#	򽻨ੂⴊ񛟬.≮
 B;	\uDAB7\uDEE8\u0A42ⴊ\uD92D\uDFEC.≮;	[P1 V6];	[P1 V6]	#	򽻨ੂⴊ񛟬.≮
-B;	\uD802\uDF86．۲;	[P1 V6];	[P1 V6]	#	𐮆.۲
-B;	\uD802\uDF86.۲;	[P1 V6];	[P1 V6]	#	𐮆.۲
+B;	\uD802\uDF86．۲;	\uD802\uDF86.۲;	xn--d29c.xn--fmb	#	𐮆.۲
+B;	\uD802\uDF86.۲;	;	xn--d29c.xn--fmb	#	𐮆.۲
+B;	xn--d29c.xn--fmb;	\uD802\uDF86.۲;	xn--d29c.xn--fmb	#	𐮆.۲
 B;	\uD803\uDE69\uDB5B\uDC0C｡\u06C2🄄;	[P1 V6 B1];	[P1 V6 B1]	#	𐹩󦰌.ۂ🄄
 B;	\uD803\uDE69\uDB5B\uDC0C｡\u06C1\u0654🄄;	[P1 V6 B1];	[P1 V6 B1]	#	𐹩󦰌.ۂ🄄
 B;	\uD803\uDE69\uDB5B\uDC0C。\u06C23,;	[P1 V6 B1 B3];	[P1 V6 B1 B3]	#	𐹩󦰌.ۂ3,
@@ -2908,8 +2928,8 @@ T;	\uD81A\uDF34\u200C\uDBD3\uDEA1🄆｡\u200C\uD804\uDDB8Ι;	[P1 V5 V6 C1];	[P1
 N;	\uD81A\uDF34\u200C\uDBD3\uDEA1🄆｡\u200C\uD804\uDDB8Ι;	[P1 V5 V6 C1];	[P1 V5 V6 C1]	#	𖬴‌􄺡🄆.‌𑆸ι
 T;	\uD81A\uDF34\u200C\uDBD3\uDEA1🄆｡\u200C\uD804\uDDB8ι;	[P1 V5 V6 C1];	[P1 V5 V6]	#	𖬴‌􄺡🄆.‌𑆸ι
 N;	\uD81A\uDF34\u200C\uDBD3\uDEA1🄆｡\u200C\uD804\uDDB8ι;	[P1 V5 V6 C1];	[P1 V5 V6 C1]	#	𖬴‌􄺡🄆.‌𑆸ι
-B;	兎｡\u0845😤\uD804\uDF4D\u0F84;	[P1 V6 B2 B3];	[P1 V6 B2 B3]	#	兎.ࡅ😤𑍍྄
-B;	兎。\u0845😤\uD804\uDF4D\u0F84;	[P1 V6 B2 B3];	[P1 V6 B2 B3]	#	兎.ࡅ😤𑍍྄
+B;	兎｡\u0845😤\uD804\uDF4D\u0F84;	[B2 B3];	[B2 B3]	#	兎.ࡅ😤𑍍྄
+B;	兎。\u0845😤\uD804\uDF4D\u0F84;	[B2 B3];	[B2 B3]	#	兎.ࡅ😤𑍍྄
 T;	𝟙｡\u200D𝟸\u200D⁷;	[C2];	1.27	#	1.‍2‍7
 N;	𝟙｡\u200D𝟸\u200D⁷;	[C2];	[C2]	#	1.‍2‍7
 T;	1。\u200D2\u200D7;	[C2];	1.27	#	1.‍2‍7
@@ -3059,7 +3079,7 @@ B;	爕\uDA67\uDE55．𝟰気;	[P1 V6];	[P1 V6]	#	爕򩹕.4気
 B;	爕\uDA67\uDE55.4気;	[P1 V6];	[P1 V6]	#	爕򩹕.4気
 B;	⒋\uD804\uDD33Ⴝ-．\uD802\uDC78\uA9C0\u1B6E;	[P1 V3 V6 B2 B3];	[P1 V3 V6 B2 B3]	#	⒋𑄳Ⴝ-.𐡸꧀᭮
 B;	4.\uD804\uDD33Ⴝ-.\uD802\uDC78\uA9C0\u1B6E;	[P1 V3 V5 V6 B2 B3];	[P1 V3 V5 V6 B2 B3]	#	4.𑄳Ⴝ-.𐡸꧀᭮
-B;	4.\uD804\uDD33ⴝ-.\uD802\uDC78\uA9C0\u1B6E;	[P1 V3 V5 V6 B2 B3];	[P1 V3 V5 V6 B2 B3]	#	4.𑄳ⴝ-.𐡸꧀᭮
+B;	4.\uD804\uDD33ⴝ-.\uD802\uDC78\uA9C0\u1B6E;	[V3 V5 B2 B3];	[V3 V5 B2 B3]	#	4.𑄳ⴝ-.𐡸꧀᭮
 B;	⒋\uD804\uDD33ⴝ-．\uD802\uDC78\uA9C0\u1B6E;	[P1 V3 V6 B2 B3];	[P1 V3 V6 B2 B3]	#	⒋𑄳ⴝ-.𐡸꧀᭮
 B;	\uD86F\uDF2D。访\uD9AF\uDF66--;	[P1 V6 V2 V3];	[P1 V6 V2 V3]	#	𫼭.访񻽦--
 T;	\u200D\u0684｡\u200C\uABED;	[B1 C2 C1];	[V5]	#	‍ڄ.‌꯭
@@ -3094,7 +3114,7 @@ B;	\uDACA\uDCA3킃\uD800\uDF78\u0750｡Σꡮς;	[P1 V6 B5 B6];	[P1 V6 B5 B
 B;	\uDACA\uDCA3킃\uD800\uDF78\u0750｡Σꡮς;	[P1 V6 B5 B6];	[P1 V6 B5 B6]	#	󂢣킃𐍸ݐ.σꡮς
 B;	\uDACA\uDCA3킃\uD800\uDF78\u0750｡σꡮς;	[P1 V6 B5 B6];	[P1 V6 B5 B6]	#	󂢣킃𐍸ݐ.σꡮς
 B;	\uDACA\uDCA3킃\uD800\uDF78\u0750｡σꡮς;	[P1 V6 B5 B6];	[P1 V6 B5 B6]	#	󂢣킃𐍸ݐ.σꡮς
-B;	蔰。\uA80B\u064E-\uD804\uDF4D;	[P1 V5 V6];	[P1 V5 V6]	#	蔰.ꠋَ-𑍍
+B;	蔰。\uA80B\u064E-\uD804\uDF4D;	[V5];	[V5]	#	蔰.ꠋَ-𑍍
 B;	ςჅ。ᡃ;	[P1 V6];	[P1 V6]
 T;	ςⴥ。ᡃ;	ςⴥ.ᡃ;	xn--4xa203s.xn--27e
 N;	ςⴥ。ᡃ;	ςⴥ.ᡃ;	xn--3xa403s.xn--27e
@@ -3172,14 +3192,14 @@ T;	\u200C\u200Cㄤ．\uA94C\uDA5E\uDCB3\uDB40\uDD93;	[P1 V5 V6 C1];	[P1 V5 V6]	#
 N;	\u200C\u200Cㄤ．\uA94C\uDA5E\uDCB3\uDB40\uDD93;	[P1 V5 V6 C1];	[P1 V5 V6 C1]	#	‌‌ㄤ.ꥌ򧢳
 T;	\u200C\u200Cㄤ.\uA94C\uDA5E\uDCB3\uDB40\uDD93;	[P1 V5 V6 C1];	[P1 V5 V6]	#	‌‌ㄤ.ꥌ򧢳
 N;	\u200C\u200Cㄤ.\uA94C\uDA5E\uDCB3\uDB40\uDD93;	[P1 V5 V6 C1];	[P1 V5 V6 C1]	#	‌‌ㄤ.ꥌ򧢳
-T;	𐋻｡-\u200CᡫႷ;	[P1 V6 V3 C1];	[P1 V6 V3]	#	𐋻.-‌ᡫႷ
-N;	𐋻｡-\u200CᡫႷ;	[P1 V6 V3 C1];	[P1 V6 V3 C1]	#	𐋻.-‌ᡫႷ
-T;	𐋻。-\u200CᡫႷ;	[P1 V6 V3 C1];	[P1 V6 V3]	#	𐋻.-‌ᡫႷ
-N;	𐋻。-\u200CᡫႷ;	[P1 V6 V3 C1];	[P1 V6 V3 C1]	#	𐋻.-‌ᡫႷ
-T;	𐋻。-\u200Cᡫⴗ;	[P1 V6 V3 C1];	[P1 V6 V3]	#	𐋻.-‌ᡫⴗ
-N;	𐋻。-\u200Cᡫⴗ;	[P1 V6 V3 C1];	[P1 V6 V3 C1]	#	𐋻.-‌ᡫⴗ
-T;	𐋻｡-\u200Cᡫⴗ;	[P1 V6 V3 C1];	[P1 V6 V3]	#	𐋻.-‌ᡫⴗ
-N;	𐋻｡-\u200Cᡫⴗ;	[P1 V6 V3 C1];	[P1 V6 V3 C1]	#	𐋻.-‌ᡫⴗ
+T;	𐋻｡-\u200CᡫႷ;	[P1 V3 V6 C1];	[P1 V3 V6]	#	𐋻.-‌ᡫႷ
+N;	𐋻｡-\u200CᡫႷ;	[P1 V3 V6 C1];	[P1 V3 V6 C1]	#	𐋻.-‌ᡫႷ
+T;	𐋻。-\u200CᡫႷ;	[P1 V3 V6 C1];	[P1 V3 V6]	#	𐋻.-‌ᡫႷ
+N;	𐋻。-\u200CᡫႷ;	[P1 V3 V6 C1];	[P1 V3 V6 C1]	#	𐋻.-‌ᡫႷ
+T;	𐋻。-\u200Cᡫⴗ;	[V3 C1];	[V3]	#	𐋻.-‌ᡫⴗ
+N;	𐋻。-\u200Cᡫⴗ;	[V3 C1];	[V3 C1]	#	𐋻.-‌ᡫⴗ
+T;	𐋻｡-\u200Cᡫⴗ;	[V3 C1];	[V3]	#	𐋻.-‌ᡫⴗ
+N;	𐋻｡-\u200Cᡫⴗ;	[V3 C1];	[V3 C1]	#	𐋻.-‌ᡫⴗ
 T;	⦧\uD802\uDC23．≠\u200C;	[P1 V6 B1 C1];	[P1 V6 B1]	#	⦧𐠣.≠‌
 N;	⦧\uD802\uDC23．≠\u200C;	[P1 V6 B1 C1];	[P1 V6 B1 C1]	#	⦧𐠣.≠‌
 T;	⦧\uD802\uDC23．=\u0338\u200C;	[P1 V6 B1 C1];	[P1 V6 B1]	#	⦧𐠣.≠‌
@@ -3215,7 +3235,7 @@ B;	\u05B5．\uD83A\uDF3F\uD91A\uDE35\uD9B6\uDCA0\u06BF;	[P1 V5 V6 B2];	[P1 V5 V6
 B;	\u05B5.\uD83A\uDF3F\uD91A\uDE35\uD9B6\uDCA0\u06BF;	[P1 V5 V6 B2];	[P1 V5 V6 B2]	#	ֵ.𞬿񖨵񽢠ڿ
 B;	\u06B8\uD803\uDF42⒈．\uDB43\uDE3D８\uD980\uDF05\u06A2;	[P1 V6 B1];	[P1 V6 B1]	#	ڸ𐽂⒈.󠸽8񰌅ڢ
 B;	\u06B8\uD803\uDF421..\uDB43\uDE3D8\uD980\uDF05\u06A2;	[P1 V6 A4_2 B1];	[P1 V6 A4_2 B1]	#	ڸ𐽂1..󠸽8񰌅ڢ
-B;	\u05B6\u084B\uD804\uDF40\u06FB。-💦\uDA2A\uDE5F;	[P1 V5 V6 V3 B1];	[P1 V5 V6 V3 B1]	#	ֶࡋ𑍀ۻ.-💦򚩟
+B;	\u05B6\u084B\uD804\uDF40\u06FB。-💦\uDA2A\uDE5F;	[P1 V5 V3 V6 B1];	[P1 V5 V3 V6 B1]	#	ֶࡋ𑍀ۻ.-💦򚩟
 B;	-.\uABED剘ß᠇;	[V3 V5];	[V3 V5]	#	-.꯭剘ß᠇
 B;	-.\uABED剘SS᠇;	[V3 V5];	[V3 V5]	#	-.꯭剘ss᠇
 B;	-.\uABED剘ss᠇;	[V3 V5];	[V3 V5]	#	-.꯭剘ss᠇
@@ -3254,8 +3274,8 @@ B;	ⴕ。۰<\u0338ss\uDB40\uDD31;	[P1 V6];	[P1 V6]
 B;	ⴕ。۰≮ss\uDB40\uDD31;	[P1 V6];	[P1 V6]
 B;	Ⴕ。۰≮Ss\uDB40\uDD31;	[P1 V6];	[P1 V6]
 B;	Ⴕ。۰<\u0338Ss\uDB40\uDD31;	[P1 V6];	[P1 V6]
-B;	\u0675-.\u1DF3꒱\uDB40\uDD7D;	[P1 V3 V5 V6 B3];	[P1 V3 V5 V6 B3]	#	اٴ-.ᷳ꒱
-B;	\u0627\u0674-.\u1DF3꒱\uDB40\uDD7D;	[P1 V3 V5 V6 B3];	[P1 V3 V5 V6 B3]	#	اٴ-.ᷳ꒱
+B;	\u0675-.\u1DF3꒱\uDB40\uDD7D;	[V3 V5 B3];	[V3 V5 B3]	#	اٴ-.ᷳ꒱
+B;	\u0627\u0674-.\u1DF3꒱\uDB40\uDD7D;	[V3 V5 B3];	[V3 V5 B3]	#	اٴ-.ᷳ꒱
 T;	\uD803\uDE82\u200C.≯䕵◂;	[P1 V6 B3 C1];	[P1 V6]	#	𐺂‌.≯䕵◂
 N;	\uD803\uDE82\u200C.≯䕵◂;	[P1 V6 B3 C1];	[P1 V6 B3 C1]	#	𐺂‌.≯䕵◂
 T;	\uD803\uDE82\u200C.>\u0338䕵◂;	[P1 V6 B3 C1];	[P1 V6]	#	𐺂‌.≯䕵◂
@@ -3332,8 +3352,8 @@ B;	齙--4.SS;	齙--4.ss;	xn----4-p16k.ss
 B;	xn----4-p16k.ss;	齙--4.ss;	xn----4-p16k.ss
 B;	xn----4-p16k.xn--zca;	齙--4.ß;	xn----4-p16k.xn--zca
 B;	齙--𝟰.SS;	齙--4.ss;	xn----4-p16k.ss
-T;	\uD804\uDC7F.\u0660\u1059\u200C;	[P1 V5 V6 B1 C1];	[P1 V5 V6 B1]	#	𑁿.٠ၙ‌
-N;	\uD804\uDC7F.\u0660\u1059\u200C;	[P1 V5 V6 B1 C1];	[P1 V5 V6 B1 C1]	#	𑁿.٠ၙ‌
+T;	\uD804\uDC7F.\u0660\u1059\u200C;	[V5 B1 C1];	[V5 B1]	#	𑁿.٠ၙ‌
+N;	\uD804\uDC7F.\u0660\u1059\u200C;	[V5 B1 C1];	[V5 B1 C1]	#	𑁿.٠ၙ‌
 T;	\uD88C\uDF6C𐆕｡\uDEDE-\u200D;	[P1 V6 C2];	[P1 V6 V3 A3]	#	𳍬𐆕.?-‍
 N;	\uD88C\uDF6C𐆕｡\uDEDE-\u200D;	[P1 V6 C2];	[P1 V6 C2 A3]	#	𳍬𐆕.?-‍
 T;	\uD88C\uDF6C𐆕。\uDEDE-\u200D;	[P1 V6 C2];	[P1 V6 V3 A3]	#	𳍬𐆕.?-‍
@@ -3343,7 +3363,7 @@ B;	\uD804\uDE35．\uD803\uDF7E-\u05B1悎;	[P1 V5 V6 B2 B3];	[P1 V5 V6 B2 B3]	#	�
 B;	\uD804\uDE35.\uD803\uDF7E-\u05B1悎;	[P1 V5 V6 B2 B3];	[P1 V5 V6 B2 B3]	#	𑈵.𐽾-ֱ悎
 B;	\uDA6A\uDC80\uDB42\uDD07．\u0728\uDA79\uDE2E;	[P1 V6 B2 B3];	[P1 V6 B2 B3]	#	򪢀󠤇.ܨ򮘮
 B;	\uDA6A\uDC80\uDB42\uDD07.\u0728\uDA79\uDE2E;	[P1 V6 B2 B3];	[P1 V6 B2 B3]	#	򪢀󠤇.ܨ򮘮
-B;	ᡒ\uD802\uDD8D\uD802\uDEDA.𐋲;	[P1 V6 B5 B6];	[P1 V6 B5 B6]	#	ᡒ𐦍𐫚.𐋲
+B;	ᡒ\uD802\uDD8D\uD802\uDEDA.𐋲;	[B5 B6];	[B5 B6]	#	ᡒ𐦍𐫚.𐋲
 B;	\uD83A\uDD81ᢤ\u0679\u0668.\uDF56;	[P1 V6 B2];	[P1 V6 B2 A3]	#	𞦁ᢤٹ٨.?
 B;	\uD83A\uDD81ᢤ\u0679\u0668;	[P1 V6 B2];	[P1 V6 B2]	#	𞦁ᢤٹ٨
 B;	Ↄ。\u0C4D\u1DD1\uD803\uDD2E;	[P1 V6 V5 B1];	[P1 V6 V5 B1]	#	Ↄ.్᷑𐴮
@@ -3399,7 +3419,7 @@ B;	\uDA99\uDD6B\uDB40\uDD6FჁ\uDB40\uDF3B．\uD803\uDC33;	[P1 V6];	[P1 V6]	#	�
 B;	\uDA99\uDD6B\uDB40\uDD6FჁ\uDB40\uDF3B.\uD803\uDC33;	[P1 V6];	[P1 V6]	#	򶕫Ⴡ󠌻.𐰳
 B;	\uDA99\uDD6B\uDB40\uDD6Fⴡ\uDB40\uDF3B.\uD803\uDC33;	[P1 V6];	[P1 V6]	#	򶕫ⴡ󠌻.𐰳
 B;	\uDA99\uDD6B\uDB40\uDD6Fⴡ\uDB40\uDF3B．\uD803\uDC33;	[P1 V6];	[P1 V6]	#	򶕫ⴡ󠌻.𐰳
-B;	\u0C3F。𐋩\u076A-\u0645;	[P1 V5 V6 B1];	[P1 V5 V6 B1]	#	ి.𐋩ݪ-م
+B;	\u0C3F。𐋩\u076A-\u0645;	[V5 B1];	[V5 B1]	#	ి.𐋩ݪ-م
 B;	싇。⾇\uD803\uDC00Ⴝ;	[P1 V6 B5];	[P1 V6 B5]	#	싇.舛𐰀Ⴝ
 B;	싇。⾇\uD803\uDC00Ⴝ;	[P1 V6 B5];	[P1 V6 B5]	#	싇.舛𐰀Ⴝ
 B;	싇。舛\uD803\uDC00Ⴝ;	[P1 V6 B5];	[P1 V6 B5]	#	싇.舛𐰀Ⴝ
@@ -3467,7 +3487,7 @@ B;	ß\uD83A\uDC10\u2D98ⴇ｡\u1071;	[P1 V6 V5 B5];	[P1 V6 V5 B5]	#	ß𞠐⶘ⴇ
 B;	SS\uD83A\uDC10\u2D98Ⴇ｡\u1071;	[P1 V6 V5 B5];	[P1 V6 V5 B5]	#	ss𞠐⶘Ⴇ.ၱ
 B;	ss\uD83A\uDC10\u2D98ⴇ｡\u1071;	[P1 V6 V5 B5];	[P1 V6 V5 B5]	#	ss𞠐⶘ⴇ.ၱ
 B;	Ss\uD83A\uDC10\u2D98Ⴇ｡\u1071;	[P1 V6 V5 B5];	[P1 V6 V5 B5]	#	ss𞠐⶘Ⴇ.ၱ
-B;	\uD805\uDCC2。\u093C-\uD802\uDE3F;	[P1 V5 V6];	[P1 V5 V6]	#	𑓂.़-𐨿
+B;	\uD805\uDCC2。\u093C-\uD802\uDE3F;	[V5];	[V5]	#	𑓂.़-𐨿
 B;	\uDB42\uDE03-．\uD8D8\uDC33\uA8E6ß;	[P1 V3 V6];	[P1 V3 V6]	#	󠨃-.񆀳꣦ß
 B;	\uDB42\uDE03-.\uD8D8\uDC33\uA8E6ß;	[P1 V3 V6];	[P1 V3 V6]	#	󠨃-.񆀳꣦ß
 B;	\uDB42\uDE03-.\uD8D8\uDC33\uA8E6SS;	[P1 V3 V6];	[P1 V3 V6]	#	󠨃-.񆀳꣦ss
@@ -3633,8 +3653,8 @@ B;	\u0637\u062D\uD802\uDFFB.\uD80F\uDE26。\uD811\uDDC2ⴐ;	[P1 V6];	[P1 V6]	#	�
 B;	\uFCB8\uD802\uDFFB.\uD80F\uDE26︒\uD811\uDDC2ⴐ;	[P1 V6];	[P1 V6]	#	طح𐯻.𓸦︒𔗂ⴐ
 B;	Ⴥ🖌\uDB40\uDDBF🝗｡\u2DF4;	[P1 V6 V5];	[P1 V6 V5]	#	Ⴥ🖌🝗.ⷴ
 B;	Ⴥ🖌\uDB40\uDDBF🝗。\u2DF4;	[P1 V6 V5];	[P1 V6 V5]	#	Ⴥ🖌🝗.ⷴ
-B;	ⴥ🖌\uDB40\uDDBF🝗。\u2DF4;	[P1 V6 V5];	[P1 V6 V5]	#	ⴥ🖌🝗.ⷴ
-B;	ⴥ🖌\uDB40\uDDBF🝗｡\u2DF4;	[P1 V6 V5];	[P1 V6 V5]	#	ⴥ🖌🝗.ⷴ
+B;	ⴥ🖌\uDB40\uDDBF🝗。\u2DF4;	[V5];	[V5]	#	ⴥ🖌🝗.ⷴ
+B;	ⴥ🖌\uDB40\uDDBF🝗｡\u2DF4;	[V5];	[V5]	#	ⴥ🖌🝗.ⷴ
 B;	🄈。⧙\u06B1;	[P1 V6 B1];	[P1 V6 B1]	#	🄈.⧙ڱ
 B;	7,。⧙\u06B1;	[P1 V6 B1];	[P1 V6 B1]	#	7,.⧙ڱ
 B;	≮\uD802\uDEC3。섖쮖ß;	[P1 V6 B1];	[P1 V6 B1]	#	≮𐫃.섖쮖ß
@@ -3681,10 +3701,12 @@ B;	\uFCBD𝟶<\u0338<\u0338.\u05AF\u07CF;	[P1 V6 V5 B3 B1];	[P1 V6 V5 B3 B1]	#	�
 B;	\u063A\u06450≮≮.\u05AF\u07CF;	[P1 V6 V5 B3 B1];	[P1 V6 V5 B3 B1]	#	غم0≮≮.֯ߏ
 B;	\u063A\u06450<\u0338<\u0338.\u05AF\u07CF;	[P1 V6 V5 B3 B1];	[P1 V6 V5 B3 B1]	#	غم0≮≮.֯ߏ
 B;	\u20D7.\uD803\uDE65\u115F;	[P1 V5 V6 B1];	[P1 V5 V6 B1]	#	⃗.𐹥ᅟ
-T;	𝟏\u1712🃩.\u200D;	[P1 V6 C2];	[P1 V6]	#	1ᜒ🃩.‍
-N;	𝟏\u1712🃩.\u200D;	[P1 V6 C2];	[P1 V6 C2]	#	1ᜒ🃩.‍
-T;	1\u1712🃩.\u200D;	[P1 V6 C2];	[P1 V6]	#	1ᜒ🃩.‍
-N;	1\u1712🃩.\u200D;	[P1 V6 C2];	[P1 V6 C2]	#	1ᜒ🃩.‍
+T;	𝟏\u1712🃩.\u200D;	[C2];	xn--1-hpj0501z.	#	1ᜒ🃩.‍
+N;	𝟏\u1712🃩.\u200D;	[C2];	[C2]	#	1ᜒ🃩.‍
+T;	1\u1712🃩.\u200D;	[C2];	xn--1-hpj0501z.	#	1ᜒ🃩.‍
+N;	1\u1712🃩.\u200D;	[C2];	[C2]	#	1ᜒ🃩.‍
+B;	xn--1-hpj0501z.;	1\u1712🃩.;	xn--1-hpj0501z.;	NV8	#	1ᜒ🃩.
+B;	1\u1712🃩.;	;	xn--1-hpj0501z.;	NV8	#	1ᜒ🃩.
 T;	\u0676≠\u06AC\uD805\uDDBF｡-\u200C\u07E5;	[P1 V6 V3 B1 C1];	[P1 V6 V3 B1]	#	وٴ≠ڬ𑖿.-‌ߥ
 N;	\u0676≠\u06AC\uD805\uDDBF｡-\u200C\u07E5;	[P1 V6 V3 B1 C1];	[P1 V6 V3 B1 C1]	#	وٴ≠ڬ𑖿.-‌ߥ
 T;	\u0676=\u0338\u06AC\uD805\uDDBF｡-\u200C\u07E5;	[P1 V6 V3 B1 C1];	[P1 V6 V3 B1]	#	وٴ≠ڬ𑖿.-‌ߥ
@@ -3832,14 +3854,14 @@ B;	ᵬ\u1CDC．핒⒒⒈\uDA0D\uDFA4;	[P1 V6];	[P1 V6]	#	ᵬ᳜.핒⒒⒈򓞤
 B;	ᵬ\u1CDC．핒⒒⒈\uDA0D\uDFA4;	[P1 V6];	[P1 V6]	#	ᵬ᳜.핒⒒⒈򓞤
 B;	ᵬ\u1CDC.핒11.1.\uDA0D\uDFA4;	[P1 V6];	[P1 V6]	#	ᵬ᳜.핒11.1.򓞤
 B;	ᵬ\u1CDC.핒11.1.\uDA0D\uDFA4;	[P1 V6];	[P1 V6]	#	ᵬ᳜.핒11.1.򓞤
-B;	ς\u1A60𐋢．\uD803\uDE68;	[P1 V6 B1];	[P1 V6 B1]	#	ς᩠𐋢.𐹨
-B;	ς\u1A60𐋢.\uD803\uDE68;	[P1 V6 B1];	[P1 V6 B1]	#	ς᩠𐋢.𐹨
-B;	Σ\u1A60𐋢.\uD803\uDE68;	[P1 V6 B1];	[P1 V6 B1]	#	σ᩠𐋢.𐹨
-B;	σ\u1A60𐋢.\uD803\uDE68;	[P1 V6 B1];	[P1 V6 B1]	#	σ᩠𐋢.𐹨
-B;	Σ\u1A60𐋢．\uD803\uDE68;	[P1 V6 B1];	[P1 V6 B1]	#	σ᩠𐋢.𐹨
-B;	σ\u1A60𐋢．\uD803\uDE68;	[P1 V6 B1];	[P1 V6 B1]	#	σ᩠𐋢.𐹨
-T;	\u0B4D\u200C𐋻\u200D.\uD83A\uDCD1\uD802\uDC54\uD803\uDE65;	[P1 V5 V6 C2 B1];	[P1 V5 V6 B1]	#	୍‌𐋻‍.𞣑𐡔𐹥
-N;	\u0B4D\u200C𐋻\u200D.\uD83A\uDCD1\uD802\uDC54\uD803\uDE65;	[P1 V5 V6 C2 B1];	[P1 V5 V6 C2 B1]	#	୍‌𐋻‍.𞣑𐡔𐹥
+B;	ς\u1A60𐋢．\uD803\uDE68;	[B1];	[B1]	#	ς᩠𐋢.𐹨
+B;	ς\u1A60𐋢.\uD803\uDE68;	[B1];	[B1]	#	ς᩠𐋢.𐹨
+B;	Σ\u1A60𐋢.\uD803\uDE68;	[B1];	[B1]	#	σ᩠𐋢.𐹨
+B;	σ\u1A60𐋢.\uD803\uDE68;	[B1];	[B1]	#	σ᩠𐋢.𐹨
+B;	Σ\u1A60𐋢．\uD803\uDE68;	[B1];	[B1]	#	σ᩠𐋢.𐹨
+B;	σ\u1A60𐋢．\uD803\uDE68;	[B1];	[B1]	#	σ᩠𐋢.𐹨
+T;	\u0B4D\u200C𐋻\u200D.\uD83A\uDCD1\uD802\uDC54\uD803\uDE65;	[V5 C2 B1];	[V5 B1]	#	୍‌𐋻‍.𞣑𐡔𐹥
+N;	\u0B4D\u200C𐋻\u200D.\uD83A\uDCD1\uD802\uDC54\uD803\uDE65;	[V5 C2 B1];	[V5 C2 B1]	#	୍‌𐋻‍.𞣑𐡔𐹥
 B;	🍯。亠ᢔ;	🍯.亠ᢔ;	xn--mj8h.xn--ebf587y;	NV8
 B;	xn--mj8h.xn--ebf587y;	🍯.亠ᢔ;	xn--mj8h.xn--ebf587y;	NV8
 B;	🍯.亠ᢔ;	;	xn--mj8h.xn--ebf587y;	NV8
@@ -3894,7 +3916,7 @@ T;	\uD8B2\uDD00\u0B42\u200D｡\uD803\uDE61ҡⴠ𝟑;	[P1 V6 C2 B1];	[P1 V6 B1]	#
 N;	\uD8B2\uDD00\u0B42\u200D｡\uD803\uDE61ҡⴠ𝟑;	[P1 V6 C2 B1];	[P1 V6 C2 B1]	#	𼤀ୂ‍.𐹡ҡⴠ3
 T;	\uD8B2\uDD00\u0B42\u200D｡\uD803\uDE61Ҡⴠ𝟑;	[P1 V6 C2 B1];	[P1 V6 B1]	#	𼤀ୂ‍.𐹡ҡⴠ3
 N;	\uD8B2\uDD00\u0B42\u200D｡\uD803\uDE61Ҡⴠ𝟑;	[P1 V6 C2 B1];	[P1 V6 C2 B1]	#	𼤀ୂ‍.𐹡ҡⴠ3
-B;	\uD802\uDF8D。\u0661\uDB40\uDD3A;	[P1 V6 B1];	[P1 V6 B1]	#	𐮍.١
+B;	\uD802\uDF8D。\u0661\uDB40\uDD3A;	[B1];	[B1]	#	𐮍.١
 B;	\uD9B0\uDDB5\uD805\uDEB6｡\uD803\uDE7E\uDB2A\uDF6A\uA9C0ß;	[P1 V6 B1];	[P1 V6 B1]	#	񼆵𑚶.𐹾󚭪꧀ß
 B;	\uD9B0\uDDB5\uD805\uDEB6。\uD803\uDE7E\uDB2A\uDF6A\uA9C0ß;	[P1 V6 B1];	[P1 V6 B1]	#	񼆵𑚶.𐹾󚭪꧀ß
 B;	\uD9B0\uDDB5\uD805\uDEB6。\uD803\uDE7E\uDB2A\uDF6A\uA9C0SS;	[P1 V6 B1];	[P1 V6 B1]	#	񼆵𑚶.𐹾󚭪꧀ss
@@ -3921,7 +3943,7 @@ T;	\u200D。\u068E;	[C2];	xn--kjb	#	‍.ڎ
 N;	\u200D。\u068E;	[C2];	[C2]	#	‍.ڎ
 B;	xn--kjb;	\u068E;	xn--kjb	#	ڎ
 B;	\u068E;	;	xn--kjb	#	ڎ
-B;	\u1BA3\u0844.\uD802\uDEED;	[P1 V5 V6 B1];	[P1 V5 V6 B1]	#	ᮣࡄ.𐫭
+B;	\u1BA3\u0844.\uD802\uDEED;	[V5 B1];	[V5 B1]	#	ᮣࡄ.𐫭
 T;	\u1AB8\u200C-。\uDA48\uDD3Eß;	[P1 V3 V5 V6 C1];	[P1 V3 V5 V6]	#	᪸‌-.򢄾ß
 N;	\u1AB8\u200C-。\uDA48\uDD3Eß;	[P1 V3 V5 V6 C1];	[P1 V3 V5 V6 C1]	#	᪸‌-.򢄾ß
 T;	\u1AB8\u200C-。\uDA48\uDD3ESS;	[P1 V3 V5 V6 C1];	[P1 V3 V5 V6]	#	᪸‌-.򢄾ss
@@ -4003,8 +4025,11 @@ B;	⏈.赏;	;	xn--cnh.xn--6o3a;	NV8
 B;	xn--cnh.xn--6o3a;	⏈.赏;	xn--cnh.xn--6o3a;	NV8
 B;	\u084A\uD802\uDEC9｡Ⴁ;	[P1 V6];	[P1 V6]	#	ࡊ𐫉.Ⴁ
 B;	\u084A\uD802\uDEC9。Ⴁ;	[P1 V6];	[P1 V6]	#	ࡊ𐫉.Ⴁ
-B;	\u084A\uD802\uDEC9。ⴁ;	[P1 V6];	[P1 V6]	#	ࡊ𐫉.ⴁ
-B;	\u084A\uD802\uDEC9｡ⴁ;	[P1 V6];	[P1 V6]	#	ࡊ𐫉.ⴁ
+B;	\u084A\uD802\uDEC9。ⴁ;	\u084A\uD802\uDEC9.ⴁ;	xn--8vb4643k.xn--skj	#	ࡊ𐫉.ⴁ
+B;	xn--8vb4643k.xn--skj;	\u084A\uD802\uDEC9.ⴁ;	xn--8vb4643k.xn--skj	#	ࡊ𐫉.ⴁ
+B;	\u084A\uD802\uDEC9.ⴁ;	;	xn--8vb4643k.xn--skj	#	ࡊ𐫉.ⴁ
+B;	\u084A\uD802\uDEC9.Ⴁ;	[P1 V6];	[P1 V6]	#	ࡊ𐫉.Ⴁ
+B;	\u084A\uD802\uDEC9｡ⴁ;	\u084A\uD802\uDEC9.ⴁ;	xn--8vb4643k.xn--skj	#	ࡊ𐫉.ⴁ
 B;	\uDB40\uDD32Ⴊ\u0630ς｡-;	[P1 V6 V3 B5];	[P1 V6 V3 B5]	#	Ⴊذς.-
 B;	\uDB40\uDD32Ⴊ\u0630ς。-;	[P1 V6 V3 B5];	[P1 V6 V3 B5]	#	Ⴊذς.-
 B;	\uDB40\uDD32ⴊ\u0630ς。-;	[V3 B5];	[V3 B5]	#	ⴊذς.-
@@ -4051,8 +4076,8 @@ B;	𝟛．\uDA06\uDF25;	[P1 V6];	[P1 V6]	#	3.򑬥
 B;	3.\uDA06\uDF25;	[P1 V6];	[P1 V6]	#	3.򑬥
 T;	-\u200D.Ⴞ𐋷;	[P1 V3 V6 C2];	[P1 V3 V6]	#	-‍.Ⴞ𐋷
 N;	-\u200D.Ⴞ𐋷;	[P1 V3 V6 C2];	[P1 V3 V6 C2]	#	-‍.Ⴞ𐋷
-T;	-\u200D.ⴞ𐋷;	[P1 V3 V6 C2];	[P1 V3 V6]	#	-‍.ⴞ𐋷
-N;	-\u200D.ⴞ𐋷;	[P1 V3 V6 C2];	[P1 V3 V6 C2]	#	-‍.ⴞ𐋷
+T;	-\u200D.ⴞ𐋷;	[V3 C2];	[V3]	#	-‍.ⴞ𐋷
+N;	-\u200D.ⴞ𐋷;	[V3 C2];	[V3 C2]	#	-‍.ⴞ𐋷
 T;	\u200Dςß\u035C．\uABED;	[V5 C2];	[V5]	#	‍ςß͜.꯭
 N;	\u200Dςß\u035C．\uABED;	[V5 C2];	[V5 C2]	#	‍ςß͜.꯭
 T;	\u200Dςß\u035C.\uABED;	[V5 C2];	[V5]	#	‍ςß͜.꯭
@@ -4166,8 +4191,8 @@ B;	\uD9DA\uDE0Fⴃ䠅.\uD83B\uDC59;	[P1 V6];	[P1 V6]	#	򆨏ⴃ䠅.𞱙
 B;	\uD9DA\uDE0Fⴃ䠅．\uD83B\uDC59;	[P1 V6];	[P1 V6]	#	򆨏ⴃ䠅.𞱙
 B;	\u193A\u0662\uD803\uDE6E\uD802\uDEED｡𝟨Ⴅ;	[P1 V5 V6 B1];	[P1 V5 V6 B1]	#	᤺٢𐹮𐫭.6Ⴅ
 B;	\u193A\u0662\uD803\uDE6E\uD802\uDEED。6Ⴅ;	[P1 V5 V6 B1];	[P1 V5 V6 B1]	#	᤺٢𐹮𐫭.6Ⴅ
-B;	\u193A\u0662\uD803\uDE6E\uD802\uDEED。6ⴅ;	[P1 V5 V6 B1];	[P1 V5 V6 B1]	#	᤺٢𐹮𐫭.6ⴅ
-B;	\u193A\u0662\uD803\uDE6E\uD802\uDEED｡𝟨ⴅ;	[P1 V5 V6 B1];	[P1 V5 V6 B1]	#	᤺٢𐹮𐫭.6ⴅ
+B;	\u193A\u0662\uD803\uDE6E\uD802\uDEED。6ⴅ;	[V5 B1];	[V5 B1]	#	᤺٢𐹮𐫭.6ⴅ
+B;	\u193A\u0662\uD803\uDE6E\uD802\uDEED｡𝟨ⴅ;	[V5 B1];	[V5 B1]	#	᤺٢𐹮𐫭.6ⴅ
 B;	-｡︒;	[P1 V3 V6];	[P1 V3 V6]
 B;	-。。;	[V3 A4_2];	[V3 A4_2]
 B;	\u07CAჀ｡-⁵--;	[P1 V6 V2 V3 B2 B3];	[P1 V6 V2 V3 B2 B3]	#	ߊჀ.-5--
@@ -4228,9 +4253,9 @@ B;	\uDB40\uDD6C7.ᡞ\uDA0D\uDD4EႩ;	[P1 V6];	[P1 V6]	#	7.ᡞ򓕎Ⴉ
 B;	\uDB40\uDD6C7.ᡞ\uDA0D\uDD4Eⴉ;	[P1 V6];	[P1 V6]	#	7.ᡞ򓕎ⴉ
 B;	\uDB40\uDD6C𝟕.ᡞ\uDA0D\uDD4Eⴉ;	[P1 V6];	[P1 V6]	#	7.ᡞ򓕎ⴉ
 B;	閃9\u1AB1。Ↄ\uD803\uDE7B\u0846\u1BF2;	[P1 V6 B5];	[P1 V6 B5]	#	閃9᪱.Ↄ𐹻ࡆ᯲
-B;	閃9\u1AB1。ↄ\uD803\uDE7B\u0846\u1BF2;	[P1 V6 B5];	[P1 V6 B5]	#	閃9᪱.ↄ𐹻ࡆ᯲
+B;	閃9\u1AB1。ↄ\uD803\uDE7B\u0846\u1BF2;	[B5];	[B5]	#	閃9᪱.ↄ𐹻ࡆ᯲
 B;	\uA806ꡨ\uD804\uDF4D２.𐋢\u033A\uDB40\uDDE0︒;	[P1 V5 V6];	[P1 V5 V6]	#	꠆ꡨ𑍍2.𐋢̺︒
-B;	\uA806ꡨ\uD804\uDF4D2.𐋢\u033A\uDB40\uDDE0。;	[P1 V5 V6];	[P1 V5 V6]	#	꠆ꡨ𑍍2.𐋢̺.
+B;	\uA806ꡨ\uD804\uDF4D2.𐋢\u033A\uDB40\uDDE0。;	[V5];	[V5]	#	꠆ꡨ𑍍2.𐋢̺.
 B;	\uD8B9\uDE26｡≠-\uDB42\uDFA3⾛;	[P1 V6];	[P1 V6]	#	𾘦.≠-󠮣走
 B;	\uD8B9\uDE26｡=\u0338-\uDB42\uDFA3⾛;	[P1 V6];	[P1 V6]	#	𾘦.≠-󠮣走
 B;	\uD8B9\uDE26。≠-\uDB42\uDFA3走;	[P1 V6];	[P1 V6]	#	𾘦.≠-󠮣走
@@ -4253,8 +4278,8 @@ B;	0.xn--qny;	0.甯;	0.xn--qny
 B;	0.甯;	;	0.xn--qny
 B;	-⾆．\u17D2;	[V3 V5];	[V3 V5]	#	-舌.្
 B;	-舌.\u17D2;	[V3 V5];	[V3 V5]	#	-舌.្
-B;	-｡\uD802\uDF90;	[P1 V3 V6];	[P1 V3 V6]	#	-.𐮐
-B;	-。\uD802\uDF90;	[P1 V3 V6];	[P1 V3 V6]	#	-.𐮐
+B;	-｡\uD802\uDF90;	[V3];	[V3]	#	-.𐮐
+B;	-。\uD802\uDF90;	[V3];	[V3]	#	-.𐮐
 B;	🞾Ⴋ.≮;	[P1 V6];	[P1 V6]
 B;	🞾Ⴋ.<\u0338;	[P1 V6];	[P1 V6]
 B;	🞾ⴋ.<\u0338;	[P1 V6];	[P1 V6]
@@ -4267,10 +4292,13 @@ B;	\uD803\uDE658\uDA2C\uDC31｡-5\uDB42\uDD2C;	[P1 V6 V3 B1];	[P1 V6 V3 B1]	#	�
 B;	\uD803\uDE658\uDA2C\uDC31。-5\uDB42\uDD2C;	[P1 V6 V3 B1];	[P1 V6 V3 B1]	#	𐹥8򛀱.-5󠤬
 T;	\u200C.\u200C;	[C1];	[A4_2]	#	‌.‌
 N;	\u200C.\u200C;	[C1];	[C1]	#	‌.‌
-T;	\u200D튛.\uD802\uDFAE;	[P1 V6 C2];	[P1 V6]	#	‍튛.𐮮
-N;	\u200D튛.\uD802\uDFAE;	[P1 V6 C2];	[P1 V6 C2]	#	‍튛.𐮮
-T;	\u200D튛.\uD802\uDFAE;	[P1 V6 C2];	[P1 V6]	#	‍튛.𐮮
-N;	\u200D튛.\uD802\uDFAE;	[P1 V6 C2];	[P1 V6 C2]	#	‍튛.𐮮
+T;	\u200D튛.\uD802\uDFAE;	[C2];	xn--157b.xn--i39c	#	‍튛.𐮮
+N;	\u200D튛.\uD802\uDFAE;	[C2];	[C2]	#	‍튛.𐮮
+T;	\u200D튛.\uD802\uDFAE;	[C2];	xn--157b.xn--i39c	#	‍튛.𐮮
+N;	\u200D튛.\uD802\uDFAE;	[C2];	[C2]	#	‍튛.𐮮
+B;	xn--157b.xn--i39c;	튛.\uD802\uDFAE;	xn--157b.xn--i39c;	NV8	#	튛.𐮮
+B;	튛.\uD802\uDFAE;	;	xn--157b.xn--i39c;	NV8	#	튛.𐮮
+B;	튛.\uD802\uDFAE;	튛.\uD802\uDFAE;	xn--157b.xn--i39c;	NV8	#	튛.𐮮
 B;	\u075A\uD803\uDE65\uD802\uDD70.ᡜⴞ;	[P1 V6];	[P1 V6]	#	ݚ𐹥𐥰.ᡜⴞ
 B;	\u075A\uD803\uDE65\uD802\uDD70.ᡜႾ;	[P1 V6];	[P1 V6]	#	ݚ𐹥𐥰.ᡜႾ
 B;	\uD83A\uDFCD\uD803\uDE66\uDB40\uDC79𝟧．\u0662\u0663Ⴇ;	[P1 V6 B4 B1];	[P1 V6 B4 B1]	#	𞯍𐹦󠁹5.٢٣Ⴇ
@@ -4326,7 +4354,7 @@ B;	\u103A。\uD884\uDF8D\u0593⒕;	[P1 V5 V6];	[P1 V5 V6]	#	်.𱎍֓⒕
 B;	\u103A。\uD884\uDF8D\u059314.;	[P1 V5 V6];	[P1 V5 V6]	#	်.𱎍֓14.
 B;	\uD970\uDCF6ꡓ．\u0F94\u0666;	[P1 V6 V5 B1];	[P1 V6 V5 B1]	#	񬃶ꡓ.ྔ٦
 B;	\uD970\uDCF6ꡓ.\u0F94\u0666;	[P1 V6 V5 B1];	[P1 V6 V5 B1]	#	񬃶ꡓ.ྔ٦
-B;	\uD800\uDEE0\uD802\uDED5-。\u0646;	[P1 V3 V5 V6 B1];	[P1 V3 V5 V6 B1]	#	𐋠𐫕-.ن
+B;	\uD800\uDEE0\uD802\uDED5-。\u0646;	[V3 V5 B1];	[V3 V5 B1]	#	𐋠𐫕-.ن
 T;	𝟠4\u0302\uDB43\uDCB1．\u200D𐋵\uDB41\uDC58\u200D;	[P1 V6 C2];	[P1 V6]	#	84̂󠲱.‍𐋵󠑘‍
 N;	𝟠4\u0302\uDB43\uDCB1．\u200D𐋵\uDB41\uDC58\u200D;	[P1 V6 C2];	[P1 V6 C2]	#	84̂󠲱.‍𐋵󠑘‍
 T;	84\u0302\uDB43\uDCB1.\u200D𐋵\uDB41\uDC58\u200D;	[P1 V6 C2];	[P1 V6]	#	84̂󠲱.‍𐋵󠑘‍
@@ -4418,26 +4446,26 @@ T;	\u200C.\uD804\uDD02\uD803\uDE74Ⴆ\uDB43\uDE96;	[P1 V5 V6 C1 B1];	[P1 V5 V6 B
 N;	\u200C.\uD804\uDD02\uD803\uDE74Ⴆ\uDB43\uDE96;	[P1 V5 V6 C1 B1];	[P1 V5 V6 C1 B1]	#	‌.𑄂𐹴Ⴆ󠺖
 T;	\u200C.\uD804\uDD02\uD803\uDE74ⴆ\uDB43\uDE96;	[P1 V5 V6 C1 B1];	[P1 V5 V6 B1]	#	‌.𑄂𐹴ⴆ󠺖
 N;	\u200C.\uD804\uDD02\uD803\uDE74ⴆ\uDB43\uDE96;	[P1 V5 V6 C1 B1];	[P1 V5 V6 C1 B1]	#	‌.𑄂𐹴ⴆ󠺖
-B;	\u075C．\uD805\uDE3F\u200DϞ;	[P1 V5 V6];	[P1 V5 V6]	#	ݜ.𑘿‍ϟ
-B;	\u075C.\uD805\uDE3F\u200DϞ;	[P1 V5 V6];	[P1 V5 V6]	#	ݜ.𑘿‍ϟ
-B;	\u075C.\uD805\uDE3F\u200Dϟ;	[P1 V5 V6];	[P1 V5 V6]	#	ݜ.𑘿‍ϟ
-B;	\u075C．\uD805\uDE3F\u200Dϟ;	[P1 V5 V6];	[P1 V5 V6]	#	ݜ.𑘿‍ϟ
+B;	\u075C．\uD805\uDE3F\u200DϞ;	[V5];	[V5]	#	ݜ.𑘿‍ϟ
+B;	\u075C.\uD805\uDE3F\u200DϞ;	[V5];	[V5]	#	ݜ.𑘿‍ϟ
+B;	\u075C.\uD805\uDE3F\u200Dϟ;	[V5];	[V5]	#	ݜ.𑘿‍ϟ
+B;	\u075C．\uD805\uDE3F\u200Dϟ;	[V5];	[V5]	#	ݜ.𑘿‍ϟ
 T;	\u200C\uD803\uDC70\uD804\uDF4D。\u077B\u063F-腍;	[P1 V6 B1 C1 B2 B3];	[P1 V6 B2 B3]	#	‌𐱰𑍍.ݻؿ-腍
 N;	\u200C\uD803\uDC70\uD804\uDF4D。\u077B\u063F-腍;	[P1 V6 B1 C1 B2 B3];	[P1 V6 B1 C1 B2 B3]	#	‌𐱰𑍍.ݻؿ-腍
 B;	-\uDA2D\uDCC5\uD803\uDE6E\uDAE5\uDC2C｡𝟛\uD815\uDDE5🄅;	[P1 V3 V6 B1];	[P1 V3 V6 B1]	#	-򛓅𐹮󉐬.3𕗥🄅
 B;	-\uDA2D\uDCC5\uD803\uDE6E\uDAE5\uDC2C。3\uD815\uDDE54,;	[P1 V3 V6 B1];	[P1 V3 V6 B1]	#	-򛓅𐹮󉐬.3𕗥4,
 B;	\uA8E7．Ⴂꡚ\uD805\uDCC2𐋮;	[P1 V5 V6];	[P1 V5 V6]	#	꣧.Ⴂꡚ𑓂𐋮
 B;	\uA8E7.Ⴂꡚ\uD805\uDCC2𐋮;	[P1 V5 V6];	[P1 V5 V6]	#	꣧.Ⴂꡚ𑓂𐋮
-B;	\uA8E7.ⴂꡚ\uD805\uDCC2𐋮;	[P1 V5 V6];	[P1 V5 V6]	#	꣧.ⴂꡚ𑓂𐋮
-B;	\uA8E7．ⴂꡚ\uD805\uDCC2𐋮;	[P1 V5 V6];	[P1 V5 V6]	#	꣧.ⴂꡚ𑓂𐋮
+B;	\uA8E7.ⴂꡚ\uD805\uDCC2𐋮;	[V5];	[V5]	#	꣧.ⴂꡚ𑓂𐋮
+B;	\uA8E7．ⴂꡚ\uD805\uDCC2𐋮;	[V5];	[V5]	#	꣧.ⴂꡚ𑓂𐋮
 B;	軥ᢠ.-\u0345;	[V3];	[V3]
 B;	軥ᢠ.-Ι;	[V3];	[V3]
 B;	軥ᢠ.-ι;	[V3];	[V3]
 B;	\u0602ꡭ\u06B6.\uD834\uDD80-;	[P1 V6 V3 V5 B1];	[P1 V6 V3 V5 B1]	#	؂ꡭڶ.𝆀-
-B;	-\u1A5A0｡\uDB40\uDD03\uD805\uDDBF톇십;	[P1 V3 V5 V6];	[P1 V3 V5 V6]	#	-ᩚ0.𑖿톇십
-B;	-\u1A5A0｡\uDB40\uDD03\uD805\uDDBF톇십;	[P1 V3 V5 V6];	[P1 V3 V5 V6]	#	-ᩚ0.𑖿톇십
-B;	-\u1A5A0。\uDB40\uDD03\uD805\uDDBF톇십;	[P1 V3 V5 V6];	[P1 V3 V5 V6]	#	-ᩚ0.𑖿톇십
-B;	-\u1A5A0。\uDB40\uDD03\uD805\uDDBF톇십;	[P1 V3 V5 V6];	[P1 V3 V5 V6]	#	-ᩚ0.𑖿톇십
+B;	-\u1A5A0｡\uDB40\uDD03\uD805\uDDBF톇십;	[V3 V5];	[V3 V5]	#	-ᩚ0.𑖿톇십
+B;	-\u1A5A0｡\uDB40\uDD03\uD805\uDDBF톇십;	[V3 V5];	[V3 V5]	#	-ᩚ0.𑖿톇십
+B;	-\u1A5A0。\uDB40\uDD03\uD805\uDDBF톇십;	[V3 V5];	[V3 V5]	#	-ᩚ0.𑖿톇십
+B;	-\u1A5A0。\uDB40\uDD03\uD805\uDDBF톇십;	[V3 V5];	[V3 V5]	#	-ᩚ0.𑖿톇십
 B;	ꡤ︒--｡\uDB40\uDDA5靈\u0604\uDA02\uDE79;	[P1 V2 V3 V6 B5];	[P1 V2 V3 V6 B5]	#	ꡤ︒--.靈؄򐩹
 B;	ꡤ。--。\uDB40\uDDA5靈\u0604\uDA02\uDE79;	[P1 V3 V6 B5];	[P1 V3 V6 B5]	#	ꡤ.--.靈؄򐩹
 B;	\u115FႿႵრ｡\uA806;	[P1 V6 V5];	[P1 V6 V5]	#	ᅟႿႵრ.꠆
@@ -4463,8 +4491,9 @@ B;	𝟛\u0FA6\u09CD｡\uD834\uDD89-;	[V3 V5];	[V3 V5]	#	3ྦ্.𝆉-
 B;	3\u0FA6\u09CD。\uD834\uDD89-;	[V3 V5];	[V3 V5]	#	3ྦ্.𝆉-
 B;	ᠭ\u1ABC\uD805\uDE3FႧ.4;	[P1 V6];	[P1 V6]	#	ᠭ𑘿᪼Ⴇ.4
 B;	ᠭ\uD805\uDE3F\u1ABCႧ.4;	[P1 V6];	[P1 V6]	#	ᠭ𑘿᪼Ⴇ.4
-B;	ᠭ\uD805\uDE3F\u1ABCⴇ.4;	[P1 V6];	[P1 V6]	#	ᠭ𑘿᪼ⴇ.4
-B;	ᠭ\u1ABC\uD805\uDE3Fⴇ.4;	[P1 V6];	[P1 V6]	#	ᠭ𑘿᪼ⴇ.4
+B;	ᠭ\uD805\uDE3F\u1ABCⴇ.4;	;	xn--g7e42ko0zj83t.4	#	ᠭ𑘿᪼ⴇ.4
+B;	xn--g7e42ko0zj83t.4;	ᠭ\uD805\uDE3F\u1ABCⴇ.4;	xn--g7e42ko0zj83t.4	#	ᠭ𑘿᪼ⴇ.4
+B;	ᠭ\u1ABC\uD805\uDE3Fⴇ.4;	ᠭ\uD805\uDE3F\u1ABCⴇ.4;	xn--g7e42ko0zj83t.4	#	ᠭ𑘿᪼ⴇ.4
 B;	ᄹ｡\uDB40\uDD61\uD823\uDF69𐅭;	[P1 V6];	[P1 V6]	#	ᄹ.𘽩𐅭
 B;	ᄹ。\uDB40\uDD61\uD823\uDF69𐅭;	[P1 V6];	[P1 V6]	#	ᄹ.𘽩𐅭
 B;	Ⴆ\uD8FE\uDF09．\uA947\uFE03ᠬ;	[P1 V6 V5];	[P1 V6 V5]	#	Ⴆ񏬉.ꥇᠬ
@@ -4691,8 +4720,8 @@ N;	\uD803\uDCFB\uD94C\uDE90.σ\u200D\uD803\uDE7C;	[P1 V6 B2 B3 B5 B6 C2];	[P1 V6
 B;	⒎ꡭ\uD803\uDE70｡\uA9C0۵\u0748;	[P1 V6 V5 B1];	[P1 V6 V5 B1]	#	⒎ꡭ𐹰.꧀۵݈
 B;	7.ꡭ\uD803\uDE70。\uA9C0۵\u0748;	[V5 B5 B6];	[V5 B5 B6]	#	7.ꡭ𐹰.꧀۵݈
 B;	-ᢒ᠆\uD919\uDFC1。\uD803\uDE7D\u108D\u0600;	[P1 V3 V6 B1];	[P1 V3 V6 B1]	#	-ᢒ᠆񖟁.𐹽ႍ؀
-T;	\u200D.ᡫ\uD803\uDE66\u1DF3;	[P1 V6 C2 B5 B6];	[P1 V6 B5 B6]	#	‍.ᡫ𐹦ᷳ
-N;	\u200D.ᡫ\uD803\uDE66\u1DF3;	[P1 V6 C2 B5 B6];	[P1 V6 C2 B5 B6]	#	‍.ᡫ𐹦ᷳ
+T;	\u200D.ᡫ\uD803\uDE66\u1DF3;	[C2 B5 B6];	[B5 B6]	#	‍.ᡫ𐹦ᷳ
+N;	\u200D.ᡫ\uD803\uDE66\u1DF3;	[C2 B5 B6];	[C2 B5 B6]	#	‍.ᡫ𐹦ᷳ
 T;	㒧۱.Ⴚ\u084C\u200D;	[P1 V6 B5 B6 C2];	[P1 V6 B5 B6]	#	㒧۱.Ⴚࡌ‍
 N;	㒧۱.Ⴚ\u084C\u200D;	[P1 V6 B5 B6 C2];	[P1 V6 B5 B6 C2]	#	㒧۱.Ⴚࡌ‍
 T;	㒧۱.ⴚ\u084C\u200D;	[B5 B6 C2];	[B5 B6]	#	㒧۱.ⴚࡌ‍
@@ -4713,8 +4742,8 @@ T;	\uDBBA\uDD72\uD803\uDE6C．\uD83B\uDDF0\u200D\uA953\uDA48\uDEFF;	[P1 V6 B5 B6
 N;	\uDBBA\uDD72\uD803\uDE6C．\uD83B\uDDF0\u200D\uA953\uDA48\uDEFF;	[P1 V6 B5 B6 B2 B3 C2];	[P1 V6 B5 B6 B2 B3 C2]	#	󾥲𐹬.𞷰‍꥓򢋿
 T;	\uDBBA\uDD72\uD803\uDE6C.\uD83B\uDDF0\u200D\uA953\uDA48\uDEFF;	[P1 V6 B5 B6 B2 B3 C2];	[P1 V6 B5 B6 B2 B3]	#	󾥲𐹬.𞷰‍꥓򢋿
 N;	\uDBBA\uDD72\uD803\uDE6C.\uD83B\uDDF0\u200D\uA953\uDA48\uDEFF;	[P1 V6 B5 B6 B2 B3 C2];	[P1 V6 B5 B6 B2 B3 C2]	#	󾥲𐹬.𞷰‍꥓򢋿
-B;	\uD803\uDE69𐋩\uD802\uDD2B｡\u0D4D;	[P1 V6 V5 B1];	[P1 V6 V5 B1]	#	𐹩𐋩𐤫.്
-B;	\uD803\uDE69𐋩\uD802\uDD2B。\u0D4D;	[P1 V6 V5 B1];	[P1 V6 V5 B1]	#	𐹩𐋩𐤫.്
+B;	\uD803\uDE69𐋩\uD802\uDD2B｡\u0D4D;	[V5 B1];	[V5 B1]	#	𐹩𐋩𐤫.്
+B;	\uD803\uDE69𐋩\uD802\uDD2B。\u0D4D;	[V5 B1];	[V5 B1]	#	𐹩𐋩𐤫.്
 B;	6\u1160\u033B⥐.\uD871\uDD4F锰\u084Bς;	[P1 V6 B5];	[P1 V6 B5]	#	6ᅠ̻⥐.𬕏锰ࡋς
 B;	6\u1160\u033B⥐.\uD871\uDD4F锰\u084BΣ;	[P1 V6 B5];	[P1 V6 B5]	#	6ᅠ̻⥐.𬕏锰ࡋσ
 B;	6\u1160\u033B⥐.\uD871\uDD4F锰\u084Bσ;	[P1 V6 B5];	[P1 V6 B5]	#	6ᅠ̻⥐.𬕏锰ࡋσ
@@ -4824,16 +4853,17 @@ B;	SS1.\u0641\uD968\uDFA5.\uDB32\uDFF0\u1DD2\uD803\uDE79\uDBD6\uDEEB;	[P1 V6 B2 
 B;	SS⒈\u0641\uD968\uDFA5．\uDB32\uDFF0\u1DD2\uD803\uDE79\uDBD6\uDEEB;	[P1 V6 B5];	[P1 V6 B5]	#	ss⒈ف񪎥.󜯰᷒𐹹􅫫
 B;	ss⒈\u0641\uD968\uDFA5．\uDB32\uDFF0\u1DD2\uD803\uDE79\uDBD6\uDEEB;	[P1 V6 B5];	[P1 V6 B5]	#	ss⒈ف񪎥.󜯰᷒𐹹􅫫
 B;	Ss⒈\u0641\uD968\uDFA5．\uDB32\uDFF0\u1DD2\uD803\uDE79\uDBD6\uDEEB;	[P1 V6 B5];	[P1 V6 B5]	#	ss⒈ف񪎥.󜯰᷒𐹹􅫫
-B;	🌱.𐋱₂;	[P1 V6];	[P1 V6]
-B;	🌱.𐋱2;	[P1 V6];	[P1 V6]
-T;	\uD802\uDF89\u064C。-ßꡮ\u200C;	[P1 V6 V3 C1];	[P1 V6 V3]	#	𐮉ٌ.-ßꡮ‌
-N;	\uD802\uDF89\u064C。-ßꡮ\u200C;	[P1 V6 V3 C1];	[P1 V6 V3 C1]	#	𐮉ٌ.-ßꡮ‌
-T;	\uD802\uDF89\u064C。-SSꡮ\u200C;	[P1 V6 V3 C1];	[P1 V6 V3]	#	𐮉ٌ.-ssꡮ‌
-N;	\uD802\uDF89\u064C。-SSꡮ\u200C;	[P1 V6 V3 C1];	[P1 V6 V3 C1]	#	𐮉ٌ.-ssꡮ‌
-T;	\uD802\uDF89\u064C。-ssꡮ\u200C;	[P1 V6 V3 C1];	[P1 V6 V3]	#	𐮉ٌ.-ssꡮ‌
-N;	\uD802\uDF89\u064C。-ssꡮ\u200C;	[P1 V6 V3 C1];	[P1 V6 V3 C1]	#	𐮉ٌ.-ssꡮ‌
-T;	\uD802\uDF89\u064C。-Ssꡮ\u200C;	[P1 V6 V3 C1];	[P1 V6 V3]	#	𐮉ٌ.-ssꡮ‌
-N;	\uD802\uDF89\u064C。-Ssꡮ\u200C;	[P1 V6 V3 C1];	[P1 V6 V3 C1]	#	𐮉ٌ.-ssꡮ‌
+B;	🌱.𐋱₂;	🌱.𐋱2;	xn--uh8h.xn--2-w91i;	NV8
+B;	🌱.𐋱2;	;	xn--uh8h.xn--2-w91i;	NV8
+B;	xn--uh8h.xn--2-w91i;	🌱.𐋱2;	xn--uh8h.xn--2-w91i;	NV8
+T;	\uD802\uDF89\u064C。-ßꡮ\u200C;	[V3 C1];	[V3]	#	𐮉ٌ.-ßꡮ‌
+N;	\uD802\uDF89\u064C。-ßꡮ\u200C;	[V3 C1];	[V3 C1]	#	𐮉ٌ.-ßꡮ‌
+T;	\uD802\uDF89\u064C。-SSꡮ\u200C;	[V3 C1];	[V3]	#	𐮉ٌ.-ssꡮ‌
+N;	\uD802\uDF89\u064C。-SSꡮ\u200C;	[V3 C1];	[V3 C1]	#	𐮉ٌ.-ssꡮ‌
+T;	\uD802\uDF89\u064C。-ssꡮ\u200C;	[V3 C1];	[V3]	#	𐮉ٌ.-ssꡮ‌
+N;	\uD802\uDF89\u064C。-ssꡮ\u200C;	[V3 C1];	[V3 C1]	#	𐮉ٌ.-ssꡮ‌
+T;	\uD802\uDF89\u064C。-Ssꡮ\u200C;	[V3 C1];	[V3]	#	𐮉ٌ.-ssꡮ‌
+N;	\uD802\uDF89\u064C。-Ssꡮ\u200C;	[V3 C1];	[V3 C1]	#	𐮉ٌ.-ssꡮ‌
 T;	\uA94C\u200Dᡠ\uD912\uDDEF．;🔔Ⴡ;	[P1 V5 V6 C2];	[P1 V5 V6]	#	ꥌ‍ᡠ񔧯.;🔔Ⴡ
 N;	\uA94C\u200Dᡠ\uD912\uDDEF．;🔔Ⴡ;	[P1 V5 V6 C2];	[P1 V5 V6 C2]	#	ꥌ‍ᡠ񔧯.;🔔Ⴡ
 T;	\uA94C\u200Dᡠ\uD912\uDDEF．;🔔Ⴡ;	[P1 V5 V6 C2];	[P1 V5 V6]	#	ꥌ‍ᡠ񔧯.;🔔Ⴡ
@@ -4928,8 +4958,8 @@ B;	\uD83A\uDD24≮\uD8B8\uDDF7≯.\uD803\uDE7D\uD803\uDF11\u1A60;	[P1 V6 B2 B3 B
 B;	\uD83A\uDD24<\u0338\uD8B8\uDDF7>\u0338.\uD803\uDE7D\uD803\uDF11\u1A60;	[P1 V6 B2 B3 B1];	[P1 V6 B2 B3 B1]	#	𞤤≮𾇷≯.𐹽𐼑᩠
 B;	-｡\uDB42\uDF26;	[P1 V3 V6];	[P1 V3 V6]	#	-.󠬦
 B;	-。\uDB42\uDF26;	[P1 V3 V6];	[P1 V3 V6]	#	-.󠬦
-B;	⨋\uD82F\uDC9E．\u0F84;	[P1 V6 V5];	[P1 V6 V5]	#	⨋𛲞.྄
-B;	⨋\uD82F\uDC9E.\u0F84;	[P1 V6 V5];	[P1 V6 V5]	#	⨋𛲞.྄
+B;	⨋\uD82F\uDC9E．\u0F84;	[V5];	[V5]	#	⨋𛲞.྄
+B;	⨋\uD82F\uDC9E.\u0F84;	[V5];	[V5]	#	⨋𛲞.྄
 T;	®.\uDA11\uDF3D\u200C;	[P1 V6 C1];	[P1 V6]	#	®.򔜽‌
 N;	®.\uDA11\uDF3D\u200C;	[P1 V6 C1];	[P1 V6 C1]	#	®.򔜽‌
 B;	ꡱ\u05B6.\u1A5D;	[V5];	[V5]	#	ꡱֶ.ᩝ
@@ -5010,8 +5040,10 @@ B;	Σ\uD803\uDE77\u06AF\u0ACD.又\uD803\uDE64\uD952\uDF7D\uD802\uDED8;	[P1 V6 B5
 B;	σ\uD803\uDE77\u06AF\u0ACD.又\uD803\uDE64\uD952\uDF7D\uD802\uDED8;	[P1 V6 B5 B6];	[P1 V6 B5 B6]	#	σ𐹷گ્.又𐹤񤭽𐫘
 B;	Σ\uD803\uDE77\u06AF\u0ACD．⼜\uD803\uDE64\uD952\uDF7D\uD802\uDED8;	[P1 V6 B5 B6];	[P1 V6 B5 B6]	#	σ𐹷گ્.又𐹤񤭽𐫘
 B;	σ\uD803\uDE77\u06AF\u0ACD．⼜\uD803\uDE64\uD952\uDF7D\uD802\uDED8;	[P1 V6 B5 B6];	[P1 V6 B5 B6]	#	σ𐹷گ્.又𐹤񤭽𐫘
-T;	𐋷。\u200D;	[P1 V6 C2];	[P1 V6]	#	𐋷.‍
-N;	𐋷。\u200D;	[P1 V6 C2];	[P1 V6 C2]	#	𐋷.‍
+T;	𐋷。\u200D;	[C2];	xn--r97c.	#	𐋷.‍
+N;	𐋷。\u200D;	[C2];	[C2]	#	𐋷.‍
+B;	xn--r97c.;	𐋷.;	xn--r97c.;	NV8
+B;	𐋷.;	;	xn--r97c.;	NV8
 B;	\uDB41\uDF8F\uD805\uDEAB。\uDB40\uDCC5;	[P1 V6];	[P1 V6]	#	󠞏𑚫.󠃅
 T;	\u0BCD䁴\uD9AE\uDE39．Ⴕ𝟜\u200C\u0E37;	[P1 V5 V6 C1];	[P1 V5 V6]	#	்䁴񻨹.Ⴕ4‌ื
 N;	\u0BCD䁴\uD9AE\uDE39．Ⴕ𝟜\u200C\u0E37;	[P1 V5 V6 C1];	[P1 V5 V6 C1]	#	்䁴񻨹.Ⴕ4‌ื

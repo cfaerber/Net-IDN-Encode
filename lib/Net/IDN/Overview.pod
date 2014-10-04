@@ -125,9 +125,9 @@ has an API depending on global variables. Don't use this module.
 is the main distribution covering the most common cases for
 converting domain names between ASCII and Unicode.
 
-The author tries to keep the dependency chain as small as possible;
-currently this distribution only depends on perl 5.8.5 and
-L<Unicode::Normalize>. 
+The author tries to keep the dependency chain as small as possible; currently
+this distribution only depends on perl 5.8.5 (including the core module
+L<Unicode::Normalize> ). 
 
 =item Net-IDN-IDNA2003
 

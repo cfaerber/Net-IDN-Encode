@@ -134,6 +134,10 @@ the ASCII characters already allowed in so-called host names today
 Use this module if you just want to convert domain names (or email addresses),
 using whatever IDNA standard is the best choice at the moment.
 
+You should be familiar with Unicode support in perl, as this module expects
+correctly encoded input. See L<perlunitut>, L<perluniintro> and L<perlunicode>
+for details.
+
 =head1 UNICODE VERSION
 
 To convert labels correctly between Unicode and ASCII, each character in the
@@ -329,7 +333,7 @@ Claus FE<auml>rber <CFAERBER@cpan.org>
 
 =head1 LICENSE
 
-Copyright 2007-2013 Claus FE<auml>rber.
+Copyright 2007-2014 Claus FE<auml>rber.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

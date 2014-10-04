@@ -204,11 +204,11 @@ Claus FE<auml>rber <CFAERBER@cpan.org>
 
 =head1 LICENSE
 
-Copyright 2011-2013 Claus FE<auml>rber.
+Copyright 2011-2014 Claus FE<auml>rber.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
 
 =head1 SEE ALSO
 
-L<Net::IDN::UTS46>, L<Net::IDN::Stringprep>, S<UTS #46> (L<http://www.unicode.org/reports/tr46/>)
+

@@ -6,7 +6,7 @@ use strict;
 use utf8;
 use warnings;
 
-our $VERSION = "2.201_20141004";
+our $VERSION = "2.201_20150330";
 $VERSION = eval $VERSION;
 
 use Carp;
@@ -56,7 +56,7 @@ sub to_unicode {
   my($label,%param) = @_;
   croak 'Invalid label' if $label =~ m/\p{IsIDNADot}/o;
 
-  if($label =~ m/\P{ASCII}|^$IDNA_PREFIX/oi) {
+  if($label =~ m/\P{ASCII}|^(?:(?i)$IDNA_PREFIX)/o) {
     $label = Net::IDN::UTS46::to_unicode(@_);
   }
   return $label;

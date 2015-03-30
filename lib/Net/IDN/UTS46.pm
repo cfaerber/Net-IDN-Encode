@@ -107,7 +107,7 @@ sub _process {
 # 4. Convert/Validate
 #
   foreach my $l (@ll) {
-    if($l =~ m/^$IDNA_PREFIX(\p{ASCII}+)$/oi) {
+    if($l =~ m/^(?:(?i)$IDNA_PREFIX)(\p{ASCII}+)$/o) {
       eval { $l = decode_punycode($1); };
       croak 'Invalid Punycode sequence [P4]' if $@;
 

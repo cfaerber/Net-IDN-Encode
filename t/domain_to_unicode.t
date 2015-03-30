@@ -3,7 +3,7 @@ use strict;
 
 BEGIN { binmode STDOUT, ':utf8'; binmode STDERR, ':utf8'; }
 
-use Test::More tests => 1 + 13;
+use Test::More tests => 1 + 14;
 use Test::NoWarnings;
 
 use Net::IDN::Encode qw(:all);
@@ -25,3 +25,5 @@ is(eval{domain_to_unicode("EXAMPLE.xn--11B5BS3A9AJ6G")}, 'EXAMPLE.परीक�
 is(eval{domain_to_unicode("I.\x{2665}.Perl.invalid")}, "I.\x{2665}.Perl.invalid", 'mixed case');
 is(eval{domain_to_unicode('I.xn--g6h.Perl.invalid')}, "I.\x{2665}.Perl.invalid", 'mixed case');
 is(eval{domain_to_unicode('_test._srv.xn--mller-kva.example.com')}, '_test._srv.müller.example.com', 'SRV record');
+
+is(eval{domain_to_unicode('xn--zcaa.de')}, 'ßß.de', 'bare ßß');

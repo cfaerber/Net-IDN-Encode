@@ -1,10 +1,11 @@
 Revision history for Perl extension Net::IDN::Encode
 
-	- FIXES: #103205 for Net-IDN-Encode: conversion of domain name
-	  xn--zcaa.de
+2.202 (2015-04-18)
 	- use updated IdnaTest.txt from Unicode 7.0.0 database
 	  FIXES: #96749: Fails with bleadperl
 	- documentation updates, point to perl Unicode tutorials
+	- tests for domain xn--zcaa.de;
+	  REJECTED: #103205 for Net-IDN-Encode: conversion of domain name
 
 2.201 (2014-08-30)
 	- correct handling of uppercase a-labels in

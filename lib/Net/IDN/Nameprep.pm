@@ -67,6 +67,8 @@ BEGIN {
 1;
 __END__
 
+=encoding UTF-8
+
 =head1 NAME
 
 Net::IDN::Nameprep - A Stringprep Profile for Internationalized Domain Names (S<RFC 3491>)

@@ -17,7 +17,7 @@ my $b = Module::Build->new(
 
 	'requires'	=> {
 		'Unicode::Stringprep' => 1.1,
-	##	'perl' => 5.008003, ## whatever U::S needs
+		'perl' => 5.008003, ## whatever U::S needs
 	},
 	'build_requires' => {
 		'Test::More' => 0, 
@@ -26,9 +26,11 @@ my $b = Module::Build->new(
 	'no_index' => {
 		'directory' => ['eg']
 	},
-	'resources' => {
+        'meta_add' => {
+	  'resources' => {
 		'homepage' => 'http://search.cpan.org/dist/Net-IDN-Encode',
 		'repository' => 'http://github.com/cfaerber/Net-IDN-Encode',
+          },
 	},
 );
 

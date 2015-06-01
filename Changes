@@ -1,7 +1,10 @@
 Revision history for Perl extension Net::IDN::Nameprep
 
-1.101 (2011-12-08)
+1.102 (2015-06-01)
+	- FIXES: #104799 [PATCH] add encoding directive to POD
+	- re-package with updated metadata
 
+1.101 (2011-12-08)
 	- FIXES: #72615 faulty data in Build.PL causes a lack of
 	  meta files, which breaks carton.
 

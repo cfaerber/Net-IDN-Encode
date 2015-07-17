@@ -4,7 +4,7 @@ use strict;
 use utf8;
 use warnings;
 
-our $VERSION = 2;
+our $VERSION = 0;
 
 our $UNICODE_VERSION = undef;
 our $UNICODE_DATE = undef;

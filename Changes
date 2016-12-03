@@ -1,5 +1,9 @@
 Revision history for Perl extension Net::IDN::Encode
 
+2.301 (2016-12-03)
+	- FIXES: #118924: encode_punycode heap overflow
+	  (reported by Alexander Bluhm)
+
 2.300 (2015-06-17)
 	- update to Unicode 8.0.0
 

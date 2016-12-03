@@ -6,7 +6,7 @@ use strict;
 use utf8;
 use warnings;
 
-our $VERSION = "2.300";
+our $VERSION = "2.301";
 $VERSION = eval $VERSION;
 
 use Carp;
@@ -31,7 +31,7 @@ our %EXPORT_TAGS = (
 );
 Exporter::export_ok_tags(keys %EXPORT_TAGS);
 
-use Net::IDN::Punycode 1 ();
+use Net::IDN::Punycode 1.102 ();
 
 our $IDNA_PREFIX = 'xn--';
 sub IsIDNADot 	{ "002E\n3002\nFF0E\nFF61" }

@@ -57,7 +57,6 @@ static void
 grow_string(SV *const sv, char **start, char **current, char **end, STRLEN add)
 {
   STRLEN len;
-  char* new_start;
 
   if(*current + add <= *end)
     return;

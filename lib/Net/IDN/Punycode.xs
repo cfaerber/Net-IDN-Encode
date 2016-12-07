@@ -5,7 +5,7 @@
 #ifdef XS_VERSION
 #undef XS_VERSION
 #endif
-#define XS_VERSION "1.101"
+#define XS_VERSION "1.102"
 
 #define BASE 36
 #define TMIN 1
@@ -20,10 +20,14 @@
 
 #define TMIN_MAX(t)  (((t) < TMIN) ? (TMIN) : ((t) > TMAX) ? (TMAX) : (t))
 
+#ifndef utf8_to_uvchr_buf
+#define utf8_to_uvchr_buf(in_p,in_e,u8) utf8_to_uvchr((U8*)in_p, &u8);
+#endif
+
 static char enc_digit[BASE] = {
   'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
   'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
-  '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 
+  '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
 };
 
 static IV dec_digit[0x80] = {
@@ -53,12 +57,13 @@ static void
 grow_string(SV *const sv, char **start, char **current, char **end, STRLEN add)
 {
   STRLEN len;
+  char* new_start;
 
   if(*current + add <= *end)
     return;
 
-  len = (*current - *start + add + 15) & ~15;
-  *start = SvGROW(sv, len);
+  len = (*current - *start);
+  *start = SvGROW(sv, (len + add + 15) & ~15);
   *current = *start + len;
   *end = *start + SvLEN(sv);
 }
@@ -67,7 +72,7 @@ MODULE = Net::IDN::Punycode PACKAGE = Net::IDN::Punycode
 
 SV*
 encode_punycode(input)
-		SV * input	
+		SV * input
 	PREINIT:
 		UV c, m, n = INITIAL_N;
 		int k, q, t;
@@ -79,7 +84,7 @@ encode_punycode(input)
 		int first = 1;
 		STRLEN length_guess, len, h, u8;
 
-	PPCODE:	
+	CODE:
 		in_s = in_p = SvPVutf8(input, len);
 		in_e = in_s + len;
 
@@ -88,25 +93,24 @@ encode_punycode(input)
 		length_guess += 2;				/* plus DELIM + '\0' */
 
 		RETVAL = NEWSV('P',length_guess);
-		sv_2mortal(RETVAL);				/* so we can use croak w/o memory leaks */
-		SvPOK_only(RETVAL);				/* UTF8 is off (BASE chars only) */
+		SvPOK_only(RETVAL);
 		re_s = re_p = SvPV_nolen(RETVAL);
 		re_e = re_s + SvLEN(RETVAL);
+		h = 0;
 
 		/* copy basic code points */
 		while(in_p < in_e) {
 		  if( isBASE(*in_p) )  {
-		    grow_string(RETVAL, &re_s, &re_p, &re_e, 1);
+                    grow_string(RETVAL, &re_s, &re_p, &re_e, sizeof(char));
 		    *re_p++ = *in_p;
+		    h++;
 		  }
 		  in_p++;
 		}
 
-		h = re_p - re_s;
-
-		/* add DELIM if needed */	
+		/* add DELIM if needed */
 		if(h) {
-		  grow_string(RETVAL, &re_s, &re_p, &re_e, 1);
+                  grow_string(RETVAL, &re_s, &re_p, &re_e, sizeof(char));
 		  *re_p++ = DELIM;
 		}
 
@@ -116,11 +120,7 @@ encode_punycode(input)
 		  q = skip_delta = 0;
 
 		  for(in_p = skip_p = in_s; in_p < in_e;) {
-#ifdef utf8_to_uvchr_buf
 		    c = utf8_to_uvchr_buf((U8*)in_p, (U8*)in_e, &u8);
-#else
-		    c = utf8_to_uvchr((U8*)in_p, &u8);
-#endif
 		    c = NATIVE_TO_UNI(c);
 
 		    if(c >= n && c < m) {
@@ -132,7 +132,7 @@ encode_punycode(input)
 		      ++q;
 		    in_p += u8;
 		  }
-		  if(m == UV_MAX) 
+		  if(m == UV_MAX)
 		    break;
 
 		  /* increase delta to the state corresponding to
@@ -144,11 +144,7 @@ encode_punycode(input)
 
 		  delta += skip_delta;
 		  for(in_p = skip_p; in_p < in_e;) {
-#ifdef utf8_to_uvchr_buf
 		    c = utf8_to_uvchr_buf((U8*)in_p, (U8*)in_e, &u8);
-#else
-		    c = utf8_to_uvchr((U8*)in_p, &u8);
-#endif
 		    c = NATIVE_TO_UNI(c);
 
 		    if(c < n) {
@@ -159,12 +155,12 @@ encode_punycode(input)
 		      for(k = BASE;; k += BASE) {
 			t = TMIN_MAX(k - bias);
 			if(q < t) break;
-			grow_string(RETVAL, &re_s, &re_p, &re_e, 1);
+		        grow_string(RETVAL, &re_s, &re_p, &re_e, sizeof(char));
 			*re_p++ = enc_digit[t + ((q-t) % (BASE-t))];
 		        q = (q-t) / (BASE-t);
   		      }
 		      if(q > BASE) croak("input exceeds punycode limit");
-		      grow_string(RETVAL, &re_s, &re_p, &re_e, 1);
+		      grow_string(RETVAL, &re_s, &re_p, &re_e, sizeof(char));
 	              *re_p++ = enc_digit[q];
 		      bias = adapt(delta, h+1, first);
                       delta = first = 0;
@@ -175,15 +171,15 @@ encode_punycode(input)
 		  ++delta;
 		  ++n;
 		}
-		grow_string(RETVAL, &re_s, &re_p, &re_e, 1);
+		grow_string(RETVAL, &re_s, &re_p, &re_e, sizeof(char));
 		*re_p = 0;
 		SvCUR_set(RETVAL, re_p - re_s);
-		ST(0) = RETVAL;
-		XSRETURN(1);
+	OUTPUT:
+		RETVAL
 
 SV*
 decode_punycode(input)
-		SV * input	
+		SV * input
 	PREINIT:
 		UV c, n = INITIAL_N;
 		IV dc;
@@ -197,7 +193,7 @@ decode_punycode(input)
 		int first = 1;
 		STRLEN length_guess, len, h, u8;
 
-	PPCODE:	
+	CODE:
 		in_s = in_p = SvPV_nolen(input);
 		in_e = SvEND(input);
 
@@ -205,7 +201,6 @@ decode_punycode(input)
 		if(length_guess < 256) length_guess = 256;
 
 		RETVAL = NEWSV('D',length_guess);
-		sv_2mortal(RETVAL);				/* so we can use croak w/o memory leaks */
 		SvPOK_only(RETVAL);
 		re_s = re_p = SvPV_nolen(RETVAL);
 		re_e = re_s + SvLEN(RETVAL);
@@ -257,7 +252,7 @@ decode_punycode(input)
 
 		  grow_string(RETVAL, &re_s, &re_p, &re_e, u8);
 		  if(skip_p < re_p)				/* move succeeding chars */
-		    Move(skip_p, skip_p + u8, re_p - skip_p, char); 
+		    Move(skip_p, skip_p + u8, re_p - skip_p, char);
 		  re_p += u8;
 		  uvuni_to_utf8_flags((U8*)skip_p, n, UNICODE_ALLOW_ANY);
 		}
@@ -266,5 +261,5 @@ decode_punycode(input)
 		grow_string(RETVAL, &re_s, &re_p, &re_e, 1);
 		*re_p = 0;
 		SvCUR_set(RETVAL, re_p - re_s);
-		ST(0) = RETVAL;
-		XSRETURN(1);
+	OUTPUT:
+		RETVAL

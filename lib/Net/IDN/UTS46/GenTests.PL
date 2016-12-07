@@ -77,8 +77,8 @@ __EOF
     my $src  = $_->[2];
     my $dest = $_->[$column];
 
-    my $src_u8  = parse_str($src);
-    my $dest_u8 = parse_str($dest);
+    # my $src_u8  = parse_str($src);
+    # my $dest_u8 = parse_str($dest);
 
     $dest = $_->[3] if $dest eq '' && $column != 3;
     $dest = $src if $dest eq '';
@@ -109,6 +109,7 @@ __EOF
         v6.2	=> v5.17.1,
         v6.3	=> v5.19.5,
 	v7.0	=> v5.21.1,
+	v8.0	=> v5.24.0,
       );
   
       foreach my $ucd_ver (sort keys %unicode_to_perl_version) {
@@ -132,6 +133,7 @@ __EOF
       }
     } # unless 
 
+    $com =~ s/\p{C}/?/g;
     $com .= " [$SRC:$.]";
     print "is(eval{uts46_to_$to(", qstr($src), ", %p)},\t", qstr($dest), ',', "\t", '"', quotemeta($com), '"', ")",' or ($@ and diag($@))',";";
 

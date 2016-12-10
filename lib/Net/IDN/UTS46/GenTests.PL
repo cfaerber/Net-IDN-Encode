@@ -4,6 +4,8 @@ use strict;
 use utf8;
 use warnings;
 
+use Scalar::Util qw(looks_like_number);
+
 no warnings 'utf8';
 
 our $SRC = "data/IdnaTest.txt";
@@ -17,8 +19,7 @@ while(<IdnaTest>) {
   s/\s*#.*//; next if !m/\S/;
 
   my @c = ($., split /;/);
-  foreach(@c) { s/^\s+//; s/\s+$//; };
-
+  foreach(@c) { s/^\s+//; s/\s+$//; }; 
   die "format error: '$_' $#c <@c>" if $#c < 4;
   die "unknown test type: $c[1]" if $c[1] !~ m/^(B|N|T)$/;
   
@@ -27,10 +28,41 @@ while(<IdnaTest>) {
 
 die "no tests" unless @tests;
 
+our $DATA = "data/IdnaMappingTable.txt";
+open IdnaMappingTable, '<', $DATA || die "cannot open $SRC: $!";
+binmode IdnaMappingTable, ':utf8';
+
+our @ucd_ver;
+
+while(<IdnaMappingTable>) {
+  chomp; 
+  m/([[:xdigit:]]{4,})(?:\.+([[:xdigit:]]{4,}))?\s*;[^#]*#\s*([[:digit:]]+\.[[:digit:]]+|NA)\b/i or next;
+  my($from,$to,$ucd_ver) = ($1, $2, $3);
+  $to = $from if !defined $to;
+  $from = hex $from;
+  $to   = hex $to;
+
+  $ucd_ver = looks_like_number($ucd_ver) 
+    ? join '', map { chr $_ } split /\./, $ucd_ver
+    : undef;
+
+  $ucd_ver[$_] = $ucd_ver foreach ($from..$to);
+}
+
 write_test('', 		'unicode', 3, { 'TransitionalProcessing' => 0, }, @tests);
 write_test('', 		'ascii', , 4, { 'TransitionalProcessing' => 0, }, grep { $_->[1] =~ m/B|N/ } @tests);
 write_test('-trans',    'ascii', , 4, { 'TransitionalProcessing' => 1, }, grep { $_->[1] =~ m/B|T/ } @tests);
 exit(0);
+
+sub min_ucd {
+  my $min_ucd = v1.0;
+  foreach my $c (split //, shift) {
+    my $ucd_ver_c = $ucd_ver[ord $c];
+    return undef if !defined $ucd_ver_c;
+    $min_ucd = $ucd_ver_c if $ucd_ver_c gt $min_ucd;
+  }
+  return $min_ucd;
+}
 
 sub write_test {
   my($type, $to, $column, $para, $min_perl) = splice @_,0,4;
@@ -94,7 +126,10 @@ __EOF
 
     my $l_u8 = join '-', map { parse_str($_) } @{$_};
     my ($min_ucd,$min_perl, $need_closing_bracket);
-    unless(defined($err) and ($err =~ m/P1/) and ($err =~ m/V6/)) { ## should be invalid anyway
+
+    $min_ucd = min_ucd($l_u8);
+
+    if(!(defined($err) and ($err =~ m/P1/) and ($err =~ m/V6/)) and defined($min_ucd)) { ## should be invalid anyway
 
       my %unicode_to_perl_version = (
         v3.2	=> v5.8.0,
@@ -110,21 +145,12 @@ __EOF
         v6.3	=> v5.19.5,
 	v7.0	=> v5.21.1,
 	v8.0	=> v5.24.0,
+	v9.0	=> v5.25.3,
       );
-  
-      foreach my $ucd_ver (sort keys %unicode_to_perl_version) {
-        my $ucd_ver_str = sprintf '%vd', $ucd_ver;
-        if(eval{$l_u8 !~ m/\P{Present_In: $ucd_ver_str}/}) { 
-   	  $min_ucd = $ucd_ver;
-  	  $min_perl = $unicode_to_perl_version{$ucd_ver};
-	  last;
-        }
-      }
 
-      if(!defined $min_ucd) {
-        print 'TODO: { local $TODO = "test file was generated on perl '.$].', which is too old"; ';
-	$need_closing_bracket++;
-      } elsif ($min_perl gt v5.8.5) {	# 5.8.5 required by Net::IDN::UTS46
+      $min_perl = ($min_ucd lt v4) ? v5.8.0 : $unicode_to_perl_version{$min_ucd} or die sprintf "don't know perl version required for Unicode %vd", $min_ucd;
+
+      if ($min_perl gt v5.8.5) {	# 5.8.5 required by Net::IDN::UTS46
         print 'SKIP: { skip sprintf("requires Unicode® ',sprintf('v%vd', $min_ucd),
 	  ' (perl ',sprintf('v%vd', $min_perl),') or higher,',
   	  ' only v%vd is supported (perl v%vd)", $UCD_VERSION, $^V)',

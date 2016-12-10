@@ -1,5 +1,12 @@
 Revision history for Perl extension Net::IDN::Encode
 
+2.399_20161210
+	- update to Unicode 9.0.0
+	- changed generation of tests so that TODO is no longer required when
+	  the module author's perl doesn't support the newest Unicode version
+	- FIXES: warnings when compiling lib/Net/IDN/Punycode.xs
+	  (reported/patch provided by paul@c***-***.org)
+
 2.302 (2016-12-07)
 	- Fixes memory bug introduced by fix for #118924
 

@@ -1,5 +1,9 @@
 Revision history for Perl extension Net::IDN::Encode
 
+2.303 (2016-12-10)
+	- FIXES: warnings when compiling lib/Net/IDN/Punycode.xs
+	  (reported/patch provided by paul@c***-***.org)
+
 2.302 (2016-12-07)
 	- Fixes memory bug introduced by fix for #118924
 

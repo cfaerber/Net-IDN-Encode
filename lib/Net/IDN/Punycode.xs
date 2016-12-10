@@ -21,7 +21,7 @@
 #define TMIN_MAX(t)  (((t) < TMIN) ? (TMIN) : ((t) > TMAX) ? (TMAX) : (t))
 
 #ifndef utf8_to_uvchr_buf
-#define utf8_to_uvchr_buf(in_p,in_e,u8) utf8_to_uvchr((U8*)in_p, &u8);
+#define utf8_to_uvchr_buf(in_p,in_e,u8) utf8_to_uvchr(in_p,u8);
 #endif
 
 static char enc_digit[BASE] = {

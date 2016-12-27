@@ -4,7 +4,7 @@ use strict;
 use utf8;
 use warnings;
 
-our $VERSION = '1.001';
+our $VERSION = '1.002';
 $VERSION = eval $VERSION;
 
 require Encode;
@@ -44,13 +44,19 @@ Encode::Punycode - Encode plugin for Punycode (S<RFC 3492>)
 
 =head1 SYNOPSIS
 
-  use Encode;
+  use Encode; use Encode::Punycode;
+  
   $unicode  = decode('Punycode', $punycode);
   $punycode = encode('Punycode', $unicode);
 
 =head1 DESCRIPTION
 
 Encode::Punycode is an Encode plugin, which implements the Punycode encoding.
+
+This module provides an C<Encode> interface for the Punycode encoding, which is
+defined in S<RFC 3492>. This is not very useful because Punycode is a
+special-purpose encoding that is limited to fairly short strings. Please
+consider using L<Net::IDN::Punycode> directly, or even L<Net::IDN::Encode>.
 
 Punycode is an instance of a more general algorithm called Bootstring, which
 allows strings composed from a small set of "basic" code points to uniquely
@@ -59,6 +65,7 @@ Bootstring with particular parameter values appropriate for IDNA.  For a more
 generic (but less efficient) Bootstring implementation, see
 L<Encode::Bootstring>.
 
+PLEASE NOTE:
 This module does not do any string preparation or mappings as
 specified by Nameprep. It does not do add any prefix or suffix, either.  For
 higher-level handling of full Internationalised Domain Names, see
@@ -72,14 +79,14 @@ Previous versions written by Tatsuhiko Miyagawa E<lt>miyagawa@bulknews.netE<gt>
 
 =head1 COPYRIGHT
 
-Copyright 2007-2010 Claus FE<auml>rber.
+Copyright 2007-2016 Claus FE<auml>rber.
 
 This library is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself.
 
 =head1 SEE ALSO
 
-L<Encode>, L<Net::IDN::Punycode>, 
+L<Encode>, L<Net::IDN::Punycode>,
 S<RFC 3492> (L<http://www.ietf.org/rfc/rfc3492.txt>)
 
 =cut

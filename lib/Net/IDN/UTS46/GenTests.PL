@@ -84,12 +84,8 @@ sub write_test {
 #
 use strict;
 use utf8;
+use open ':std', ':utf8';
 use warnings;
-
-BEGIN {
-  binmode STDOUT, ':utf8';
-  binmode STDERR, ':utf8';
-}
 
 use Test::More tests => $c + 1;
 use Test::NoWarnings;

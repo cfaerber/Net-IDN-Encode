@@ -8,7 +8,7 @@ Net::IDN::Standards -- Internationalized Domain Names for Applications (IDNA)
 
 Historically, domain names and host names were restricted to a
 limited repertoire of ASCII characters, i.e. letters, digits and
-the hypen (i.e. C</[A-Z0-9-]/i>). Words and names from langauges
+the hyphen (i.e. C</[A-Z0-9-]/i>). Words and names from languages
 that require additional characters (such as diacritics or special
 characters) or other scripts could not be used.
 

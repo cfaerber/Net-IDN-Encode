@@ -1,5 +1,7 @@
 Revision history for Perl extension Net::IDN::Encode
 
+	- FIXES #119468: [PATCH] spelling fixes (reported by GREGOA)
+
 2.303 (2016-12-10)
 	- FIXES: warnings when compiling lib/Net/IDN/Punycode.xs
 	  (reported/patch provided by paul@c***-***.org)

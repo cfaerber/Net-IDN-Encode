@@ -45,7 +45,7 @@ compatibility with a specific incarnation of IDNA.
 
 =item L<Net::IDN::IDNA2003>
 
-implements the orginal IDNA specification, released in 2003
+implements the original IDNA specification, released in 2003
 (IDNA2003), which is now obsolete.
 
 IDNA2003 is defined in RFC 3490 L<http://tools.ietf.org/rfc/3490>

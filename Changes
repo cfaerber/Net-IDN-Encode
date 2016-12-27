@@ -1,9 +1,13 @@
 Revision history for Perl extension Net::IDN::Encode
 
+	- FIXES #119468: [PATCH] spelling fixes (reported by GREGOA)
+
 2.399_20161210
 	- update to Unicode 9.0.0
 	- changed generation of tests so that TODO is no longer required when
 	  the module author's perl doesn't support the newest Unicode version
+
+2.303 (2016-12-10)
 	- FIXES: warnings when compiling lib/Net/IDN/Punycode.xs
 	  (reported/patch provided by paul@c***-***.org)
 

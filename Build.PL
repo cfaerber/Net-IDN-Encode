@@ -8,6 +8,7 @@ use Module::Build;
 
 my $b = Module::Build->new(
 	'module_name'	=> 'Encode::Punycode',
+	'dist_abstract'	=> 'Encode plugin for Punycode (RFC 3492)',
 	'dist_author'	=> 'Claus Färber <CFAERBER@cpan.org>',
 	'license'	=> 'perl',
 	
@@ -16,6 +17,7 @@ my $b = Module::Build->new(
 	'create_makefile_pl' => 'traditional',
 
 	'requires'	=> {
+		'perl'	=> '5.8.5',
 		'Net::IDN::Punycode' => 1,
     		'Encode' => 1,
 	},
@@ -26,9 +28,11 @@ my $b = Module::Build->new(
 	'no_index' => {
 		'directory' => ['eg']
 	},
-	'resources' => {
-		'homepage' => 'http://search.cpan.org/dist/Encode-Punycode',
-		'repository' => 'http://github.com/cfaerber/Encode-Punycode',
+	'meta_merge' => {
+		'resources' => {
+			'homepage' => 'http://search.cpan.org/dist/Encode-Punycode',
+			'repository' => 'http://github.com/cfaerber/Net-IDN-Encode/tree/Encode-Punycode',
+		},
 	},
 );
 

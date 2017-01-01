@@ -47,7 +47,7 @@ Net::IDN::Punycode - A Bootstring encoding of Unicode for IDNA (S<RFC 3492>)
 This module implements the Punycode encoding, and only the Punycode encoding.
 
 This module does not implement any other steps required for converting
-internationalised domain names (IDNs) to and from ASCII. In particular, it does
+internationalized domain names (IDNs) to and from ASCII. In particular, it does
 not do any string preparation as specified by I<Nameprep>/I<IDNA2008>/I<PRECIS>
 and does not add nor remove the ACE prefix (C<xn-->). Thus, use
 L<Net::IDN::Encode> if you want to convert domain names.
@@ -62,13 +62,13 @@ Bootstring with particular parameter values appropriate for IDNA.
 You may be tempted to use this module directly and add/remove the ACE prefix
 (C<xn-->) in your code for performance reasons. Usually, this is not a good
 idea.  If you convert domain labels (or other strings) without proper
-prepration, you may end up with an ASCII encoding that is not interoperable or
+preparation, you may end up with an ASCII encoding that is not interoperable or
 even poses security issues due to spoofing.
 
 Even if you think that your domain names are valid and already mapped to the
 correct form, this may not be true. For example, some environments might
-automatically convert your perfectly valiad domain names to a different but
-equivalent Unicode normalisation form (e.g., NFD instead of NFC), which already
+automatically convert your perfectly valid domain names to a different but
+equivalent Unicode normalization form (e.g., NFD instead of NFC), which already
 breaks IDNA.
 
 =head1 FUNCTIONS

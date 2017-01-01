@@ -63,7 +63,8 @@
 ^MYMETA\.
 
 ^data/
-^lib/.*\.PL
+^lib/.*\.PL$
+^lib/.*\.c$
 
 # Avoid Module::Build generated and utility files.
 \bBuild$
@@ -76,3 +77,6 @@
 
 # Avoid archives of this distribution
 \bNet-IDN-Encode-[\d\.\_]+
+
+# skip POD tests
+^t/[0-9]+.*pod.*\.t$

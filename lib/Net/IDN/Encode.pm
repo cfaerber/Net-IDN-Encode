@@ -6,7 +6,7 @@ use strict;
 use utf8;
 use warnings;
 
-our $VERSION = "2.399_20161227";
+our $VERSION = "2.400";
 $VERSION = eval $VERSION;
 
 use Carp;
@@ -129,7 +129,7 @@ decoding Internationalized Domain Names (IDNs).
 IDNs use characters drawn from a large repertoire (Unicode), but
 IDNA allows the non-ASCII characters to be represented using only
 the ASCII characters already allowed in so-called host names today
-(letter-digit-hypen, C</[A-Z0-9-]/i>).
+(letter-digit-hyphen, C</[A-Z0-9-]/i>).
 
 Use this module if you just want to convert domain names (or email addresses),
 using whatever IDNA standard is the best choice at the moment.

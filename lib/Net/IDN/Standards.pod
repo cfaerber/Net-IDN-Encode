@@ -12,7 +12,7 @@ the hyphen (i.e. C</[A-Z0-9-]/i>). Words and names from languages
 that require additional characters (such as diacritics or special
 characters) or other scripts could not be used.
 
-Internationalizied Domain Names (IDNs) extend the character
+Internationalized Domain Names (IDNs) extend the character
 repertoire for domain names from ASCII to Unicode while
 maintaining backwards compatibility with software that only
 expects and handles ASCII characters.

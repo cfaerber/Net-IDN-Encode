@@ -1,5 +1,10 @@
 Revision history for Perl extension Net::IDN::Encode
 
+2.400 (2017-01-01)
+	- new release version
+	- remove author tests
+	- more spelling fixes
+
 2.399_20161227
 	- FIXES #119468: [PATCH] spelling fixes (reported by GREGOA)
 	- possible fix for utf8 warnings under perl 5.8.x

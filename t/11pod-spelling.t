@@ -28,6 +28,7 @@ TransitionalProcessing
 UNICODE
 UTS
 UseSTD
+VerifyDnsLength
 ZWJ
 ZWNJ
 diacritics
@@ -36,6 +37,7 @@ halfwidth
 ideographic
 internationalized
 internationalizing
+interoperable
 normalization
 programmes
 ss

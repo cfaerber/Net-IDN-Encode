@@ -114,7 +114,6 @@ sub _process {
 
       _validate_label($l, %param,
 	'TransitionalProcessing' => 0,
-	'AllowUnassigned' => 0,			## keep the Punycode version
       ) unless $@;
     } else {
       _validate_label($l,%param,'_AssumeNFC' => 1);

@@ -8,7 +8,7 @@ use warnings;
 
 use Carp;
 
-our $VERSION = "1.001";
+our $VERSION = "1.002";
 $VERSION = eval $VERSION;
 
 our @ISA = ('Exporter');
@@ -60,10 +60,10 @@ sub _process {
 # 1. Map
 #   - disallowed
 #
-  $label =~ m/(\p{IsDisallowed})/ and croak sprintf('disallowed character U+%04X', ord($1));
-
-  unless($param{'AllowUnassigned'}) {
-    $label =~ m/(\P{Assigned})/ and croak sprintf('unassigned character U+%04X (in this version of perl)', ord($1));
+  if($param{'AllowUnassigned'}) {
+    $label =~ m/(\p{Is_DisallowedAssigned})/ and croak sprintf('disallowed character U+%04X', ord($1));
+  } else {
+    $label =~ m/(\p{IsDisallowed})/ and croak sprintf('disallowed character U+%04X', ord($1));
   }
 
   if($param{'UseSTD3ASCIIRules'}) {
@@ -430,7 +430,7 @@ Claus FE<auml>rber <CFAERBER@cpan.org>
 
 =head1 LICENSE
 
-Copyright 2011-2014 Claus FE<auml>rber.
+Copyright 2011-2018 Claus FE<auml>rber.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

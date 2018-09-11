@@ -142,6 +142,8 @@ __EOF
 	v7.0	=> v5.21.1,
 	v8.0	=> v5.24.0,
 	v9.0	=> v5.25.3,
+	v10.0	=> v5.28.0,
+	v11.0	=> v5.29.2,
       );
 
       $min_perl = ($min_ucd lt v4) ? v5.8.0 : $unicode_to_perl_version{$min_ucd} or die sprintf "don't know perl version required for Unicode %vd", $min_ucd;

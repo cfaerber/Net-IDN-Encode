@@ -9,7 +9,7 @@ use warnings;
 use Carp;
 use Exporter;
 
-our $VERSION = "1.101";
+our $VERSION = "2.100";
 
 our @ISA = qw(Exporter);
 our @EXPORT = ();
@@ -80,7 +80,7 @@ sub decode_punycode {
 	    my $cp = substr($code, 0, 1, '');
 	    croak("incomplete encoded code point in decode_punycode") if !defined $cp;
 	    my $digit = ord $cp;
-		
+
 	    ## NB: this depends on the PunyRE catching invalid digit characters
 	    ## before they turn up here
 	    ##

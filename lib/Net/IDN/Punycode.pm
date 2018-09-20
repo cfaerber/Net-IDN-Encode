@@ -8,7 +8,7 @@ use warnings;
 
 use Exporter;
 
-our $VERSION = "1.102";
+our $VERSION = "2.400";
 $VERSION = eval $VERSION;
 
 our @ISA = qw(Exporter);
@@ -18,10 +18,10 @@ our %EXPORT_TAGS = ( 'all'  => [ qw(encode_punycode decode_punycode) ], );
 Exporter::export_ok_tags(keys %EXPORT_TAGS);
 our $_NO_XS;
 
-eval { 
+eval {
   die if $_NO_XS;
   require XSLoader;
-  XSLoader::load('Net::IDN::Punycode'); 
+  XSLoader::load('Net::IDN::Punycode');
 };
 
 if (!defined(&encode_punycode)) {

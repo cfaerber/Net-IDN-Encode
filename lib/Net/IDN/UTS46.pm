@@ -92,16 +92,13 @@ sub _process {
 #
   my @ll = split /\./, $label, -1;
 
-  ## Note: leading dots must be ignored (IDNA test vectors)
-  ##
-  shift @ll while @ll and (length $ll[0] <= 0);
-
   ## IDNA test vectors: an empty label at the end (separating the root domain
   ##                    "", if present) must be preserved. It is not checked for
   ##			the minumum length criteria and the dot separting it is
   ##			not included in the maximum length of the domain.
   ##
   my $rooted = @ll && length($ll[$#ll]) < 1; pop @ll if $rooted;
+  my $is_bidi = 0;
 
 # 4. Convert/Validate
 #
@@ -117,7 +114,11 @@ sub _process {
       _validate_label($l,%param,'_AssumeNFC' => 1);
     }
 
-    _validate_bidi($l,%param);
+    $is_bidi = 1 if !$is_bidi && $l =~ m/[\p{Bc:R}\p{Bc:AL}\p{Bc:AN}]/;
+  }
+
+  foreach my $l (@ll) {
+    _validate_bidi($l,%param)		if $is_bidi;
     _validate_contextj($l,%param);
 
     if(defined $to_ascii) {
@@ -177,18 +178,9 @@ sub _validate_bidi {
   my($l,%param) = @_;
   no warnings 'utf8';
 
-  ## IDNA test vectors: _labels_ that don't contain RTL characters are skipped
-  ##			(RFC 5893 mandates checks for _all_ labels if the 
-  ##			_domain_ contains RTL characters in any label) 
   return 1 unless length($l); 
-  return 1 unless $l =~ m/[\p{Bc:R}\p{Bc:AL}\p{Bc:AN}]/;
 
-
-  ## IDNA test vectors: LTR labels may start with "neutral" characters of
-  ##			BidiClass NSM or EN (RFC 5893 says LTR labels must
-  ##			start with BidiClass L)
-  ##
-  if( $l =~ m/^[\p{Bc:NSM}\p{Bc:EN}]*\p{Bc:L}/ ) { # LTR (left-to-right)
+  if( $l =~ m/^\p{Bc:L}/ ) { # LTR (left-to-right)
     $l =~ m/[^\p{Bc:L}\p{Bc:EN}\p{Bc:ES}\p{Bc:CS}\p{Bc:ET}\p{Bc:BN}\p{Bc:ON}\p{Bc:NSM}]/ and croak 'contains characters with wrong bidi class for LTR [B5]';
     $l =~ m/[\p{Bc:L}\p{Bc:EN}][\p{Bc:NSM}\P{Assigned}]*$/ or croak 'ends with character of wrong bidi class for LTR [B6]';
     return 1;

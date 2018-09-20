@@ -13,9 +13,11 @@ our $SRC = "data/IdnaMappingTable.txt";
 open IdnaMappingTable, '<', $SRC || die "cannot open $SRC: $!";
 
 my (%is,%map);
+my $line_no = 0; 
+$SRC =~ s/.*\///;
 
 while(<IdnaMappingTable>) {
-  chomp;
+  chomp; $line_no++; my $line = "$SRC:$line_no: $_";
 
   if(m/^\s*#\s*IdnaMappingTable-(\d+)\.(\d+)\.(\d+)\b/i) {
     $UNICODE_VERSION = sprintf "%d.%03d_%03d", $1, $2, $3;
@@ -25,8 +27,8 @@ while(<IdnaMappingTable>) {
     next;
   }
 
-  s/\s*#.*//; next if !m/\S/; s/^\s+//; s/\s+$//;
-  handle_idna_line(split /\s*;\s*/);
+  s/\s*#\s*(.*)//; my $comm=$1; next if !m/\S/; s/^\s+//; s/\s+$//;
+  handle_idna_line($line, $comm, split /\s*;\s*/);
 }
 close IdnaMappingTable;
 
@@ -39,9 +41,10 @@ exit(0);
 sub handle_idna_line {
   no warnings 'uninitialized';
 
-  my ($cp,$stat,$map,$nv8) = @_;
+  my ($line,$comm,$cp,$stat,$map,$nv8) = @_;
   $cp =~ m/^([[:xdigit:]]{4,})(?:\.\.([[:xdigit:]]{4,}))?$/i or die "illegal code point specification: ``$cp''";
   my @c = map {hex $_} ($1,$2||$1);
+  my $assigned = ($comm =~ m/^NA/i) ? "Unassigned" : "Assigned";
 
   $stat =~ m/^((disallowed_STD3_)?valid|ignored|(disallowed_STD3_)?mapped|deviation|disallowed)$/ or die "unknown Idna status: ``$stat''";
   my $perlstat = stat_to_perl($stat);
@@ -50,16 +53,17 @@ sub handle_idna_line {
   $map = join('', map { chr(hex($_)) } split /\s/, $1);
 
   if($stat =~ m/^((disallowed_STD3_)?mapped|deviation|ignored)$/i) {
-    push @{$map{$perlstat}}, $_, $map foreach( $c[0]..$c[1] );
+    push @{$map{$perlstat}}, $_, [$map,$line] foreach( $c[0]..$c[1] );
   } else {
-    push @{$is{$perlstat}}, \@c;
+    push @{$is{$perlstat}}, [@c,$line];
   }
+  push @{$is{'_Disallowed'.$assigned}}, [@c,$line] if $stat =~ m/^disallowed$/i && $assigned =~ m/^assigned$/i;
+  # push @{$is{'UTS46'.$assigned}}, [@c,$line];
 }
 
 sub stat_to_perl {
   return join '', map { ucfirst $_ } split /_/, shift;
 }
-
 sub write_data {
   my $fn = $0; $fn =~ s/\.PL$/.pm/i;
   local $VERSION = sprintf "%03d", $VERSION;
@@ -109,10 +113,12 @@ sub write_is {
   # clean list
   #
   @_ = sort { $a->[0] <=> $b->[0] } @_;
-  @_ = map { [$_->[0], $_->[defined $_->[1]],] } @_;
+  @_ = map { [$_->[0], $_->[defined $_->[1]], $_->[2],] } @_;
   foreach( reverse (0..($#_-1)) ) {	# reverse b/c the array will be shortened by splice
     if($_[$_]->[1] == $_[$_+1]->[0]-1) {
-      splice @_, $_, 2, [$_[$_]->[0],$_[$_+1]->[1],];
+      splice @_, $_, 2, [
+        $_[$_]->[0], $_[$_+1]->[1],
+        $_[$_]->[2]."\n# ".$_[$_+1]->[2], ];
     }
   }
   foreach(@_) { $_->[1] = undef if $_->[0] == $_->[1]; }
@@ -121,7 +127,8 @@ sub write_is {
   my $nr = 0;
   foreach(@_) {
     print "\n " if !($nr++ % 8);
-    print map { defined($_) ? sprintf(" 0x%04X,", $_) : " undef, " } @{$_} ;
+    # print "\n# ",$_->[2],"\n ";
+    print map { defined($_) ? sprintf(" 0x%04X,", $_) : " undef, " } @{$_}[0..1] ;
   }
   print "\n);\n";
 
@@ -137,12 +144,12 @@ sub write_map {
   foreach (sort { $a <=> $b } keys %map) {
     print "\n " if !($nr++ % 8);
     printf " 0x%04X => \"%s\",",
-      $_, quote($map{$_});
+      $_, quote($map{$_}->[0]);
   }
   print ");\n";
 
-  write_is($sub_name, map { [$_,] } keys %map);
-
+  write_is($sub_name, map { [$_,$_,$map{$_}->[1]] } keys %map);
+  $map{$_} = $map{$_}->[0] foreach keys %map;
 
   print "sub Map$sub_name { my \$l = shift;\n";
 
@@ -204,7 +211,7 @@ Claus FE<auml>rber <CFAERBER@cpan.org>
 
 =head1 LICENSE
 
-Copyright 2011-2014 Claus FE<auml>rber.
+Copyright 2011-2018 Claus FE<auml>rber.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

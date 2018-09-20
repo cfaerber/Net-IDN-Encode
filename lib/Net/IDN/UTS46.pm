@@ -25,6 +25,7 @@ use Net::IDN::UTS46::_Mapping 5.002 ('/^(Is|Map).*/');	# UTS #46 is only defined
 sub uts46_to_unicode {
   my ($label, %param) = @_;
   croak "Transitional processing is not defined for ToUnicode" if $param{'TransitionalProcessing'};
+  croak "DNS length verification cannot be disabled for ToUnicode" if exists $param{'VerifyDnsLength'} and !$param{'VerifyDnsLength'};
 
   splice @_, 1, 0, undef;
   goto &_process;
@@ -51,10 +52,11 @@ sub _process {
   my ($label, $to_ascii, %param) = @_;
   no warnings 'utf8';
   croak "The following parameter is invalid: $_"
-    foreach(grep { !m/^(?:TransitionalProcessing|UseSTD3ASCIIRules|AllowUnassigned)$/ } keys %param);
+    foreach(grep { !m/^(?:TransitionalProcessing|UseSTD3ASCIIRules|VerifyDnsLength|AllowUnassigned)$/ } keys %param);
 
   $param{'TransitionalProcessing'} = 0	unless exists $param{'TransitionalProcessing'};
-  $param{'UseSTD3ASCIIRules'} = 1	unless exists $param{'UseSTD3ASCIIRules'};
+  $param{'UseSTD3ASCIIRules'} = 1 unless exists $param{'UseSTD3ASCIIRules'};
+  $param{'VerifyDnsLength'} = 1	unless exists $param{'VerifyDnsLength'};
   $param{'AllowUnassigned'} = 0		unless exists $param{'AllowUnassigned'};
 
 # 1. Map
@@ -127,8 +129,8 @@ sub _process {
     ## IDNA test vectors: labels have to be checked for the minimum length of 1 (but not for the
     ##                    maximum length of 63) even in to_unicode.
     ##
-    croak "empty label [A4_2]" if length($l) < 1;
-    croak "label too long [A4_2]" if length($l) > 63 and defined $to_ascii;
+    croak "empty label [A4_2]" if $param{'VerifyDnsLength'} and length($l) < 1;
+    croak "label too long [A4_2]" if $param{'VerifyDnsLength'} and length($l) > 63 and defined $to_ascii;
   }
 
   my $domain = join('.', @ll);
@@ -136,8 +138,8 @@ sub _process {
   ## IDNA test vectors: domains have to be checked for the minimum length of 1 (but not for the
   ##                    maximum length of 253 excluding a final dot) even in to_unicode.
   ##
-  croak "empty domain name [A4_1]" if length($domain) < 1;
-  croak "domain name too long [A4_1]" if length($domain) > 253 and defined $to_ascii;
+  croak "empty domain name [A4_1]" if $param{'VerifyDnsLength'} and length($domain) < 1;
+  croak "domain name too long [A4_1]" if $param{'VerifyDnsLength'} and length($domain) > 253 and defined $to_ascii;
 
   $domain .= '.' if $rooted;
 
@@ -178,9 +180,9 @@ sub _validate_bidi {
   no warnings 'utf8';
 
   ## IDNA test vectors: _labels_ that don't contain RTL characters are skipped
-  ##			(RFC 5893 mandates checks for _all_ labels if the 
-  ##			_domain_ contains RTL characters in any label) 
-  return 1 unless length($l); 
+  ##			(RFC 5893 mandates checks for _all_ labels if the
+  ##			_domain_ contains RTL characters in any label)
+  return 1 unless length($l);
   return 1 unless $l =~ m/[\p{Bc:R}\p{Bc:AL}\p{Bc:AN}]/;
 
 
@@ -192,7 +194,7 @@ sub _validate_bidi {
     $l =~ m/[^\p{Bc:L}\p{Bc:EN}\p{Bc:ES}\p{Bc:CS}\p{Bc:ET}\p{Bc:BN}\p{Bc:ON}\p{Bc:NSM}]/ and croak 'contains characters with wrong bidi class for LTR [B5]';
     $l =~ m/[\p{Bc:L}\p{Bc:EN}][\p{Bc:NSM}\P{Assigned}]*$/ or croak 'ends with character of wrong bidi class for LTR [B6]';
     return 1;
-  } 
+  }
 
   if( $l =~ m/^[\p{Bc:R}\p{Bc:AL}]/ ) { # RTL (right-to-left)
     $l =~ m/[^\p{Bc:R}\p{Bc:AL}\p{Bc:AN}\p{Bc:EN}\p{Bc:ES}\p{Bc:CS}\p{Bc:ET}\p{Bc:ON}\p{Bc:BN}\p{Bc:NSM}]/ and croak 'contains characters with wrong bidi class for RTL [B2]';
@@ -228,7 +230,7 @@ sub _validate_contextj {
 # RFC 5892, Appendix A.1. ZERO WIDTH NON-JOINER
 #    Code point:
 #       U+200C
-# 
+#
 #    Overview:
 #       This may occur in a formally cursive script (such as Arabic) in a
 #       context where it breaks a cursive connection as required for
@@ -236,8 +238,8 @@ sub _validate_contextj {
 #       also may occur in Indic scripts in a consonant-conjunct context
 #       (immediately following a virama), to control required display of
 #       such conjuncts.
-# 
-# 
+#
+#
 #    Lookup:
 #       True
 #
@@ -262,12 +264,12 @@ sub _validate_contextj {
 #
 #    Code point:
 #       U+200D
-# 
+#
 #    Overview:
 #       This may occur in Indic scripts in a consonant-conjunct context
 #       (immediately following a virama), to control required display of
 #       such conjuncts.
-# 
+#
 #    Lookup:
 #       True
 
@@ -298,7 +300,7 @@ Net::IDN::UTS46 - Unicode IDNA Compatibility Processing (S<UTS #46>)
   use Net::IDN:: ':all';
   my $a = uts46_to_ascii("müller.example.org");
   my $b = Net::IDN::UTS46::to_unicode('EXAMPLE.XN--11B5BS3A9AJ6G');
-  
+
   $domain =~ m/\P{Net::IDN::UTS46::IsDisallowed} and die 'oops';
 
 =head1 DESCRIPTION
@@ -317,11 +319,11 @@ is used internally, you should use L<Net::IDN::Encode> instead.
 =head1 FUNCTIONS
 
 By default, this module does not export any subroutines. You may use the
-C<:all> tag to import everything. 
+C<:all> tag to import everything.
 
 You can omit the C<'uts46_'> prefix when accessing the functions with a
 full-qualified module name (e.g. you can access C<uts46_to_unicode> as
-C<Net::IDN::UTS46::uts46_to_unicode> or C<Net::IDN::UTS46::to_unicode>. 
+C<Net::IDN::UTS46::uts46_to_unicode> or C<Net::IDN::UTS46::to_unicode>.
 
 The following functions are available:
 
@@ -358,6 +360,13 @@ ZWNJ (U+200C). Usually, you will want to set this to false.
 
 The default is false.
 
+=item VerifyDnsLength
+
+(boolean) If set to a true value, verifies that the label satisfies DNS length
+restrictions. Setting this to false will allow labels of any length.
+
+The default is true.
+
 =back
 
 =item uts46_to_unicode( $label, %param )
@@ -381,6 +390,11 @@ This function takes the following optional parameters (C<%param>):
 
 (boolean) If given, this parameter must be false. The UTS #46 specification
 does not define transitional processing for ToUnicode.
+
+=item VerifyDnsLength
+
+(boolean) If given, this parameter must be true. The UTS #46 specification
+does not define DNS length verification for ToUnicode.
 
 =back
 

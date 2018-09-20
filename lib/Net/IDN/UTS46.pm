@@ -166,9 +166,11 @@ sub _validate_label {
   }
 
   if($param{'TransitionalProcessing'}) {
-    $l =~m/(\p{IsDeviation})/		and croak sprintf "contains deviation character U+%04X [V6]", ord $1;
+    $l =~ m/(\p{IsDeviation})/		and croak sprintf "contains deviation character U+%04X [V6]", ord $1;
   }
 
+  $l =~ m/(\p{IsIgnored})/		and croak sprintf "contains ignored character U+%04X [V6]", ord $1;
+  $l =~ m/(\p{IsMapped}|\p{IsDisallowedSTD3Mapped})/ and croak sprintf "contains mapped character U+%04X [V6]", ord $1;
   $l =~ m/(\p{IsDisallowed})/		and croak sprintf "contains disallowed character U+%04X [V6]", ord $1;
 
   return 1;

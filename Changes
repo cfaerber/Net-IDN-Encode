@@ -1,5 +1,10 @@
 Revision history for Perl extension Net::IDN::Encode
 
+	- update to Unicode 10.0.0
+	- Net::IDN::UTS46: remove workarounds for pre-9.0.0 test vectors; the
+	  module now more closely follows the written spec
+	- Net::IDN::UTS46: fix validation for some non-valid characters
+
 2.401 2018-09-20
 	- FIXES: #127056: [PATCH 1/2] Fix domain_to_ascii AllowUnassigned param
 	  (report and patch by SKJM)

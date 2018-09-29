@@ -39,9 +39,12 @@ my $b = Module::Build->new(
 	'no_index' => {
 		'directory' => ['eg', 'data']
 	},
-	'resources' => {
-		'homepage' => 'http://search.cpan.org/dist/Net-IDN-Encode',
-		'repository' => 'http://github.com/cfaerber/Net-IDN-Encode',
+	'meta_add' => {
+		'resources' => {
+			'homepage' => 'https://metacpan.org/release/Net-IDN-Encode',
+			'repository' => { 'web' => 'https://rt.cpan.org/Public/Dist/Display.html?Name=Net-IDN-Encode', },
+			'repository' => { 'type' => 'git', 'url' => 'http://github.com/cfaerber/Net-IDN-Encode', },
+		},
 	},
 );
 

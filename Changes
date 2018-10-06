@@ -1,7 +1,6 @@
 Revision history for Perl extension Net::IDN::Encode
 
-	- Net::IDN::Punycode: fix for warnings under perl ≤ 5.8.7 (EXPERIMENTAL)
-
+2.500 2018-10-06
 	- update to Unicode 10.0.0
 	- Net::IDN::UTS46: remove workarounds for pre-9.0.0 test vectors; the
 	  module now more closely follows the written spec
@@ -9,6 +8,7 @@ Revision history for Perl extension Net::IDN::Encode
 	- Net::IDN::UTS46: for perl 5.8.x/5.10.x, include workaround for bidi
 	  validation where some labels would incorrectly be marked as invalid
 	  [B1] because of a bug in perl's Unicode implementation
+	- Net::IDN::Punycode: fix for warnings under perl ≤ 5.8.7 (EXPERIMENTAL)
 
 2.401 2018-09-20
 	- FIXES: #127056: [PATCH 1/2] Fix domain_to_ascii AllowUnassigned param

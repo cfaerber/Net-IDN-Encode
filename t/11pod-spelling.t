@@ -36,6 +36,7 @@ halfwidth
 ideographic
 internationalized
 internationalizing
+interoperable
 normalization
 programmes
 ss

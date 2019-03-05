@@ -123,14 +123,17 @@ sub write_is {
   }
   foreach(@_) { $_->[1] = undef if $_->[0] == $_->[1]; }
   
-  print "\nour \@$var_name = (";
+  print "\nour \@$var_name;";
+  print "\nBEGIN {";
+  print "\n  \@$var_name = (";
   my $nr = 0;
   foreach(@_) {
-    print "\n " if !($nr++ % 8);
-    # print "\n# ",$_->[2],"\n ";
+    print "\n    " if !($nr++ % 8);
+    # print "\n#   ",$_->[2],"\n ";
     print map { defined($_) ? sprintf(" 0x%04X,", $_) : " undef, " } @{$_}[0..1] ;
   }
-  print "\n);\n";
+  print "\n  );\n";
+  print "\n}\n";
 
   print "sub Is$sub_name { return _mk_prop(\@$var_name); };\n";
 }

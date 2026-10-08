@@ -13,7 +13,6 @@ my $b = Module::Build->new(
 	'dist_abstract' => 'Internationalizing Domain Names in Applications (UTS #46)',
 
 	'sign'		=> 0,
-	'release_status' => 'testing',
 	'create_license' => 1,
 	'create_makefile_pl' => 'traditional',
 
